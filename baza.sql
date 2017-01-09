@@ -54,6 +54,7 @@ BEGIN
   (
     id_usr INT NOT NULL,
     id_set INT NOT NULL,
+    slozeno INT,
     PRIMARY KEY(id_usr, id_set)
   )
 END;
@@ -108,6 +109,17 @@ BEGIN
   )
 END;
 
+IF (NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'user_MOC'))
+BEGIN
+  CREATE TABLE user_MOC
+  (
+    id_usr INT NOT NULL,
+    id_moc INT NOT NULL,
+    slozeno INT,
+    PRIMARY KEY(id_usr, id_moc)
+  )
+END;
+
 
 -- Create FKs
 ALTER TABLE setovi_dijelovi
@@ -149,3 +161,17 @@ ALTER TABLE tema
     ADD    FOREIGN KEY (id_nadtema)
     REFERENCES tema(id_tema)
 ;
+    
+ALTER TABLE user_set
+    ADD    FOREIGN KEY (id_set)
+    REFERENCES set(id)
+;
+    
+ALTER TABLE user_MOC
+    ADD    FOREIGN KEY (id_moc)
+    REFERENCES MOC(id)
+;
+    
+
+-- Create Indexes
+
