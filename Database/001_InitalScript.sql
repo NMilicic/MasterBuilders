@@ -179,7 +179,7 @@ ALTER TABLE MasterBuilders.dbo.user_MOC
 ;
 
 ALTER TABLE MasterBuilders.dbo.user_MOC
-    ADD    FOREIGN KEY (id_usr)
+    ADD    FOREIGN KEY (Korisnik_id)
     REFERENCES Korisnik(id)
 ;
 
