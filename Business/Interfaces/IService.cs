@@ -10,5 +10,7 @@ namespace Business.Interfaces
     {
         IQueryable<T> GetAll();
         T GetById(int id);
+        void SaveOrUpdate(T obj);
+        void Delete(int id);
     }
 }

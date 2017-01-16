@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebApi.Models;
 
 namespace WebApi.App_Start
 {
@@ -13,8 +14,19 @@ namespace WebApi.App_Start
         {
             Mapper.Initialize(cfg =>
             {
-               cfg.CreateMap<Korisnik, KorisnikApi>();
+                cfg.CreateMap<Korisnik, KorisnikApi>();
 
+                cfg.CreateMap<KorisnikApi, Korisnik>()
+                .ForMember(dest => dest.Kockice, opt => opt.Ignore())
+                .ForMember(dest => dest.Moc, opt => opt.Ignore())
+                .ForMember(dest => dest.Setovi, opt => opt.Ignore());
+
+                cfg.CreateMap<Tema, TemaApi>();
+
+                cfg.CreateMap<UserSet, UserSetApi>();
+
+                cfg.CreateMap<LSet, SetApi>()
+                  .ForMember(dest => dest.NadTema, opt => opt.MapFrom(src => src.Tema.NadTema));
             });
 
         }

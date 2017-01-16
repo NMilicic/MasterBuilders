@@ -15,10 +15,9 @@ namespace Data.Mappings
             Table("tema");
 
             Id(x => x.IdTema).Column("id_tema");
-            Map(x => x.IdNadTema).Column("id_nadtema");
             Map(x => x.ImeTema).Column("ime_tema");
 
-            References(x => x.NadTema).Column("id_nadtema").ForeignKey("id_tema");
+            References(x => x.NadTema).Column("id_nadtema");
         }
     }
 }
