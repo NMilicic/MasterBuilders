@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace Data.Mappings
 {
-    public class UserSetMap : ClassMap<UserSet>
+    public class WishlistMap : ClassMap<Wishlist>
     {
-        public UserSetMap()
+        public WishlistMap()
         {
-            Table("user_set");
+            Table("wishlist");
             Id(x => x.Id).Column("id");
 
-            Map(x => x.Slozeno).Column("slozeno");
             Map(x => x.Komada).Column("Komada");
 
             References(x => x.Korisnik).Column("Korisnik_id");

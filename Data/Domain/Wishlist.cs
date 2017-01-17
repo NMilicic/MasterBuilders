@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Data.Domain
 {
-    public class UserSet
+    public class Wishlist
     {
         public virtual int Id { get; set; }
-        public virtual int Slozeno { get; set; }
         public virtual int Komada { get; set; }
 
         public virtual Korisnik Korisnik { get; set; }

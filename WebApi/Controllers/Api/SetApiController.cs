@@ -26,5 +26,16 @@ namespace WebApi.Controllers.Api
             var tmp = setServices.Search(searchPattern).ProjectTo<SetApi>().ToList();
             return tmp;
         }
+
+        [HttpPost]
+        public HttpResponseMessage AddSetsToInventory(List<UserSetApi> userSets)
+        {
+            foreach (var userSet in userSets)
+            {
+                setServices.AddToInventory(userSet.IdUser, userSet.IdSet, userSet.Komada);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.Created, "Sets added to inventroy");
+        }
     }
 }

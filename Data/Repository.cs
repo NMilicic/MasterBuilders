@@ -51,6 +51,7 @@ namespace Data
         public virtual void Save(T obj)
         {
             _session.SaveOrUpdate(obj);
+            _session.Flush();
         }
         public virtual void Delete(T obj)
         {
@@ -58,7 +59,7 @@ namespace Data
         }
         public virtual T GetById(object Id)
         {
-            return _session.Query<T>().FirstOrDefault();
+            return _session.Get<T>(Id);
         }
         public virtual IQueryable<T> Query()
         {

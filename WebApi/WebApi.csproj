@@ -163,6 +163,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\Api\KorisnikApiController.cs" />
     <Compile Include="Controllers\Api\SetApiController.cs" />
+    <Compile Include="Controllers\Api\WishlistAPiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -173,6 +174,7 @@
     <Compile Include="Models\SetApi.cs" />
     <Compile Include="Models\TemaApi.cs" />
     <Compile Include="Models\UserSetApi.cs" />
+    <Compile Include="Models\WishlistApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

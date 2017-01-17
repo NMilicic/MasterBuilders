@@ -21,7 +21,7 @@ namespace Business.Exceptions
                 case KorisnikExceptionEnum.Taken:
                     return "User with that email is already register!";
                 case KorisnikExceptionEnum.NotFound:
-                    return "Invalid user data";
+                    return "User not found!";
             }
             return "";
         }

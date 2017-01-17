@@ -11,6 +11,7 @@ namespace WebApi.Models
         public  int IdUser { get; set; }
         public  int IdSet { get; set; }
         public  int Slozeno { get; set; }
+        public int Komada { get; set; }
 
         public  KorisnikApi Korisnik { get; set; }
         public  SetApi Set { get; set; }

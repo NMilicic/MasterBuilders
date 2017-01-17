@@ -17,12 +17,14 @@ namespace Data.Domain
         public virtual IEnumerable<Kockica> Kockice { get; set; }
         public virtual IEnumerable<UserSet> Setovi { get; set; }
         public virtual IEnumerable<Moc> Moc { get; set; }
+        public virtual IEnumerable<Wishlist> Wishlist { get; set; }
 
         public Korisnik()
         {
             Kockice = new List<Kockica>();
             Setovi = new List<UserSet>();
             Moc = new List<Moc>();
+            Wishlist = new List<Wishlist>();
         }
     }
 }

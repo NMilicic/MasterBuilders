@@ -95,8 +95,10 @@
     <Compile Include="Domain\UserKockica.cs" />
     <Compile Include="Domain\UserMoc.cs" />
     <Compile Include="Domain\UserSet.cs" />
+    <Compile Include="Domain\Wishlist.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Mappings\UserKockicaMap.cs" />
+    <Compile Include="Mappings\WishlistMap.cs" />
     <Compile Include="Mappings\UserSetMap.cs" />
     <Compile Include="Mappings\UserMocMap.cs" />
     <Compile Include="Mappings\TemaMap.cs" />

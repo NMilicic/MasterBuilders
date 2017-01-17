@@ -23,6 +23,7 @@ namespace Data.Mappings
             HasManyToMany(x => x.Kockice).Cascade.All().Table("user_kockica");
             HasMany(x => x.Setovi).Cascade.All().Table("user_set");
             HasMany(x => x.Moc).Cascade.All().Table("user_MOC");
+            HasMany(x => x.Wishlist).Cascade.All().Table("Wishlist");
         }
     }
 }
