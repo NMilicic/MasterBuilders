@@ -63,7 +63,27 @@ namespace Business.Services
             var sets = setoviDijelovi.Select(t => t.Set).Distinct();
             return sets;
         }
+        
+        public List<LSet> BuilderAssistent(int userId)
+        {
+            var user = korisnikRepository.GetById(userId);
+            var avaliableParts = user.Setovi.Where(s => (s.Komada > s.Slozeno)).SelectMany(x => x.Set.Dijelovi).ToList();
+            foreach(var part in avaliableParts)
+            {
+                var set = user.Setovi.FirstOrDefault(s => s.Set.Id == part.Set.Id);
+                part.Broj = (set.Komada - set.Slozeno) * part.Broj;
+            }
 
+            var possibleSets = setRepository.Query().Where(s => s.Dijelovi.Count() > 0).ToList().Where(
+                s => s.Dijelovi.All(
+                    part => avaliableParts.Any(b => b.Boja.Id == part.Boja.Id) &&
+                     avaliableParts.Any(b => b.Kockica.Id == part.Kockica.Id) &&
+                     avaliableParts.Any(b => b.Broj >= part.Broj)))
+                     .ToList();
+
+           return possibleSets;
+            
+        }
         #endregion
 
         #region Private methods

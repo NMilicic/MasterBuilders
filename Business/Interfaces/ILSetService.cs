@@ -11,5 +11,6 @@ namespace Business.Interfaces
     {
         IQueryable<LSet> Search(string searchPattern);
         IQueryable<LSet> GetAllSetsWithBricks(List<int> bricksIds);
+        List<LSet> BuilderAssistent(int userId);
     }
 }

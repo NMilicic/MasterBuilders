@@ -42,5 +42,12 @@ namespace WebApi.Controllers.Api
             var filteredSets = setServices.Search(searchPattern).ToList();
             return Mapper.Map<List<SetApi>>(filteredSets);
         }
+
+        [HttpGet]
+        public List<SetApi> BuilderAssistend(int userId)
+        {
+            var possibleSets = setServices.BuilderAssistent(userId);
+            return Mapper.Map<List<SetApi>>(possibleSets);
+        }
     }
 }
