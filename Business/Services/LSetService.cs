@@ -63,6 +63,7 @@ namespace Business.Services
             var sets = setoviDijelovi.Select(t => t.Set).Distinct();
             return sets;
         }
+
         #endregion
 
         #region Private methods

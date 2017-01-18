@@ -21,7 +21,7 @@ namespace Data.Domain
 
         public LSet()
         {
-            KorisnikSet = new List<UserSet>();
+           KorisnikSet = new List<UserSet>();
            Dijelovi = new List<SetoviDijelovi>();
         }
     }

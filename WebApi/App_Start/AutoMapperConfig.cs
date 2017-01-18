@@ -37,9 +37,26 @@ namespace WebApi.App_Start
 
                 cfg.CreateMap<Boja, BojaApi>();
 
+                cfg.CreateMap<BojaApi, Boja>()
+                .ForMember(dest => dest.MocDijelovi, opt => opt.Ignore())
+                .ForMember(dest => dest.SetoviDijelovi, opt => opt.Ignore());
+
                 cfg.CreateMap<Kockica, KockicaApi>();
+                cfg.CreateMap<KockicaApi, Kockica>()
+                .ForMember(dest => dest.Korisnik, opt => opt.Ignore())
+                .ForMember(dest => dest.SetoviDijelovi, opt => opt.Ignore());
 
                 cfg.CreateMap<SetoviDijelovi, SetDijeloviApi>();
+
+                cfg.CreateMap<Moc, MocApi>();
+
+                cfg.CreateMap<MocApi, Moc>()
+                .ForMember(dest => dest.UserMoc, opt => opt.Ignore());
+
+                cfg.CreateMap<MocDijelovi, MocDijeloviApi>();
+
+                cfg.CreateMap<MocDijeloviApi, MocDijelovi>()
+                .ForMember(dest => dest.Moc, opt => opt.Ignore());
             });
 
         }

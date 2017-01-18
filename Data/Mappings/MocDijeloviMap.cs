@@ -14,10 +14,11 @@ namespace Data.Mappings
         {
             Table("MOC_dijelovi");
             Id(x => x.Id).Column("id");
+            Map(x => x.Broj).Column("broj");
 
-            References(x => x.Boja).Column("id_boja").ForeignKey("id");
-            References(x => x.Moc).Column("id_set").ForeignKey("id");
-            References(x => x.Kockica).Column("id_koc").ForeignKey("id");
+            References(x => x.Boja).Column("id_boja");
+            References(x => x.Moc).Column("id_set");
+            References(x => x.Kockica).Column("id_koc");
         }
     }
 }

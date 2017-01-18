@@ -18,7 +18,12 @@ namespace Data.Domain
         public virtual int IdAutor { get; set; }
         public virtual int GodinaProizvodnje { get; set; }
 
-        public virtual Korisnik Autor { get; set; }
+        public virtual UserMoc UserMoc { get; set; }
         public virtual IEnumerable<MocDijelovi> Dijelovi { get; set; }
+
+        public Moc()
+        {
+            Dijelovi = new List<MocDijelovi>();
+        }
     }
 }

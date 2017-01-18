@@ -24,7 +24,7 @@ namespace Data.Mappings
             Map(x => x.IdAutor).Column("id_autor");
             Map(x => x.GodinaProizvodnje).Column("god_pro");
 
-            References(x => x.Autor).Column("id_autor").ForeignKey("id");
+            References(x => x.UserMoc).Column("id_autor").ReadOnly();
             HasMany(x => x.Dijelovi).Cascade.All().Table("MOC_dijelovi");
         }
     }
