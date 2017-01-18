@@ -1,4 +1,5 @@
-﻿using AutoMapper.QueryableExtensions;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Business.Services;
 using System;
 using System.Collections.Generic;
@@ -17,14 +18,21 @@ namespace WebApi.Controllers.Api
         [HttpGet]
         public List<SetApi> GetAll()
         {
+            var allSets = setServices.GetAll().ToList();
+            return Mapper.Map<List<SetApi>>(allSets);
+        }
+
+        [HttpGet]
+        public List<SetApi> GetSet()
+        {
             var tmp = setServices.GetAll().ProjectTo<SetApi>().ToList();
             return tmp;
         }
         [HttpGet]
         public List<SetApi> Search(string searchPattern)
         {
-            var tmp = setServices.Search(searchPattern).ProjectTo<SetApi>().ToList();
-            return tmp;
+            var filteredSets = setServices.Search(searchPattern).ToList();;
+            return Mapper.Map<List<SetApi>>(filteredSets);
         }
 
         [HttpPost]

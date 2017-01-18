@@ -24,9 +24,11 @@ namespace Data.Mappings
             References(x => x.Tema).Column("id_tema").ForeignKey("id");
 
             HasMany(x => x.KorisnikSet)
-              .Cascade.All()
-              .Inverse()
               .Table("user_set");
+
+            HasMany(x => x.Dijelovi)
+              .Cascade.All()
+              .Table("setovi_dijelovi");
         }
     }
 }

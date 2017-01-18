@@ -19,8 +19,7 @@ namespace Business.Services
 
         public IQueryable<LSet> GetAll()
         {
-            var tmp = setRepository.Query();
-            return tmp;
+            return setRepository.Query();
         }
 
         public LSet GetById(int id)

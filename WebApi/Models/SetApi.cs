@@ -17,6 +17,5 @@ namespace WebApi.Models
 
         public TemaApi Tema { get; set; }
         public TemaApi NadTema { get; set; }
-        public IEnumerable<UserSetApi> KorisnikSet { get; set; }
     }
 }

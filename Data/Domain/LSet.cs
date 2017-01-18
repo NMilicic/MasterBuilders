@@ -17,5 +17,12 @@ namespace Data.Domain
 
         public virtual Tema Tema { get; set; }
         public virtual IEnumerable<UserSet> KorisnikSet { get; set; }
+        public virtual IEnumerable<SetoviDijelovi> Dijelovi { get; set; }
+
+        public LSet()
+        {
+            KorisnikSet = new List<UserSet>();
+           Dijelovi = new List<SetoviDijelovi>();
+        }
     }
 }
