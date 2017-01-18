@@ -56,6 +56,7 @@ namespace Data
         public virtual void Delete(T obj)
         {
             _session.Delete(obj);
+            _session.Flush();
         }
         public virtual T GetById(object Id)
         {

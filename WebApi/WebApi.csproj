@@ -161,6 +161,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\Api\InventoryApiController.cs" />
     <Compile Include="Controllers\Api\KorisnikApiController.cs" />
     <Compile Include="Controllers\Api\SetApiController.cs" />
     <Compile Include="Controllers\Api\WishlistAPiController.cs" />
@@ -169,9 +170,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BojaApi.cs" />
+    <Compile Include="Models\KockicaApi.cs" />
     <Compile Include="Models\KorisnikApi.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SetApi.cs" />
+    <Compile Include="Models\SetDetailedApi.cs" />
+    <Compile Include="Models\SetDijeloviApi.cs" />
     <Compile Include="Models\TemaApi.cs" />
     <Compile Include="Models\UserSetApi.cs" />
     <Compile Include="Models\WishlistApi.cs" />

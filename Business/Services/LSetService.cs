@@ -16,7 +16,9 @@ namespace Business.Services
         Repository<Wishlist> wishlistRepository = new Repository<Wishlist>();
         Repository<Korisnik> korisnikRepository = new Repository<Korisnik>();
         Repository<UserSet> inventroyRepository = new Repository<UserSet>();
+        Repository<SetoviDijelovi> dijeloviRepository = new Repository<SetoviDijelovi>();
 
+        #region Default actions
         public IQueryable<LSet> GetAll()
         {
             return setRepository.Query();
@@ -45,60 +47,25 @@ namespace Business.Services
             }
         }
 
+        #endregion
+
+        #region Set specific actions
+
         public IQueryable<LSet> Search(string searchPattern)
         {
             var query = setRepository.Query();
             return FilterByName(searchPattern, query);
         }
 
-        public UserSet AddToInventory(int userId, int setId, int pieces)
+        public IQueryable<LSet> GetAllSetsWithBricks(List<int> bricksIds)
         {
-            var user = korisnikRepository.GetById(userId);
-            if (user != null)
-            {
-                var dbSet = setRepository.GetById(setId);
-                if (dbSet != null)
-                {
-                    var existingWishListItem = wishlistRepository.Query().FirstOrDefault(x => x.Korisnik.Id == userId && x.Set.Id == setId);
-
-                    if(existingWishListItem != null)
-                    {
-                        existingWishListItem.Komada -= pieces;
-                        wishlistRepository.Save(existingWishListItem);
-                    }
-                    var existingInventroyItem = inventroyRepository.Query().FirstOrDefault(x => x.Korisnik.Id == userId && x.Set.Id == setId);
-
-                    if (existingInventroyItem == null)
-                    {
-                        var inventoryForSave = new UserSet()
-                        {
-                            Korisnik = user,
-                            Set = dbSet,
-                            Slozeno = 0,
-                            Komada = pieces
-                        };
-                        inventroyRepository.Save(inventoryForSave);
-
-                        return inventoryForSave;
-                    }
-                    else
-                    {
-                        existingInventroyItem.Komada += pieces;
-                        inventroyRepository.Save(existingInventroyItem);
-
-                        return existingInventroyItem;
-                    }
-                }
-                else
-                {
-                    throw new DataException("Set not found!");
-                }
-            }
-
-            throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.NotFound));
-
-
+            var setoviDijelovi = dijeloviRepository.Query().Where(s => bricksIds.Contains(s.Kockica.Id));
+            var sets = setoviDijelovi.Select(t => t.Set).Distinct();
+            return sets;
         }
+        #endregion
+
+        #region Private methods
 
         private IQueryable<LSet> FilterByName(string searchPattern, IQueryable<LSet> query)
         {
@@ -109,5 +76,7 @@ namespace Business.Services
         {
             return query.Where(x => x.Opis.Contains(searchPattern));
         }
+
+        #endregion
     }
 }

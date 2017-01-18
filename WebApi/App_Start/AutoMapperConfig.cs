@@ -28,8 +28,18 @@ namespace WebApi.App_Start
                 cfg.CreateMap<LSet, SetApi>()
                   .ForMember(dest => dest.NadTema, opt => opt.MapFrom(src => src.Tema.NadTema));
 
+                cfg.CreateMap<LSet, SetDetailedApi>()
+                .ForMember(dest => dest.NadTema, opt => opt.MapFrom(src => src.Tema.NadTema))
+                .ForMember(dest => dest.Dijelovi, opt => opt.MapFrom(src => src.Dijelovi));
+
                 cfg.CreateMap<Wishlist, WishlistApi>()
                 .ForMember(dest => dest.KorisnikId, opt => opt.MapFrom(src => src.Korisnik.Id));
+
+                cfg.CreateMap<Boja, BojaApi>();
+
+                cfg.CreateMap<Kockica, KockicaApi>();
+
+                cfg.CreateMap<SetoviDijelovi, SetDijeloviApi>();
             });
 
         }

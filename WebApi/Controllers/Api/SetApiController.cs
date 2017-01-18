@@ -23,27 +23,24 @@ namespace WebApi.Controllers.Api
         }
 
         [HttpGet]
-        public List<SetApi> GetSet()
+        public SetDetailedApi GetDetailedSet(int id)
         {
-            var tmp = setServices.GetAll().ProjectTo<SetApi>().ToList();
-            return tmp;
+            var set = setServices.GetById(id);
+            return Mapper.Map<SetDetailedApi>(set);
+        }
+
+        [HttpGet]
+        public List<SetApi> GetSetsWithBricks([FromUri] int[] ids)
+        {
+            var sets = setServices.GetAllSetsWithBricks(ids.ToList()).ToList();
+
+            return Mapper.Map<List<SetApi>>(sets);
         }
         [HttpGet]
         public List<SetApi> Search(string searchPattern)
         {
-            var filteredSets = setServices.Search(searchPattern).ToList();;
+            var filteredSets = setServices.Search(searchPattern).ToList();
             return Mapper.Map<List<SetApi>>(filteredSets);
-        }
-
-        [HttpPost]
-        public HttpResponseMessage AddSetsToInventory(List<UserSetApi> userSets)
-        {
-            foreach (var userSet in userSets)
-            {
-                setServices.AddToInventory(userSet.IdUser, userSet.IdSet, userSet.Komada);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.Created, "Sets added to inventroy");
         }
     }
 }

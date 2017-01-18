@@ -47,10 +47,12 @@
     <Compile Include="Interfaces\IKorisnikService.cs" />
     <Compile Include="Interfaces\ILSetService.cs" />
     <Compile Include="Interfaces\IService.cs" />
+    <Compile Include="Interfaces\IUserSetService.cs" />
     <Compile Include="Interfaces\IWishlistService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\KorisnikServices.cs" />
     <Compile Include="Services\LSetService.cs" />
+    <Compile Include="Services\UserSetService.cs" />
     <Compile Include="Services\WishlistService.cs" />
   </ItemGroup>
   <ItemGroup>

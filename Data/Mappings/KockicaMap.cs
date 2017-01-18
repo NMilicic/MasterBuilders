@@ -22,6 +22,11 @@ namespace Data.Mappings
               .Cascade.All()
               .Inverse()
               .Table("user_kockica");
+
+            HasMany(x => x.SetoviDijelovi)
+             .Cascade.All()
+             .Inverse()
+             .Table("setovi_dijelovi");
         }
     }
 }

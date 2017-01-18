@@ -10,6 +10,6 @@ namespace Business.Interfaces
     public interface ILSetService : IService<LSet>
     {
         IQueryable<LSet> Search(string searchPattern);
-        UserSet AddToInventory(int userId, int setId, int pieces);
+        IQueryable<LSet> GetAllSetsWithBricks(List<int> bricksIds);
     }
 }

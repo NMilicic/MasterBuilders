@@ -13,5 +13,6 @@ namespace Data.Domain
         public virtual string Kategorija { get; set; }
 
         public virtual IEnumerable<Korisnik> Korisnik { get; set; }
+        public virtual IEnumerable<SetoviDijelovi> SetoviDijelovi { get; set; }
     }
 }
