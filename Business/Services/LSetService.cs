@@ -1,4 +1,5 @@
-﻿using Business.Exceptions;
+﻿using Business.Enums;
+using Business.Exceptions;
 using Business.Interfaces;
 using Data;
 using Data.Domain;
@@ -51,10 +52,38 @@ namespace Business.Services
 
         #region Set specific actions
 
-        public IQueryable<LSet> Search(string searchPattern)
+        public IQueryable<LSet> Search(string searchParameters)
         {
             var query = setRepository.Query();
-            return FilterByName(searchPattern, query);
+            var searchFields = ParseSearchParameters(searchParameters);
+            foreach (var field in searchFields)
+            {
+                LSetSearchEnum parsedEnum;
+                Enum.TryParse(field.Key, true, out parsedEnum);
+                switch (parsedEnum)
+                {
+                    case LSetSearchEnum.Name:
+                        query = FilterByName(field.Value, query);
+                        break;
+                    case LSetSearchEnum.Opis:
+                        query = FilterByDescription(field.Value, query);
+                        break;
+                    case LSetSearchEnum.BrojKockica:
+                        query = FilterByBrojKockica(field.Value, query);
+                        break;
+                    case LSetSearchEnum.GodinaProizvodnje:
+                        query = FilterByYear(field.Value, query);
+                        break;
+                    case LSetSearchEnum.Tema:
+                        query = FilterByTema(field.Value, query);
+                        break;
+                    case LSetSearchEnum.Error:
+                        continue;
+                }
+            }
+
+
+            return query;
         }
 
         public IQueryable<LSet> GetAllSetsWithBricks(List<int> bricksIds)
@@ -63,12 +92,12 @@ namespace Business.Services
             var sets = setoviDijelovi.Select(t => t.Set).Distinct();
             return sets;
         }
-        
+
         public List<LSet> BuilderAssistent(int userId)
         {
             var user = korisnikRepository.GetById(userId);
             var avaliableParts = user.Setovi.Where(s => (s.Komada > s.Slozeno)).SelectMany(x => x.Set.Dijelovi).ToList();
-            foreach(var part in avaliableParts)
+            foreach (var part in avaliableParts)
             {
                 var set = user.Setovi.FirstOrDefault(s => s.Set.Id == part.Set.Id);
                 part.Broj = (set.Komada - set.Slozeno) * part.Broj;
@@ -81,12 +110,27 @@ namespace Business.Services
                      avaliableParts.Any(b => b.Broj >= part.Broj)))
                      .ToList();
 
-           return possibleSets;
-            
+            return possibleSets;
+
         }
         #endregion
 
         #region Private methods
+        private Dictionary<string, string> ParseSearchParameters(string searchParameters)
+        {
+            var searchFields = searchParameters.Split(';');
+            var searchDictionary = new Dictionary<string, string>();
+            foreach (var field in searchFields)
+            {
+                var fieldSplitted = field.Split(':');
+                if (fieldSplitted.Length > 1)
+                {
+                    searchDictionary.Add(fieldSplitted[0], fieldSplitted[1]);
+                }
+            }
+
+            return searchDictionary;
+        }
 
         private IQueryable<LSet> FilterByName(string searchPattern, IQueryable<LSet> query)
         {
@@ -96,6 +140,37 @@ namespace Business.Services
         private IQueryable<LSet> FilterByDescription(string searchPattern, IQueryable<LSet> query)
         {
             return query.Where(x => x.Opis.Contains(searchPattern));
+        }
+
+        private IQueryable<LSet> FilterByYear(string yearString, IQueryable<LSet> query)
+        {
+            int year;
+            var parseYear = Int32.TryParse(yearString, out year);
+
+            return parseYear ? query.Where(x => x.GodinaProizvodnje == year) : query;
+        }
+
+        private IQueryable<LSet> FilterByTema(string tema, IQueryable<LSet> query)
+        {
+            return query.Where(x => x.Tema.ImeTema == tema || x.Tema.NadTema.ImeTema == tema);
+        }
+
+        private IQueryable<LSet> FilterByBrojKockica(string searchPattern, IQueryable<LSet> query)
+        {
+            var range = searchPattern.Split('-');
+            if (range.Length > 1)
+            {
+                int lowerBound;
+                var parseLowerBound = Int32.TryParse(range[0], out lowerBound);
+                int upperBound;
+                var parseUpperBound = Int32.TryParse(range[1], out upperBound);
+
+                if (parseLowerBound && parseUpperBound)
+                {
+                    return query.Where(x => x.DijeloviBroj >= lowerBound && x.DijeloviBroj <= upperBound);
+                }
+            }
+            return query;
         }
 
         #endregion

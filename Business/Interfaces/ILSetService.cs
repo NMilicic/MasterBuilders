@@ -9,7 +9,7 @@ namespace Business.Interfaces
 {
     public interface ILSetService : IService<LSet>
     {
-        IQueryable<LSet> Search(string searchPattern);
+        IQueryable<LSet> Search(string searchParameters);
         IQueryable<LSet> GetAllSetsWithBricks(List<int> bricksIds);
         List<LSet> BuilderAssistent(int userId);
     }

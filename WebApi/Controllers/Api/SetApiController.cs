@@ -37,9 +37,9 @@ namespace WebApi.Controllers.Api
             return Mapper.Map<List<SetApi>>(sets);
         }
         [HttpGet]
-        public List<SetApi> Search(string searchPattern)
+        public List<SetApi> Search(string searchParameters)
         {
-            var filteredSets = setServices.Search(searchPattern).ToList();
+            var filteredSets = setServices.Search(searchParameters).ToList();
             return Mapper.Map<List<SetApi>>(filteredSets);
         }
 
