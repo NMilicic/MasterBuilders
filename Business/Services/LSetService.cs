@@ -13,11 +13,35 @@ namespace Business.Services
 {
     public class LSetService : ILSetService
     {
-        Repository<LSet> setRepository = new Repository<LSet>();
-        Repository<Wishlist> wishlistRepository = new Repository<Wishlist>();
-        Repository<Korisnik> korisnikRepository = new Repository<Korisnik>();
-        Repository<UserSet> inventroyRepository = new Repository<UserSet>();
-        Repository<SetoviDijelovi> dijeloviRepository = new Repository<SetoviDijelovi>();
+        IRepository<LSet> setRepository;
+        IRepository<Wishlist> wishlistRepository;
+        IRepository<Korisnik> korisnikRepository;
+        IRepository<UserSet> inventroyRepository;
+        IRepository<SetoviDijelovi> dijeloviRepository;
+
+        public LSetService()
+        {
+            this.setRepository = new Repository<LSet>();
+            this.wishlistRepository = new Repository<Wishlist>();
+            this.korisnikRepository = new Repository<Korisnik>();
+            this.inventroyRepository = new Repository<UserSet>();
+            this.dijeloviRepository = new Repository<SetoviDijelovi>();
+        }
+
+        public LSetService(
+            IRepository<LSet> setRepository,
+            IRepository<Wishlist> wishlistRepository,
+            IRepository<Korisnik> korisnikRepository,
+            IRepository<UserSet> inventroyRepository,
+            IRepository<SetoviDijelovi> dijeloviRepository
+            )
+        {
+            this.setRepository = setRepository;
+            this.wishlistRepository = wishlistRepository;
+            this.korisnikRepository = korisnikRepository;
+            this.inventroyRepository = inventroyRepository;
+            this.dijeloviRepository = dijeloviRepository;
+        }
 
         #region Default actions
         public IQueryable<LSet> GetAll()
@@ -96,21 +120,28 @@ namespace Business.Services
         public List<LSet> BuilderAssistent(int userId)
         {
             var user = korisnikRepository.GetById(userId);
-            var avaliableParts = user.Setovi.Where(s => (s.Komada > s.Slozeno)).SelectMany(x => x.Set.Dijelovi).ToList();
-            foreach (var part in avaliableParts)
+            if (user != null)
             {
-                var set = user.Setovi.FirstOrDefault(s => s.Set.Id == part.Set.Id);
-                part.Broj = (set.Komada - set.Slozeno) * part.Broj;
+                var avaliableParts = user.Setovi.Where(s => (s.Komada > s.Slozeno)).SelectMany(x => x.Set.Dijelovi).ToList();
+                foreach (var part in avaliableParts)
+                {
+                    var set = user.Setovi.FirstOrDefault(s => s.Set.Id == part.Set.Id);
+                    part.Broj = (set.Komada - set.Slozeno) * part.Broj;
+                }
+
+                var possibleSets = setRepository.Query().Where(s => s.Dijelovi.Count() > 0).ToList().Where(
+                    s => s.Dijelovi.All(
+                        part => avaliableParts.Any(b => b.Boja.Id == part.Boja.Id) &&
+                         avaliableParts.Any(b => b.Kockica.Id == part.Kockica.Id) &&
+                         avaliableParts.Any(b => b.Broj >= part.Broj)))
+                         .ToList();
+
+                return possibleSets;
             }
-
-            var possibleSets = setRepository.Query().Where(s => s.Dijelovi.Count() > 0).ToList().Where(
-                s => s.Dijelovi.All(
-                    part => avaliableParts.Any(b => b.Boja.Id == part.Boja.Id) &&
-                     avaliableParts.Any(b => b.Kockica.Id == part.Kockica.Id) &&
-                     avaliableParts.Any(b => b.Broj >= part.Broj)))
-                     .ToList();
-
-            return possibleSets;
+            else
+            {
+                throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.NotFound));
+            }
 
         }
         #endregion
@@ -152,7 +183,7 @@ namespace Business.Services
 
         private IQueryable<LSet> FilterByTema(string tema, IQueryable<LSet> query)
         {
-            return query.Where(x => x.Tema.ImeTema == tema || x.Tema.NadTema.ImeTema == tema);
+            return query.Where(x => x.Tema.ImeTema == tema || (x.Tema.NadTema != null && x.Tema.NadTema.ImeTema == tema));
         }
 
         private IQueryable<LSet> FilterByBrojKockica(string searchPattern, IQueryable<LSet> query)
