@@ -9,8 +9,25 @@ namespace Desktop.Views
     {
         private LoginController _controller;
 
-        public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
-        public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
+        public string Email
+        {
+            get
+            {
+                return txtEmail.Text;
+            }
+            set
+            {
+                txtEmail.Text = value;
+            }
+        }
+        public string Password
+        {
+            get
+
+            { return txtPassword.Text; }
+            set
+            { txtPassword.Text = value; }
+        }
 
         public frmLogin()
         {
