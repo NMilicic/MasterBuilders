@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Desktop.BaseLib
 {
-    public interface IDatabaseSetsView : IView
+    public interface IInventorySetsView : IView
     {
         DataGridView DataGridView { get; }
         ComboBox Themes { get; }

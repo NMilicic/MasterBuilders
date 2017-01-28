@@ -1,6 +1,6 @@
 ﻿namespace Desktop.Views
 {
-    partial class frmDatabaseSets
+    partial class frmInventorySets
     {
         /// <summary>
         /// Required designer variable.
@@ -199,7 +199,7 @@
             this.lblDivider2.Size = new System.Drawing.Size(2, 25);
             this.lblDivider2.TabIndex = 19;
             // 
-            // frmDatabaseSets
+            // frmInventorySets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -220,9 +220,9 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.dataGridView);
-            this.Name = "frmDatabaseSets";
-            this.Text = "Sets Database";
-            this.Load += new System.EventHandler(this.frmDatabaseSets_Load);
+            this.Name = "frmInventorySets";
+            this.Text = "Sets Inventory";
+            this.Load += new System.EventHandler(this.frmInventorySets_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWishlist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudInventory)).EndInit();

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Desktop.BaseLib;
+using Desktop.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,8 @@ namespace Desktop.Views
     public partial class frmPartlist : Form
     {
         private IEnumerable<dynamic> _data;
+
+        public DataGridView DataGridView { get { return dataGridView; } }
 
         public frmPartlist(IEnumerable<dynamic> data)
         {

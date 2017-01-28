@@ -43,11 +43,18 @@ namespace Desktop.Controllers
             catch (KorisnikException)
             {
                 MessageBox.Show("Username taken.");
+                _view.Email = "";
+                _view.Password = "";
                 return;
             }
 
             MessageBox.Show("Account created.");
             _view.Close();
+        }
+
+        public void Close()
+        {
+            _parent.Show();
         }
     }
 }

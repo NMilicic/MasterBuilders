@@ -15,11 +15,11 @@ using System.Windows.Forms;
 
 namespace Desktop.Views
 {
-    public partial class frmDatabaseSets : Form, IDatabaseSetsView
+    public partial class frmInventorySets : Form, IInventorySetsView
     {
         private Korisnik _user;
         private ILSetService _service;
-        private DatabaseSetsController _controller;
+        private InventorySetsController _controller;
 
         public DataGridView DataGridView
         {
@@ -65,16 +65,15 @@ namespace Desktop.Views
             }
         }
 
-
-        public frmDatabaseSets(Korisnik user)
+        public frmInventorySets(Korisnik user)
         {
             _user = user;
             _service = new LSetService();
-            _controller = new DatabaseSetsController(this, user);
+            _controller = new InventorySetsController(this, user);
             InitializeComponent();
         }
 
-        private void frmDatabaseSets_Load(object sender, EventArgs e)
+        private void frmInventorySets_Load(object sender, EventArgs e)
         {
             _controller.Load();
         }

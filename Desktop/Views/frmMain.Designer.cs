@@ -152,7 +152,7 @@
             this.MainMenuStrip = this.menu;
             this.Name = "frmMain";
             this.Text = "Lego Manager";
-            this.Load += new System.EventHandler(this.frmMain_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frmMain_FormClosed);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.ResumeLayout(false);

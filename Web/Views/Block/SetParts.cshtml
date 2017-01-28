@@ -1,0 +1,45 @@
+﻿@model Data.Domain.LSet
+@{
+    ViewBag.Title = "Set Parts";
+}
+
+<h2>@Model.Ime</h2>
+
+<table class="table" id="partsTable">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Color
+        </th>
+        <th>
+            Count
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Dijelovi)
+    {
+        <tr>
+            <td>
+                @item.Kockica.Ime
+            </td>
+            <td>
+                @item.Kockica.Kategorija
+            </td>
+            <td>
+                @item.Boja.Ime
+            </td>
+            <td>
+                @item.Broj
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

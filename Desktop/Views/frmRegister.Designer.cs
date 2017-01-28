@@ -130,7 +130,7 @@
             this.Controls.Add(this.lblEmail);
             this.Name = "frmRegister";
             this.Text = "Register";
-            this.Load += new System.EventHandler(this.frmRegister_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frmRegister_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
