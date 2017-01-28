@@ -23,8 +23,9 @@ namespace Desktop.Views
 
         public DataGridView DataGridView { get => dataGridView; }
         public ComboBox Themes { get => cmbTheme; }
-        public int WishlistQty { get => (int)nudWishlist.Value; }
-        public int InventoryQty { get => (int)nudInventory.Value; }
+        public int WishlistQty { get => (int)nudWishlist.Value; set => nudWishlist.Value = value; }
+        public int InventoryQty { get => (int)nudInventory.Value; set => nudInventory.Value = value; }
+        public string SearchName { get => txtName.Text; }
 
         public frmDatabaseParts(Korisnik user)
         {
@@ -36,8 +37,7 @@ namespace Desktop.Views
 
         private void frmDatabaseSets_Load(object sender, EventArgs e)
         {
-            _controller.InitDataGridView();
-            _controller.InitThemeComboBox();
+            _controller.Load();
         }
 
         private void cmbTheme_SelectedIndexChanged(object sender, EventArgs e)

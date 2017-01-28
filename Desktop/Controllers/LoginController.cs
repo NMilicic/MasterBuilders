@@ -36,8 +36,8 @@ namespace Desktop.Controllers
                 user = _service.Login(email, password);
             } catch(KorisnikException)
             {
-                MessageBox.Show("Check E-mail and password.");
                 _view.Password = "";
+                MessageBox.Show("Check E-mail and password.");
                 return;
             }
 

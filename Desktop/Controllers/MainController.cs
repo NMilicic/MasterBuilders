@@ -11,11 +11,11 @@ namespace Desktop.Controllers
 {
     class MainController
     {
-        private IMainView _view;
+        private IView _view;
         private Korisnik _user;
         private IView _parent;
         
-        public MainController(IMainView view, Korisnik user, IView parent)
+        public MainController(IView view, Korisnik user, IView parent)
         {
             _view = view;
             _user = user;
@@ -46,6 +46,11 @@ namespace Desktop.Controllers
         public void ShowInventoryParts()
         {
             //TODO showinventoryparts
+        }
+
+        public void Close()
+        {
+            _parent.Show();
         }
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Desktop.Views
 {
-    public partial class frmMain : Form, IMainView
+    public partial class frmMain : Form, IView
     {
         private Korisnik _user;
         private IView _parent;
@@ -25,16 +25,6 @@ namespace Desktop.Views
             _parent = parent;
             _controller = new MainController(this, user, parent);
             InitializeComponent();
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            this.FormClosed += new FormClosedEventHandler(frmMain_FormClosed);
-        }
-
-        private void frmMain_FormClosed(object sender, EventArgs e)
-        {
-             _parent.Show();
         }
 
         private void menuDatabaseSets_Click(object sender, EventArgs e)
@@ -60,6 +50,11 @@ namespace Desktop.Views
         private void menuLogout_Click(object sender, EventArgs e)
         {
             _controller.Logout();
+        }
+
+        private void frmMain_FormClosed(object sender, EventArgs e)
+        {
+            _controller.Close();
         }
     }
 }
