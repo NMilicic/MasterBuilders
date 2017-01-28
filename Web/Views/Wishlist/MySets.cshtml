@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "My Wishlist Sets";
+}
+
+<head runat="server">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".wishlist-add").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/Wishlist/AddAjax',
+                    data: { setId: $(this).attr("value") },
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 7000,
+                    success: function (data) {
+                        location.reload();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            });
+            $(".wishlist-remove").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/Wishlist/RemoveAjax',
+                    data: { setId: $(this).attr("value") },
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 7000,
+                    success: function (data) {
+                        location.reload();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table" id="setsTable">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Theme
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Count
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.sets)
+    {
+        <tr>
+            <td>
+                @item.Set.Ime
+            </td>
+            <td>
+                @item.Set.Tema.ImeTema
+            </td>
+            <td>
+                @item.Set.GodinaProizvodnje
+            </td>
+            <td>
+                @item.Komada
+                <i class="fa fa-plus-circle fa-lg active wishlist-add" value="@item.Id" title="Add one"></i>
+                <i class="fa fa-minus-circle fa-lg active wishlist-remove" value="@item.Id" title="Remove one"></i>
+            </td>
+        </tr>
+    }
+
+</table>
+

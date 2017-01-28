@@ -45,6 +45,7 @@
     <Compile Include="Enums\LSetSearchEnum.cs" />
     <Compile Include="Exceptions\DataException.cs" />
     <Compile Include="Exceptions\KorisnikException.cs" />
+    <Compile Include="Exceptions\WishlistException.cs" />
     <Compile Include="Interfaces\IKockiceService.cs" />
     <Compile Include="Interfaces\IKorisnikService.cs" />
     <Compile Include="Interfaces\ILSetService.cs" />
