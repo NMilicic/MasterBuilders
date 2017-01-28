@@ -128,9 +128,13 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblEmail);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmRegister";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frmRegister_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRegister_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

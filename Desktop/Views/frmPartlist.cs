@@ -1,26 +1,30 @@
-﻿using System;
+﻿using Data.Domain;
+using Desktop.BaseLib;
+using Desktop.Controllers;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Desktop.Views
 {
-    public partial class frmPartlist : Form
+    public partial class frmPartlist : Form, IPartlistView
     {
-        private IEnumerable<dynamic> _data;
+        private IEnumerable<SetoviDijelovi> _parts;
+        private PartlistController _controller;
 
         public DataGridView DataGridView { get { return dataGridView; } }
 
-        public frmPartlist(IEnumerable<dynamic> data)
+        public frmPartlist(IEnumerable<SetoviDijelovi> parts)
         {
-            _data = data;
+            _parts = parts;
+            _controller = new PartlistController(this);
             InitializeComponent();
         }
 
         private void frmPartlist_Load(object sender, EventArgs e)
         {
-            dataGridView.DataSource = _data.ToList();
-            dataGridView.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            _controller.Load(_parts);
+            //dataGridView.DataSource = _data.ToList();
         }
     }
 }

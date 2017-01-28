@@ -37,7 +37,8 @@ namespace Desktop.Controllers
             SetSelected();
             InitThemeComboBox();
         }
-        
+
+        #region Search
         public void Search()
         {
             //TODO search sets inventory
@@ -60,61 +61,53 @@ namespace Desktop.Controllers
             var theme = _view.Themes.SelectedItem;
             //TODO update subtheme combobox
         }
+        #endregion
 
         public void SetSelected()
         {
-            var noOwned = _userSetService.GetById(GetSelectedUserSetId()).Komada;
-            var noAssembled = _userSetService.GetById(GetSelectedUserSetId()).Slozeno;
-
-            _view.MaxRemoveQty = noOwned;
-            _view.MaxAssembleQty = noOwned - noAssembled;
-            _view.MaxDisassembleQty = noAssembled;
-
-            ClearControls();
+            UpdateControls();
         }
         
         public void RemoveSet()
         {
             var setId = _userSetService.GetById(GetSelectedUserSetId()).Set.Id;
             var qty = _view.RemoveQty;
-            ClearControls();
-
-            if (qty != 0)
+            
+            if (qty > 0)
             {
                 _userSetService.RemoveFromInventory(_user.Id, setId, qty);
+                UpdateControls();
+                UpdateDataGirdView();
             }
-
-            UpdateDataGirdView();
         }
 
         public void AssembleSet()
         {
             var setId = _userSetService.GetById(GetSelectedUserSetId()).Set.Id;
             var qty = _view.AssembleQty;
-            ClearControls();
-
-            if (qty != 0)
+            
+            if (qty > 0)
             {
                 _userSetService.MarkSetAsCompleted(_user.Id, setId, qty);
+                UpdateControls();
+                UpdateDataGirdView();
             }
-
-            UpdateDataGirdView();
         }
 
         public void DisassembleSet()
         {
             var setId = _userSetService.GetById(GetSelectedUserSetId()).Set.Id;
             var qty = _view.DisassembleQty;
-            ClearControls();
-
-            if (qty != 0)
+            
+            if (qty > 0)
             {
                 _userSetService.MarkSetAsCompleted(_user.Id, setId, -qty);
+                UpdateControls();
+                UpdateDataGirdView();
             }
-
-            UpdateDataGirdView();
         }
 
+    #region Helper Methods
         private void InitThemeComboBox()
         {
             var themes = _themeRepository.Query();
@@ -135,13 +128,14 @@ namespace Desktop.Controllers
                            Subtheme = s.Set.Tema.ImeTema,
                            Description = s.Set.Opis,
                            Owned = s.Komada,
-                           Built = s.Slozeno,
+                           Assembled = s.Slozeno,
                        };
                        
             _view.DataGridView.DataSource = data.ToList();
 
             _view.DataGridView.Columns["Id"].Visible = false;
-            _view.DataGridView.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            _view.DataGridView.Columns["Owned"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            _view.DataGridView.Columns["Assembled"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private int GetSelectedUserSetId()
@@ -151,11 +145,19 @@ namespace Desktop.Controllers
             return setId;
         }
 
-        private void ClearControls()
+        private void UpdateControls()
         {
+            var noOwned = _userSetService.GetById(GetSelectedUserSetId()).Komada;
+            var noAssembled = _userSetService.GetById(GetSelectedUserSetId()).Slozeno;
+
+            _view.MaxRemoveQty = noOwned;
+            _view.MaxAssembleQty = noOwned - noAssembled;
+            _view.MaxDisassembleQty = noAssembled;
+
             _view.RemoveQty = 0;
             _view.AssembleQty = 0;
             _view.DisassembleQty = 0;
         }
+        #endregion
     }
 }

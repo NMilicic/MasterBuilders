@@ -50,6 +50,7 @@
     <Compile Include="BaseLib\IInventorySetsView.cs" />
     <Compile Include="BaseLib\IDatabaseSetsView.cs" />
     <Compile Include="BaseLib\ILoginView.cs" />
+    <Compile Include="BaseLib\IPartlistView.cs" />
     <Compile Include="BaseLib\IRegisterView.cs" />
     <Compile Include="BaseLib\ISearchView.cs" />
     <Compile Include="BaseLib\IView.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Controllers\DatabaseSetsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\PartlistController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

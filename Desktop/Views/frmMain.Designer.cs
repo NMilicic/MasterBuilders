@@ -57,7 +57,7 @@
             this.menuLogout});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(689, 24);
+            this.menu.Size = new System.Drawing.Size(684, 24);
             this.menu.TabIndex = 0;
             // 
             // menuDatabase
@@ -72,14 +72,14 @@
             // menuDatabaseSets
             // 
             this.menuDatabaseSets.Name = "menuDatabaseSets";
-            this.menuDatabaseSets.Size = new System.Drawing.Size(152, 22);
+            this.menuDatabaseSets.Size = new System.Drawing.Size(100, 22);
             this.menuDatabaseSets.Text = "Sets";
             this.menuDatabaseSets.Click += new System.EventHandler(this.menuDatabaseSets_Click);
             // 
             // menuDatabaseParts
             // 
             this.menuDatabaseParts.Name = "menuDatabaseParts";
-            this.menuDatabaseParts.Size = new System.Drawing.Size(152, 22);
+            this.menuDatabaseParts.Size = new System.Drawing.Size(100, 22);
             this.menuDatabaseParts.Text = "Parts";
             this.menuDatabaseParts.Click += new System.EventHandler(this.menuDatabaseParts_Click);
             // 
@@ -95,14 +95,14 @@
             // menuInventorySets
             // 
             this.menuInventorySets.Name = "menuInventorySets";
-            this.menuInventorySets.Size = new System.Drawing.Size(152, 22);
+            this.menuInventorySets.Size = new System.Drawing.Size(100, 22);
             this.menuInventorySets.Text = "Sets";
             this.menuInventorySets.Click += new System.EventHandler(this.menuInventorySets_Click);
             // 
             // menuInventoryParts
             // 
             this.menuInventoryParts.Name = "menuInventoryParts";
-            this.menuInventoryParts.Size = new System.Drawing.Size(152, 22);
+            this.menuInventoryParts.Size = new System.Drawing.Size(100, 22);
             this.menuInventoryParts.Text = "Parts";
             this.menuInventoryParts.Click += new System.EventHandler(this.menuInventoryParts_Click);
             // 
@@ -147,12 +147,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 261);
+            this.ClientSize = new System.Drawing.Size(684, 461);
             this.Controls.Add(this.menu);
             this.MainMenuStrip = this.menu;
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lego Manager";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(frmMain_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.ResumeLayout(false);

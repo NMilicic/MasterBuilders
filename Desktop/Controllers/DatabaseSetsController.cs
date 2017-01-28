@@ -42,6 +42,7 @@ namespace Desktop.Controllers
             InitThemeComboBox();
         }
 
+        #region Search
         public void Search()
         {
             //TODO search sets database
@@ -64,6 +65,7 @@ namespace Desktop.Controllers
             var theme = _view.Themes.SelectedItem;
             //TODO update subtheme combobox
         }
+        #endregion
 
         public void SetSelected()
         {
@@ -77,9 +79,9 @@ namespace Desktop.Controllers
             
             if (qty != 0)
             {
-                ClearControls();
                 _wishlistService.AddSetToWishlistForUser(_user.Id, setId, qty);
                 MessageBox.Show("Added " + qty + " '" + _lSetService.GetById(setId).Ime + "' sets to Wishlist.");
+                ClearControls();
                 //UpdateDataGirdView();
             }
         }
@@ -90,9 +92,9 @@ namespace Desktop.Controllers
             var qty = _view.InventoryQty;
             
             if (qty != 0) {
-                ClearControls();
                 _userSetService.AddToInventory(_user.Id, setId, qty);
                 MessageBox.Show("Added " + qty + " '" + _lSetService.GetById(setId).Ime + "' sets to Inventory.");
+                ClearControls();
                 //UpdateDataGirdView();
             }
         }
@@ -102,21 +104,12 @@ namespace Desktop.Controllers
             var setId = GetSelectedSetId();
             var parts = _lSetService.GetById(setId).Dijelovi;
 
-            var data = from p in parts
-                       select new
-                       {
-                           Name = p.Kockica.Ime,
-                           Color = p.Boja.Ime,
-                           Qty = p.Broj
-                       };
-
-            if (data.Count() == 0)
+            if (parts.Count() == 0)
             {
                 MessageBox.Show("Partlist not available.");
-            }
-            else
+            } else
             {
-                var newForm = new frmPartlist(data);
+                var newForm = new frmPartlist(parts);
                 newForm.ShowDialog();
             }
         }
@@ -127,6 +120,7 @@ namespace Desktop.Controllers
             MessageBox.Show("Instructions not available.");
         }
 
+        #region Helper Methods
         private void InitThemeComboBox()
         {
             var themes = _themeRepository.Query();
@@ -156,7 +150,8 @@ namespace Desktop.Controllers
             _view.DataGridView.DataSource = data.ToList();
 
             _view.DataGridView.Columns["Id"].Visible = false;
-            _view.DataGridView.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            _view.DataGridView.Columns["Year"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            _view.DataGridView.Columns["Parts"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private int GetSelectedSetId()
@@ -171,5 +166,6 @@ namespace Desktop.Controllers
             _view.InventoryQty = 0;
             _view.WishlistQty = 0;
         }
+        #endregion
     }
 }
