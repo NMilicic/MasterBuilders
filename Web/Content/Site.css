@@ -23,10 +23,6 @@ textarea {
     max-width: 280px;
 }
 
-label {
-    color:rgb(227, 233, 242);
-}
-
 #about {
     width: 70%;
     margin: 0 auto;
@@ -45,6 +41,22 @@ label {
     color: black;
 }
 
+.details {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(230, 243, 255, 0.70);
+    color: black;
+}
+
+.search-area {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(230, 243, 255, 0.70);
+    color: black;
+}
+
 th {
     text-align: center;
 }
@@ -52,7 +64,7 @@ th {
 .fa {
     padding: 2px;
     font-size: 3em;
-    aria-hidden:true;
+    aria-hidden: true;
 }
 
 .fa-star.active {
@@ -60,5 +72,5 @@ th {
 }
 
 .fa-plus-circle.active {
-    color: rgb(53, 186, 62);
+    color: rgb(83, 155, 100);
 }

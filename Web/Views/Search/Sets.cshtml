@@ -2,7 +2,6 @@
     ViewBag.Title = "Search Sets";
 }
 <head runat="server">
-    <title>FirstAjax</title>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript">
@@ -10,14 +9,20 @@
             $(".wishlist").click(function (e) {
                 e.preventDefault();
                 $.get("/Wishlist/AddAjax", { setId: $(this).attr("value") }, function (response) {
-                    //Do whatever with the reponse.
                 });
+                alert("Set added to your wishlist");
+            });
+            $(".inventory").click(function (e) {
+                e.preventDefault();
+                $.get("/Inventory/AddAjax", { setId: $(this).attr("value") }, function (response) {
+                });
+                alert("Set added to your inventory");
             });
         });
     </script>
 </head>
-@Html.Partial("_setsPartial");
 
+@Html.Partial("_setsPartial");
 
 <table class="table" id="setsTable">
     <tr>
@@ -46,9 +51,9 @@
                 @item.Tema.ImeTema
             </td>
             <td>
-                <a class="wishlist" value="@item.Id"><i class="fa fa-star active"></i></a>
-                <i class="fa fa-plus-circle active"></i>
-                <i class="fa fa-arrow-right"></i>
+                <i class="fa fa-star active wishlist" value="@item.Id"></i>
+                <i class="fa fa-plus-circle active inventory" value="@item.Id"></i>
+                <a href="/Set/Details?setId=@item.Id"><i class="fa fa-arrow-right"></i></a>
             </td>
         </tr>
     }
