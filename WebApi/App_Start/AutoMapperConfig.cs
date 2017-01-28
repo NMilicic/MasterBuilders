@@ -33,7 +33,8 @@ namespace WebApi.App_Start
                 .ForMember(dest => dest.Dijelovi, opt => opt.MapFrom(src => src.Dijelovi));
 
                 cfg.CreateMap<Wishlist, WishlistApi>()
-                .ForMember(dest => dest.KorisnikId, opt => opt.MapFrom(src => src.Korisnik.Id));
+                .ForMember(dest => dest.KorisnikId, opt => opt.MapFrom(src => src.Korisnik.Id))
+                .ForMember(dest => dest.SetId, opt => opt.MapFrom(src => src.Set.Id));
 
                 cfg.CreateMap<Boja, BojaApi>();
 
