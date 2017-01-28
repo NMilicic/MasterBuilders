@@ -37,16 +37,17 @@
             this.cmbSubtheme = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblDivider1 = new System.Windows.Forms.Label();
-            this.btnWishlist = new System.Windows.Forms.Button();
-            this.btnInventory = new System.Windows.Forms.Button();
-            this.btnDownload = new System.Windows.Forms.Button();
-            this.btnPartlist = new System.Windows.Forms.Button();
-            this.nudWishlist = new System.Windows.Forms.NumericUpDown();
-            this.nudInventory = new System.Windows.Forms.NumericUpDown();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnAssemble = new System.Windows.Forms.Button();
+            this.nudAssemble = new System.Windows.Forms.NumericUpDown();
             this.lblDivider2 = new System.Windows.Forms.Label();
+            this.nudRemove = new System.Windows.Forms.NumericUpDown();
+            this.btnDisassemble = new System.Windows.Forms.Button();
+            this.nudDisassemble = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWishlist)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudInventory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAssemble)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRemove)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDisassemble)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -66,6 +67,7 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(600, 300);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
             // lblName
             // 
@@ -137,80 +139,77 @@
             this.lblDivider1.Size = new System.Drawing.Size(2, 50);
             this.lblDivider1.TabIndex = 12;
             // 
-            // btnWishlist
+            // btnRemove
             // 
-            this.btnWishlist.Location = new System.Drawing.Point(68, 376);
-            this.btnWishlist.Name = "btnWishlist";
-            this.btnWishlist.Size = new System.Drawing.Size(90, 25);
-            this.btnWishlist.TabIndex = 13;
-            this.btnWishlist.Text = "Add to Wishlist";
-            this.btnWishlist.UseVisualStyleBackColor = true;
-            this.btnWishlist.Click += new System.EventHandler(this.btnWishlist_Click);
+            this.btnRemove.Location = new System.Drawing.Point(68, 374);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(90, 25);
+            this.btnRemove.TabIndex = 13;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // btnInventory
+            // btnAssemble
             // 
-            this.btnInventory.Location = new System.Drawing.Point(228, 376);
-            this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(95, 25);
-            this.btnInventory.TabIndex = 14;
-            this.btnInventory.Text = "Add to Inventory";
-            this.btnInventory.UseVisualStyleBackColor = true;
-            this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
+            this.btnAssemble.Location = new System.Drawing.Point(228, 374);
+            this.btnAssemble.Name = "btnAssemble";
+            this.btnAssemble.Size = new System.Drawing.Size(95, 25);
+            this.btnAssemble.TabIndex = 14;
+            this.btnAssemble.Text = "Assemble";
+            this.btnAssemble.UseVisualStyleBackColor = true;
+            this.btnAssemble.Click += new System.EventHandler(this.btnAssemble_Click);
             // 
-            // btnDownload
+            // nudAssemble
             // 
-            this.btnDownload.Location = new System.Drawing.Point(487, 376);
-            this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(125, 25);
-            this.btnDownload.TabIndex = 15;
-            this.btnDownload.Text = "Download Instructions";
-            this.btnDownload.UseVisualStyleBackColor = true;
-            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
-            // 
-            // btnPartlist
-            // 
-            this.btnPartlist.Location = new System.Drawing.Point(406, 376);
-            this.btnPartlist.Name = "btnPartlist";
-            this.btnPartlist.Size = new System.Drawing.Size(75, 25);
-            this.btnPartlist.TabIndex = 16;
-            this.btnPartlist.Text = "View Partlist";
-            this.btnPartlist.UseVisualStyleBackColor = true;
-            this.btnPartlist.Click += new System.EventHandler(this.btnPartlist_Click);
-            // 
-            // nudWishlist
-            // 
-            this.nudWishlist.Location = new System.Drawing.Point(12, 378);
-            this.nudWishlist.Name = "nudWishlist";
-            this.nudWishlist.Size = new System.Drawing.Size(50, 20);
-            this.nudWishlist.TabIndex = 17;
-            // 
-            // nudInventory
-            // 
-            this.nudInventory.Location = new System.Drawing.Point(172, 378);
-            this.nudInventory.Name = "nudInventory";
-            this.nudInventory.Size = new System.Drawing.Size(50, 20);
-            this.nudInventory.TabIndex = 18;
+            this.nudAssemble.Location = new System.Drawing.Point(172, 376);
+            this.nudAssemble.Name = "nudAssemble";
+            this.nudAssemble.Size = new System.Drawing.Size(50, 20);
+            this.nudAssemble.TabIndex = 18;
             // 
             // lblDivider2
             // 
             this.lblDivider2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDivider2.Location = new System.Drawing.Point(164, 377);
+            this.lblDivider2.Location = new System.Drawing.Point(164, 375);
             this.lblDivider2.Name = "lblDivider2";
             this.lblDivider2.Size = new System.Drawing.Size(2, 25);
             this.lblDivider2.TabIndex = 19;
+            // 
+            // nudRemove
+            // 
+            this.nudRemove.Location = new System.Drawing.Point(12, 376);
+            this.nudRemove.Name = "nudRemove";
+            this.nudRemove.Size = new System.Drawing.Size(50, 20);
+            this.nudRemove.TabIndex = 20;
+            // 
+            // btnDisassemble
+            // 
+            this.btnDisassemble.Location = new System.Drawing.Point(385, 374);
+            this.btnDisassemble.Name = "btnDisassemble";
+            this.btnDisassemble.Size = new System.Drawing.Size(95, 25);
+            this.btnDisassemble.TabIndex = 21;
+            this.btnDisassemble.Text = "Disassemble";
+            this.btnDisassemble.UseVisualStyleBackColor = true;
+            this.btnDisassemble.Click += new System.EventHandler(this.btnDisassemble_Click);
+            // 
+            // nudDisassemble
+            // 
+            this.nudDisassemble.Location = new System.Drawing.Point(329, 376);
+            this.nudDisassemble.Name = "nudDisassemble";
+            this.nudDisassemble.Size = new System.Drawing.Size(50, 20);
+            this.nudDisassemble.TabIndex = 22;
             // 
             // frmInventorySets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 411);
+            this.Controls.Add(this.nudDisassemble);
+            this.Controls.Add(this.btnDisassemble);
+            this.Controls.Add(this.nudRemove);
             this.Controls.Add(this.lblDivider2);
-            this.Controls.Add(this.nudInventory);
-            this.Controls.Add(this.nudWishlist);
-            this.Controls.Add(this.btnPartlist);
-            this.Controls.Add(this.btnDownload);
-            this.Controls.Add(this.btnInventory);
-            this.Controls.Add(this.btnWishlist);
+            this.Controls.Add(this.nudAssemble);
+            this.Controls.Add(this.btnAssemble);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.lblDivider1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cmbSubtheme);
@@ -224,8 +223,9 @@
             this.Text = "Sets Inventory";
             this.Load += new System.EventHandler(this.frmInventorySets_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWishlist)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudInventory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAssemble)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRemove)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudDisassemble)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,12 +242,12 @@
         private System.Windows.Forms.ComboBox cmbSubtheme;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblDivider1;
-        private System.Windows.Forms.Button btnWishlist;
-        private System.Windows.Forms.Button btnInventory;
-        private System.Windows.Forms.Button btnDownload;
-        private System.Windows.Forms.Button btnPartlist;
-        private System.Windows.Forms.NumericUpDown nudWishlist;
-        private System.Windows.Forms.NumericUpDown nudInventory;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnAssemble;
+        private System.Windows.Forms.NumericUpDown nudAssemble;
         private System.Windows.Forms.Label lblDivider2;
+        private System.Windows.Forms.NumericUpDown nudRemove;
+        private System.Windows.Forms.Button btnDisassemble;
+        private System.Windows.Forms.NumericUpDown nudDisassemble;
     }
 }

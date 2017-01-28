@@ -3,14 +3,9 @@ using Business.Services;
 using Data;
 using Data.Domain;
 using Desktop.BaseLib;
-using Desktop.Views;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desktop.Controllers
@@ -19,32 +14,33 @@ namespace Desktop.Controllers
     {
         private IInventorySetsView _view;
         private Korisnik _user;
-        private ILSetService _lSetService;
-        private IWishlistService _wishlistService;
+
         private IUserSetService _userSetService;
+
         private Repository<Tema> _themeRepository;
-        private IQueryable<LSet> _currQuery;
+        private IQueryable<UserSet> _currQuery;
 
         public InventorySetsController(IInventorySetsView view, Korisnik user)
         {
             _view = view;
             _user = user;
-            _lSetService = new LSetService();
-            _wishlistService = new WishlistService();
+
             _userSetService = new UserSetService();
             _themeRepository = new Repository<Tema>();
-            _currQuery = _lSetService.GetAll();
+
+            _currQuery = _userSetService.GetAllForUser(user.Id);
         }
 
         public void Load()
         {
             UpdateDataGirdView();
+            SetSelected();
             InitThemeComboBox();
         }
-
+        
         public void Search()
         {
-            //TODO search sets database
+            //TODO search sets inventory
             var sb = new StringBuilder();
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
@@ -55,7 +51,7 @@ namespace Desktop.Controllers
             sb.Append("PartsFrom:").Append("").Append(";");
             sb.Append("PartsTo:").Append("").Append(";");
 
-            _currQuery = _lSetService.Search(sb.ToString());
+            //_currQuery = _userSetService.Search(sb.ToString());
             UpdateDataGirdView();
         }
 
@@ -65,60 +61,58 @@ namespace Desktop.Controllers
             //TODO update subtheme combobox
         }
 
-        public void AddToWishlist()
+        public void SetSelected()
         {
-            var setId = GetSelectedSetId();
-            var qty = _view.WishlistQty;
-            _view.WishlistQty = 0;
+            var noOwned = _userSetService.GetById(GetSelectedUserSetId()).Komada;
+            var noAssembled = _userSetService.GetById(GetSelectedUserSetId()).Slozeno;
 
-            if (qty != 0) { 
-                _wishlistService.AddSetToWishlistForUser(_user.Id, setId, qty);
+            _view.MaxRemoveQty = noOwned;
+            _view.MaxAssembleQty = noOwned - noAssembled;
+            _view.MaxDisassembleQty = noAssembled;
+
+            ClearControls();
+        }
+        
+        public void RemoveSet()
+        {
+            var setId = _userSetService.GetById(GetSelectedUserSetId()).Set.Id;
+            var qty = _view.RemoveQty;
+            ClearControls();
+
+            if (qty != 0)
+            {
+                _userSetService.RemoveFromInventory(_user.Id, setId, qty);
             }
 
             UpdateDataGirdView();
         }
 
-        public void AddToInventory()
+        public void AssembleSet()
         {
-            var setId = GetSelectedSetId();
-            var qty = _view.InventoryQty;
-            _view.InventoryQty = 0;
+            var setId = _userSetService.GetById(GetSelectedUserSetId()).Set.Id;
+            var qty = _view.AssembleQty;
+            ClearControls();
 
-            if (qty != 0) { 
-                _userSetService.AddToInventory(_user.Id, setId, qty);
+            if (qty != 0)
+            {
+                _userSetService.MarkSetAsCompleted(_user.Id, setId, qty);
             }
 
             UpdateDataGirdView();
         }
 
-        public void ShowPartlist()
+        public void DisassembleSet()
         {
-            var setId = GetSelectedSetId();
-            var parts = _lSetService.GetById(setId).Dijelovi;
+            var setId = _userSetService.GetById(GetSelectedUserSetId()).Set.Id;
+            var qty = _view.DisassembleQty;
+            ClearControls();
 
-            var data = from p in parts
-                       select new
-                       {
-                           Name = p.Kockica.Ime,
-                           Color = p.Boja.Ime,
-                           Qty = p.Broj
-                       };
-
-            if (data.Count() == 0)
+            if (qty != 0)
             {
-                MessageBox.Show("Partlist not available.");
+                _userSetService.MarkSetAsCompleted(_user.Id, setId, -qty);
             }
-            else
-            {
-                var newForm = new frmPartlist(data);
-                newForm.ShowDialog();
-            }
-        }
 
-        public void DownloadInstructions()
-        {
-            //TODO download instructions
-            MessageBox.Show("Instructions not available.");
+            UpdateDataGirdView();
         }
 
         private void InitThemeComboBox()
@@ -136,26 +130,32 @@ namespace Desktop.Controllers
                        select new
                        {
                            Id = s.Id,
-                           Name = s.Ime,
-                           Theme = s.Tema.NadTema.ImeTema,
-                           Subtheme = s.Tema.ImeTema,
-                           Description = s.Opis,
-                           Year = s.GodinaProizvodnje,
-                           Parts = s.DijeloviBroj,
-                           Owned = s.KorisnikSet.Where(x => x.Korisnik.Id == _user.Id).Select(x => x.Komada).FirstOrDefault()
+                           Name = s.Set.Ime,
+                           Theme = s.Set.Tema.NadTema.ImeTema,
+                           Subtheme = s.Set.Tema.ImeTema,
+                           Description = s.Set.Opis,
+                           Owned = s.Komada,
+                           Built = s.Slozeno,
                        };
-
+                       
             _view.DataGridView.DataSource = data.ToList();
 
             _view.DataGridView.Columns["Id"].Visible = false;
             _view.DataGridView.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private int GetSelectedSetId()
+        private int GetSelectedUserSetId()
         {
             var idString = _view.DataGridView.SelectedRows[0].Cells["Id"].Value.ToString();
             var setId = int.Parse(idString);
             return setId;
+        }
+
+        private void ClearControls()
+        {
+            _view.RemoveQty = 0;
+            _view.AssembleQty = 0;
+            _view.DisassembleQty = 0;
         }
     }
 }

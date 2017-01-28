@@ -3,11 +3,6 @@ using Business.Interfaces;
 using Business.Services;
 using Data.Domain;
 using Desktop.BaseLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -17,13 +12,13 @@ namespace Desktop.Controllers
     {
         private IRegisterView _view;
         private IView _parent;
-        private IKorisnikService _service;
+        private IKorisnikService _userService;
 
         public RegisterController(IRegisterView view, IView parent)
         {
             _view = view;
             _parent = parent;
-            _service = new KorisnikServices();
+            _userService = new KorisnikServices();
         }
 
         public void Register()
@@ -38,7 +33,7 @@ namespace Desktop.Controllers
 
             try
             {
-                _service.Register(korisnik);
+                _userService.Register(korisnik);
             }
             catch (KorisnikException)
             {

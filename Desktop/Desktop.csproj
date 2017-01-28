@@ -51,6 +51,7 @@
     <Compile Include="BaseLib\IDatabaseSetsView.cs" />
     <Compile Include="BaseLib\ILoginView.cs" />
     <Compile Include="BaseLib\IRegisterView.cs" />
+    <Compile Include="BaseLib\ISearchView.cs" />
     <Compile Include="BaseLib\IView.cs" />
     <Compile Include="Controllers\InventorySetsController.cs" />
     <Compile Include="Controllers\DatabaseSetsController.cs" />

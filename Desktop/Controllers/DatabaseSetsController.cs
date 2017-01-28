@@ -4,13 +4,9 @@ using Data;
 using Data.Domain;
 using Desktop.BaseLib;
 using Desktop.Views;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desktop.Controllers
@@ -19,9 +15,11 @@ namespace Desktop.Controllers
     {
         private IDatabaseSetsView _view;
         private Korisnik _user;
+
         private ILSetService _lSetService;
         private IWishlistService _wishlistService;
         private IUserSetService _userSetService;
+
         private Repository<Tema> _themeRepository;
         private IQueryable<LSet> _currQuery;
 
@@ -29,9 +27,11 @@ namespace Desktop.Controllers
         {
             _view = view;
             _user = user;
+
             _lSetService = new LSetService();
             _wishlistService = new WishlistService();
             _userSetService = new UserSetService();
+
             _themeRepository = new Repository<Tema>();
             _currQuery = _lSetService.GetAll();
         }
@@ -59,36 +59,42 @@ namespace Desktop.Controllers
             UpdateDataGirdView();
         }
 
-        public void UpdateSubthemeComboBox()
+        public void ThemeSelected()
         {
             var theme = _view.Themes.SelectedItem;
             //TODO update subtheme combobox
+        }
+
+        public void SetSelected()
+        {
+            ClearControls();
         }
 
         public void AddToWishlist()
         {
             var setId = GetSelectedSetId();
             var qty = _view.WishlistQty;
-            _view.WishlistQty = 0;
-
-            if (qty != 0) { 
+            
+            if (qty != 0)
+            {
+                ClearControls();
                 _wishlistService.AddSetToWishlistForUser(_user.Id, setId, qty);
+                MessageBox.Show("Added " + qty + " '" + _lSetService.GetById(setId).Ime + "' sets to Wishlist.");
+                //UpdateDataGirdView();
             }
-
-            UpdateDataGirdView();
         }
 
         public void AddToInventory()
         {
             var setId = GetSelectedSetId();
             var qty = _view.InventoryQty;
-            _view.InventoryQty = 0;
-
-            if (qty != 0) { 
+            
+            if (qty != 0) {
+                ClearControls();
                 _userSetService.AddToInventory(_user.Id, setId, qty);
+                MessageBox.Show("Added " + qty + " '" + _lSetService.GetById(setId).Ime + "' sets to Inventory.");
+                //UpdateDataGirdView();
             }
-
-            UpdateDataGirdView();
         }
 
         public void ShowPartlist()
@@ -142,8 +148,9 @@ namespace Desktop.Controllers
                            Description = s.Opis,
                            Year = s.GodinaProizvodnje,
                            Parts = s.DijeloviBroj,
-                           //TODO Wishlist
-                           Owned = s.KorisnikSet.Where(x => x.Korisnik.Id == _user.Id).Select(x => x.Komada).FirstOrDefault()
+                           //TODO Wishlist and Inventory columns -> update grid after adding to inventory/wishlist
+                           //Wishlist =
+                           //Inventory = s.KorisnikSet.Where(x => x.Korisnik.Id == _user.Id).Select(x => x.Komada).SingleOrDefault()
                        };
 
             _view.DataGridView.DataSource = data.ToList();
@@ -157,6 +164,12 @@ namespace Desktop.Controllers
             var idString = _view.DataGridView.SelectedRows[0].Cells["Id"].Value.ToString();
             var setId = int.Parse(idString);
             return setId;
+        }
+
+        private void ClearControls()
+        {
+            _view.InventoryQty = 0;
+            _view.WishlistQty = 0;
         }
     }
 }

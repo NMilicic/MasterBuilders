@@ -18,7 +18,6 @@ namespace Desktop.Views
     public partial class frmInventorySets : Form, IInventorySetsView
     {
         private Korisnik _user;
-        private ILSetService _service;
         private InventorySetsController _controller;
 
         public DataGridView DataGridView
@@ -35,26 +34,58 @@ namespace Desktop.Views
                 return cmbTheme;
             }
         }
-        public int WishlistQty
+        public int RemoveQty
         {
             get
             {
-                return (int)nudWishlist.Value;
+                return (int)nudRemove.Value;
             }
             set
             {
-                nudWishlist.Value = value;
+                nudRemove.Value = value;
             }
         }
-        public int InventoryQty
+        public int AssembleQty
         {
             get
             {
-                return (int)nudInventory.Value;
+                return (int)nudAssemble.Value;
             }
             set
             {
-                nudInventory.Value = value;
+                nudAssemble.Value = value;
+            }
+        }
+        public int DisassembleQty
+        {
+            get
+            {
+                return (int)nudDisassemble.Value;
+            }
+            set
+            {
+                nudDisassemble.Value = value;
+            }
+        }
+        public int MaxRemoveQty
+        {
+            set
+            {
+                nudRemove.Maximum = value;
+            }
+        }
+        public int MaxAssembleQty
+        {
+            set
+            {
+                nudAssemble.Maximum = value;
+            }
+        }
+        public int MaxDisassembleQty
+        {
+            set
+            {
+                nudDisassemble.Maximum = value;
             }
         }
         public string SearchName
@@ -68,7 +99,6 @@ namespace Desktop.Views
         public frmInventorySets(Korisnik user)
         {
             _user = user;
-            _service = new LSetService();
             _controller = new InventorySetsController(this, user);
             InitializeComponent();
         }
@@ -88,24 +118,24 @@ namespace Desktop.Views
             _controller.Search();
         }
 
-        private void btnWishlist_Click(object sender, EventArgs e)
+        private void btnRemove_Click(object sender, EventArgs e)
         {
-            _controller.AddToWishlist();
+            _controller.RemoveSet();
         }
 
-        private void btnInventory_Click(object sender, EventArgs e)
+        private void btnAssemble_Click(object sender, EventArgs e)
         {
-            _controller.AddToInventory();
+            _controller.AssembleSet();
         }
 
-        private void btnPartlist_Click(object sender, EventArgs e)
+        private void btnDisassemble_Click(object sender, EventArgs e)
         {
-            _controller.ShowPartlist();
+            _controller.DisassembleSet();
         }
 
-        private void btnDownload_Click(object sender, EventArgs e)
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _controller.DownloadInstructions();
+            _controller.SetSelected();
         }
     }
 }

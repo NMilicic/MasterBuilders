@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Interfaces;
+﻿using Business.Interfaces;
 using Business.Services;
 using Business.Exceptions;
 using Data.Domain;
@@ -16,12 +11,12 @@ namespace Desktop.Controllers
     class LoginController
     {
         private ILoginView _view;
-        private IKorisnikService _service;
+        private IKorisnikService _userService;
 
         public LoginController(ILoginView view)
         {
             _view = view;
-            _service = new KorisnikServices();
+            _userService = new KorisnikServices();
         }
 
         public void Login()
@@ -33,7 +28,7 @@ namespace Desktop.Controllers
 
             try
             {
-                user = _service.Login(email, password);
+                user = _userService.Login(email, password);
             } catch(KorisnikException)
             {
                 _view.Password = "";
