@@ -48,9 +48,9 @@ namespace Business.Services
 
         #endregion
 
-        public IQueryable<LSet> GetAllForUser(int userId)
+        public IQueryable<UserSet> GetAllForUser(int userId)
         {
-            return inventroyRepository.Query().Where(s => s.Korisnik.Id == userId).Select(s => s.Set);
+            return inventroyRepository.Query().Where(s => s.Korisnik.Id == userId);
         }
             
         public UserSet AddToInventory(int userId, int setId, int pieces)
