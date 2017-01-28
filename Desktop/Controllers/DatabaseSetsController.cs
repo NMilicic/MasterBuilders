@@ -3,6 +3,7 @@ using Business.Services;
 using Data;
 using Data.Domain;
 using Desktop.BaseLib;
+using Desktop.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,7 @@ namespace Desktop.Controllers
         private ILSetService _lSetService;
         private IWishlistService _wishlistService;
         private IUserSetService _userSetService;
-        Repository<Tema> _themeRepository;
-
+        private Repository<Tema> _themeRepository;
         public DatabaseSetsController(IDatabaseSetsView view, Korisnik user)
         {
             _view = view;
@@ -33,7 +33,8 @@ namespace Desktop.Controllers
 
         public void InitDataGridView()
         {
-            UpdateDataGirdView(_lSetService.GetAll());
+            var sets = _lSetService.GetAll();
+            UpdateDataGirdView(sets);
         }
 
         public void InitThemeComboBox()
@@ -78,7 +79,19 @@ namespace Desktop.Controllers
 
         public void ShowPartlist()
         {
-            //TODO showpartlist service ?
+            var setId = GetSelectedSetId();
+            var parts = _lSetService.GetById(setId).Dijelovi;
+
+            var data = from p in parts
+                       select new
+                       {
+                           Name = p.Kockica.Ime,
+                           Color = p.Boja.Ime,
+                           Qty = p.Broj
+                       };
+
+            var newForm = new frmPartlist(data);
+            newForm.ShowDialog();
         }
 
         public void DownloadInstructions()
@@ -86,27 +99,23 @@ namespace Desktop.Controllers
             //TODO download instructions
         }
 
-        private void UpdateDataGirdView(IQueryable<LSet> query)
+        private void UpdateDataGirdView(IQueryable<LSet> sets)
         {
-            var tmp = from q in query select q.KorisnikSet;
-            var tmp2 = tmp.ToList();
-
-            var data = from q in query
+            var data = from s in sets
                        select new
                        {
-                           Id = q.Id,
-                           Name = q.Ime,
-                           Theme = q.Tema.NadTema.ImeTema,
-                           Subtheme = q.Tema.ImeTema,
-                           Description = q.Opis,
-                           Year = q.GodinaProizvodnje,
-                           Parts = q.DijeloviBroj,
-                           //TODO fix owned column contents
-                           Owned = q.KorisnikSet.Where(s => s.Korisnik.Id == _user.Id)
+                           Id = s.Id,
+                           Name = s.Ime,
+                           Theme = s.Tema.NadTema.ImeTema,
+                           Subtheme = s.Tema.ImeTema,
+                           Description = s.Opis,
+                           Year = s.GodinaProizvodnje,
+                           Parts = s.DijeloviBroj,
+                           Owned = s.KorisnikSet.Where(x => x.Korisnik.Id == _user.Id).Select(x => x.Komada).FirstOrDefault()
                        };
 
             _view.DataGridView.DataSource = data.ToList();
-
+            
             _view.DataGridView.Columns["Id"].Visible = false;
             _view.DataGridView.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
