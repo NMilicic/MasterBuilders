@@ -6,6 +6,8 @@ using Desktop.BaseLib;
 using Desktop.Views;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,8 @@ namespace Desktop.Controllers
         private IWishlistService _wishlistService;
         private IUserSetService _userSetService;
         private Repository<Tema> _themeRepository;
+        private IQueryable<LSet> _currQuery;
+
         public DatabaseSetsController(IDatabaseSetsView view, Korisnik user)
         {
             _view = view;
@@ -29,21 +33,30 @@ namespace Desktop.Controllers
             _wishlistService = new WishlistService();
             _userSetService = new UserSetService();
             _themeRepository = new Repository<Tema>();
+            _currQuery = _lSetService.GetAll();
         }
 
-        public void InitDataGridView()
+        public void Load()
         {
-            var sets = _lSetService.GetAll();
-            UpdateDataGirdView(sets);
+            UpdateDataGirdView();
+            InitThemeComboBox();
         }
 
-        public void InitThemeComboBox()
+        public void Search()
         {
-            var themes = _themeRepository.Query();
-            var themeNames = from t in themes select t.ImeTema;
-            var data = themeNames.ToList();
-            data.Insert(0, "");
-            _view.Themes.DataSource = data;
+            //TODO search sets database
+            var sb = new StringBuilder();
+
+            sb.Append("Name:").Append(_view.SearchName).Append(";");
+            sb.Append("Theme:").Append(_view.Themes.SelectedItem).Append(";");
+            sb.Append("Subtheme:").Append("").Append(";");
+            sb.Append("YearFrom:").Append("").Append(";");
+            sb.Append("YearTo:").Append("").Append(";");
+            sb.Append("PartsFrom:").Append("").Append(";");
+            sb.Append("PartsTo:").Append("").Append(";");
+
+            _currQuery = _lSetService.Search(sb.ToString());
+            UpdateDataGirdView();
         }
 
         public void UpdateSubthemeComboBox()
@@ -52,29 +65,30 @@ namespace Desktop.Controllers
             //TODO update subtheme combobox
         }
 
-        public void Search()
-        {
-            //TODO search sets database
-            //string searchParameters = "";
-            //UpdateDataGirdView(_service.Search(searchParameters));
-        }
-
         public void AddToWishlist()
         {
             var setId = GetSelectedSetId();
             var qty = _view.WishlistQty;
+            _view.WishlistQty = 0;
+
             if (qty != 0) { 
                 _wishlistService.AddSetToWishlistForUser(_user.Id, setId, qty);
             }
+
+            UpdateDataGirdView();
         }
 
         public void AddToInventory()
         {
             var setId = GetSelectedSetId();
             var qty = _view.InventoryQty;
+            _view.InventoryQty = 0;
+
             if (qty != 0) { 
                 _userSetService.AddToInventory(_user.Id, setId, qty);
             }
+
+            UpdateDataGirdView();
         }
 
         public void ShowPartlist()
@@ -90,18 +104,35 @@ namespace Desktop.Controllers
                            Qty = p.Broj
                        };
 
-            var newForm = new frmPartlist(data);
-            newForm.ShowDialog();
+            if (data.Count() == 0)
+            {
+                MessageBox.Show("Partlist not available.");
+            }
+            else
+            {
+                var newForm = new frmPartlist(data);
+                newForm.ShowDialog();
+            }
         }
 
         public void DownloadInstructions()
         {
             //TODO download instructions
+            MessageBox.Show("Instructions not available.");
         }
 
-        private void UpdateDataGirdView(IQueryable<LSet> sets)
+        private void InitThemeComboBox()
         {
-            var data = from s in sets
+            var themes = _themeRepository.Query();
+            var themeNames = from t in themes select t.ImeTema;
+            var data = themeNames.ToList();
+            data.Insert(0, "");
+            _view.Themes.DataSource = data;
+        }
+
+        private void UpdateDataGirdView()
+        {
+            var data = from s in _currQuery
                        select new
                        {
                            Id = s.Id,
@@ -115,7 +146,7 @@ namespace Desktop.Controllers
                        };
 
             _view.DataGridView.DataSource = data.ToList();
-            
+
             _view.DataGridView.Columns["Id"].Visible = false;
             _view.DataGridView.Columns["Description"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }

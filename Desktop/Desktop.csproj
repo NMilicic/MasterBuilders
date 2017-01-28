@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="BaseLib\IDatabaseSetsView.cs" />
     <Compile Include="BaseLib\ILoginView.cs" />
-    <Compile Include="BaseLib\IMainView.cs" />
     <Compile Include="BaseLib\IRegisterView.cs" />
     <Compile Include="BaseLib\IView.cs" />
     <Compile Include="Controllers\DatabaseSetsController.cs" />

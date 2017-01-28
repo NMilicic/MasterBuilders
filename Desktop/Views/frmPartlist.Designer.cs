@@ -57,7 +57,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.dataGridView);
             this.Name = "frmPartlist";
-            this.Text = "frmPartlist";
+            this.Text = "Partlist";
             this.Load += new System.EventHandler(this.frmPartlist_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

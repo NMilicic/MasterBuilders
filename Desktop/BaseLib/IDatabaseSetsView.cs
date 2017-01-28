@@ -11,7 +11,8 @@ namespace Desktop.BaseLib
     {
         DataGridView DataGridView { get; }
         ComboBox Themes { get; }
-        int WishlistQty { get; }
-        int InventoryQty { get; }
+        int WishlistQty { get; set; }
+        int InventoryQty { get; set; }
+        string SearchName { get; }
     }
 }
