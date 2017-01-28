@@ -10,27 +10,67 @@
         $(function () {
             $(".inventory-add").click(function (e) {
                 e.preventDefault();
-                $.get("/Inventory/AddAjax", { setId: $(this).attr("value") }, function (response) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Inventory/AddAjax',
+                    data: { setId: $(this).attr("value") },
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 7000,
+                    success: function (data) {
+                        location.reload();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
                 });
-                alert("Set added to your inventory");
             });
             $(".inventory-remove").click(function (e) {
                 e.preventDefault();
-                $.get("/Inventory/RemoveAjax", { setId: $(this).attr("value") }, function (response) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Inventory/RemoveAjax',
+                    data: { setId: $(this).attr("value") },
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 7000,
+                    success: function (data) {
+                        location.reload();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
                 });
-                alert("Set removed from your inventory");
             });
             $(".built-add").click(function (e) {
                 e.preventDefault();
-                $.get("/Inventory/BuiltAddAjax", { setId: $(this).attr("value") }, function (response) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Inventory/BuiltAddAjax',
+                    data: { setId: $(this).attr("value") },
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 7000,
+                    success: function (data) {
+                        location.reload();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
                 });
-                alert("Built count incresed");
             });
             $(".built-remove").click(function (e) {
                 e.preventDefault();
-                $.get("/Inventory/BuiltRemoveAjax", { setId: $(this).attr("value") }, function (response) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Inventory/BuiltRemoveAjax',
+                    data: { setId: $(this).attr("value") },
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 7000,
+                    success: function (data) {
+                        location.reload();
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
                 });
-                alert("Built count decresed");
             });
         });
     </script>
@@ -61,12 +101,12 @@
                 @item.Set.Ime
             </td>
             <td>
-                @item.Tema.ImeTema
+                @item.Set.Tema.ImeTema
             </td>
             <td>
                 @item.Komada
                 <i class="fa fa-plus-circle fa-lg active inventory-add" value="@item.Id" title="Add one"></i>
-                <i class="fa fa-minus-circle fa-lg active inventory-remove"  value="@item.Id" title="Remove one"></i>
+                <i class="fa fa-minus-circle fa-lg active inventory-remove" value="@item.Id" title="Remove one"></i>
             </td>
             <td>
                 @item.Slozeno

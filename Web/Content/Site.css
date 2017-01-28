@@ -23,6 +23,10 @@ textarea {
     max-width: 280px;
 }
 
+h2 {
+    color: lightsteelblue;
+}
+
 #about {
     width: 70%;
     margin: 0 auto;
@@ -32,13 +36,17 @@ textarea {
     color: black;
 }
 
-#setsTable {
+.table {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
     background: rgba(230, 243, 255, 0.70);
     text-align: center;
     color: black;
+}
+
+dt, dd {
+    padding: 5px;
 }
 
 .details {
@@ -63,7 +71,6 @@ th {
 
 .fa {
     padding: 2px;
-    font-size: 3em;
     aria-hidden: true;
 }
 
@@ -72,5 +79,5 @@ th {
 }
 
 .fa-plus-circle.active {
-    color: rgb(83, 155, 100);
+    color: rgb(59, 122, 74);
 }

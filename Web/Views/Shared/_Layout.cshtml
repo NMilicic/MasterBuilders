@@ -29,13 +29,10 @@
                 {
                     <ul class="nav navbar-nav navbar-left">
                         <li>
-                            @Html.ActionLink("Serch sets", "Sets", "Search", routeValues: null, htmlAttributes: new { title = "Search Sets" })
+                            @Html.ActionLink("Browse sets", "Sets", "Search", routeValues: null, htmlAttributes: new { title = "Browse Sets" })
                         </li>
                         <li>
-                            @Html.ActionLink("Builder Assistant", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                        </li>
-                        <li>
-                            @Html.ActionLink("My sets", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            @Html.ActionLink("My sets", "MySets", "Inventory", routeValues: null, htmlAttributes: new { title = "My Sets" })
                         </li>
                         <li>
                             @Html.ActionLink("My blocks", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
