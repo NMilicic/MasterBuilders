@@ -89,5 +89,43 @@ namespace Business.Services
 
 
         }
+
+        public Wishlist RemoveSetFromWishlistForUser(int userId, int setId, int pieces)
+        {
+            var user = korisnikRepository.GetById(userId);
+            if (user != null)
+            {
+                var dbSet = setRepository.GetById(setId);
+                if (dbSet != null)
+                {
+                    var existingWishlistItem = wishlistRepository.Query().FirstOrDefault(x => x.Korisnik.Id == userId && x.Set.Id == setId);
+
+                    if (existingWishlistItem == null)
+                    {
+                        throw new DataException("Set ne postoji u inventaru!");
+                    }
+                    else
+                    {
+                        if (existingWishlistItem.Komada > pieces)
+                        {
+                            existingWishlistItem.Komada -= pieces;
+                            wishlistRepository.Save(existingWishlistItem);
+                        }
+                        else
+                        {
+                            wishlistRepository.Delete(existingWishlistItem);
+                        }
+
+                        return existingWishlistItem;
+                    }
+                }
+                else
+                {
+                    throw new DataException("Set not found!");
+                }
+            }
+
+            throw new WishlistException(WishlistException.WishlistExceptionsText(WishlistExceptionEnum.NotFound));
+        }
     }
 }

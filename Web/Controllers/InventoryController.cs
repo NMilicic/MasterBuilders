@@ -24,8 +24,7 @@ namespace Web.Controllers
 
         public JsonResult AddAjax(string setId)
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            UserSetService usetSetService = new UserSetService();
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId()); 
             UserSet userSet = userSetService.GetById(Int32.Parse(setId));
 
             userSetService.AddToInventory(Int32.Parse(user.Id), userSet.Set.Id, 1);
@@ -36,7 +35,6 @@ namespace Web.Controllers
         public JsonResult RemoveAjax(string setId)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            UserSetService usetSetService = new UserSetService();
             UserSet userSet = userSetService.GetById(Int32.Parse(setId));
 
             userSetService.RemoveFromInventory(Int32.Parse(user.Id), userSet.Set.Id, 1);
@@ -47,7 +45,6 @@ namespace Web.Controllers
         public JsonResult BuiltAddAjax(string setId)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            UserSetService usetSetService = new UserSetService();
 
             UserSet set = userSetService.GetById(Int32.Parse(setId));
             if (Int32.Parse(user.Id) == set.Korisnik.Id && set.Slozeno < set.Komada)
@@ -62,7 +59,6 @@ namespace Web.Controllers
         public JsonResult BuiltRemoveAjax(string setId)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            UserSetService usetSetService = new UserSetService();
 
             UserSet set = userSetService.GetById(Int32.Parse(setId));
             if (set.Slozeno > 0 && Int32.Parse(user.Id) == set.Korisnik.Id)
