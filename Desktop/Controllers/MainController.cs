@@ -29,7 +29,7 @@ namespace Desktop.Controllers
 
         public void ShowDatabaseSets()
         {
-            var newForm = new frmDatabaseParts(_user);
+            var newForm = new frmDatabaseSets(_user);
             newForm.ShowDialog();
         }
 
@@ -40,7 +40,8 @@ namespace Desktop.Controllers
 
         public void ShowInventorySets()
         {
-            //TODO showinventorysets
+            var newForm = new frmInventorySets(_user);
+            newForm.ShowDialog();
         }
 
         public void ShowInventoryParts()

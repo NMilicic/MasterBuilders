@@ -15,9 +15,9 @@ using System.Windows.Forms;
 
 namespace Desktop.Controllers
 {
-    class DatabaseSetsController
+    class InventorySetsController
     {
-        private IDatabaseSetsView _view;
+        private IInventorySetsView _view;
         private Korisnik _user;
         private ILSetService _lSetService;
         private IWishlistService _wishlistService;
@@ -25,7 +25,7 @@ namespace Desktop.Controllers
         private Repository<Tema> _themeRepository;
         private IQueryable<LSet> _currQuery;
 
-        public DatabaseSetsController(IDatabaseSetsView view, Korisnik user)
+        public InventorySetsController(IInventorySetsView view, Korisnik user)
         {
             _view = view;
             _user = user;
@@ -142,7 +142,6 @@ namespace Desktop.Controllers
                            Description = s.Opis,
                            Year = s.GodinaProizvodnje,
                            Parts = s.DijeloviBroj,
-                           //TODO Wishlist
                            Owned = s.KorisnikSet.Where(x => x.Korisnik.Id == _user.Id).Select(x => x.Komada).FirstOrDefault()
                        };
 
