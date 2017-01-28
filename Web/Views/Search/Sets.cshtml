@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Search Sets";
+}
+<head runat="server">
+    <title>FirstAjax</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".wishlist").click(function (e) {
+                e.preventDefault();
+                $.get("/Wishlist/AddAjax", { setId: $(this).attr("value") }, function (response) {
+                    //Do whatever with the reponse.
+                });
+            });
+        });
+    </script>
+</head>
+@Html.Partial("_setsPartial");
+
+
+<table class="table" id="setsTable">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Theme
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.sets)
+    {
+        <tr>
+            <td>
+                @item.Ime
+            </td>
+            <td>
+                @item.GodinaProizvodnje
+            </td>
+            <td>
+                @item.Tema.ImeTema
+            </td>
+            <td>
+                <a class="wishlist" value="@item.Id"><i class="fa fa-star active"></i></a>
+                <i class="fa fa-plus-circle active"></i>
+                <i class="fa fa-arrow-right"></i>
+            </td>
+        </tr>
+    }
+
+</table>
