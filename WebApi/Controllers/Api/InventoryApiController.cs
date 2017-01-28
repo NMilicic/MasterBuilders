@@ -15,10 +15,10 @@ namespace WebApi.Controllers.Api
         UserSetService userSetServices = new UserSetService();
 
         [HttpGet]
-        public List<SetApi> GetAllForUser(int userId)
+        public List<UserSetApi> GetAllForUser(int userId)
         {
             var allSets = userSetServices.GetAllForUser(userId).ToList();
-            return Mapper.Map<List<SetApi>>(allSets);
+            return Mapper.Map<List<UserSetApi>>(allSets);
         }
 
         [HttpPost]

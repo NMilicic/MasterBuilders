@@ -16,7 +16,7 @@ namespace Desktop.Views
     {
         private IEnumerable<dynamic> _data;
 
-        public DataGridView DataGridView { get => dataGridView; }
+        public DataGridView DataGridView { get { return dataGridView; } }
 
         public frmPartlist(IEnumerable<dynamic> data)
         {

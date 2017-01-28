@@ -10,8 +10,8 @@ namespace Desktop.Views
         private RegisterController _controller;
         private IView _parent;
         
-        public string Email { get => txtEmail.Text; set => txtEmail.Text = value; }
-        public string Password { get => txtPassword.Text; set => txtPassword.Text = value; }
+        public string Email { get { return txtEmail.Text; } set { txtEmail.Text = value; } }
+        public string Password { get { return txtPassword.Text; } set { txtPassword.Text = value; } }
         public string FirstName => txtFirstName.Text;
         public string LastName => txtLastName.Text;
         

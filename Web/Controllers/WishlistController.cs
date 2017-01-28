@@ -20,15 +20,14 @@ namespace Web.Controllers
             return View();
         }
 
-        public ActionResult AddAjax(string setId)
+        public JsonResult AddAjax(string setId)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             WishlistService wishlistService = new WishlistService();
-            var userId = Int32.Parse(User.Identity.GetUserId());
 
-            wishlistService.AddSetToWishlistForUser(userId, Int32.Parse(setId), 1);
-            
-            return Json("success");
+            wishlistService.AddSetToWishlistForUser(Int32.Parse(user.Id), Int32.Parse(setId), 1);
+
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }
