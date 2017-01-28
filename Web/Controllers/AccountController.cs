@@ -152,18 +152,18 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+                Data.Domain.Korisnik korisnik = new Data.Domain.Korisnik();
+                korisnik.Email = model.Email;
+                korisnik.Ime = model.Ime;
+                korisnik.Prezime = model.Prezime;
+                korisnik.Zaporka = model.Zaporka;
+                KorisnikServices korisnikServices = new KorisnikServices();
+                korisnikServices.SaveOrUpdate(korisnik);
+                
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Id = korisnik.Id.ToString() };
                 var result = await UserManager.CreateAsync(user, model.Zaporka);
                 if (result.Succeeded)
                 {
-                    Data.Domain.Korisnik korisnik = new Data.Domain.Korisnik();
-                    korisnik.Email = model.Email;
-                    korisnik.Ime = model.Ime;
-                    korisnik.Prezime = model.Prezime;
-                    korisnik.Zaporka = model.Zaporka;
-                    KorisnikServices korisnikServices = new KorisnikServices();
-                    korisnikServices.SaveOrUpdate(korisnik);
-
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
