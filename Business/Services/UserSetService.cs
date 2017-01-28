@@ -52,7 +52,7 @@ namespace Business.Services
         {
             return inventroyRepository.Query().Where(s => s.Korisnik.Id == userId);
         }
-            
+
         public UserSet AddToInventory(int userId, int setId, int pieces)
         {
             var user = korisnikRepository.GetById(userId);
@@ -125,7 +125,7 @@ namespace Business.Services
                         {
                             inventroyRepository.Delete(existingInventroyItem);
                         }
-                        
+
                         return existingInventroyItem;
                     }
                 }
@@ -154,7 +154,7 @@ namespace Business.Services
                     }
                     else
                     {
-                        if (existingInventroyItem.Komada >= (existingInventroyItem.Slozeno + multiplier))
+                        if (existingInventroyItem.Komada >= (existingInventroyItem.Slozeno + multiplier) && existingInventroyItem.Slozeno + multiplier >= 0)
                         {
                             existingInventroyItem.Slozeno += multiplier;
                             inventroyRepository.Save(existingInventroyItem);
