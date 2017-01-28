@@ -21,11 +21,49 @@ namespace Desktop.Views
         private ILSetService _service;
         private InventorySetsController _controller;
 
-        public DataGridView DataGridView { get => dataGridView; }
-        public ComboBox Themes { get => cmbTheme; }
-        public int WishlistQty { get => (int)nudWishlist.Value; set => nudWishlist.Value = value; }
-        public int InventoryQty { get => (int)nudInventory.Value; set => nudInventory.Value = value; }
-        public string SearchName { get => txtName.Text; }
+        public DataGridView DataGridView
+        {
+            get
+            {
+                return dataGridView;
+            }
+        }
+        public ComboBox Themes
+        {
+            get
+            {
+                return cmbTheme;
+            }
+        }
+        public int WishlistQty
+        {
+            get
+            {
+                return (int)nudWishlist.Value;
+            }
+            set
+            {
+                nudWishlist.Value = value;
+            }
+        }
+        public int InventoryQty
+        {
+            get
+            {
+                return (int)nudInventory.Value;
+            }
+            set
+            {
+                nudInventory.Value = value;
+            }
+        }
+        public string SearchName
+        {
+            get
+            {
+                return txtName.Text;
+            }
+        }
 
         public frmInventorySets(Korisnik user)
         {
