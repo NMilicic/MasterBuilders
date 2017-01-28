@@ -8,15 +8,35 @@
         $(function () {
             $(".wishlist").click(function (e) {
                 e.preventDefault();
-                $.get("/Wishlist/AddAjax", { setId: $(this).attr("value") }, function (response) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Wishlist/AddAjax',
+                    data: { setId: $(this).attr("value") },
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 7000,
+                    success: function (data) {
+                        alert("Set added to your wishlist");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
                 });
-                alert("Set added to your wishlist");
             });
             $(".inventory").click(function (e) {
                 e.preventDefault();
-                $.get("/Inventory/AddAjax", { setId: $(this).attr("value") }, function (response) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Inventory/AddAjax',
+                    data: { setId: $(this).attr("value") },
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 7000,
+                    success: function (data) {
+                        alert("Set added to your inventory");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
                 });
-                alert("Set added to your inventory");
             });
         });
     </script>
