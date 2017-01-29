@@ -45,25 +45,35 @@ namespace Desktop.Controllers
         #region Search
         public void Search()
         {
-            //TODO search sets database
             var sb = new StringBuilder();
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
-            sb.Append("Theme:").Append(_view.Theme.SelectedItem).Append(";");
-            sb.Append("Subtheme:").Append("").Append(";");
-            sb.Append("YearFrom:").Append("").Append(";");
-            sb.Append("YearTo:").Append("").Append(";");
-            sb.Append("PartsFrom:").Append("").Append(";");
-            sb.Append("PartsTo:").Append("").Append(";");
+            sb.Append("NadTema:").Append(_view.Theme.SelectedItem).Append(";");
+            sb.Append("Tema:").Append(_view.Subtheme.SelectedItem).Append(";");
+            sb.Append("GodinaProizvodnje:").Append(_view.SearchYearFrom).Append("-").Append(_view.SearchYearTo).Append(";");
+            sb.Append("BrojKockica:").Append(_view.SearchPartsFrom).Append("-").Append(_view.SearchPartsTo).Append(";");
 
             _currQuery = _lSetService.Search(sb.ToString());
             UpdateDataGirdView();
         }
 
-        public void ThemeSelected()
+        public void UpdateSubthemeComboBox()
         {
-            var theme = _view.Theme.SelectedItem;
-            //TODO update subtheme combobox
+            var themeName = (string)_view.Theme.SelectedItem;
+            IQueryable<Tema> subthemes;
+            if (themeName.Equals(""))
+            {
+                subthemes = _themeRepository.Query().Where(x => x.NadTema == null);
+            }
+            else
+            {
+                subthemes = _themeRepository.Query().Where(x => x.NadTema.ImeTema == themeName);
+            }
+
+            var subthemeNames = from t in subthemes select t.ImeTema;
+            var data = subthemeNames.ToList();
+            data.Insert(0, "");
+            _view.Subtheme.DataSource = data;
         }
         #endregion
 
@@ -75,33 +85,45 @@ namespace Desktop.Controllers
         public void AddToWishlist()
         {
             var setId = GetSelectedSetId();
+            if (setId < 0)
+            {
+                return;
+            }
+
             var qty = _view.WishlistQty;
             
-            if (qty != 0)
+            if (qty > 0)
             {
                 _wishlistService.AddSetToWishlistForUser(_user.Id, setId, qty);
                 MessageBox.Show("Added " + qty + " '" + _lSetService.GetById(setId).Ime + "' sets to Wishlist.");
                 ClearControls();
-                //UpdateDataGirdView();
             }
         }
 
         public void AddToInventory()
         {
             var setId = GetSelectedSetId();
+            if (setId < 0)
+            {
+                return;
+            }
             var qty = _view.InventoryQty;
             
-            if (qty != 0) {
+            if (qty > 0) {
                 _userSetService.AddToInventory(_user.Id, setId, qty);
                 MessageBox.Show("Added " + qty + " '" + _lSetService.GetById(setId).Ime + "' sets to Inventory.");
                 ClearControls();
-                //UpdateDataGirdView();
             }
         }
 
         public void ShowPartlist()
         {
             var setId = GetSelectedSetId();
+            if (setId < 0)
+            {
+                return;
+            }
+
             var parts = _lSetService.GetById(setId).Dijelovi;
 
             if (parts.Count() == 0)
@@ -134,6 +156,7 @@ namespace Desktop.Controllers
             var data = themeNames.ToList();
             data.Insert(0, "");
             _view.Theme.DataSource = data;
+            UpdateSubthemeComboBox();
         }
 
         private void UpdateDataGirdView()
@@ -145,12 +168,9 @@ namespace Desktop.Controllers
                            Name = s.Ime,
                            Theme = s.Tema.NadTema.ImeTema,
                            Subtheme = s.Tema.ImeTema,
-                           Description = s.Opis,
+                           //Description = s.Opis,
                            Year = s.GodinaProizvodnje,
-                           Parts = s.DijeloviBroj,
-                           //TODO Wishlist and Inventory columns -> update grid after adding to inventory/wishlist
-                           //Wishlist =
-                           //Inventory = s.KorisnikSet.Where(x => x.Korisnik.Id == _user.Id).Select(x => x.Komada).SingleOrDefault()
+                           Parts = s.DijeloviBroj
                        };
 
             _view.DataGridView.DataSource = data.ToList();
@@ -162,7 +182,11 @@ namespace Desktop.Controllers
 
         private int GetSelectedSetId()
         {
-            //TODO check for null
+            if (_view.DataGridView.SelectedRows.Count == 0)
+            {
+                return -1;
+            }
+
             var idString = _view.DataGridView.SelectedRows[0].Cells["Id"].Value.ToString();
             var setId = int.Parse(idString);
             return setId;

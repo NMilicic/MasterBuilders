@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseLib\IDatabasePartsView.cs" />
-    <Compile Include="BaseLib\IInventoryPartsView.cs" />
     <Compile Include="BaseLib\IInventorySetsView.cs" />
     <Compile Include="BaseLib\IDatabaseSetsView.cs" />
     <Compile Include="BaseLib\ILoginView.cs" />
@@ -57,7 +56,6 @@
     <Compile Include="BaseLib\IView.cs" />
     <Compile Include="BaseLib\IWishlistView.cs" />
     <Compile Include="Controllers\DatabasePartsController.cs" />
-    <Compile Include="Controllers\InventoryPartsController.cs" />
     <Compile Include="Controllers\InventorySetsController.cs" />
     <Compile Include="Controllers\DatabaseSetsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -72,12 +70,6 @@
     </Compile>
     <Compile Include="Views\frmDatabaseParts.Designer.cs">
       <DependentUpon>frmDatabaseParts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\frmInventoryParts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\frmInventoryParts.Designer.cs">
-      <DependentUpon>frmInventoryParts.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmWishlist.cs">
       <SubType>Form</SubType>
@@ -132,9 +124,6 @@
     </Compile>
     <EmbeddedResource Include="Views\frmDatabaseParts.resx">
       <DependentUpon>frmDatabaseParts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmInventoryParts.resx">
-      <DependentUpon>frmInventoryParts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmWishlist.resx">
       <DependentUpon>frmWishlist.cs</DependentUpon>

@@ -34,6 +34,34 @@ namespace Desktop.Views
                 return txtName.Text;
             }
         }
+        public string SearchYearFrom
+        {
+            get
+            {
+                return txtYearFrom.Text;
+            }
+        }
+        public string SearchYearTo
+        {
+            get
+            {
+                return txtYearTo.Text;
+            }
+        }
+        public string SearchPartsFrom
+        {
+            get
+            {
+                return txtPartsFrom.Text;
+            }
+        }
+        public string SearchPartsTo
+        {
+            get
+            {
+                return txtPartsTo.Text;
+            }
+        }
 
         public DataGridView DataGridView
         {
@@ -80,7 +108,7 @@ namespace Desktop.Views
 
         private void cmbTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _controller.ThemeSelected();
+            _controller.UpdateSubthemeComboBox();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -116,6 +144,19 @@ namespace Desktop.Views
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             _controller.SetSelected();
+        }
+
+        private void frmDatabaseSets_Resize(object sender, EventArgs e)
+        {
+            if (this.Width < 1200)
+            {
+                this.btnSearch.Height = 50;
+                this.searchPanel.SetFlowBreak(this.cmbSubtheme, true);
+            } else
+            {
+                this.btnSearch.Height = 25;
+                this.searchPanel.SetFlowBreak(this.cmbSubtheme, false);
+            }
         }
     }
 }

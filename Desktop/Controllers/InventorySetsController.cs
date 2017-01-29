@@ -41,21 +41,30 @@ namespace Desktop.Controllers
         #region Search
         public void Search()
         {
-            //TODO search sets inventory
             var sb = new StringBuilder();
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
-            sb.Append("Theme:").Append(_view.Theme.SelectedItem).Append(";");
-            sb.Append("Subtheme:").Append("").Append(";");
+            sb.Append("NadTema:").Append(_view.Theme.SelectedItem).Append(";");
+            sb.Append("Tema:").Append(_view.Subtheme.SelectedItem).Append(";");
 
-            //_currQuery = _userSetService.Search(sb.ToString());
+            _currQuery = _userSetService.Search(_user.Id, sb.ToString());
             UpdateDataGirdView();
         }
 
         public void UpdateSubthemeComboBox()
         {
-            var theme = _view.Theme.SelectedItem;
-            //TODO update subtheme combobox
+            var themeName = (string)_view.Theme.SelectedItem;
+            IQueryable<Tema> subthemes;
+            if (themeName.Equals("")) {
+                subthemes = _themeRepository.Query().Where(x => x.NadTema == null);
+            } else {
+                subthemes = _themeRepository.Query().Where(x => x.NadTema.ImeTema == themeName);
+            }
+
+            var subthemeNames = from t in subthemes select t.ImeTema;
+            var data = subthemeNames.ToList();
+            data.Insert(0, "");
+            _view.Subtheme.DataSource = data;
         }
         #endregion
 
@@ -78,6 +87,11 @@ namespace Desktop.Controllers
             if (qty > 0)
             {
                 _userSetService.RemoveFromInventory(_user.Id, setId, qty);
+                if (userSet.Komada < userSet.Slozeno)
+                {
+                    var disassemble = userSet.Slozeno - userSet.Komada;
+                    _userSetService.MarkSetAsCompleted(_user.Id, setId, -disassemble);
+                }
                 UpdateControls();
                 UpdateDataGirdView();
             }
@@ -129,6 +143,7 @@ namespace Desktop.Controllers
             var data = themeNames.ToList();
             data.Insert(0, "");
             _view.Theme.DataSource = data;
+            UpdateSubthemeComboBox();
         }
 
         private void UpdateDataGirdView()
@@ -140,7 +155,7 @@ namespace Desktop.Controllers
                            Name = s.Set.Ime,
                            Theme = s.Set.Tema.NadTema.ImeTema,
                            Subtheme = s.Set.Tema.ImeTema,
-                           Description = s.Set.Opis,
+                           //Description = s.Set.Opis,
                            Owned = s.Komada,
                            Assembled = s.Slozeno,
                        };
@@ -169,7 +184,7 @@ namespace Desktop.Controllers
             var noOwned = (set != null) ? set.Komada : 0;
             var noAssembled = (set != null) ? set.Slozeno : 0;
 
-            _view.MaxRemoveQty = noOwned;
+            _view.MaxRemoveQty = noOwned; ;
             _view.MaxAssembleQty = noOwned - noAssembled;
             _view.MaxDisassembleQty = noAssembled;
 

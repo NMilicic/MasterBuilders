@@ -33,8 +33,6 @@
             this.menuDatabaseSets = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDatabaseParts = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInventory = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuInventorySets = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuInventoryParts = new System.Windows.Forms.ToolStripMenuItem();
             this.menuWishlist = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBA = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMOC = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +57,7 @@
             this.menuLogout});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(634, 24);
+            this.menu.Size = new System.Drawing.Size(784, 24);
             this.menu.TabIndex = 0;
             // 
             // menuDatabase
@@ -87,26 +85,10 @@
             // 
             // menuInventory
             // 
-            this.menuInventory.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuInventorySets,
-            this.menuInventoryParts});
             this.menuInventory.Name = "menuInventory";
             this.menuInventory.Size = new System.Drawing.Size(69, 20);
             this.menuInventory.Text = "Inventory";
-            // 
-            // menuInventorySets
-            // 
-            this.menuInventorySets.Name = "menuInventorySets";
-            this.menuInventorySets.Size = new System.Drawing.Size(100, 22);
-            this.menuInventorySets.Text = "Sets";
-            this.menuInventorySets.Click += new System.EventHandler(this.menuInventorySets_Click);
-            // 
-            // menuInventoryParts
-            // 
-            this.menuInventoryParts.Name = "menuInventoryParts";
-            this.menuInventoryParts.Size = new System.Drawing.Size(100, 22);
-            this.menuInventoryParts.Text = "Parts";
-            this.menuInventoryParts.Click += new System.EventHandler(this.menuInventoryParts_Click);
+            this.menuInventory.Click += new System.EventHandler(this.menuInventory_Click);
             // 
             // menuWishlist
             // 
@@ -175,14 +157,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 441);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.menu);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menu;
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lego Manager";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
@@ -198,8 +181,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuDatabaseSets;
         private System.Windows.Forms.ToolStripMenuItem menuDatabaseParts;
         private System.Windows.Forms.ToolStripMenuItem menuInventory;
-        private System.Windows.Forms.ToolStripMenuItem menuInventorySets;
-        private System.Windows.Forms.ToolStripMenuItem menuInventoryParts;
         private System.Windows.Forms.ToolStripMenuItem menuBA;
         private System.Windows.Forms.ToolStripMenuItem menuMOC;
         private System.Windows.Forms.ToolStripMenuItem menuWishlist;

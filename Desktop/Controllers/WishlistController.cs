@@ -43,21 +43,33 @@ namespace Desktop.Controllers
         #region Search
         public void Search()
         {
-            //TODO search sets inventory
             var sb = new StringBuilder();
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
-            sb.Append("Theme:").Append(_view.Theme.SelectedItem).Append(";");
-            sb.Append("Subtheme:").Append("").Append(";");
+            sb.Append("NadTema:").Append(_view.Theme.SelectedItem).Append(";");
+            sb.Append("Tema:").Append(_view.Subtheme.SelectedItem).Append(";");
 
-            //_currQuery = _userSetService.Search(sb.ToString());
+            _currQuery = _wishlistService.Search(_user.Id, sb.ToString());
             UpdateDataGirdView();
         }
 
         public void UpdateSubthemeComboBox()
         {
-            var theme = _view.Theme.SelectedItem;
-            //TODO update subtheme combobox
+            var themeName = (string)_view.Theme.SelectedItem;
+            IQueryable<Tema> subthemes;
+            if (themeName.Equals(""))
+            {
+                subthemes = _themeRepository.Query().Where(x => x.NadTema == null);
+            }
+            else
+            {
+                subthemes = _themeRepository.Query().Where(x => x.NadTema.ImeTema == themeName);
+            }
+
+            var subthemeNames = from t in subthemes select t.ImeTema;
+            var data = subthemeNames.ToList();
+            data.Insert(0, "");
+            _view.Subtheme.DataSource = data;
         }
         #endregion
 
@@ -93,6 +105,7 @@ namespace Desktop.Controllers
             var data = themeNames.ToList();
             data.Insert(0, "");
             _view.Theme.DataSource = data;
+            UpdateSubthemeComboBox();
         }
 
         private void UpdateDataGirdView()

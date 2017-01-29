@@ -7,6 +7,10 @@ namespace Desktop.BaseLib
         ComboBox Theme { get; }
         ComboBox Subtheme { get; }
         string SearchName { get; }
+        string SearchYearFrom { get; }
+        string SearchYearTo { get; }
+        string SearchPartsFrom { get; }
+        string SearchPartsTo { get; }
 
         DataGridView DataGridView { get; }
 

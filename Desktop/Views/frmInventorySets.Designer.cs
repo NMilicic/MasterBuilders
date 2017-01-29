@@ -43,6 +43,7 @@
             this.nudRemove = new System.Windows.Forms.NumericUpDown();
             this.btnDisassemble = new System.Windows.Forms.Button();
             this.nudDisassemble = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAssemble)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRemove)).BeginInit();
@@ -55,6 +56,9 @@
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeColumns = false;
             this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(15, 45);
@@ -121,6 +125,7 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSearch.Location = new System.Drawing.Point(540, 12);
             this.btnSearch.Name = "btnSearch";
@@ -132,6 +137,7 @@
             // 
             // btnRemove
             // 
+            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRemove.Location = new System.Drawing.Point(71, 376);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(90, 25);
@@ -142,6 +148,7 @@
             // 
             // btnAssemble
             // 
+            this.btnAssemble.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAssemble.Location = new System.Drawing.Point(231, 376);
             this.btnAssemble.Name = "btnAssemble";
             this.btnAssemble.Size = new System.Drawing.Size(95, 25);
@@ -152,6 +159,7 @@
             // 
             // nudAssemble
             // 
+            this.nudAssemble.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nudAssemble.Location = new System.Drawing.Point(175, 378);
             this.nudAssemble.Name = "nudAssemble";
             this.nudAssemble.Size = new System.Drawing.Size(50, 20);
@@ -159,6 +167,7 @@
             // 
             // lblDivider2
             // 
+            this.lblDivider2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblDivider2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblDivider2.Location = new System.Drawing.Point(167, 376);
             this.lblDivider2.Name = "lblDivider2";
@@ -167,6 +176,7 @@
             // 
             // nudRemove
             // 
+            this.nudRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nudRemove.Location = new System.Drawing.Point(15, 378);
             this.nudRemove.Name = "nudRemove";
             this.nudRemove.Size = new System.Drawing.Size(50, 20);
@@ -174,7 +184,8 @@
             // 
             // btnDisassemble
             // 
-            this.btnDisassemble.Location = new System.Drawing.Point(388, 376);
+            this.btnDisassemble.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDisassemble.Location = new System.Drawing.Point(396, 376);
             this.btnDisassemble.Name = "btnDisassemble";
             this.btnDisassemble.Size = new System.Drawing.Size(95, 25);
             this.btnDisassemble.TabIndex = 21;
@@ -184,16 +195,27 @@
             // 
             // nudDisassemble
             // 
-            this.nudDisassemble.Location = new System.Drawing.Point(332, 378);
+            this.nudDisassemble.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nudDisassemble.Location = new System.Drawing.Point(340, 378);
             this.nudDisassemble.Name = "nudDisassemble";
             this.nudDisassemble.Size = new System.Drawing.Size(50, 20);
             this.nudDisassemble.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(332, 377);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(2, 25);
+            this.label1.TabIndex = 23;
             // 
             // frmInventorySets
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(634, 411);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.nudDisassemble);
             this.Controls.Add(this.btnDisassemble);
             this.Controls.Add(this.nudRemove);
@@ -243,5 +265,6 @@
         private System.Windows.Forms.NumericUpDown nudRemove;
         private System.Windows.Forms.Button btnDisassemble;
         private System.Windows.Forms.NumericUpDown nudDisassemble;
+        private System.Windows.Forms.Label label1;
     }
 }

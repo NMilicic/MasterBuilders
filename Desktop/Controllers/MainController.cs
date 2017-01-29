@@ -36,12 +36,6 @@ namespace Desktop.Controllers
             ShowView(newForm);
         }
 
-        public void ShowInventoryParts()
-        {
-            var newForm = new frmInventoryParts(_user);
-            ShowView(newForm);
-        }
-
         public void ShowWishlist()
         {
             var newForm = new frmWishlist(_user);

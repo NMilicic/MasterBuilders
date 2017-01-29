@@ -192,6 +192,7 @@ namespace Business.Services
             var range = yearString.Split('-');
             if (range.Length > 1)
             {
+                /*
                 int lowerBound;
                 var parseLowerBound = Int32.TryParse(range[0], out lowerBound);
                 int upperBound;
@@ -201,13 +202,27 @@ namespace Business.Services
                 {
                     return query.Where(x => x.GodinaProizvodnje >= lowerBound && x.GodinaProizvodnje <= upperBound);
                 }
+                */
+
+                int lowerBound;
+                Int32.TryParse(range[0], out lowerBound);
+
+                int upperBound;
+                if (!Int32.TryParse(range[1], out upperBound))
+                {
+                    upperBound = Int32.MaxValue;
+                }
+
+                return query.Where(x => x.GodinaProizvodnje >= lowerBound && x.GodinaProizvodnje <= upperBound);
+                
             }
             return query;
         }
 
         private IQueryable<LSet> FilterByTema(string tema, IQueryable<LSet> query)
         {
-            return query.Where(x => x.Tema.ImeTema == tema || (x.Tema.NadTema != null && x.Tema.NadTema.ImeTema == tema));
+            //return query.Where(x => x.Tema.ImeTema == tema || (x.Tema.NadTema != null && x.Tema.NadTema.ImeTema == tema));
+            return query.Where(x => x.Tema.ImeTema == tema);
         }
 
         private IQueryable<LSet> FilterByNadTema(string tema, IQueryable<LSet> query)
@@ -220,6 +235,7 @@ namespace Business.Services
             var range = searchPattern.Split('-');
             if (range.Length > 1)
             {
+                /*
                 int lowerBound;
                 var parseLowerBound = Int32.TryParse(range[0], out lowerBound);
                 int upperBound;
@@ -229,6 +245,19 @@ namespace Business.Services
                 {
                     return query.Where(x => x.DijeloviBroj >= lowerBound && x.DijeloviBroj <= upperBound);
                 }
+                */
+
+                int lowerBound;
+                Int32.TryParse(range[0], out lowerBound);
+
+                int upperBound;
+                if (!Int32.TryParse(range[1], out upperBound))
+                {
+                    upperBound = Int32.MaxValue;
+                }
+
+                return query.Where(x => x.DijeloviBroj >= lowerBound && x.DijeloviBroj <= upperBound);
+
             }
             return query;
         }

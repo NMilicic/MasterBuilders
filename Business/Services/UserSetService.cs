@@ -210,6 +210,9 @@ namespace Business.Services
                     case SearchEnum.Tema:
                         query = FilterByTema(field.Value, query);
                         break;
+                    case SearchEnum.NadTema:
+                        query = FilterByNadTema(field.Value, query);
+                        break;
                     case SearchEnum.Komada:
                         query = FilterByBrojKomada(field.Value, query);
                         break;
@@ -262,7 +265,13 @@ namespace Business.Services
 
         private IQueryable<UserSet> FilterByTema(string tema, IQueryable<UserSet> query)
         {
-            return query.Where(x => x.Set.Tema.ImeTema == tema || (x.Set.Tema.NadTema != null && x.Set.Tema.NadTema.ImeTema == tema));
+            //return query.Where(x => x.Set.Tema.ImeTema == tema || (x.Set.Tema.NadTema != null && x.Set.Tema.NadTema.ImeTema == tema));
+            return query.Where(x => x.Set.Tema.ImeTema == tema);
+        }
+
+        private IQueryable<UserSet> FilterByNadTema(string tema, IQueryable<UserSet> query)
+        {
+            return query.Where(x => x.Set.Tema.NadTema != null && x.Set.Tema.NadTema.ImeTema == tema);
         }
 
         private IQueryable<UserSet> FilterByBrojKockica(string searchPattern, IQueryable<UserSet> query)

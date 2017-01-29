@@ -30,16 +30,10 @@ namespace Desktop.Views
             _controller.ShowDatabaseParts();
         }
 
-        private void menuInventorySets_Click(object sender, EventArgs e)
+        private void menuInventory_Click(object sender, EventArgs e)
         {
             _controller.ShowInventorySets();
         }
-
-        private void menuInventoryParts_Click(object sender, EventArgs e)
-        {
-            _controller.ShowInventoryParts();
-        }
-
         private void wishlistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _controller.ShowWishlist();
