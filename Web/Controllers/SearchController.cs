@@ -62,5 +62,15 @@ namespace Web.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Blocks()
+        {
+            KockiceService blockService = new KockiceService();
+            var blocks = blockService.GetAll();
+            ViewBag.blocks = blocks.ToList();
+
+            return View();
+        }
     }
 }

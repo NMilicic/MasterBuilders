@@ -22,20 +22,20 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Community", "About", "Home")</li>
+                    <li>@Html.ActionLink("Community", "Index", "Community")</li>
                 </ul>
                 @using Microsoft.AspNet.Identity
                 @if (Request.IsAuthenticated)
                 {
                     <ul class="nav navbar-nav navbar-left">
                         <li>
-                            @Html.ActionLink("Browse sets", "Sets", "Search", routeValues: null, htmlAttributes: new { title = "Browse Sets" })
+                            @Html.ActionLink("Search sets", "Sets", "Search", routeValues: null, htmlAttributes: new { title = "Sarch Sets" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Search blocks", "Blocks", "Search", routeValues: null, htmlAttributes: new { title = "Search Sets" })
                         </li>
                         <li>
                             @Html.ActionLink("My sets", "MySets", "Inventory", routeValues: null, htmlAttributes: new { title = "My Sets" })
-                        </li>
-                        <li>
-                            @Html.ActionLink("My blocks", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                         </li>
                         <li>
                             @Html.ActionLink("Wishlist", "MySets", "Wishlist", routeValues: null, htmlAttributes: new { title = "Wishlist" })

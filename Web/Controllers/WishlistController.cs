@@ -29,8 +29,7 @@ namespace Web.Controllers
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             WishlistService wishlistService = new WishlistService();
-            Wishlist set = this.wishlistService.GetById(int.Parse(setId));
-            wishlistService.AddSetToWishlistForUser(Int32.Parse(user.Id), set.Set.Id, 1);
+            wishlistService.AddSetToWishlistForUser(Int32.Parse(user.Id), Int32.Parse(setId), 1);
 
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
@@ -39,8 +38,7 @@ namespace Web.Controllers
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             WishlistService wishlistService = new WishlistService();
-            Wishlist set = this.wishlistService.GetById(int.Parse(setId));
-            wishlistService.RemoveSetFromWishlistForUser(Int32.Parse(user.Id), set.Set.Id, 1);
+            wishlistService.RemoveSetFromWishlistForUser(Int32.Parse(user.Id), Int32.Parse(setId), 1);
 
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }

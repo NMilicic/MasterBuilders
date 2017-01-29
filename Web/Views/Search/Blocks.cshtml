@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Search Blocks";
+}
+<head runat="server">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".inventory").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/Inventory/AddBlockAjax',
+                    data: { blockId: $(this).attr("value") },
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 7000,
+                    success: function (data) {
+                        alert("Block added to your inventory");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <table class="table" id="blocksTable">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Category
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.blocks)
+        {
+            <tr>
+                <td>
+                    @item.Ime
+                </td>
+                <td>
+                    @item.Kategorija
+                </td>
+                <td>
+                    <i class="fa fa-plus-circle fa-lg active inventory" value="@item.Id" title="Add to my inventory"></i>
+                    <a href="/Block/Details?blockId=@item.Id" title="Details"><i class="fa fa-arrow-right fa-lg"></i></a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>

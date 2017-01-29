@@ -1,0 +1,51 @@
+﻿@model Data.Domain.Kockica
+@{
+    ViewBag.Title = "Details";
+}
+
+<head runat="server">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".inventory").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/Inventory/AddBlockAjax',
+                    data: { blockId: $(this).attr("value") },
+                    dataType: 'json',
+                    cache: false,
+                    timeout: 7000,
+                    success: function (data) {
+                        alert("Block added to your inventory");
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="details">
+        <dl class="dl-horizontal">
+            <dt>
+                Name:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Ime)
+            </dd>
+            <dt>
+                Category:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Kategorija)
+            </dd>
+            <dd>
+                <i class="fa fa-plus-circle fa-lg active inventory" value="@Model.Id" title="Add to my inventory"></i>
+            </dd>
+        </dl>
+
+    </div>
+</body>

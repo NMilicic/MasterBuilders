@@ -18,5 +18,12 @@ namespace Web.Controllers
            
             return View(set);
         }
+
+        public ActionResult Details(int blockId)
+        {
+            KockiceService service = new KockiceService();
+            Kockica set = service.GetById(blockId);
+            return View(set);
+        }
     }
 }

@@ -14,6 +14,11 @@ namespace Business.Services
             return kockicaRepository.Query();
         }
 
+        public Kockica GetById(int id)
+        {
+            return kockicaRepository.GetById(id);
+        }
+
         public IQueryable<Kockica> GetAllForUser(int userId)
         {
             return kockicaRepository.Query().Where(x => x.Korisnik.Any(u => u.Id == userId));

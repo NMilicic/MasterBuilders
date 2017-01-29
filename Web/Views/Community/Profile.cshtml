@@ -1,0 +1,49 @@
+﻿@model Data.Domain.Korisnik
+@{
+    ViewBag.Title = "Profile";
+}
+<body>
+    <h2>@Model.Ime @Model.Prezime</h2>
+
+    <label style="color:rgb(225, 227, 232)">Email: @Model.Email</label>
+
+    <hr />
+    <label style="color:rgb(225, 227, 232); margin-bottom:1em">@Model.Ime's sets</label>
+    <table class="table" id="setsTable">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Theme
+            </th>
+            <th>
+                Owns
+            </th>
+            <th>
+                Built
+            </th>
+        </tr>
+
+        @foreach (var item in ViewBag.sets)
+        {
+            <tr>
+                <td>
+                    @item.Set.Ime
+                </td>
+                <td>
+                    @item.Set.Tema.ImeTema
+                </td>
+                <td>
+                    @item.Komada
+                </td>
+                <td>
+                    @item.Slozeno
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+
+

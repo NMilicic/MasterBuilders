@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Community";
+}
+
+<h2>All amazing Master builders!</h2>
+
+
+
+<table class="table" id="users">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Sets
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.users)
+    {
+        <tr>
+            <td>
+                @item.Ime @item.Prezime
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @item.Setovi.Count
+            </td>
+            <td>
+                <a href="/Community/Profile?userId=@item.Id" title="Profile"><i class="fa fa-arrow-right fa-lg"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -18,7 +18,6 @@ namespace Web.Controllers
         // GET: Set/Details
         public ActionResult Details(int setId)
         {
-            Debug.WriteLine("id " + setId);
             LSet set = setService.GetById(setId);
             return View(set);
         }

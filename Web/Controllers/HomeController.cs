@@ -9,10 +9,8 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        KorisnikServices korisnikServices = new KorisnikServices();
         public ActionResult Index()
         {
-            var tmp = korisnikServices.GetAll();
             return View();
         }
     }

@@ -1,6 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    margin: 0 auto;
+    width: 70%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -27,17 +29,16 @@ h2 {
     color: lightsteelblue;
 }
 
-#about {
-    width: 70%;
-    margin: 0 auto;
-    margin-bottom: 20px;
+.about {
+    // width: 70%;
+    margin: 20px auto;
     padding: 20px;
     background: rgba(230, 243, 255, 0.70);
     color: black;
 }
 
 .table {
-    width: 80%;
+    // width: 80%;
     margin: 0 auto;
     padding: 20px;
     background: rgba(230, 243, 255, 0.70);
@@ -58,8 +59,9 @@ dt, dd {
 }
 
 .search-area {
-    width: 80%;
+    // width: 80%;
     margin: 0 auto;
+    margin-top: 20px;
     padding: 20px;
     background: rgba(230, 243, 255, 0.70);
     color: black;
@@ -80,4 +82,8 @@ th {
 
 .fa-plus-circle.active {
     color: rgb(59, 122, 74);
+}
+
+#randomImage {
+    margin: 20px auto;
 }
