@@ -12,12 +12,17 @@ namespace Business.Services
 {
     public class KorisnikServices : IKorisnikService
     {
-        Repository<Korisnik> korisnikRepository = new Repository<Korisnik>();
+        IRepository<Korisnik> korisnikRepository;
 
-        //TODO: Remov this, testing only
-        Repository<LSet> setkRepository = new Repository<LSet>();
-        Repository<Moc> mockRepository = new Repository<Moc>();
-        Repository<UserSet> usrSetRepository = new Repository<UserSet>();
+        public KorisnikServices()
+        {
+            this.korisnikRepository = new Repository<Korisnik>();
+        }
+
+        public KorisnikServices(IRepository<Korisnik> korisnikRepository)
+        {
+            this.korisnikRepository = korisnikRepository;
+        }
 
         public IQueryable<Korisnik> GetAll()
         {
@@ -71,36 +76,5 @@ namespace Business.Services
                 throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.Taken));
             }
         }
-
-        #region Test Methods
-        public List<Korisnik> KorisnikTestMethod()
-        {
-
-            var person = korisnikRepository.Query().Where(x => x.Id == 1).ToList();
-
-            var tmp = korisnikRepository.GetById(1);
-
-            var bla = usrSetRepository.Query().ToList();
-
-            return person;
-        }
-
-        public List<LSet> SetTestMethod()
-        {
-
-            var person = setkRepository.Query();
-            return person.ToList();
-
-        }
-
-        public List<Moc> MocTestMethod()
-        {
-
-            var person = mockRepository.Query().ToList(); ;
-            return person;
-
-
-        }
-        #endregion
     }
 }

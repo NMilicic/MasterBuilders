@@ -21,12 +21,9 @@ namespace WebApi.Controllers.Api
         }
 
         [HttpPost]
-        public HttpResponseMessage AddSetsToWishlistForUser(List<WishlistApi> newWishlistItems)
+        public HttpResponseMessage AddSetsToWishlistForUser(WishlistApi newWishlistItems)
         {
-            foreach (var list in newWishlistItems)
-            {
-                wishlistService.AddSetToWishlistForUser(list.KorisnikId, list.SetId, list.Komada);
-            }
+            wishlistService.AddSetToWishlistForUser(newWishlistItems.KorisnikId, newWishlistItems.SetId, newWishlistItems.Komada);
 
             return Request.CreateResponse(HttpStatusCode.Created, "Items added to wishlist");
         }

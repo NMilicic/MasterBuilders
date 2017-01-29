@@ -162,7 +162,7 @@ VALUES      ('Zelena')
 
 INSERT INTO [dbo].[boja] 
             ([ime]) 
-VALUES      ('Žuta') 
+VALUES      ('Å½uta') 
 
 INSERT INTO [dbo].[boja] 
             ([ime]) 

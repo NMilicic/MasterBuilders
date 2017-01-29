@@ -13,13 +13,6 @@ namespace WebApi.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
-            KorisnikServices service = new KorisnikServices();
-
-             var tmp =service.KorisnikTestMethod();
-
-            var tmp1 = service.SetTestMethod();
-            var tmp2 = service.MocTestMethod();
             return View();
         }
     }
