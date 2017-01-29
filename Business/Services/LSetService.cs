@@ -104,6 +104,9 @@ namespace Business.Services
                     case SearchEnum.Tema:
                         query = FilterByTema(field.Value, query);
                         break;
+                    case SearchEnum.NadTema:
+                        query = FilterByNadTema(field.Value, query);
+                        break;
                     case SearchEnum.Error:
                         continue;
                 }
@@ -186,15 +189,30 @@ namespace Business.Services
 
         private IQueryable<LSet> FilterByYear(string yearString, IQueryable<LSet> query)
         {
-            int year;
-            var parseYear = Int32.TryParse(yearString, out year);
+            var range = yearString.Split('-');
+            if (range.Length > 1)
+            {
+                int lowerBound;
+                var parseLowerBound = Int32.TryParse(range[0], out lowerBound);
+                int upperBound;
+                var parseUpperBound = Int32.TryParse(range[1], out upperBound);
 
-            return parseYear ? query.Where(x => x.GodinaProizvodnje == year) : query;
+                if (parseLowerBound && parseUpperBound)
+                {
+                    return query.Where(x => x.GodinaProizvodnje >= lowerBound && x.GodinaProizvodnje <= upperBound);
+                }
+            }
+            return query;
         }
 
         private IQueryable<LSet> FilterByTema(string tema, IQueryable<LSet> query)
         {
             return query.Where(x => x.Tema.ImeTema == tema || (x.Tema.NadTema != null && x.Tema.NadTema.ImeTema == tema));
+        }
+
+        private IQueryable<LSet> FilterByNadTema(string tema, IQueryable<LSet> query)
+        {
+            return query.Where(x => x.Tema.NadTema != null && x.Tema.NadTema.ImeTema == tema);
         }
 
         private IQueryable<LSet> FilterByBrojKockica(string searchPattern, IQueryable<LSet> query)

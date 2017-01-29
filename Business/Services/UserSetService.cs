@@ -126,6 +126,10 @@ namespace Business.Services
                         if (existingInventroyItem.Komada > pieces)
                         {
                             existingInventroyItem.Komada -= pieces;
+                            if(existingInventroyItem.Komada < existingInventroyItem.Slozeno)
+                            {
+                                existingInventroyItem.Slozeno = existingInventroyItem.Komada;
+                            }
                             inventroyRepository.Save(existingInventroyItem);
                         }
                         else
