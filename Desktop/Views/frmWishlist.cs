@@ -4,14 +4,21 @@ using Data.Domain;
 using Desktop.BaseLib;
 using Desktop.Controllers;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desktop.Views
 {
-    public partial class frmDatabaseSets : Form, IDatabaseSetsView
+    public partial class frmWishlist : Form, IWishlistView
     {
         private Korisnik _user;
-        private DatabaseSetsController _controller;
+        private WishlistController _controller;
 
         public DataGridView DataGridView
         {
@@ -27,26 +34,22 @@ namespace Desktop.Views
                 return cmbTheme;
             }
         }
-        public int WishlistQty
+        public int RemoveQty
         {
             get
             {
-                return (int)nudWishlist.Value;
+                return (int)nudRemove.Value;
             }
             set
             {
-                nudWishlist.Value = value;
+                nudRemove.Value = value;
             }
         }
-        public int InventoryQty
+        public int MaxRemoveQty
         {
-            get
-            {
-                return (int)nudInventory.Value;
-            }
             set
             {
-                nudInventory.Value = value;
+                nudRemove.Maximum = value;
             }
         }
         public string SearchName
@@ -57,22 +60,21 @@ namespace Desktop.Views
             }
         }
 
-
-        public frmDatabaseSets(Korisnik user)
+        public frmWishlist(Korisnik user)
         {
             _user = user;
-            _controller = new DatabaseSetsController(this, user);
+            _controller = new WishlistController(this, user);
             InitializeComponent();
         }
 
-        private void frmDatabaseSets_Load(object sender, EventArgs e)
+        private void frmWishlist_Load(object sender, EventArgs e)
         {
             _controller.Load();
         }
 
         private void cmbTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _controller.ThemeSelected();
+            _controller.UpdateSubthemeComboBox();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -80,29 +82,9 @@ namespace Desktop.Views
             _controller.Search();
         }
 
-        private void btnWishlist_Click(object sender, EventArgs e)
+        private void btnRemove_Click(object sender, EventArgs e)
         {
-            _controller.AddToWishlist();
-        }
-
-        private void btnInventory_Click(object sender, EventArgs e)
-        {
-            _controller.AddToInventory();
-        }
-        
-        private void btnPicture_Click(object sender, EventArgs e)
-        {
-            _controller.ShowPicture();
-        }
-
-        private void btnPartlist_Click(object sender, EventArgs e)
-        {
-            _controller.ShowPartlist();
-        }
-
-        private void btnDownload_Click(object sender, EventArgs e)
-        {
-            _controller.DownloadInstructions();
+            _controller.RemoveSet();
         }
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)

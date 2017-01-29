@@ -3,32 +3,34 @@ using Business.Services;
 using Data;
 using Data.Domain;
 using Desktop.BaseLib;
-using System.Data;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desktop.Controllers
 {
-    class InventorySetsController
+    class WishlistController
     {
-        private IInventorySetsView _view;
+        private IWishlistView _view;
         private Korisnik _user;
 
-        private IUserSetService _userSetService;
+        private IWishlistService _wishlistService;
 
         private Repository<Tema> _themeRepository;
-        private IQueryable<UserSet> _currQuery;
+        private IQueryable<Wishlist> _currQuery;
 
-        public InventorySetsController(IInventorySetsView view, Korisnik user)
+        public WishlistController(IWishlistView view, Korisnik user)
         {
             _view = view;
             _user = user;
 
-            _userSetService = new UserSetService();
+            _wishlistService = new WishlistService();
             _themeRepository = new Repository<Tema>();
 
-            _currQuery = _userSetService.GetAllForUser(user.Id);
+            _currQuery = _wishlistService.GetAllSetsFromWishlistForUser(user.Id);
         }
 
         public void Load()
@@ -67,59 +69,21 @@ namespace Desktop.Controllers
         {
             UpdateControls();
         }
-        
+
         public void RemoveSet()
         {
-            var userSet = _userSetService.GetById(GetSelectedUserSetId());
-            if (userSet == null)
+            var wishlistSet = _wishlistService.GetById(GetSelectedWishlistSetId());
+            if (wishlistSet == null)
             {
                 return;
             }
 
-            var setId = userSet.Set.Id;
+            var setId = wishlistSet.Set.Id;
             var qty = _view.RemoveQty;
-            
+
             if (qty > 0)
             {
-                _userSetService.RemoveFromInventory(_user.Id, setId, qty);
-                UpdateControls();
-                UpdateDataGirdView();
-            }
-        }
-
-        public void AssembleSet()
-        {
-            var userSet = _userSetService.GetById(GetSelectedUserSetId());
-            if (userSet == null)
-            {
-                return;
-            }
-
-            var setId = userSet.Set.Id;
-            var qty = _view.AssembleQty;
-            
-            if (qty > 0)
-            {
-                _userSetService.MarkSetAsCompleted(_user.Id, setId, qty);
-                UpdateControls();
-                UpdateDataGirdView();
-            }
-        }
-
-        public void DisassembleSet()
-        {
-            var userSet = _userSetService.GetById(GetSelectedUserSetId());
-            if (userSet == null)
-            {
-                return;
-            }
-
-            var setId = userSet.Set.Id;
-            var qty = _view.DisassembleQty;
-            
-            if (qty > 0)
-            {
-                _userSetService.MarkSetAsCompleted(_user.Id, setId, -qty);
+                _wishlistService.RemoveSetFromWishlistForUser(_user.Id, setId, qty);
                 UpdateControls();
                 UpdateDataGirdView();
             }
@@ -145,23 +109,22 @@ namespace Desktop.Controllers
                            Theme = s.Set.Tema.NadTema.ImeTema,
                            Subtheme = s.Set.Tema.ImeTema,
                            Description = s.Set.Opis,
-                           Owned = s.Komada,
-                           Assembled = s.Slozeno,
+                           Quantity = s.Komada
                        };
-                       
+
             _view.DataGridView.DataSource = data.ToList();
 
             _view.DataGridView.Columns["Id"].Visible = false;
-            _view.DataGridView.Columns["Owned"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            _view.DataGridView.Columns["Assembled"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            _view.DataGridView.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
-        private int GetSelectedUserSetId()
+        private int GetSelectedWishlistSetId()
         {
             if (_view.DataGridView.SelectedRows.Count == 0)
             {
                 return -1;
-            } 
+            }
+
             var idString = _view.DataGridView.SelectedRows[0].Cells["Id"].Value.ToString();
             var setId = int.Parse(idString);
             return setId;
@@ -169,18 +132,12 @@ namespace Desktop.Controllers
 
         private void UpdateControls()
         {
-            var set = _userSetService.GetById(GetSelectedUserSetId());
-            var noOwned = (set != null) ? set.Komada : 0;
-            var noAssembled = (set != null) ? set.Slozeno : 0;
-
-            _view.MaxRemoveQty = noOwned;
-            _view.MaxAssembleQty = noOwned - noAssembled;
-            _view.MaxDisassembleQty = noAssembled;
-
+            var set = _wishlistService.GetById(GetSelectedWishlistSetId());
+            var noWished = (set != null) ? set.Komada : 0;
+            _view.MaxRemoveQty = noWished;
             _view.RemoveQty = 0;
-            _view.AssembleQty = 0;
-            _view.DisassembleQty = 0;
         }
         #endregion
     }
 }
+

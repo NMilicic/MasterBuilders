@@ -11,5 +11,6 @@ namespace Business.Interfaces
     {
         IQueryable<Wishlist> GetAllSetsFromWishlistForUser(int userId);
         Wishlist AddSetToWishlistForUser(int userId, int setId, int pieces);
+        Wishlist RemoveSetFromWishlistForUser(int userId, int setId, int pieces);
     }
 }

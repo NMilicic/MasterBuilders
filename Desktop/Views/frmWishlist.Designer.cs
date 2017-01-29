@@ -1,6 +1,6 @@
 ﻿namespace Desktop.Views
 {
-    partial class frmDatabaseSets
+    partial class frmWishlist
     {
         /// <summary>
         /// Required designer variable.
@@ -37,18 +37,10 @@
             this.cmbSubtheme = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lblDivider1 = new System.Windows.Forms.Label();
-            this.btnWishlist = new System.Windows.Forms.Button();
-            this.btnInventory = new System.Windows.Forms.Button();
-            this.btnDownload = new System.Windows.Forms.Button();
-            this.btnPartlist = new System.Windows.Forms.Button();
-            this.nudWishlist = new System.Windows.Forms.NumericUpDown();
-            this.nudInventory = new System.Windows.Forms.NumericUpDown();
-            this.lblDivider2 = new System.Windows.Forms.Label();
-            this.btnPicture = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.nudRemove = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWishlist)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudInventory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRemove)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -66,7 +58,7 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(610, 300);
+            this.dataGridView.Size = new System.Drawing.Size(600, 300);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -83,13 +75,13 @@
             // 
             this.txtName.Location = new System.Drawing.Point(145, 7);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(110, 20);
+            this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 2;
             // 
             // lblTheme
             // 
             this.lblTheme.AutoSize = true;
-            this.lblTheme.Location = new System.Drawing.Point(261, 9);
+            this.lblTheme.Location = new System.Drawing.Point(251, 9);
             this.lblTheme.Name = "lblTheme";
             this.lblTheme.Size = new System.Drawing.Size(43, 13);
             this.lblTheme.TabIndex = 3;
@@ -98,7 +90,7 @@
             // cmbTheme
             // 
             this.cmbTheme.FormattingEnabled = true;
-            this.cmbTheme.Location = new System.Drawing.Point(310, 8);
+            this.cmbTheme.Location = new System.Drawing.Point(300, 8);
             this.cmbTheme.Name = "cmbTheme";
             this.cmbTheme.Size = new System.Drawing.Size(121, 21);
             this.cmbTheme.TabIndex = 4;
@@ -107,7 +99,7 @@
             // lblSubtheme
             // 
             this.lblSubtheme.AutoSize = true;
-            this.lblSubtheme.Location = new System.Drawing.Point(437, 10);
+            this.lblSubtheme.Location = new System.Drawing.Point(427, 10);
             this.lblSubtheme.Name = "lblSubtheme";
             this.lblSubtheme.Size = new System.Drawing.Size(58, 13);
             this.lblSubtheme.TabIndex = 5;
@@ -116,7 +108,7 @@
             // cmbSubtheme
             // 
             this.cmbSubtheme.FormattingEnabled = true;
-            this.cmbSubtheme.Location = new System.Drawing.Point(501, 8);
+            this.cmbSubtheme.Location = new System.Drawing.Point(491, 8);
             this.cmbSubtheme.Name = "cmbSubtheme";
             this.cmbSubtheme.Size = new System.Drawing.Size(121, 21);
             this.cmbSubtheme.TabIndex = 6;
@@ -140,100 +132,30 @@
             this.lblDivider1.Size = new System.Drawing.Size(2, 50);
             this.lblDivider1.TabIndex = 12;
             // 
-            // btnWishlist
+            // btnRemove
             // 
-            this.btnWishlist.Location = new System.Drawing.Point(68, 376);
-            this.btnWishlist.Name = "btnWishlist";
-            this.btnWishlist.Size = new System.Drawing.Size(90, 25);
-            this.btnWishlist.TabIndex = 13;
-            this.btnWishlist.Text = "Add to Wishlist";
-            this.btnWishlist.UseVisualStyleBackColor = true;
-            this.btnWishlist.Click += new System.EventHandler(this.btnWishlist_Click);
+            this.btnRemove.Location = new System.Drawing.Point(68, 374);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(90, 25);
+            this.btnRemove.TabIndex = 13;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // btnInventory
+            // nudRemove
             // 
-            this.btnInventory.Location = new System.Drawing.Point(228, 376);
-            this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(95, 25);
-            this.btnInventory.TabIndex = 14;
-            this.btnInventory.Text = "Add to Inventory";
-            this.btnInventory.UseVisualStyleBackColor = true;
-            this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
+            this.nudRemove.Location = new System.Drawing.Point(12, 376);
+            this.nudRemove.Name = "nudRemove";
+            this.nudRemove.Size = new System.Drawing.Size(50, 20);
+            this.nudRemove.TabIndex = 20;
             // 
-            // btnDownload
-            // 
-            this.btnDownload.Location = new System.Drawing.Point(499, 376);
-            this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(125, 25);
-            this.btnDownload.TabIndex = 15;
-            this.btnDownload.Text = "Download Instructions";
-            this.btnDownload.UseVisualStyleBackColor = true;
-            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
-            // 
-            // btnPartlist
-            // 
-            this.btnPartlist.Location = new System.Drawing.Point(418, 376);
-            this.btnPartlist.Name = "btnPartlist";
-            this.btnPartlist.Size = new System.Drawing.Size(75, 25);
-            this.btnPartlist.TabIndex = 16;
-            this.btnPartlist.Text = "View Partlist";
-            this.btnPartlist.UseVisualStyleBackColor = true;
-            this.btnPartlist.Click += new System.EventHandler(this.btnPartlist_Click);
-            // 
-            // nudWishlist
-            // 
-            this.nudWishlist.Location = new System.Drawing.Point(12, 378);
-            this.nudWishlist.Name = "nudWishlist";
-            this.nudWishlist.Size = new System.Drawing.Size(50, 20);
-            this.nudWishlist.TabIndex = 17;
-            // 
-            // nudInventory
-            // 
-            this.nudInventory.Location = new System.Drawing.Point(172, 378);
-            this.nudInventory.Name = "nudInventory";
-            this.nudInventory.Size = new System.Drawing.Size(50, 20);
-            this.nudInventory.TabIndex = 18;
-            // 
-            // lblDivider2
-            // 
-            this.lblDivider2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDivider2.Location = new System.Drawing.Point(164, 377);
-            this.lblDivider2.Name = "lblDivider2";
-            this.lblDivider2.Size = new System.Drawing.Size(2, 25);
-            this.lblDivider2.TabIndex = 19;
-            // 
-            // btnPicture
-            // 
-            this.btnPicture.Location = new System.Drawing.Point(337, 376);
-            this.btnPicture.Name = "btnPicture";
-            this.btnPicture.Size = new System.Drawing.Size(75, 25);
-            this.btnPicture.TabIndex = 20;
-            this.btnPicture.Text = "View Picture";
-            this.btnPicture.UseVisualStyleBackColor = true;
-            this.btnPicture.Click += new System.EventHandler(this.btnPicture_Click);
-            // 
-            // label1
-            // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(329, 376);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(2, 25);
-            this.label1.TabIndex = 21;
-            // 
-            // frmDatabaseSets
+            // frmWishlist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 411);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnPicture);
-            this.Controls.Add(this.lblDivider2);
-            this.Controls.Add(this.nudInventory);
-            this.Controls.Add(this.nudWishlist);
-            this.Controls.Add(this.btnPartlist);
-            this.Controls.Add(this.btnDownload);
-            this.Controls.Add(this.btnInventory);
-            this.Controls.Add(this.btnWishlist);
+            this.Controls.Add(this.nudRemove);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.lblDivider1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cmbSubtheme);
@@ -243,13 +165,12 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.dataGridView);
-            this.Name = "frmDatabaseSets";
+            this.Name = "frmWishlist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Sets Database";
-            this.Load += new System.EventHandler(this.frmDatabaseSets_Load);
+            this.Text = "Wishlist";
+            this.Load += new System.EventHandler(this.frmWishlist_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudWishlist)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudInventory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRemove)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,14 +187,7 @@
         private System.Windows.Forms.ComboBox cmbSubtheme;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblDivider1;
-        private System.Windows.Forms.Button btnWishlist;
-        private System.Windows.Forms.Button btnInventory;
-        private System.Windows.Forms.Button btnDownload;
-        private System.Windows.Forms.Button btnPartlist;
-        private System.Windows.Forms.NumericUpDown nudWishlist;
-        private System.Windows.Forms.NumericUpDown nudInventory;
-        private System.Windows.Forms.Label lblDivider2;
-        private System.Windows.Forms.Button btnPicture;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.NumericUpDown nudRemove;
     }
 }

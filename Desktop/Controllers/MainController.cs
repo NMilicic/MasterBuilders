@@ -44,6 +44,12 @@ namespace Desktop.Controllers
             //TODO showinventoryparts
         }
 
+        public void ShowWishlist()
+        {
+            var newForm = new frmWishlist(_user);
+            newForm.ShowDialog();
+        }
+
         public void Close()
         {
             _parent.Show();

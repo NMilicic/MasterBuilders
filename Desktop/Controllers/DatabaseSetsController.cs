@@ -114,6 +114,12 @@ namespace Desktop.Controllers
             }
         }
 
+        public void ShowPicture()
+        {
+            //TODO show picture
+            MessageBox.Show("Picture not available.");
+        }
+
         public void DownloadInstructions()
         {
             //TODO download instructions

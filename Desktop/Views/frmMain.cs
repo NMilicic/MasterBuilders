@@ -40,6 +40,11 @@ namespace Desktop.Views
             _controller.ShowInventoryParts();
         }
 
+        private void wishlistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _controller.ShowWishlist();
+        }
+
         private void menuLogout_Click(object sender, EventArgs e)
         {
             _controller.Logout();

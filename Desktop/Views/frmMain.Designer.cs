@@ -38,7 +38,6 @@
             this.builderAssisstantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mOCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wishlistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.favoritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
@@ -49,10 +48,9 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuDatabase,
             this.menuInventory,
+            this.wishlistToolStripMenuItem,
             this.builderAssisstantToolStripMenuItem,
             this.mOCToolStripMenuItem,
-            this.wishlistToolStripMenuItem,
-            this.favoritesToolStripMenuItem,
             this.profileToolStripMenuItem,
             this.menuLogout});
             this.menu.Location = new System.Drawing.Point(0, 0);
@@ -123,12 +121,7 @@
             this.wishlistToolStripMenuItem.Name = "wishlistToolStripMenuItem";
             this.wishlistToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.wishlistToolStripMenuItem.Text = "Wishlist";
-            // 
-            // favoritesToolStripMenuItem
-            // 
-            this.favoritesToolStripMenuItem.Name = "favoritesToolStripMenuItem";
-            this.favoritesToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.favoritesToolStripMenuItem.Text = "Favorites";
+            this.wishlistToolStripMenuItem.Click += new System.EventHandler(this.wishlistToolStripMenuItem_Click);
             // 
             // profileToolStripMenuItem
             // 
@@ -173,7 +166,6 @@
         private System.Windows.Forms.ToolStripMenuItem builderAssisstantToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mOCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wishlistToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem favoritesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuLogout;
     }
