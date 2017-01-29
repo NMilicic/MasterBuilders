@@ -299,7 +299,7 @@ namespace Tests
         [TestMethod]
         public void SearchTemaFound()
         {
-            var searchPattern = "Tema:Tema 1";
+            var searchPattern = "Tema:Tema 3;";
             var sets = setService.Search(searchPattern).ToList();
             Assert.AreEqual(1, sets.Count);
         }
@@ -315,7 +315,7 @@ namespace Tests
         [TestMethod]
         public void SearcMultipleParams()
         {
-            var searchPattern = "Name:Set 1;Tema:Tema 1;BrojKockica:0-50";
+            var searchPattern = "Name:Set 1;Tema:Tema 3;BrojKockica:0-50";
             var sets = setService.Search(searchPattern).ToList();
             Assert.AreEqual(1, sets.Count);
         }
