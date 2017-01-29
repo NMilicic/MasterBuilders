@@ -258,6 +258,7 @@
     <Content Include="Views\Community\Profile.cshtml" />
     <Content Include="Views\Search\Blocks.cshtml" />
     <Content Include="Views\Block\Details.cshtml" />
+    <Content Include="Views\Inventory\BuilderAssistant.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
