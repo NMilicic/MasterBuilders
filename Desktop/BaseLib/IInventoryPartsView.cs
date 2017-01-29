@@ -7,10 +7,10 @@ using System.Windows.Forms;
 
 namespace Desktop.BaseLib
 {
-    public interface IWishlistView : IView
+    public interface IInventoryPartsView : IView
     {
-        ComboBox Theme { get; }
-        ComboBox Subtheme { get; }
+        ComboBox Category { get; }
+        ComboBox Color { get; }
         string SearchName { get; }
 
         DataGridView DataGridView { get; }

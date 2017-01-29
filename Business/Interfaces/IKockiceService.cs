@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces
 {
-    interface IKockiceService
+    public interface IKockiceService
     {
         IQueryable<Kockica> GetAll();
         IQueryable<Kockica> GetAllForUser(int userId);

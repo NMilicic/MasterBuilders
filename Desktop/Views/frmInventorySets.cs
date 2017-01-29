@@ -20,6 +20,28 @@ namespace Desktop.Views
         private Korisnik _user;
         private InventorySetsController _controller;
 
+        public ComboBox Theme
+        {
+            get
+            {
+                return cmbTheme;
+            }
+        }
+        public ComboBox Subtheme
+        {
+            get
+            {
+                return cmbSubtheme;
+            }
+        }
+        public string SearchName
+        {
+            get
+            {
+                return txtName.Text;
+            }
+        }
+
         public DataGridView DataGridView
         {
             get
@@ -27,13 +49,7 @@ namespace Desktop.Views
                 return dataGridView;
             }
         }
-        public ComboBox Themes
-        {
-            get
-            {
-                return cmbTheme;
-            }
-        }
+
         public int RemoveQty
         {
             get
@@ -88,14 +104,7 @@ namespace Desktop.Views
                 nudDisassemble.Maximum = value;
             }
         }
-        public string SearchName
-        {
-            get
-            {
-                return txtName.Text;
-            }
-        }
-
+        
         public frmInventorySets(Korisnik user)
         {
             _user = user;

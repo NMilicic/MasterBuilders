@@ -15,32 +15,10 @@ using System.Windows.Forms;
 
 namespace Desktop.Views
 {
-    public partial class frmWishlist : Form, IWishlistView
+    public partial class frmInventoryParts : Form, IInventoryPartsView
     {
         private Korisnik _user;
-        private WishlistController _controller;
-
-        public ComboBox Theme
-        {
-            get
-            {
-                return cmbTheme;
-            }
-        }
-        public ComboBox Subtheme
-        {
-            get
-            {
-                return cmbSubtheme;
-            }
-        }
-        public string SearchName
-        {
-            get
-            {
-                return txtName.Text;
-            }
-        }
+        private InventoryPartsController _controller;
 
         public DataGridView DataGridView
         {
@@ -49,7 +27,20 @@ namespace Desktop.Views
                 return dataGridView;
             }
         }
-
+        public ComboBox Category
+        {
+            get
+            {
+                return cmbCategory;
+            }
+        }
+        public ComboBox Color
+        {
+            get
+            {
+                return cmbColor;
+            }
+        }
         public int RemoveQty
         {
             get
@@ -68,15 +59,22 @@ namespace Desktop.Views
                 nudRemove.Maximum = value;
             }
         }
-        
-        public frmWishlist(Korisnik user)
+        public string SearchName
+        {
+            get
+            {
+                return txtName.Text;
+            }
+        }
+
+        public frmInventoryParts(Korisnik user)
         {
             _user = user;
-            _controller = new WishlistController(this, user);
+            _controller = new InventoryPartsController(this, user);
             InitializeComponent();
         }
 
-        private void frmWishlist_Load(object sender, EventArgs e)
+        private void frmInventoryParts_Load(object sender, EventArgs e)
         {
             _controller.Load();
         }
@@ -93,7 +91,7 @@ namespace Desktop.Views
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            _controller.RemoveSet();
+            _controller.RemovePart();
         }
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)

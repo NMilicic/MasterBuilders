@@ -47,14 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseLib\IDatabasePartsView.cs" />
+    <Compile Include="BaseLib\IInventoryPartsView.cs" />
     <Compile Include="BaseLib\IInventorySetsView.cs" />
     <Compile Include="BaseLib\IDatabaseSetsView.cs" />
     <Compile Include="BaseLib\ILoginView.cs" />
     <Compile Include="BaseLib\IPartlistView.cs" />
     <Compile Include="BaseLib\IRegisterView.cs" />
-    <Compile Include="BaseLib\ISearchView.cs" />
     <Compile Include="BaseLib\IView.cs" />
     <Compile Include="BaseLib\IWishlistView.cs" />
+    <Compile Include="Controllers\DatabasePartsController.cs" />
+    <Compile Include="Controllers\InventoryPartsController.cs" />
     <Compile Include="Controllers\InventorySetsController.cs" />
     <Compile Include="Controllers\DatabaseSetsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -64,6 +67,18 @@
     <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\frmDatabaseParts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmDatabaseParts.Designer.cs">
+      <DependentUpon>frmDatabaseParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmInventoryParts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmInventoryParts.Designer.cs">
+      <DependentUpon>frmInventoryParts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\frmWishlist.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +130,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\frmDatabaseParts.resx">
+      <DependentUpon>frmDatabaseParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmInventoryParts.resx">
+      <DependentUpon>frmInventoryParts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmWishlist.resx">
       <DependentUpon>frmWishlist.cs</DependentUpon>
     </EmbeddedResource>

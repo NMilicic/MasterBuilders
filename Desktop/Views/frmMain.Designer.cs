@@ -35,10 +35,14 @@
             this.menuInventory = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInventorySets = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInventoryParts = new System.Windows.Forms.ToolStripMenuItem();
-            this.builderAssisstantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mOCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wishlistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuWishlist = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBA = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMOC = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMOCView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMOCAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuProfileView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuProfileEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLogout = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -48,14 +52,14 @@
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuDatabase,
             this.menuInventory,
-            this.wishlistToolStripMenuItem,
-            this.builderAssisstantToolStripMenuItem,
-            this.mOCToolStripMenuItem,
-            this.profileToolStripMenuItem,
+            this.menuWishlist,
+            this.menuBA,
+            this.menuMOC,
+            this.menuProfile,
             this.menuLogout});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(684, 24);
+            this.menu.Size = new System.Drawing.Size(634, 24);
             this.menu.TabIndex = 0;
             // 
             // menuDatabase
@@ -104,30 +108,61 @@
             this.menuInventoryParts.Text = "Parts";
             this.menuInventoryParts.Click += new System.EventHandler(this.menuInventoryParts_Click);
             // 
-            // builderAssisstantToolStripMenuItem
+            // menuWishlist
             // 
-            this.builderAssisstantToolStripMenuItem.Name = "builderAssisstantToolStripMenuItem";
-            this.builderAssisstantToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
-            this.builderAssisstantToolStripMenuItem.Text = "Builder Assistant";
+            this.menuWishlist.Name = "menuWishlist";
+            this.menuWishlist.Size = new System.Drawing.Size(60, 20);
+            this.menuWishlist.Text = "Wishlist";
+            this.menuWishlist.Click += new System.EventHandler(this.wishlistToolStripMenuItem_Click);
             // 
-            // mOCToolStripMenuItem
+            // menuBA
             // 
-            this.mOCToolStripMenuItem.Name = "mOCToolStripMenuItem";
-            this.mOCToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.mOCToolStripMenuItem.Text = "MOC";
+            this.menuBA.Name = "menuBA";
+            this.menuBA.Size = new System.Drawing.Size(106, 20);
+            this.menuBA.Text = "Builder Assistant";
+            this.menuBA.Click += new System.EventHandler(this.menuBA_Click);
             // 
-            // wishlistToolStripMenuItem
+            // menuMOC
             // 
-            this.wishlistToolStripMenuItem.Name = "wishlistToolStripMenuItem";
-            this.wishlistToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.wishlistToolStripMenuItem.Text = "Wishlist";
-            this.wishlistToolStripMenuItem.Click += new System.EventHandler(this.wishlistToolStripMenuItem_Click);
+            this.menuMOC.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuMOCView,
+            this.menuMOCAdd});
+            this.menuMOC.Name = "menuMOC";
+            this.menuMOC.Size = new System.Drawing.Size(47, 20);
+            this.menuMOC.Text = "MOC";
             // 
-            // profileToolStripMenuItem
+            // menuMOCView
             // 
-            this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.profileToolStripMenuItem.Text = "Profile";
+            this.menuMOCView.Name = "menuMOCView";
+            this.menuMOCView.Size = new System.Drawing.Size(99, 22);
+            this.menuMOCView.Text = "View";
+            // 
+            // menuMOCAdd
+            // 
+            this.menuMOCAdd.Name = "menuMOCAdd";
+            this.menuMOCAdd.Size = new System.Drawing.Size(99, 22);
+            this.menuMOCAdd.Text = "Add";
+            // 
+            // menuProfile
+            // 
+            this.menuProfile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuProfileView,
+            this.menuProfileEdit});
+            this.menuProfile.Name = "menuProfile";
+            this.menuProfile.Size = new System.Drawing.Size(53, 20);
+            this.menuProfile.Text = "Profile";
+            // 
+            // menuProfileView
+            // 
+            this.menuProfileView.Name = "menuProfileView";
+            this.menuProfileView.Size = new System.Drawing.Size(99, 22);
+            this.menuProfileView.Text = "View";
+            // 
+            // menuProfileEdit
+            // 
+            this.menuProfileEdit.Name = "menuProfileEdit";
+            this.menuProfileEdit.Size = new System.Drawing.Size(99, 22);
+            this.menuProfileEdit.Text = "Edit";
             // 
             // menuLogout
             // 
@@ -140,9 +175,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 461);
+            this.ClientSize = new System.Drawing.Size(634, 441);
             this.Controls.Add(this.menu);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menu;
+            this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lego Manager";
@@ -163,10 +200,14 @@
         private System.Windows.Forms.ToolStripMenuItem menuInventory;
         private System.Windows.Forms.ToolStripMenuItem menuInventorySets;
         private System.Windows.Forms.ToolStripMenuItem menuInventoryParts;
-        private System.Windows.Forms.ToolStripMenuItem builderAssisstantToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mOCToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem wishlistToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem profileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuBA;
+        private System.Windows.Forms.ToolStripMenuItem menuMOC;
+        private System.Windows.Forms.ToolStripMenuItem menuWishlist;
+        private System.Windows.Forms.ToolStripMenuItem menuProfile;
         private System.Windows.Forms.ToolStripMenuItem menuLogout;
+        private System.Windows.Forms.ToolStripMenuItem menuMOCView;
+        private System.Windows.Forms.ToolStripMenuItem menuMOCAdd;
+        private System.Windows.Forms.ToolStripMenuItem menuProfileView;
+        private System.Windows.Forms.ToolStripMenuItem menuProfileEdit;
     }
 }

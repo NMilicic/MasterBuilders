@@ -1,43 +1,34 @@
-﻿using Business.Interfaces;
-using Business.Services;
-using Data;
-using Data.Domain;
-using Desktop.BaseLib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.Domain;
+using Desktop.Views;
+using Desktop.BaseLib;
 using System.Windows.Forms;
 
 namespace Desktop.Controllers
 {
-    class WishlistController
+    class InventoryPartsController
     {
-        private IWishlistView _view;
+        private IInventoryPartsView _view;
         private Korisnik _user;
 
-        private IWishlistService _wishlistService;
+        //TODO category repository
+        private IQueryable<UserSet> _currQuery;
 
-        private Repository<Tema> _themeRepository;
-        private IQueryable<Wishlist> _currQuery;
-
-        public WishlistController(IWishlistView view, Korisnik user)
+        public InventoryPartsController(IInventoryPartsView view, Korisnik user)
         {
             _view = view;
             _user = user;
-
-            _wishlistService = new WishlistService();
-            _themeRepository = new Repository<Tema>();
-
-            _currQuery = _wishlistService.GetAllSetsFromWishlistForUser(user.Id);
         }
 
         public void Load()
         {
             UpdateDataGirdView();
             SetSelected();
-            InitThemeComboBox();
+            InitCategoryComboBox();
         }
 
         #region Search
@@ -47,8 +38,8 @@ namespace Desktop.Controllers
             var sb = new StringBuilder();
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
-            sb.Append("Theme:").Append(_view.Theme.SelectedItem).Append(";");
-            sb.Append("Subtheme:").Append("").Append(";");
+            sb.Append("Category:").Append(_view.Category.SelectedItem).Append(";");
+            sb.Append("Color:").Append("").Append(";");
 
             //_currQuery = _userSetService.Search(sb.ToString());
             UpdateDataGirdView();
@@ -56,7 +47,7 @@ namespace Desktop.Controllers
 
         public void UpdateSubthemeComboBox()
         {
-            var theme = _view.Theme.SelectedItem;
+            //var theme = _view.Categories.SelectedItem;
             //TODO update subtheme combobox
         }
         #endregion
@@ -66,61 +57,65 @@ namespace Desktop.Controllers
             UpdateControls();
         }
 
-        public void RemoveSet()
+        public void RemovePart()
         {
-            var wishlistSet = _wishlistService.GetById(GetSelectedWishlistSetId());
-            if (wishlistSet == null)
+            /*
+            var userPart = _userPartService.GetById(GetSelectedUserPartId());
+            if (userPart == null)
             {
                 return;
             }
 
-            var setId = wishlistSet.Set.Id;
+            var setId = userPart.Set.Id;
             var qty = _view.RemoveQty;
 
             if (qty > 0)
             {
-                _wishlistService.RemoveSetFromWishlistForUser(_user.Id, setId, qty);
+                _userSetService.RemoveFromInventory(_user.Id, setId, qty);
                 UpdateControls();
                 UpdateDataGirdView();
             }
+            */
         }
 
         #region Helper Methods
-        private void InitThemeComboBox()
+        private void InitCategoryComboBox()
         {
-            var themes = _themeRepository.Query();
-            var themeNames = from t in themes select t.ImeTema;
-            var data = themeNames.ToList();
+            /*
+            var categories = _categoryRepository.Query();
+            var categoryNames = from c in categories select c.ImeTema;
+            var data = categoryNames.ToList();
             data.Insert(0, "");
-            _view.Theme.DataSource = data;
+            _view.Category.DataSource = data;
+            */
         }
 
         private void UpdateDataGirdView()
         {
+            /*
             var data = from s in _currQuery
                        select new
                        {
                            Id = s.Id,
                            Name = s.Set.Ime,
-                           Theme = s.Set.Tema.NadTema.ImeTema,
-                           Subtheme = s.Set.Tema.ImeTema,
-                           Description = s.Set.Opis,
-                           Quantity = s.Komada
+                           Category = s.Kockica.Kategorija,
+                           Color = s.Boja,
+                           Owned = s.Komada,
                        };
 
             _view.DataGridView.DataSource = data.ToList();
 
             _view.DataGridView.Columns["Id"].Visible = false;
-            _view.DataGridView.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            _view.DataGridView.Columns["Owned"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            */
         }
 
-        private int GetSelectedWishlistSetId()
+        private int GetSelectedUserPartId()
         {
             if (_view.DataGridView.SelectedRows.Count == 0)
             {
                 return -1;
             }
-
             var idString = _view.DataGridView.SelectedRows[0].Cells["Id"].Value.ToString();
             var setId = int.Parse(idString);
             return setId;
@@ -128,12 +123,15 @@ namespace Desktop.Controllers
 
         private void UpdateControls()
         {
-            var set = _wishlistService.GetById(GetSelectedWishlistSetId());
-            var noWished = (set != null) ? set.Komada : 0;
-            _view.MaxRemoveQty = noWished;
+            /*
+            var set = _userPartService.GetById(GetSelectedUserPartId());
+            var noOwned = (set != null) ? set.Komada : 0;
+            var noAssembled = (set != null) ? set.Slozeno : 0;
+
+            _view.MaxRemoveQty = noOwned;
             _view.RemoveQty = 0;
+            */
         }
         #endregion
     }
 }
-

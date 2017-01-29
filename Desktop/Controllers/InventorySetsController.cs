@@ -45,12 +45,8 @@ namespace Desktop.Controllers
             var sb = new StringBuilder();
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
-            sb.Append("Theme:").Append(_view.Themes.SelectedItem).Append(";");
+            sb.Append("Theme:").Append(_view.Theme.SelectedItem).Append(";");
             sb.Append("Subtheme:").Append("").Append(";");
-            sb.Append("YearFrom:").Append("").Append(";");
-            sb.Append("YearTo:").Append("").Append(";");
-            sb.Append("PartsFrom:").Append("").Append(";");
-            sb.Append("PartsTo:").Append("").Append(";");
 
             //_currQuery = _userSetService.Search(sb.ToString());
             UpdateDataGirdView();
@@ -58,7 +54,7 @@ namespace Desktop.Controllers
 
         public void UpdateSubthemeComboBox()
         {
-            var theme = _view.Themes.SelectedItem;
+            var theme = _view.Theme.SelectedItem;
             //TODO update subtheme combobox
         }
         #endregion
@@ -132,7 +128,7 @@ namespace Desktop.Controllers
             var themeNames = from t in themes select t.ImeTema;
             var data = themeNames.ToList();
             data.Insert(0, "");
-            _view.Themes.DataSource = data;
+            _view.Theme.DataSource = data;
         }
 
         private void UpdateDataGirdView()

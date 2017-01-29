@@ -8,23 +8,23 @@ using System.Windows.Forms;
 
 namespace Desktop.Views
 {
-    public partial class frmDatabaseSets : Form, IDatabaseSetsView
+    public partial class frmDatabaseParts : Form, IDatabasePartsView
     {
         private Korisnik _user;
-        private DatabaseSetsController _controller;
+        private DatabasePartsController _controller;
 
-        public ComboBox Theme
+        public ComboBox Category
         {
             get
             {
-                return cmbTheme;
+                return cmbCategory;
             }
         }
-        public ComboBox Subtheme
+        public ComboBox Color
         {
             get
             {
-                return cmbSubtheme;
+                return cmbColor;
             }
         }
         public string SearchName
@@ -43,6 +43,7 @@ namespace Desktop.Views
             }
         }
 
+        /*
         public int WishlistQty
         {
             get
@@ -54,6 +55,7 @@ namespace Desktop.Views
                 nudWishlist.Value = value;
             }
         }
+        */
         public int InventoryQty
         {
             get
@@ -66,21 +68,16 @@ namespace Desktop.Views
             }
         }
         
-        public frmDatabaseSets(Korisnik user)
+        public frmDatabaseParts(Korisnik user)
         {
             _user = user;
-            _controller = new DatabaseSetsController(this, user);
+            _controller = new DatabasePartsController(this, user);
             InitializeComponent();
         }
 
-        private void frmDatabaseSets_Load(object sender, EventArgs e)
+        private void frmDatabaseParts_Load(object sender, EventArgs e)
         {
             _controller.Load();
-        }
-
-        private void cmbTheme_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _controller.ThemeSelected();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -90,32 +87,17 @@ namespace Desktop.Views
 
         private void btnWishlist_Click(object sender, EventArgs e)
         {
-            _controller.AddToWishlist();
+            //_controller.AddToWishlist();
         }
-
+        
         private void btnInventory_Click(object sender, EventArgs e)
         {
             _controller.AddToInventory();
         }
         
-        private void btnPicture_Click(object sender, EventArgs e)
-        {
-            _controller.ShowPicture();
-        }
-
-        private void btnPartlist_Click(object sender, EventArgs e)
-        {
-            _controller.ShowPartlist();
-        }
-
-        private void btnDownload_Click(object sender, EventArgs e)
-        {
-            _controller.DownloadInstructions();
-        }
-
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _controller.SetSelected();
+            _controller.PartSelected();
         }
     }
 }

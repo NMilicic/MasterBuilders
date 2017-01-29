@@ -22,7 +22,8 @@ namespace Desktop.Controllers
                        {
                            Color = p.Boja.Ime,
                            Quantity = p.Broj,
-                           Name = p.Kockica.Ime
+                           Name = p.Kockica.Ime,
+                           Category = p.Kockica.Kategorija
                        };
 
             _view.DataGridView.DataSource = data.ToList();

@@ -7,15 +7,15 @@ using System.Windows.Forms;
 
 namespace Desktop.BaseLib
 {
-    public interface IWishlistView : IView
+    public interface IDatabasePartsView : IView
     {
-        ComboBox Theme { get; }
-        ComboBox Subtheme { get; }
+        ComboBox Category { get; }
+        ComboBox Color { get; }
         string SearchName { get; }
 
         DataGridView DataGridView { get; }
 
-        int RemoveQty { get; set; }
-        int MaxRemoveQty { set; }
+        //int WishlistQty { get; set; }
+        int InventoryQty { get; set; }
     }
 }

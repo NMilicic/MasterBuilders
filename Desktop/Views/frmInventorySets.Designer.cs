@@ -36,7 +36,6 @@
             this.lblSubtheme = new System.Windows.Forms.Label();
             this.cmbSubtheme = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.lblDivider1 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAssemble = new System.Windows.Forms.Button();
             this.nudAssemble = new System.Windows.Forms.NumericUpDown();
@@ -58,21 +57,21 @@
             this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 64);
+            this.dataGridView.Location = new System.Drawing.Point(15, 45);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(600, 300);
+            this.dataGridView.Size = new System.Drawing.Size(600, 325);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(101, 11);
+            this.lblName.Location = new System.Drawing.Point(15, 18);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(38, 13);
             this.lblName.TabIndex = 1;
@@ -80,7 +79,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(145, 7);
+            this.txtName.Location = new System.Drawing.Point(55, 15);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 2;
@@ -88,7 +87,7 @@
             // lblTheme
             // 
             this.lblTheme.AutoSize = true;
-            this.lblTheme.Location = new System.Drawing.Point(251, 9);
+            this.lblTheme.Location = new System.Drawing.Point(161, 18);
             this.lblTheme.Name = "lblTheme";
             this.lblTheme.Size = new System.Drawing.Size(43, 13);
             this.lblTheme.TabIndex = 3;
@@ -97,7 +96,7 @@
             // cmbTheme
             // 
             this.cmbTheme.FormattingEnabled = true;
-            this.cmbTheme.Location = new System.Drawing.Point(300, 8);
+            this.cmbTheme.Location = new System.Drawing.Point(210, 15);
             this.cmbTheme.Name = "cmbTheme";
             this.cmbTheme.Size = new System.Drawing.Size(121, 21);
             this.cmbTheme.TabIndex = 4;
@@ -106,7 +105,7 @@
             // lblSubtheme
             // 
             this.lblSubtheme.AutoSize = true;
-            this.lblSubtheme.Location = new System.Drawing.Point(427, 10);
+            this.lblSubtheme.Location = new System.Drawing.Point(336, 18);
             this.lblSubtheme.Name = "lblSubtheme";
             this.lblSubtheme.Size = new System.Drawing.Size(58, 13);
             this.lblSubtheme.TabIndex = 5;
@@ -115,7 +114,7 @@
             // cmbSubtheme
             // 
             this.cmbSubtheme.FormattingEnabled = true;
-            this.cmbSubtheme.Location = new System.Drawing.Point(491, 8);
+            this.cmbSubtheme.Location = new System.Drawing.Point(400, 15);
             this.cmbSubtheme.Name = "cmbSubtheme";
             this.cmbSubtheme.Size = new System.Drawing.Size(121, 21);
             this.cmbSubtheme.TabIndex = 6;
@@ -123,25 +122,17 @@
             // btnSearch
             // 
             this.btnSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSearch.Location = new System.Drawing.Point(12, 7);
+            this.btnSearch.Location = new System.Drawing.Point(540, 12);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 50);
+            this.btnSearch.Size = new System.Drawing.Size(75, 25);
             this.btnSearch.TabIndex = 11;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // lblDivider1
-            // 
-            this.lblDivider1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDivider1.Location = new System.Drawing.Point(93, 7);
-            this.lblDivider1.Name = "lblDivider1";
-            this.lblDivider1.Size = new System.Drawing.Size(2, 50);
-            this.lblDivider1.TabIndex = 12;
-            // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(68, 374);
+            this.btnRemove.Location = new System.Drawing.Point(71, 376);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(90, 25);
             this.btnRemove.TabIndex = 13;
@@ -151,7 +142,7 @@
             // 
             // btnAssemble
             // 
-            this.btnAssemble.Location = new System.Drawing.Point(228, 374);
+            this.btnAssemble.Location = new System.Drawing.Point(231, 376);
             this.btnAssemble.Name = "btnAssemble";
             this.btnAssemble.Size = new System.Drawing.Size(95, 25);
             this.btnAssemble.TabIndex = 14;
@@ -161,7 +152,7 @@
             // 
             // nudAssemble
             // 
-            this.nudAssemble.Location = new System.Drawing.Point(172, 376);
+            this.nudAssemble.Location = new System.Drawing.Point(175, 378);
             this.nudAssemble.Name = "nudAssemble";
             this.nudAssemble.Size = new System.Drawing.Size(50, 20);
             this.nudAssemble.TabIndex = 18;
@@ -169,21 +160,21 @@
             // lblDivider2
             // 
             this.lblDivider2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDivider2.Location = new System.Drawing.Point(164, 375);
+            this.lblDivider2.Location = new System.Drawing.Point(167, 376);
             this.lblDivider2.Name = "lblDivider2";
             this.lblDivider2.Size = new System.Drawing.Size(2, 25);
             this.lblDivider2.TabIndex = 19;
             // 
             // nudRemove
             // 
-            this.nudRemove.Location = new System.Drawing.Point(12, 376);
+            this.nudRemove.Location = new System.Drawing.Point(15, 378);
             this.nudRemove.Name = "nudRemove";
             this.nudRemove.Size = new System.Drawing.Size(50, 20);
             this.nudRemove.TabIndex = 20;
             // 
             // btnDisassemble
             // 
-            this.btnDisassemble.Location = new System.Drawing.Point(385, 374);
+            this.btnDisassemble.Location = new System.Drawing.Point(388, 376);
             this.btnDisassemble.Name = "btnDisassemble";
             this.btnDisassemble.Size = new System.Drawing.Size(95, 25);
             this.btnDisassemble.TabIndex = 21;
@@ -193,16 +184,16 @@
             // 
             // nudDisassemble
             // 
-            this.nudDisassemble.Location = new System.Drawing.Point(329, 376);
+            this.nudDisassemble.Location = new System.Drawing.Point(332, 378);
             this.nudDisassemble.Name = "nudDisassemble";
             this.nudDisassemble.Size = new System.Drawing.Size(50, 20);
             this.nudDisassemble.TabIndex = 22;
             // 
             // frmInventorySets
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(634, 411);
+            this.ControlBox = false;
             this.Controls.Add(this.nudDisassemble);
             this.Controls.Add(this.btnDisassemble);
             this.Controls.Add(this.nudRemove);
@@ -210,7 +201,6 @@
             this.Controls.Add(this.nudAssemble);
             this.Controls.Add(this.btnAssemble);
             this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.lblDivider1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cmbSubtheme);
             this.Controls.Add(this.lblSubtheme);
@@ -219,9 +209,13 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.dataGridView);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmInventorySets";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sets Inventory";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmInventorySets_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAssemble)).EndInit();
@@ -242,7 +236,6 @@
         private System.Windows.Forms.Label lblSubtheme;
         private System.Windows.Forms.ComboBox cmbSubtheme;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label lblDivider1;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnAssemble;
         private System.Windows.Forms.NumericUpDown nudAssemble;

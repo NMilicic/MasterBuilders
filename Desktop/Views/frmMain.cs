@@ -54,5 +54,10 @@ namespace Desktop.Views
         {
             _controller.Close();
         }
+
+        private void menuBA_Click(object sender, EventArgs e)
+        {
+            _controller.ShowBA();
+        }
     }
 }

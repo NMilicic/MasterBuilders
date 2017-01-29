@@ -1,6 +1,7 @@
 ﻿using Data.Domain;
 using Desktop.BaseLib;
 using Desktop.Views;
+using System.Windows.Forms;
 
 namespace Desktop.Controllers
 {
@@ -17,42 +18,62 @@ namespace Desktop.Controllers
             _parent = parent;
         }
 
-        public void Logout()
-        {
-            _view.Close();
-        }
-
         public void ShowDatabaseSets()
         {
             var newForm = new frmDatabaseSets(_user);
-            newForm.ShowDialog();
+            ShowView(newForm);
         }
 
         public void ShowDatabaseParts()
         {
-            //TODO showdatabaseparts
+            var newForm = new frmDatabaseParts(_user);
+            ShowView(newForm);
         }
 
         public void ShowInventorySets()
         {
             var newForm = new frmInventorySets(_user);
-            newForm.ShowDialog();
+            ShowView(newForm);
         }
 
         public void ShowInventoryParts()
         {
-            //TODO showinventoryparts
+            var newForm = new frmInventoryParts(_user);
+            ShowView(newForm);
         }
 
         public void ShowWishlist()
         {
             var newForm = new frmWishlist(_user);
-            newForm.ShowDialog();
+            ShowView(newForm);
+        }
+
+        public void ShowBA()
+        {
+            /*var newForm = new frmBA();
+            ShowView(newForm);*/
+        }
+
+        public void Logout()
+        {
+            _view.Close();
         }
 
         public void Close()
         {
             _parent.Show();
+        }
+
+        private void ShowView(Form form)
+        {
+            var parent = (Form)_view;
+            foreach (var c in parent.MdiChildren)
+            {
+                c.Close();
+            }
+            
+            form.MdiParent = (Form) _view;
+            form.Show();
         }
     }
 }

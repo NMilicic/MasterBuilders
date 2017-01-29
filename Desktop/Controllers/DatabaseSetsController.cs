@@ -49,7 +49,7 @@ namespace Desktop.Controllers
             var sb = new StringBuilder();
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
-            sb.Append("Theme:").Append(_view.Themes.SelectedItem).Append(";");
+            sb.Append("Theme:").Append(_view.Theme.SelectedItem).Append(";");
             sb.Append("Subtheme:").Append("").Append(";");
             sb.Append("YearFrom:").Append("").Append(";");
             sb.Append("YearTo:").Append("").Append(";");
@@ -62,7 +62,7 @@ namespace Desktop.Controllers
 
         public void ThemeSelected()
         {
-            var theme = _view.Themes.SelectedItem;
+            var theme = _view.Theme.SelectedItem;
             //TODO update subtheme combobox
         }
         #endregion
@@ -133,7 +133,7 @@ namespace Desktop.Controllers
             var themeNames = from t in themes select t.ImeTema;
             var data = themeNames.ToList();
             data.Insert(0, "");
-            _view.Themes.DataSource = data;
+            _view.Theme.DataSource = data;
         }
 
         private void UpdateDataGirdView()
@@ -162,6 +162,7 @@ namespace Desktop.Controllers
 
         private int GetSelectedSetId()
         {
+            //TODO check for null
             var idString = _view.DataGridView.SelectedRows[0].Cells["Id"].Value.ToString();
             var setId = int.Parse(idString);
             return setId;
