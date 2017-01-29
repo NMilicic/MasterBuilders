@@ -13,9 +13,9 @@ namespace Business.Services
 {
     public class WishlistService : IWishlistService
     {
-        Repository<Wishlist> wishlistRepository = new Repository<Wishlist>();
-        Repository<Korisnik> korisnikRepository = new Repository<Korisnik>();
-        Repository<LSet> setRepository = new Repository<LSet>();
+        IRepository<Wishlist> wishlistRepository = new Repository<Wishlist>();
+        IRepository<Korisnik> korisnikRepository = new Repository<Korisnik>();
+        IRepository<LSet> setRepository = new Repository<LSet>();
 
         public IQueryable<Wishlist> GetAll(int take = -1, int offset = 0)
         {
@@ -161,7 +161,7 @@ namespace Business.Services
                         query = FilterByTema(field.Value, query);
                         break;
                     case SearchEnum.Komada:
-                        query = FilterByTema(field.Value, query);
+                        query = FilterByBrojKomada(field.Value, query);
                         break;
                     case SearchEnum.Error:
                         continue;

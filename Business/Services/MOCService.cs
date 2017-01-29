@@ -13,12 +13,46 @@ namespace Business.Services
 {
     public class MOCService : IMOCService
     {
-        Repository<Moc> mocRepository = new Repository<Moc>();
-        Repository<Korisnik> korisnikRepository = new Repository<Korisnik>();
-        Repository<UserMoc> userMocRepository = new Repository<UserMoc>();
-        Repository<Kockica> kockicaRepository = new Repository<Kockica>();
-        Repository<Boja> bojaRepository = new Repository<Boja>();
-        Repository<MocDijelovi> mocDijeloviRepository = new Repository<MocDijelovi>();
+        IRepository<Moc> mocRepository = new Repository<Moc>();
+        IRepository<Korisnik> korisnikRepository = new Repository<Korisnik>();
+        IRepository<UserMoc> userMocRepository = new Repository<UserMoc>();
+        IRepository<Kockica> kockicaRepository = new Repository<Kockica>();
+        IRepository<Boja> bojaRepository = new Repository<Boja>();
+        IRepository<MocDijelovi> mocDijeloviRepository = new Repository<MocDijelovi>();
+
+        #region Default actions
+        public IQueryable<Moc> GetAll(int take = -1, int offset = 0)
+        {
+            var query = mocRepository.Query().Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
+            return query;
+        }
+
+        public Moc GetById(int id)
+        {
+            return mocRepository.GetById(id);
+        }
+
+        public void SaveOrUpdate(Moc moc)
+        {
+            mocRepository.Save(moc);
+        }
+
+        public void Delete(int id)
+        {
+            var set = mocRepository.GetById(id);
+            if (set != null)
+            {
+                mocRepository.Delete(set);
+            }
+            else
+            {
+                throw new DataException("Moc nije pronađen!");
+            }
+        }
+
+        #endregion
 
         public IQueryable<Moc> GetAllByAuthor(int authorId, int take = -1, int offset = 0)
         {
@@ -248,8 +282,8 @@ namespace Business.Services
 
         private IQueryable<Moc> FilterByAuthor(string searchPattern, IQueryable<Moc> query)
         {
-            return query.Where(x => 
-                x.UserMoc != null && 
+            return query.Where(x =>
+                x.UserMoc != null &&
                 x.UserMoc.Korisnik != null &&
                 (x.UserMoc.Korisnik.Ime.Contains(searchPattern) ||
                 x.UserMoc.Korisnik.Prezime.Contains(searchPattern)));

@@ -1,4 +1,5 @@
 ﻿using Business.Enums;
+using Business.Exceptions;
 using Business.Interfaces;
 using Data;
 using Data.Domain;
@@ -10,8 +11,9 @@ namespace Business.Services
 {
     public class KockiceService : IKockiceService
     {
-        Repository<Kockica> kockicaRepository = new Repository<Kockica>();
+        IRepository<Kockica> kockicaRepository = new Repository<Kockica>();
 
+        #region Default actions
         public IQueryable<Kockica> GetAll(int take = -1, int offset = 0)
         {
             var query = kockicaRepository.Query().Skip(offset);
@@ -24,6 +26,26 @@ namespace Business.Services
         {
             return kockicaRepository.GetById(id);
         }
+
+        public void SaveOrUpdate(Kockica set)
+        {
+            kockicaRepository.Save(set);
+        }
+
+        public void Delete(int id)
+        {
+            var set = kockicaRepository.GetById(id);
+            if (set != null)
+            {
+                kockicaRepository.Delete(set);
+            }
+            else
+            {
+                throw new DataException("Kockica nije pronađena!");
+            }
+        }
+
+        #endregion
 
         public IQueryable<Kockica> GetAllForUser(int userId, int take = -1, int offset = 0)
         {
