@@ -122,7 +122,7 @@ namespace Business.Services
         public IQueryable<LSet> GetAllSetsWithBricks(List<int> bricksIds, int take = -1, int offset = 0)
         {
             var setoviDijelovi = dijeloviRepository.Query().Where(s => bricksIds.Contains(s.Kockica.Id));
-            var sets = setoviDijelovi.Select(t => t.Set).Distinct();
+            var sets = setoviDijelovi.Select(t => t.Set);
 
             sets = sets.Skip(offset);
             if (take > 0)
