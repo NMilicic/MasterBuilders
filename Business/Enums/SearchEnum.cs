@@ -8,8 +8,9 @@
         Opis = 3,
         GodinaProizvodnje = 4,
         Tema = 5,
-        Komada = 6,
-        Author = 7,
-        Kategorija = 8
+        NadTema = 6,
+        Komada = 7,
+        Author = 8,
+        Kategorija = 9
     }
 }

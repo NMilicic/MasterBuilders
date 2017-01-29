@@ -251,10 +251,20 @@ namespace Business.Services
 
         private IQueryable<Moc> FilterByYear(string yearString, IQueryable<Moc> query)
         {
-            int year;
-            var parseYear = Int32.TryParse(yearString, out year);
+            var range = yearString.Split('-');
+            if (range.Length > 1)
+            {
+                int lowerBound;
+                var parseLowerBound = Int32.TryParse(range[0], out lowerBound);
+                int upperBound;
+                var parseUpperBound = Int32.TryParse(range[1], out upperBound);
 
-            return parseYear ? query.Where(x => x.GodinaProizvodnje == year) : query;
+                if (parseLowerBound && parseUpperBound)
+                {
+                    return query.Where(x => x.GodinaProizvodnje >= lowerBound && x.GodinaProizvodnje <= upperBound);
+                }
+            }
+            return query;
         }
 
         private IQueryable<Moc> FilterByTema(string tema, IQueryable<Moc> query)
