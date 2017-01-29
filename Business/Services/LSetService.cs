@@ -85,26 +85,26 @@ namespace Business.Services
             var searchFields = ParseSearchParameters(searchParameters);
             foreach (var field in searchFields)
             {
-                LSetSearchEnum parsedEnum;
+                SearchEnum parsedEnum;
                 Enum.TryParse(field.Key, true, out parsedEnum);
                 switch (parsedEnum)
                 {
-                    case LSetSearchEnum.Name:
+                    case SearchEnum.Name:
                         query = FilterByName(field.Value, query);
                         break;
-                    case LSetSearchEnum.Opis:
+                    case SearchEnum.Opis:
                         query = FilterByDescription(field.Value, query);
                         break;
-                    case LSetSearchEnum.BrojKockica:
+                    case SearchEnum.BrojKockica:
                         query = FilterByBrojKockica(field.Value, query);
                         break;
-                    case LSetSearchEnum.GodinaProizvodnje:
+                    case SearchEnum.GodinaProizvodnje:
                         query = FilterByYear(field.Value, query);
                         break;
-                    case LSetSearchEnum.Tema:
+                    case SearchEnum.Tema:
                         query = FilterByTema(field.Value, query);
                         break;
-                    case LSetSearchEnum.Error:
+                    case SearchEnum.Error:
                         continue;
                 }
             }

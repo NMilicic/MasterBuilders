@@ -27,5 +27,12 @@ namespace WebApi.Controllers.Api
 
             return Request.CreateResponse(HttpStatusCode.Created, "Items added to wishlist");
         }
+
+        [HttpGet]
+        public List<WishlistApi> Search(int userId, string searchParameters, int take = -1, int offset = 0)
+        {
+            var filteredSets = wishlistService.Search(userId, searchParameters, take, offset).ToList();
+            return Mapper.Map<List<WishlistApi>>(filteredSets);
+        }
     }
 }

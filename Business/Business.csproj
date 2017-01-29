@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Enums\LSetSearchEnum.cs" />
+    <Compile Include="Enums\SearchEnum.cs" />
     <Compile Include="Exceptions\DataException.cs" />
     <Compile Include="Exceptions\KorisnikException.cs" />
     <Compile Include="Exceptions\WishlistException.cs" />

@@ -53,5 +53,12 @@ namespace WebApi.Controllers.Api
 
             return Request.CreateResponse(HttpStatusCode.Created, "Sets removed from inventory");
         }
+
+        [HttpGet]
+        public List<UserSetApi> Search(int userId, string searchParameters, int take = -1, int offset = 0)
+        {
+            var filteredSets = userSetServices.Search(userId, searchParameters, take, offset).ToList();
+            return Mapper.Map<List<UserSetApi>>(filteredSets);
+        }
     }
 }

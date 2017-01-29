@@ -24,5 +24,12 @@ namespace WebApi.Controllers.Api
             var kockice = kockicaService.GetAllForUser(userId, take, offset).ToList();
             return Mapper.Map<List<KockicaApi>>(kockice);
         }
+
+        [HttpGet]
+        public List<KockicaApi> Search(string searchParameters, int take = -1, int offset = 0)
+        {
+            var filteredSets = kockicaService.Search(searchParameters, take, offset).ToList();
+            return Mapper.Map<List<KockicaApi>>(filteredSets);
+        }
     }
 }

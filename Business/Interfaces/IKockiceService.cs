@@ -11,5 +11,6 @@ namespace Business.Interfaces
     {
         IQueryable<Kockica> GetAll(int take = -1, int offset = 0);
         IQueryable<Kockica> GetAllForUser(int userId, int take = -1, int offset = 0);
+        IQueryable<Kockica> Search(string searchParameters, int take = -1, int offset = 0);
     }
 }

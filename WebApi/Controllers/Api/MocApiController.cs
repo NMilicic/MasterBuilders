@@ -34,5 +34,11 @@ namespace WebApi.Controllers.Api
             var moc = mocService.AddDijeloviMoc(mocToUpdate.Id, Mapper.Map<List<MocDijelovi>>(mocToUpdate.Dijelovi));
             return Mapper.Map<MocApi>(moc);
         }
+        [HttpGet]
+        public List<SetApi> Search(string searchParameters, int take = -1, int offset = 0)
+        {
+            var filteredSets = mocService.Search(searchParameters, take, offset).ToList();
+            return Mapper.Map<List<SetApi>>(filteredSets);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Business.Exceptions;
+﻿using Business.Enums;
+using Business.Exceptions;
 using Business.Interfaces;
 using Data;
 using Data.Domain;
@@ -145,6 +146,116 @@ namespace Business.Services
             }
 
         }
+
+        public IQueryable<Moc> Search(string searchParameters, int take = -1, int offset = 0)
+        {
+            var query = mocRepository.Query();
+            var searchFields = ParseSearchParameters(searchParameters);
+            foreach (var field in searchFields)
+            {
+                SearchEnum parsedEnum;
+                Enum.TryParse(field.Key, true, out parsedEnum);
+                switch (parsedEnum)
+                {
+                    case SearchEnum.Name:
+                        query = FilterByName(field.Value, query);
+                        break;
+                    case SearchEnum.Opis:
+                        query = FilterByDescription(field.Value, query);
+                        break;
+                    case SearchEnum.BrojKockica:
+                        query = FilterByBrojKockica(field.Value, query);
+                        break;
+                    case SearchEnum.GodinaProizvodnje:
+                        query = FilterByYear(field.Value, query);
+                        break;
+                    case SearchEnum.Tema:
+                        query = FilterByTema(field.Value, query);
+                        break;
+                    case SearchEnum.Author:
+                        query = FilterByAuthor(field.Value, query);
+                        break;
+                    case SearchEnum.Error:
+                        continue;
+                }
+            }
+
+            query = query.Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
+
+            return query;
+        }
+
+
+        #region Private methods
+        private Dictionary<string, string> ParseSearchParameters(string searchParameters)
+        {
+            var searchFields = searchParameters.Split(';');
+            var searchDictionary = new Dictionary<string, string>();
+            foreach (var field in searchFields)
+            {
+                var fieldSplitted = field.Split(':');
+                if (fieldSplitted.Length > 1)
+                {
+                    searchDictionary.Add(fieldSplitted[0], fieldSplitted[1]);
+                }
+            }
+
+            return searchDictionary;
+        }
+
+        private IQueryable<Moc> FilterByName(string searchPattern, IQueryable<Moc> query)
+        {
+            return query.Where(x => x.Ime.Contains(searchPattern));
+        }
+
+        private IQueryable<Moc> FilterByDescription(string searchPattern, IQueryable<Moc> query)
+        {
+            return query.Where(x => x.Opis.Contains(searchPattern));
+        }
+
+        private IQueryable<Moc> FilterByYear(string yearString, IQueryable<Moc> query)
+        {
+            int year;
+            var parseYear = Int32.TryParse(yearString, out year);
+
+            return parseYear ? query.Where(x => x.GodinaProizvodnje == year) : query;
+        }
+
+        private IQueryable<Moc> FilterByTema(string tema, IQueryable<Moc> query)
+        {
+            return query.Where(x => x.Tema1.Contains(tema) || x.Tema2.Contains(tema) || x.Tema3.Contains(tema));
+        }
+
+        private IQueryable<Moc> FilterByBrojKockica(string searchPattern, IQueryable<Moc> query)
+        {
+            var range = searchPattern.Split('-');
+            if (range.Length > 1)
+            {
+                int lowerBound;
+                var parseLowerBound = Int32.TryParse(range[0], out lowerBound);
+                int upperBound;
+                var parseUpperBound = Int32.TryParse(range[1], out upperBound);
+
+                if (parseLowerBound && parseUpperBound)
+                {
+                    return query.Where(x => x.DijeloviBroj >= lowerBound && x.DijeloviBroj <= upperBound);
+                }
+            }
+            return query;
+        }
+
+        private IQueryable<Moc> FilterByAuthor(string searchPattern, IQueryable<Moc> query)
+        {
+            return query.Where(x => 
+                x.UserMoc != null && 
+                x.UserMoc.Korisnik != null &&
+                (x.UserMoc.Korisnik.Ime.Contains(searchPattern) ||
+                x.UserMoc.Korisnik.Prezime.Contains(searchPattern)));
+        }
+
+        #endregion
     }
 }
 

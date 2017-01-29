@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces
 {
-    public interface IWishlistService: IService<Wishlist>
+    public interface IWishlistService : IService<Wishlist>
     {
         IQueryable<Wishlist> GetAllSetsFromWishlistForUser(int userId, int take = -1, int offset = 0);
+        IQueryable<Wishlist> Search(int userId, string searchParameters, int take = -1, int offset = 0);
         Wishlist AddSetToWishlistForUser(int userId, int setId, int pieces);
         Wishlist RemoveSetFromWishlistForUser(int userId, int setId, int pieces);
     }
