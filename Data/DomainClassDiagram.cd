@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Data.Domain.Boja">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Domain\Boja.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="MocDijelovi" />
+      <Property Name="SetoviDijelovi" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Data.Domain.Kockica">
+    <Position X="6.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAQA=</HashCode>
+      <FileName>Domain\Kockica.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="SetoviDijelovi" />
+      <Property Name="Korisnik" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Data.Domain.Korisnik">
+    <Position X="9.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACgAAQACABAAACAAAAAAAAAAQAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Domain\Korisnik.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Setovi" />
+      <Property Name="Wishlist" />
+      <Property Name="Moc" />
+      <Property Name="Kockice" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Data.Domain.LSet">
+    <Position X="5.75" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAQAAAgAACABACAAAAAAAAAAAAAAAARAIAAAEA=</HashCode>
+      <FileName>Domain\LSet.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tema" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="KorisnikSet" />
+      <Property Name="Dijelovi" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Data.Domain.Moc">
+    <Position X="12.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAECAQAQAAAAAACABAAAACAAAAAAAAIAAAAAAAAUAEA=</HashCode>
+      <FileName>Domain\Moc.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="UserMoc" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Dijelovi" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Data.Domain.MocDijelovi">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAABAAAAAAEAAAQAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Domain\MocDijelovi.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Moc" />
+      <Property Name="Kockica" />
+      <Property Name="Boja" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Data.Domain.SetoviDijelovi">
+    <Position X="3.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABAABAAAAAAEAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Domain\SetoviDijelovi.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Kockica" />
+      <Property Name="Set" />
+      <Property Name="Boja" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Data.Domain.Tema">
+    <Position X="3.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAgQAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Domain\Tema.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="NadTema" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Data.Domain.UserKockica">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAACAAAAAAAAAACAAAAAAAAAAABAAAAAAAgAAA=</HashCode>
+      <FileName>Domain\UserKockica.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Kockica" />
+      <Property Name="Korisnik" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Data.Domain.UserMoc">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAQCAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\UserMoc.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Moc" />
+      <Property Name="Korisnik" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Data.Domain.UserSet">
+    <Position X="9.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABAAAAAAAAAAAAAACAAABAAgAAAAAAAA=</HashCode>
+      <FileName>Domain\UserSet.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Korisnik" />
+      <Property Name="Set" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Data.Domain.Wishlist">
+    <Position X="9.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABAAAAAAAAAAAAAAAAAABAAgAAAAAAAA=</HashCode>
+      <FileName>Domain\Wishlist.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Set" />
+      <Property Name="Korisnik" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -13,10 +13,10 @@ namespace Business.Services
 {
     public class UserSetService : IUserSetService
     {
-        Repository<UserSet> inventroyRepository = new Repository<UserSet>();
-        Repository<LSet> setRepository = new Repository<LSet>();
-        Repository<Wishlist> wishlistRepository = new Repository<Wishlist>();
-        Repository<Korisnik> korisnikRepository = new Repository<Korisnik>();
+        IRepository<UserSet> inventroyRepository = new Repository<UserSet>();
+        IRepository<LSet> setRepository = new Repository<LSet>();
+        IRepository<Wishlist> wishlistRepository = new Repository<Wishlist>();
+        IRepository<Korisnik> korisnikRepository = new Repository<Korisnik>();
 
         #region Default actions
         public IQueryable<UserSet> GetAll(int take, int offset)
@@ -207,7 +207,7 @@ namespace Business.Services
                         query = FilterByTema(field.Value, query);
                         break;
                     case SearchEnum.Komada:
-                        query = FilterByTema(field.Value, query);
+                        query = FilterByBrojKomada(field.Value, query);
                         break;
                     case SearchEnum.Error:
                         continue;
