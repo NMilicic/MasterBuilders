@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlockController.cs" />
+    <Compile Include="Controllers\CommunityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -252,10 +253,14 @@
     <Content Include="Views\Set\Details.cshtml" />
     <Content Include="Views\Block\SetParts.cshtml" />
     <Content Include="Views\Inventory\MySets.cshtml" />
+    <Content Include="Views\Wishlist\MySets.cshtml" />
+    <Content Include="Views\Community\Index.cshtml" />
+    <Content Include="Views\Community\Profile.cshtml" />
+    <Content Include="Views\Search\Blocks.cshtml" />
+    <Content Include="Views\Block\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Wishlist\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
