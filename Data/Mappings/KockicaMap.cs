@@ -16,7 +16,8 @@ namespace Data.Mappings
 
             Id(x => x.Id).Column("id");
             Map(x => x.Ime).Column("ime");
-            Map(x => x.Kategorija).Column("kategorija");
+
+            References(x => x.Kategorija).Column("kategorija");
 
             HasManyToMany(x => x.Korisnik)
               .Cascade.All()

@@ -58,6 +58,10 @@ namespace WebApi.App_Start
 
                 cfg.CreateMap<MocDijeloviApi, MocDijelovi>()
                 .ForMember(dest => dest.Moc, opt => opt.Ignore());
+
+                cfg.CreateMap<Kategorija, KategorijaApi>();
+                cfg.CreateMap<KategorijaApi, Kategorija>()
+                .ForMember(dest => dest.Kockice, opt => opt.Ignore()); ;
             });
 
         }

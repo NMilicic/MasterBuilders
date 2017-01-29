@@ -24,25 +24,31 @@ namespace Tests
 
         private void IniData()
         {
+            var kategorija1 = new Kategorija()
+            {
+                Id = 1,
+                Ime = "kat 1"
+            };
+
             var kockica1 = new Kockica()
             {
                 Ime = "Kockica 1",
-                Kategorija = "kat 1"
+                Kategorija = kategorija1
             };
             var kockica2 = new Kockica()
             {
                 Ime = "Kockica 2",
-                Kategorija = "kat 1"
+                Kategorija = kategorija1
             };
             var kockica3 = new Kockica()
             {
                 Ime = "Kockica 3",
-                Kategorija = "kat 1"
+                Kategorija = kategorija1
             };
             var kockica4 = new Kockica()
             {
                 Ime = "Kockica 4",
-                Kategorija = "kat 1"
+                Kategorija = kategorija1
             };
 
             var boja1 = new Boja()

@@ -230,7 +230,7 @@ namespace Business.Services
             foreach (var field in searchFields)
             {
                 var fieldSplitted = field.Split(':');
-                if (fieldSplitted.Length > 1)
+                if (fieldSplitted.Length > 1 && fieldSplitted[0].Length > 0 && fieldSplitted[1].Length > 0)
                 {
                     searchDictionary.Add(fieldSplitted[0], fieldSplitted[1]);
                 }

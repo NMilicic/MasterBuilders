@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="Database.cs" />
     <Compile Include="Domain\Boja.cs" />
+    <Compile Include="Domain\Kategorija.cs" />
     <Compile Include="Domain\Kockica.cs" />
     <Compile Include="Domain\Moc.cs" />
     <Compile Include="Domain\MocDijelovi.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Domain\UserSet.cs" />
     <Compile Include="Domain\Wishlist.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Mappings\KategorijaMap.cs" />
     <Compile Include="Mappings\UserKockicaMap.cs" />
     <Compile Include="Mappings\WishlistMap.cs" />
     <Compile Include="Mappings\UserSetMap.cs" />

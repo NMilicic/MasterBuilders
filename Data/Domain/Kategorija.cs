@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Data.Domain
 {
-    public class Kockica
+    public class Kategorija
     {
         public virtual int Id { get; set; }
         public virtual string Ime { get; set; }
-        public virtual Kategorija Kategorija { get; set; }
 
-        public virtual IEnumerable<Korisnik> Korisnik { get; set; }
-        public virtual IEnumerable<SetoviDijelovi> SetoviDijelovi { get; set; }
+        public virtual IEnumerable<Kockica> Kockice { get; set; }
     }
 }
