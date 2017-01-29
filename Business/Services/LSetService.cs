@@ -207,7 +207,7 @@ namespace Business.Services
 
         private IQueryable<LSet> FilterByTema(string tema, IQueryable<LSet> query)
         {
-            return query.Where(x => x.Tema.ImeTema == tema || (x.Tema.NadTema != null && x.Tema.NadTema.ImeTema == tema));
+            return query.Where(x => x.Tema.ImeTema == tema);
         }
 
         private IQueryable<LSet> FilterByNadTema(string tema, IQueryable<LSet> query)

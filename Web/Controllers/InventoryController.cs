@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
+using Web.Helpers;
 
 namespace Web.Controllers
 {
@@ -44,22 +45,11 @@ namespace Web.Controllers
             
             IEnumerable<Tema> themes = themeRepository.Query();
 
-            //BrojKockica:0-250;Name:Prvi;GodinaProizvodnje:2017;Tema:Tema 1;
-            int minPieces = 0;
-            int maxPieces = int.MaxValue;
-            if (model.MinPieces.HasValue) minPieces = (int)model.MinPieces;
-            if (model.MaxPieces.HasValue && model.MaxPieces > minPieces) maxPieces = (int)model.MaxPieces;
-            string pieces = "BrojKockica:" + minPieces + "-" + maxPieces;
-            string name = "Name:" + model.Name;
-
-            string year = (!model.Year.HasValue) ? "" : "GodinaProizvodnje:" + model.Year;
-            string theme = (model.ThemeId == "-1") ? "" : "Tema:" + themeRepository.GetById(Int32.Parse(model.ThemeId)).ImeTema;
-
-            string searchParameters = string.Join(";", new string[] { pieces, name, year, theme });
-
+            
             model.AllThemes = themes;
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-
+            
+            string searchParameters = SearchHelper.ConstructSearchParameters(model);
             var sets = userSetService.Search(Int32.Parse(user.Id), searchParameters);
             ViewBag.sets = sets.ToList();
 

@@ -17,9 +17,11 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Year, new { @class = "col-md-2 control-label" })
+            @Html.Label("Year", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.MinYear, new { @class = "form-control" })
+                -
+                @Html.TextBoxFor(m => m.MaxYear, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">

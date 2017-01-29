@@ -38,9 +38,13 @@ namespace Web.Models
         [Display(Name = "Name")]
         public string Name { get; set; }
 
-        [Display(Name = "Year")]
+        
         [Range(0, int.MaxValue, ErrorMessage = "Must be positive number")]
-        public int? Year { get; set; }
+        public int? MinYear { get; set; }
+
+        [Range(0, int.MaxValue, ErrorMessage = "Must be positive number")]
+        public int? MaxYear { get; set; }
+
 
         [Range(0, int.MaxValue, ErrorMessage = "Must be positive number")]
         public int? MinPieces { get; set; }

@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Business.Services;
 using Data;
 using System.Diagnostics;
+using Web.Helpers;
 
 namespace Web.Controllers
 {
@@ -41,19 +42,7 @@ namespace Web.Controllers
             Repository<Data.Domain.Tema> themeRepository = new Repository<Data.Domain.Tema>();
             IEnumerable<Data.Domain.Tema> themes = themeRepository.Query();
 
-            //BrojKockica:0-250;Name:Prvi;GodinaProizvodnje:2017;Tema:Tema 1;
-            int minPieces = 0;
-            int maxPieces = int.MaxValue;
-            if (model.MinPieces.HasValue) minPieces = (int) model.MinPieces;
-            if (model.MaxPieces.HasValue && model.MaxPieces > minPieces) maxPieces = (int)model.MaxPieces;
-            string pieces = "BrojKockica:" + minPieces + "-" + maxPieces;
-            //Debug.WriteLine(pieces);
-            string name = "Name:" + model.Name;
-
-            string year = (!model.Year.HasValue) ? "" : "GodinaProizvodnje:" + model.Year;
-            string theme = (model.ThemeId == "-1") ? "" : "Tema:" + themeRepository.GetById(Int32.Parse(model.ThemeId)).ImeTema;
-
-            string searchParameters = string.Join(";", new string[] { pieces, name, year, theme });
+            string searchParameters = SearchHelper.ConstructSearchParameters(model);
             Debug.WriteLine(searchParameters);
 
             model.AllThemes = themes;
