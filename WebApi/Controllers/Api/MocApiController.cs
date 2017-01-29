@@ -15,9 +15,9 @@ namespace WebApi.Controllers.Api
     public class MocApiController : ApiController
     {
         MOCService mocService = new MOCService();
-        public List<MocApi> GetAllByAuthor(int authorId)
+        public List<MocApi> GetAllByAuthor(int authorId, int take = -1, int offset = 0)
         {
-            var mocs = mocService.GetAllByAuthor(authorId).ToList();
+            var mocs = mocService.GetAllByAuthor(authorId, take, offset).ToList();
             return Mapper.Map<List<MocApi>>(mocs);
         }
 

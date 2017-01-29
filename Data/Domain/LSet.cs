@@ -14,6 +14,8 @@ namespace Data.Domain
         public virtual int DijeloviBroj { get; set; }
         public virtual string Opis { get; set; }
         public virtual int IdTema { get; set; }
+        public virtual string Upute { get; set; }
+        public virtual string Slike { get; set; }
 
         public virtual Tema Tema { get; set; }
         public virtual IEnumerable<UserSet> KorisnikSet { get; set; }

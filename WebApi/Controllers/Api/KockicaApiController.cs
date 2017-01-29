@@ -12,16 +12,16 @@ namespace WebApi.Controllers.Api
         KockiceService kockicaService = new KockiceService();
 
         [HttpGet]
-        public List<KockicaApi> GetAll()
+        public List<KockicaApi> GetAll(int take = -1, int offset = 0)
         {
-            var kockice = kockicaService.GetAll().ToList();
+            var kockice = kockicaService.GetAll(take, offset).ToList();
             return Mapper.Map<List<KockicaApi>>(kockice);
         }
 
         [HttpGet]
-        public List<KockicaApi> GetAllForUser(int userId)
+        public List<KockicaApi> GetAllForUser(int userId, int take = -1, int offset = 0)
         {
-            var kockice = kockicaService.GetAllForUser(userId).ToList();
+            var kockice = kockicaService.GetAllForUser(userId, take, offset).ToList();
             return Mapper.Map<List<KockicaApi>>(kockice);
         }
     }

@@ -16,9 +16,9 @@ namespace WebApi.Controllers.Api
         KorisnikServices korisnikServices = new KorisnikServices();
 
 
-        public List<KorisnikApi> GetAll()
+        public List<KorisnikApi> GetAll(int take= -1, int offset = 0)
         {
-            return korisnikServices.GetAll().ProjectTo<KorisnikApi>().ToList();
+            return korisnikServices.GetAll(take, offset).ProjectTo<KorisnikApi>().ToList();
         }
 
         [HttpPost]

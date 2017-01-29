@@ -18,9 +18,12 @@ namespace Business.Services
         Repository<Korisnik> korisnikRepository = new Repository<Korisnik>();
 
         #region Default actions
-        public IQueryable<UserSet> GetAll()
+        public IQueryable<UserSet> GetAll(int take, int offset)
         {
-            return inventroyRepository.Query();
+            var query = inventroyRepository.Query().Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
+            return query;
         }
 
         public UserSet GetById(int id)
@@ -48,9 +51,12 @@ namespace Business.Services
 
         #endregion
 
-        public IQueryable<UserSet> GetAllForUser(int userId)
+        public IQueryable<UserSet> GetAllForUser(int userId, int take = -1, int offset = 0)
         {
-            return inventroyRepository.Query().Where(s => s.Korisnik.Id == userId);
+            var query = inventroyRepository.Query().Where(s => s.Korisnik.Id == userId).Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
+            return query;
         }
 
         public UserSet AddToInventory(int userId, int setId, int pieces)

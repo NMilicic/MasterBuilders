@@ -8,7 +8,7 @@ namespace Business.Interfaces
 {
     public interface IService<T>
     {
-        IQueryable<T> GetAll();
+        IQueryable<T> GetAll(int take = -1, int offset = 0);
         T GetById(int id);
         void SaveOrUpdate(T obj);
         void Delete(int id);

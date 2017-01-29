@@ -19,10 +19,13 @@ namespace Business.Services
         Repository<Boja> bojaRepository = new Repository<Boja>();
         Repository<MocDijelovi> mocDijeloviRepository = new Repository<MocDijelovi>();
 
-        public IQueryable<Moc> GetAllByAuthor(int authorId)
+        public IQueryable<Moc> GetAllByAuthor(int authorId, int take = -1, int offset = 0)
         {
-            var mocs = mocRepository.Query().Where(m => m.UserMoc.Korisnik.Id == authorId);
-            return mocs;
+            var query = mocRepository.Query().Where(m => m.UserMoc.Korisnik.Id == authorId).Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
+
+            return query;
         }
 
         public Moc AddMoc(Moc newMoc)

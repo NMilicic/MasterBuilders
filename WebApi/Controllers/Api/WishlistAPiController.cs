@@ -14,9 +14,9 @@ namespace WebApi.Controllers.Api
     public class WishlistAPiController : ApiController
     {
         public WishlistService wishlistService = new WishlistService();
-        public List<WishlistApi> GetAllSetsFromWishlistForUser(int userId)
+        public List<WishlistApi> GetAllSetsFromWishlistForUser(int userId, int take = -1, int offset = 0)
         {
-            var tmp = wishlistService.GetAllSetsFromWishlistForUser(userId).ProjectTo<WishlistApi>().ToList();
+            var tmp = wishlistService.GetAllSetsFromWishlistForUser(userId, take, offset).ProjectTo<WishlistApi>().ToList();
             return tmp;
         }
 

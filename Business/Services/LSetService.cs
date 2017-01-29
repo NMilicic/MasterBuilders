@@ -44,9 +44,12 @@ namespace Business.Services
         }
 
         #region Default actions
-        public IQueryable<LSet> GetAll()
+        public IQueryable<LSet> GetAll(int take = -1, int offset = 0)
         {
-            return setRepository.Query();
+            var query = setRepository.Query().Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
+            return query;
         }
 
         public LSet GetById(int id)
@@ -76,7 +79,7 @@ namespace Business.Services
 
         #region Set specific actions
 
-        public IQueryable<LSet> Search(string searchParameters)
+        public IQueryable<LSet> Search(string searchParameters, int take = -1, int offset = 0)
         {
             var query = setRepository.Query();
             var searchFields = ParseSearchParameters(searchParameters);
@@ -106,14 +109,22 @@ namespace Business.Services
                 }
             }
 
+            query = query.Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
 
             return query;
         }
 
-        public IQueryable<LSet> GetAllSetsWithBricks(List<int> bricksIds)
+        public IQueryable<LSet> GetAllSetsWithBricks(List<int> bricksIds, int take = -1, int offset = 0)
         {
             var setoviDijelovi = dijeloviRepository.Query().Where(s => bricksIds.Contains(s.Kockica.Id));
             var sets = setoviDijelovi.Select(t => t.Set).Distinct();
+
+            sets = sets.Skip(offset);
+            if (take > 0)
+                sets = sets.Take(take);
+
             return sets;
         }
 

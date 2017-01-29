@@ -20,6 +20,8 @@ namespace Data.Mappings
             Map(x => x.DijeloviBroj).Column("dijelovi_broj");
             Map(x => x.Opis).Column("opis");
             Map(x => x.IdTema).Column("id_tema");
+            Map(x => x.Upute).Column("upute");
+            Map(x => x.Slike).Column("slika");
 
             References(x => x.Tema).Column("id_tema").ForeignKey("id");
 

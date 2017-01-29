@@ -9,7 +9,7 @@ namespace Business.Interfaces
 {
     public interface IWishlistService: IService<Wishlist>
     {
-        IQueryable<Wishlist> GetAllSetsFromWishlistForUser(int userId);
+        IQueryable<Wishlist> GetAllSetsFromWishlistForUser(int userId, int take = -1, int offset = 0);
         Wishlist AddSetToWishlistForUser(int userId, int setId, int pieces);
         Wishlist RemoveSetFromWishlistForUser(int userId, int setId, int pieces);
     }

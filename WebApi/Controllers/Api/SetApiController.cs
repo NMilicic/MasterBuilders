@@ -16,9 +16,9 @@ namespace WebApi.Controllers.Api
         LSetService setServices = new LSetService();
 
         [HttpGet]
-        public List<SetApi> GetAll()
+        public List<SetApi> GetAll(int take = -1, int offset = 0)
         {
-            var allSets = setServices.GetAll().ToList();
+            var allSets = setServices.GetAll(take, offset).ToList();
             return Mapper.Map<List<SetApi>>(allSets);
         }
 
@@ -30,16 +30,16 @@ namespace WebApi.Controllers.Api
         }
 
         [HttpGet]
-        public List<SetApi> GetSetsWithBricks([FromUri] int[] ids)
+        public List<SetApi> GetSetsWithBricks([FromUri] int[] ids, int take = -1, int offset = 0)
         {
-            var sets = setServices.GetAllSetsWithBricks(ids.ToList()).ToList();
+            var sets = setServices.GetAllSetsWithBricks(ids.ToList(), take, offset).ToList();
 
             return Mapper.Map<List<SetApi>>(sets);
         }
         [HttpGet]
-        public List<SetApi> Search(string searchParameters)
+        public List<SetApi> Search(string searchParameters, int take = -1, int offset = 0)
         {
-            var filteredSets = setServices.Search(searchParameters).ToList();
+            var filteredSets = setServices.Search(searchParameters, take, offset).ToList();
             return Mapper.Map<List<SetApi>>(filteredSets);
         }
 

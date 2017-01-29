@@ -24,7 +24,7 @@ namespace Business.Services
             this.korisnikRepository = korisnikRepository;
         }
 
-        public IQueryable<Korisnik> GetAll()
+        public IQueryable<Korisnik> GetAll(int take = -1, int offset = 0)
         {
             return korisnikRepository.Query();
         }

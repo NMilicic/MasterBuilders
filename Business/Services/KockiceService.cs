@@ -9,9 +9,12 @@ namespace Business.Services
     {
         Repository<Kockica> kockicaRepository = new Repository<Kockica>();
 
-        public IQueryable<Kockica> GetAll()
+        public IQueryable<Kockica> GetAll(int take = -1, int offset = 0)
         {
-            return kockicaRepository.Query();
+            var query = kockicaRepository.Query().Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
+            return query;
         }
 
         public Kockica GetById(int id)
@@ -19,9 +22,12 @@ namespace Business.Services
             return kockicaRepository.GetById(id);
         }
 
-        public IQueryable<Kockica> GetAllForUser(int userId)
+        public IQueryable<Kockica> GetAllForUser(int userId, int take = -1, int offset = 0)
         {
-            return kockicaRepository.Query().Where(x => x.Korisnik.Any(u => u.Id == userId));
+            var query = kockicaRepository.Query().Where(x => x.Korisnik.Any(u => u.Id == userId)).Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
+            return query;
         }
     }
 }

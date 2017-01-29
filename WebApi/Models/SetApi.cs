@@ -13,6 +13,8 @@ namespace WebApi.Models
         public int GodinaProizvodnje { get; set; }
         public int DijeloviBroj { get; set; }
         public string Opis { get; set; }
+        public string Upute { get; set; }
+        public string Slike { get; set; }
 
         public TemaApi Tema { get; set; }
         public TemaApi NadTema { get; set; }

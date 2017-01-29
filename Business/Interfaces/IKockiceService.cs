@@ -9,7 +9,7 @@ namespace Business.Interfaces
 {
     public interface IKockiceService
     {
-        IQueryable<Kockica> GetAll();
-        IQueryable<Kockica> GetAllForUser(int userId);
+        IQueryable<Kockica> GetAll(int take = -1, int offset = 0);
+        IQueryable<Kockica> GetAllForUser(int userId, int take = -1, int offset = 0);
     }
 }

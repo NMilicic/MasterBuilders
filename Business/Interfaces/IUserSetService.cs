@@ -12,6 +12,6 @@ namespace Business.Interfaces
         UserSet AddToInventory(int userId, int setId, int pieces);
         UserSet RemoveFromInventory(int userId, int setId, int pieces);
         UserSet MarkSetAsCompleted(int userId, int setId, int multiplier);
-        IQueryable<UserSet> GetAllForUser(int userId);
+        IQueryable<UserSet> GetAllForUser(int userId, int take = -1, int offset = 0);
     }
 }

@@ -16,9 +16,12 @@ namespace Business.Services
         Repository<Korisnik> korisnikRepository = new Repository<Korisnik>();
         Repository<LSet> setRepository = new Repository<LSet>();
 
-        public IQueryable<Wishlist> GetAll()
+        public IQueryable<Wishlist> GetAll(int take = -1, int offset = 0)
         {
-            return wishlistRepository.Query();
+            var query = wishlistRepository.Query().Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
+            return query;
         }
 
         public Wishlist GetById(int id)
@@ -44,9 +47,12 @@ namespace Business.Services
             }
         }
 
-        public IQueryable<Wishlist> GetAllSetsFromWishlistForUser(int userId)
+        public IQueryable<Wishlist> GetAllSetsFromWishlistForUser(int userId, int take = -1, int offset = 0)
         {
-            return wishlistRepository.Query().Where(w => w.Korisnik.Id == userId);
+            var query = wishlistRepository.Query().Where(w => w.Korisnik.Id == userId).Skip(offset);
+            if (take > 0)
+                query = query.Take(take);
+            return query;
         }
 
         public Wishlist AddSetToWishlistForUser(int userId, int setId, int pieces)
