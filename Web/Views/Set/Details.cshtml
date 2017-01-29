@@ -45,7 +45,8 @@
     </script>
 </head>
 <body>
-    <div class="details">
+    <div class="details" style="text-align:center">
+        <img src="@Model.Slike" alt="@Model.Slike" style="margin:0 auto"/>
         <dl class="dl-horizontal">
             <dt>
                 Name:
@@ -65,12 +66,15 @@
             <dd>
                 @Html.DisplayFor(model => model.DijeloviBroj)
             </dd>
-            <dt>
-                Description:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Opis)
-            </dd>
+            @if (Model.Opis != null)
+            {
+                <dt>
+                    Description:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Opis)
+                </dd>
+            }
             <dt>
                 Theme:
             </dt>

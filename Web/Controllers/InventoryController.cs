@@ -41,6 +41,8 @@ namespace Web.Controllers
         public JsonResult BuiltAddAjax(string setId)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            
+
             userSetService.MarkSetAsCompleted(Int32.Parse(user.Id), Int32.Parse(setId), 1);
 
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);

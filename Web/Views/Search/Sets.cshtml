@@ -50,10 +50,13 @@
             Name
         </th>
         <th>
+            Theme
+        </th>
+        <th>
             Year
         </th>
         <th>
-            Theme
+            Pieces
         </th>
         <th></th>
     </tr>
@@ -65,10 +68,13 @@
                 @item.Ime
             </td>
             <td>
+                @item.Tema.ImeTema
+            </td>
+            <td>
                 @item.GodinaProizvodnje
             </td>
             <td>
-                @item.Tema.ImeTema
+                @item.DijeloviBroj
             </td>
             <td>
                 <i class="fa fa-star fa-lg active wishlist" value="@item.Id" title="Add to wishlist"></i>

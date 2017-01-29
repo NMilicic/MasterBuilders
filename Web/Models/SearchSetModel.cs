@@ -13,17 +13,24 @@ namespace Web.Models
         public IEnumerable<Data.Domain.Tema> AllThemes { get; set; }
 
         [Display(Name = "Theme")]
-        public string ThemeName { get; set; }
+        public string ThemeId { get; set; }
 
         public IEnumerable<SelectListItem> Themes
         {
             get
             {
-                var selectThemes = AllThemes.Select(f => new SelectListItem
+                List<SelectListItem> selectThemes = AllThemes.Select(f => new SelectListItem
                 {
-                    Value = f.ImeTema,
+                    Value = f.IdTema.ToString(),
                     Text = f.ImeTema
+                }).ToList();
+                selectThemes.Add(new SelectListItem
+                {
+                    Value = "-1",
+                    Text = "---",
+                    Selected = true
                 });
+                
                 return selectThemes;
             }
         }

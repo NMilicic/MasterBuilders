@@ -13,7 +13,7 @@
         <div class="form-group">
             @Html.Label("Theme", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.ThemeName, Model.Themes, "---", "Text")
+                @Html.DropDownListFor(m => m.ThemeId, Model.Themes)
             </div>
         </div>
         <div class="form-group">
@@ -22,14 +22,14 @@
                 @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
             </div>
         </div>
-        @*<div class="form-group">
+        <div class="form-group">
             @Html.Label("Number of pieces", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.MinPieces, new { @class = "form-control" }) 
                 -
                 @Html.TextBoxFor(m => m.MaxPieces, new { @class = "form-control" })
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

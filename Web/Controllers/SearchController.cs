@@ -39,21 +39,23 @@ namespace Web.Controllers
             }
 
             LSetService lSetService = new LSetService();
+            Repository<Data.Domain.Tema> themeRepository = new Repository<Data.Domain.Tema>();
+            IEnumerable<Data.Domain.Tema> themes = themeRepository.Query();
 
-            //brojkockica:0-250;Name:Prvi;GodinaProizvodnje:2017;Tema:Tema 1;
-            if (!model.MinPieces.HasValue) model.MinPieces = 0;
-            if (!model.MaxPieces.HasValue || model.MaxPieces < model.MinPieces) model.MaxPieces = int.MaxValue;
-            string pieces = "brojkockica:" + model.MinPieces + "-" + model.MaxPieces;
-            Debug.WriteLine(pieces);
+            //BrojKockica:0-250;Name:Prvi;GodinaProizvodnje:2017;Tema:Tema 1;
+            int minPieces = 0;
+            int maxPieces = int.MaxValue;
+            if (model.MinPieces.HasValue) minPieces = (int) model.MinPieces;
+            if (model.MaxPieces.HasValue && model.MaxPieces > minPieces) maxPieces = (int)model.MaxPieces;
+            string pieces = "BrojKockica:" + minPieces + "-" + maxPieces;
+            //Debug.WriteLine(pieces);
             string name = "Name:" + model.Name;
 
             string year = (!model.Year.HasValue) ? "" : "GodinaProizvodnje:" + model.Year;
-            string theme = (model.ThemeName == "") ? "" : "Tema:" + model.ThemeName;
+            string theme = (model.ThemeId == "-1") ? "" : "Tema:" + themeRepository.GetById(Int32.Parse(model.ThemeId)).ImeTema;
 
             string searchParameters = string.Join(";", new string[] { pieces, name, year, theme });
-
-            Repository<Data.Domain.Tema> themeRepository = new Repository<Data.Domain.Tema>();
-            IEnumerable<Data.Domain.Tema> themes = themeRepository.Query();
+            Debug.WriteLine(searchParameters);
 
             model.AllThemes = themes;
 
