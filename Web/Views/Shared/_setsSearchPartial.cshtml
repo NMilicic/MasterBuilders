@@ -1,7 +1,7 @@
 ﻿@model Web.Models.SearchSetModel
 
 <div class="search-area">
-    @using (Html.BeginForm("Sets", "Search", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm(Model.Action, Model.Controller, new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
         <div class="form-group">

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Business.Services;
 using Data;
@@ -21,7 +19,8 @@ namespace Web.Controllers
 
             Models.SearchSetModel model = new Models.SearchSetModel();
             model.AllThemes = themes;
-
+            model.Action = "Sets";
+            model.Controller = "Search";
             LSetService lSetService = new LSetService();
             var sets = lSetService.Search("");
             ViewBag.sets = sets.ToList();

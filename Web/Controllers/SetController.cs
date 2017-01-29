@@ -1,12 +1,6 @@
 ﻿using Business.Services;
 using Data.Domain;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using System;
-using System.Diagnostics;
-using System.Web;
 using System.Web.Mvc;
-using Web.Models;
 
 namespace Web.Controllers
 {

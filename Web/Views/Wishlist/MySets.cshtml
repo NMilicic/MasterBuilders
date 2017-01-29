@@ -1,4 +1,4 @@
-﻿
+﻿@model Web.Models.SearchSetModel
 @{
     ViewBag.Title = "My Set Wishlist";
 }
@@ -45,6 +45,8 @@
 </head>
 
 <h2>@ViewBag.Title</h2>
+
+@Html.Partial("_setsSearchPartial");
 
 <table class="table" id="setsTable">
     <tr>

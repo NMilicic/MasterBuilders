@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using Data;
 
 namespace Web.Models
 {
     public class SearchSetModel
     {
         public IEnumerable<Data.Domain.Tema> AllThemes { get; set; }
+
+        public string Action { get; set; }
+        public string Controller { get; set; }
 
         [Display(Name = "Theme")]
         public string ThemeId { get; set; }
