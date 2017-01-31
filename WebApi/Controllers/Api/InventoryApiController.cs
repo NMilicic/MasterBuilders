@@ -22,35 +22,23 @@ namespace WebApi.Controllers.Api
         }
 
         [HttpPost]
-        public HttpResponseMessage AddSetsToInventory(List<UserLSetApi> userSets)
+        public HttpResponseMessage AddSetsToInventory(UserLSetApi userSet)
         {
-            foreach (var userSet in userSets)
-            {
-                userSetServices.AddToInventory(userSet.UserId, userSet.SetId, userSet.Owned);
-            }
-
+            userSetServices.AddToInventory(userSet.UserId, userSet.SetId, userSet.Owned);
             return Request.CreateResponse(HttpStatusCode.Created, "Sets added to inventory");
         }
 
         [HttpPost]
-        public HttpResponseMessage RemoveSetsFromInventory(List<UserLSetApi> userSets)
+        public HttpResponseMessage RemoveSetsFromInventory(UserLSetApi userSet)
         {
-            foreach (var userSet in userSets)
-            {
-                userSetServices.RemoveFromInventory(userSet.UserId, userSet.SetId, userSet.Owned);
-            }
-
+            userSetServices.RemoveFromInventory(userSet.UserId, userSet.SetId, userSet.Owned);
             return Request.CreateResponse(HttpStatusCode.Created, "Sets removed from inventory");
         }
 
         [HttpPost]
-        public HttpResponseMessage MarkSetsAsCompleted(List<UserLSetApi> userSets)
+        public HttpResponseMessage MarkSetsAsCompleted(UserLSetApi userSet)
         {
-            foreach (var userSet in userSets)
-            {
-                userSetServices.MarkSetAsCompleted(userSet.UserId, userSet.SetId, userSet.Built);
-            }
-
+            userSetServices.MarkSetAsCompleted(userSet.UserId, userSet.SetId, userSet.Built);
             return Request.CreateResponse(HttpStatusCode.Created, "Sets removed from inventory");
         }
 
