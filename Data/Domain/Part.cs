@@ -11,6 +11,7 @@ namespace Data.Domain
         public virtual int Id { get; set; }
         public virtual string Name { get; set; }
         public virtual Category Category { get; set; }
+        public virtual string PictureUrl { get; set; }
 
         public virtual IEnumerable<User> Users { get; set; }
         public virtual IEnumerable<LSetPart> LSetParts { get; set; }

@@ -16,6 +16,7 @@ namespace Data.Mappings
 
             Id(x => x.Id).Column("id");
             Map(x => x.Name).Column("name");
+            Map(x => x.PictureUrl).Column("picture_url");
 
             References(x => x.Category).Column("category");
 

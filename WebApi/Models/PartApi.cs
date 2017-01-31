@@ -10,5 +10,6 @@ namespace WebApi.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public CategoryApi Category { get; set; }
+        public string PictureUrl { get; set; }
     }
 }
