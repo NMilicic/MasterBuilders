@@ -46,7 +46,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@Html.Partial("_setsSearchPartial");
+@Html.Partial("_blocksSearchPartial");
 
 <table class="table" id="setsTable">
     <tr>
@@ -60,26 +60,30 @@
             Year
         </th>
         <th>
-            Count
+            Parts
         </th>
+        <th></th>
     </tr>
 
     @foreach (var item in ViewBag.sets)
     {
         <tr>
             <td>
-                @item.Set.Ime
+                @item.LSet.Name
             </td>
             <td>
-                @item.Set.Tema.ImeTema
+                @item.LSet.Theme.Name
             </td>
             <td>
-                @item.Set.GodinaProizvodnje
+                @item.LSet.ProductionYear
             </td>
             <td>
-                @item.Komada
-                <i class="fa fa-plus-circle fa-lg active wishlist-add" value="@item.Set.Id" title="Add one"></i>
-                <i class="fa fa-minus-circle fa-lg active wishlist-remove" value="@item.Set.Id" title="Remove one"></i>
+                @item.LSet.NumberOfParts
+            </td>
+            <td>
+                @item.Number
+                <i class="fa fa-plus-circle fa-lg active wishlist-add" value="@item.LSet.Id" title="Add one"></i>
+                <i class="fa fa-minus-circle fa-lg active wishlist-remove" value="@item.LSet.Id" title="Remove one"></i>
             </td>
         </tr>
     }

@@ -1,4 +1,4 @@
-﻿@model Data.Domain.Kockica
+﻿@model Data.Domain.Part
 @{
     ViewBag.Title = "Details";
 }
@@ -34,13 +34,13 @@
                 Name:
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Ime)
+                @Html.DisplayFor(model => model.Name)
             </dd>
             <dt>
                 Category:
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Kategorija)
+                @Html.DisplayFor(model => model.Category.Name)
             </dd>
             <dd>
                 <i class="fa fa-plus-circle fa-lg active inventory" value="@Model.Id" title="Add to my inventory"></i>

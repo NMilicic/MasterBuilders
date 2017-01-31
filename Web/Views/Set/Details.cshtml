@@ -51,49 +51,49 @@
 </head>
 <body>
     <div class="details" style="text-align:center">
-        <img src="@Model.Slike" alt="@Model.Slike" onerror="this.style.display='none'"/>
+        <img src="@Model.PictureUrl" alt="@Model.PictureUrl" onerror="this.style.display='none'"/>
         <dl class="dl-horizontal">
             <dt>
                 Name:
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Ime)
+                @Html.DisplayFor(model => model.Name)
             </dd>
             <dt>
                 Year:
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.GodinaProizvodnje)
+                @Html.DisplayFor(model => model.ProductionYear)
             </dd>
             <dt>
                 Number of parts:
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.DijeloviBroj)
+                @Html.DisplayFor(model => model.NumberOfParts)
             </dd>
-            @if (Model.Opis != null)
+            @if (Model.Description != null)
             {
                 <dt>
                     Description:
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Opis)
+                    @Html.DisplayFor(model => model.Description)
                 </dd>
             }
             <dt>
                 Theme:
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Tema.ImeTema)
+                @Html.DisplayFor(model => model.Theme.Name)
             </dd>
-            @if (Model.Tema.NadTema != null)
+            @if (Model.Theme.BaseTheme != null)
             {
 
                 <dt>
                     Base theme:
                 </dt>
                 <dd>
-                    @Html.DisplayFor(model => model.Tema.NadTema.ImeTema)
+                    @Html.DisplayFor(model => model.Theme.BaseTheme.Name)
                 </dd>
             }
             <dd>

@@ -27,6 +27,9 @@
     </script>
 </head>
 <body>
+
+    @Html.Partial("_blocksSearchPartial");
+
     <table class="table" id="blocksTable">
         <tr>
             <th>
@@ -42,13 +45,13 @@
         {
             <tr>
                 <td>
-                    @item.Ime
+                    @item.Name
                 </td>
                 <td>
-                    @item.Kategorija
+                    @item.Category.Name
                 </td>
                 <td>
-                    <i class="fa fa-plus-circle fa-lg active inventory" value="@item.Id" title="Add to my inventory"></i>
+                    @*<i class="fa fa-plus-circle fa-lg active inventory" value="@item.Id" title="Add to my inventory"></i>*@
                     <a href="/Block/Details?blockId=@item.Id" title="Details"><i class="fa fa-arrow-right fa-lg"></i></a>
                 </td>
             </tr>

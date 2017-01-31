@@ -84,6 +84,14 @@ th {
     color: rgb(59, 122, 74);
 }
 
+.fa-star:hover {
+    color: rgb(237, 155, 14);
+}
+
+.fa-plus-circle:hover {
+    color: rgb(24, 104, 8);
+}
+
 #randomImage {
     margin: 20px auto;
 }

@@ -3,7 +3,6 @@ using Data;
 using Data.Domain;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
@@ -27,7 +26,7 @@ namespace Web.Controllers
             model.Controller = "Wishlist";
 
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var sets = wishlistService.GetAllSetsFromWishlistForUser(Int32.Parse(user.Id));
+            var sets = wishlistService.GetAllSetsFromWishlistForUser(int.Parse(user.Id));
             ViewBag.sets = sets;
 
             return View(model);
@@ -47,7 +46,7 @@ namespace Web.Controllers
 
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             string searchParameters = SearchHelper.ConstructSearchParameters(model);
-            var sets = wishlistService.Search(Int32.Parse(user.Id), searchParameters);
+            var sets = wishlistService.Search(int.Parse(user.Id), searchParameters);
             ViewBag.sets = sets;
 
             return View(model);
@@ -57,7 +56,7 @@ namespace Web.Controllers
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             WishlistService wishlistService = new WishlistService();
-            wishlistService.AddSetToWishlistForUser(Int32.Parse(user.Id), Int32.Parse(setId), 1);
+            wishlistService.AddSetToWishlistForUser(int.Parse(user.Id), int.Parse(setId), 1);
 
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
@@ -66,7 +65,7 @@ namespace Web.Controllers
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             WishlistService wishlistService = new WishlistService();
-            wishlistService.RemoveSetFromWishlistForUser(Int32.Parse(user.Id), Int32.Parse(setId), 1);
+            wishlistService.RemoveSetFromWishlistForUser(int.Parse(user.Id), int.Parse(setId), 1);
 
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }

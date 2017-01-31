@@ -3,7 +3,6 @@ using Data;
 using Data.Domain;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +15,7 @@ namespace Web.Controllers
     public class InventoryController : Controller
     {
         UserSetService userSetService = new UserSetService();
+        LSetService setService = new LSetService();
         Repository<Theme> themeRepository = new Repository<Theme>();
 
         [HttpGet]
@@ -28,7 +28,7 @@ namespace Web.Controllers
             model.Controller = "Inventory";
 
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var sets = userSetService.GetAllForUser(Int32.Parse(user.Id));
+            var sets = userSetService.GetAllForUser(int.Parse(user.Id));
             ViewBag.sets = sets;
 
             return View(model);
@@ -50,7 +50,7 @@ namespace Web.Controllers
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             
             string searchParameters = SearchHelper.ConstructSearchParameters(model);
-            var sets = userSetService.Search(Int32.Parse(user.Id), searchParameters);
+            var sets = userSetService.Search(int.Parse(user.Id), searchParameters);
             ViewBag.sets = sets.ToList();
 
             return View(model);
@@ -58,10 +58,9 @@ namespace Web.Controllers
 
         public ActionResult BuilderAssistant()
         {
-            LSetService setService = new LSetService();
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
-            var sets = setService.BuilderAssistent(Int32.Parse(user.Id));
+            var sets = setService.BuilderAssistent(int.Parse(user.Id));
             ViewBag.sets = sets;
 
             return View();
@@ -70,7 +69,7 @@ namespace Web.Controllers
         public JsonResult AddAjax(string setId)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId()); 
-            userSetService.AddToInventory(Int32.Parse(user.Id), Int32.Parse(setId), 1);
+            userSetService.AddToInventory(int.Parse(user.Id), int.Parse(setId), 1);
 
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
@@ -78,7 +77,7 @@ namespace Web.Controllers
         public JsonResult RemoveAjax(string setId)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            userSetService.RemoveFromInventory(Int32.Parse(user.Id), Int32.Parse(setId), 1);
+            userSetService.RemoveFromInventory(int.Parse(user.Id), int.Parse(setId), 1);
 
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
@@ -86,9 +85,7 @@ namespace Web.Controllers
         public JsonResult BuiltAddAjax(string setId)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            
-
-            userSetService.MarkSetAsCompleted(Int32.Parse(user.Id), Int32.Parse(setId), 1);
+            userSetService.MarkSetAsCompleted(int.Parse(user.Id), int.Parse(setId), 1);
 
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
@@ -96,7 +93,7 @@ namespace Web.Controllers
         public JsonResult BuiltRemoveAjax(string setId)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            userSetService.MarkSetAsCompleted(Int32.Parse(user.Id), Int32.Parse(setId), -1);
+            userSetService.MarkSetAsCompleted(int.Parse(user.Id), int.Parse(setId), -1);
 
             return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }

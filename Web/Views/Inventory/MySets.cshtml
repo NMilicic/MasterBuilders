@@ -103,20 +103,20 @@
     {
         <tr>
             <td>
-                @item.Set.Ime
+                @item.LSet.Name
             </td>
             <td>
-                @item.Set.Tema.ImeTema
+                @item.LSet.Theme.Name
             </td>
             <td>
-                @item.Komada
-                <i class="fa fa-plus-circle fa-lg active inventory-add" value="@item.Set.Id" title="Add one"></i>
-                <i class="fa fa-minus-circle fa-lg active inventory-remove" value="@item.Set.Id" title="Remove one"></i>
+                @item.Owned
+                <i class="fa fa-plus-circle fa-lg active inventory-add" value="@item.LSet.Id" title="Add one"></i>
+                <i class="fa fa-minus-circle fa-lg active inventory-remove" value="@item.LSet.Id" title="Remove one"></i>
             </td>
             <td>
-                @item.Slozeno
-                <i class="fa fa-plus-circle fa-lg active built-add" value="@item.Set.Id" title="Add one"></i>
-                <i class="fa fa-minus-circle fa-lg active built-remove" value="@item.Set.Id" title="Remove one"></i>
+                @item.Built
+                <i class="fa fa-plus-circle fa-lg active built-add" value="@item.LSet.Id" title="Add one"></i>
+                <i class="fa fa-minus-circle fa-lg active built-remove" value="@item.LSet.Id" title="Remove one"></i>
             </td>
         </tr>
     }

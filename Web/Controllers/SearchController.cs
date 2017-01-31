@@ -1,28 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Business.Services;
 using Data;
-using System.Diagnostics;
+using Data.Domain;
 using Web.Helpers;
+using Web.Models;
+using System.Diagnostics;
 
 namespace Web.Controllers
 {
     public class SearchController : Controller
     {
+        KockiceService blockService = new KockiceService();
+        LSetService lSetService = new LSetService();
+        Repository<Theme> themeRepository = new Repository<Theme>();
+        Repository<Category> categoryRepository = new Repository<Category>();
 
         [HttpGet]
         public ActionResult Sets()
         {
-            Repository<Data.Domain.Theme> themeRepository = new Repository<Data.Domain.Theme>();
-            IEnumerable<Data.Domain.Theme> themes = themeRepository.Query();
+            IEnumerable<Theme> themes = themeRepository.Query();
 
-            Models.SearchSetModel model = new Models.SearchSetModel();
+            SearchSetModel model = new SearchSetModel();
             model.AllThemes = themes;
             model.Action = "Sets";
             model.Controller = "Search";
-            LSetService lSetService = new LSetService();
             var sets = lSetService.Search("");
             ViewBag.sets = sets.ToList();
 
@@ -31,19 +34,16 @@ namespace Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Sets(Models.SearchSetModel model)
+        public ActionResult Sets(SearchSetModel model)
         {
             if (!ModelState.IsValid)
             {
                 return Redirect("Search/Sets");
             }
 
-            LSetService lSetService = new LSetService();
-            Repository<Data.Domain.Theme> themeRepository = new Repository<Data.Domain.Theme>();
-            IEnumerable<Data.Domain.Theme> themes = themeRepository.Query();
+            IEnumerable<Theme> themes = themeRepository.Query();
 
             string searchParameters = SearchHelper.ConstructSearchParameters(model);
-            Debug.WriteLine(searchParameters);
 
             model.AllThemes = themes;
 
@@ -56,11 +56,38 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Blocks()
         {
-            KockiceService blockService = new KockiceService();
-            var blocks = blockService.GetAll();
+            IEnumerable<Category> categories = categoryRepository.Query();
+
+            SearchBlockModel model = new SearchBlockModel();
+            model.AllCategories = categories;
+            model.Action = "Blocks";
+            model.Controller = "Search";
+
+            var blocks = blockService.GetAll(20);
             ViewBag.blocks = blocks.ToList();
 
-            return View();
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Blocks(SearchBlockModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Redirect("Search/Blocks");
+            }
+
+            IEnumerable<Category> categories = categoryRepository.Query();
+            model.AllCategories = categories;
+
+            string searchParameters = SearchHelper.ConstructSearchParameters(model);
+            Debug.WriteLine(searchParameters);
+
+            var blocks = blockService.Search(searchParameters, 20);
+            ViewBag.blocks = blocks.ToList();
+
+            return View(model);
         }
     }
 }

@@ -3,7 +3,7 @@
     ViewBag.Title = "Set Parts";
 }
 
-<h2>@Model.Ime</h2>
+<h2>@Model.Name</h2>
 
 <table class="table" id="partsTable">
     <tr>
@@ -21,20 +21,20 @@
         </th>
     </tr>
 
-    @foreach (var item in Model.Dijelovi)
+    @foreach (var item in Model.LSetParts)
     {
         <tr>
             <td>
-                @item.Kockica.Ime
+                @item.Part.Name
             </td>
             <td>
-                @item.Kockica.Kategorija
+                @item.Part.Category.Name
             </td>
             <td>
-                @item.Boja.Ime
+                @item.Color.Name
             </td>
             <td>
-                @item.Broj
+                @item.Number
             </td>
         </tr>
     }
