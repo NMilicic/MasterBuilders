@@ -11,35 +11,35 @@ using WebApi.Models;
 
 namespace WebApi.Controllers.Api
 {
-    public class KorisnikApiController : ApiController
+    public class UserApiController : ApiController
     {
         KorisnikServices korisnikServices = new KorisnikServices();
 
 
-        public List<KorisnikApi> GetAll(int take= -1, int offset = 0)
+        public List<UserApi> GetAll(int take= -1, int offset = 0)
         {
-            return korisnikServices.GetAll(take, offset).ProjectTo<KorisnikApi>().ToList();
+            return korisnikServices.GetAll(take, offset).ProjectTo<UserApi>().ToList();
         }
 
         [HttpPost]
-        public KorisnikApi Login(LoginModel data)
+        public UserApi Login(LoginModel data)
         {
-            if (string.IsNullOrEmpty(data.Email) || string.IsNullOrEmpty(data.Zaporka))
+            if (string.IsNullOrEmpty(data.Email) || string.IsNullOrEmpty(data.Password))
                 throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.InvalidData));
 
-            var user = Mapper.Map<KorisnikApi>(korisnikServices.Login(data.Email, data.Zaporka));
+            var user = Mapper.Map<UserApi>(korisnikServices.Login(data.Email, data.Password));
 
             return user;
         }
 
 
         [HttpPost]
-        public KorisnikApi Register(KorisnikApi newUser)
+        public UserApi Register(UserApi newUser)
         {
             if (!ModelState.IsValid)
                 throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.InvalidData));
 
-            var newUserSaved = Mapper.Map<KorisnikApi>(korisnikServices.Register(Mapper.Map<Korisnik>(newUser)));
+            var newUserSaved = Mapper.Map<UserApi>(korisnikServices.Register(Mapper.Map<User>(newUser)));
             return newUserSaved;
         }
     }

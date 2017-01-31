@@ -15,8 +15,8 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Sets()
         {
-            Repository<Data.Domain.Tema> themeRepository = new Repository<Data.Domain.Tema>();
-            IEnumerable<Data.Domain.Tema> themes = themeRepository.Query();
+            Repository<Data.Domain.Theme> themeRepository = new Repository<Data.Domain.Theme>();
+            IEnumerable<Data.Domain.Theme> themes = themeRepository.Query();
 
             Models.SearchSetModel model = new Models.SearchSetModel();
             model.AllThemes = themes;
@@ -39,8 +39,8 @@ namespace Web.Controllers
             }
 
             LSetService lSetService = new LSetService();
-            Repository<Data.Domain.Tema> themeRepository = new Repository<Data.Domain.Tema>();
-            IEnumerable<Data.Domain.Tema> themes = themeRepository.Query();
+            Repository<Data.Domain.Theme> themeRepository = new Repository<Data.Domain.Theme>();
+            IEnumerable<Data.Domain.Theme> themes = themeRepository.Query();
 
             string searchParameters = SearchHelper.ConstructSearchParameters(model);
             Debug.WriteLine(searchParameters);

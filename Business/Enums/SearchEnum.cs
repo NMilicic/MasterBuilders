@@ -4,13 +4,13 @@
     {
         Error = 0,
         Name = 1,
-        BrojKockica = 2,
-        Opis = 3,
-        GodinaProizvodnje = 4,
-        Tema = 5,
-        NadTema = 6,
-        Komada = 7,
+        NumberOfParts = 2,
+        Description = 3,
+        ProductionYear = 4,
+        Theme = 5,
+        BaseTheme = 6,
+        Owned = 7,
         Author = 8,
-        Kategorija = 9
+        Category = 9
     }
 }

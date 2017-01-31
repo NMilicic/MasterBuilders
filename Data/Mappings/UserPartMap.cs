@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Data.Mappings
 {
-    public class UserKockicaMap : ClassMap<UserKockica>
+    public class UserPartMap : ClassMap<UserPart>
     {
-        public UserKockicaMap()
+        public UserPartMap()
         {
-            Table("user_set");
+            Table("user_part");
             Id(x => x.Id).Column("id");
 
-            References(x => x.Korisnik).Column("id_usr");
-            References(x => x.Kockica).Column("id_koc");
+            References(x => x.User).Column("id_user");
+            References(x => x.Part).Column("id_part");
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Web.Controllers
         {
             var sets = userSetService.GetAllForUser(Int32.Parse(userId));
             ViewBag.sets = sets;
-            Korisnik korisnik = korisnikServices.GetById(Int32.Parse(userId));
+            User korisnik = korisnikServices.GetById(Int32.Parse(userId));
 
             return View(korisnik);
         }

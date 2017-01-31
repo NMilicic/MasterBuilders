@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace Data.Mappings
 {
-    public class KockicaMap : ClassMap<Kockica>
+    public class PartMap : ClassMap<Part>
     {
-        public KockicaMap()
+        public PartMap()
         {
-            Table("kockica");
+            Table("part");
 
             Id(x => x.Id).Column("id");
-            Map(x => x.Ime).Column("ime");
+            Map(x => x.Name).Column("name");
 
-            References(x => x.Kategorija).Column("kategorija");
+            References(x => x.Category).Column("category");
 
-            HasManyToMany(x => x.Korisnik)
+            HasManyToMany(x => x.Users)
               .Cascade.All()
               .Inverse()
-              .Table("user_kockica");
+              .Table("user_part");
 
-            HasMany(x => x.SetoviDijelovi)
+            HasMany(x => x.LSetParts)
              .Cascade.All()
              .Inverse()
-             .Table("setovi_dijelovi");
+             .Table("Lsets_parts");
         }
     }
 }

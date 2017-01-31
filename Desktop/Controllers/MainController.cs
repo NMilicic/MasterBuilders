@@ -8,10 +8,10 @@ namespace Desktop.Controllers
     class MainController
     {
         private IView _view;
-        private Korisnik _user;
+        private User _user;
         private IView _parent;
         
-        public MainController(IView view, Korisnik user, IView parent)
+        public MainController(IView view, User user, IView parent)
         {
             _view = view;
             _user = user;

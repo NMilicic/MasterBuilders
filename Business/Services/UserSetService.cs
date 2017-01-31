@@ -13,13 +13,13 @@ namespace Business.Services
 {
     public class UserSetService : IUserSetService
     {
-        IRepository<UserSet> inventroyRepository = new Repository<UserSet>();
+        IRepository<UserLSet> inventroyRepository = new Repository<UserLSet>();
         IRepository<LSet> setRepository = new Repository<LSet>();
         IRepository<Wishlist> wishlistRepository = new Repository<Wishlist>();
-        IRepository<Korisnik> korisnikRepository = new Repository<Korisnik>();
+        IRepository<User> korisnikRepository = new Repository<User>();
 
         #region Default actions
-        public IQueryable<UserSet> GetAll(int take, int offset)
+        public IQueryable<UserLSet> GetAll(int take, int offset)
         {
             var query = inventroyRepository.Query().Skip(offset);
             if (take > 0)
@@ -27,12 +27,12 @@ namespace Business.Services
             return query;
         }
 
-        public UserSet GetById(int id)
+        public UserLSet GetById(int id)
         {
             return inventroyRepository.GetById(id);
         }
 
-        public void SaveOrUpdate(UserSet set)
+        public void SaveOrUpdate(UserLSet set)
         {
             inventroyRepository.Save(set);
         }
@@ -52,15 +52,15 @@ namespace Business.Services
 
         #endregion
 
-        public IQueryable<UserSet> GetAllForUser(int userId, int take = -1, int offset = 0)
+        public IQueryable<UserLSet> GetAllForUser(int userId, int take = -1, int offset = 0)
         {
-            var query = inventroyRepository.Query().Where(s => s.Korisnik.Id == userId).Skip(offset);
+            var query = inventroyRepository.Query().Where(s => s.User.Id == userId).Skip(offset);
             if (take > 0)
                 query = query.Take(take);
             return query;
         }
 
-        public UserSet AddToInventory(int userId, int setId, int pieces)
+        public UserLSet AddToInventory(int userId, int setId, int pieces)
         {
             var user = korisnikRepository.GetById(userId);
             if (user != null)
@@ -68,23 +68,23 @@ namespace Business.Services
                 var dbSet = setRepository.GetById(setId);
                 if (dbSet != null)
                 {
-                    var existingWishListItem = wishlistRepository.Query().FirstOrDefault(x => x.Korisnik.Id == userId && x.Set.Id == setId);
+                    var existingWishListItem = wishlistRepository.Query().FirstOrDefault(x => x.User.Id == userId && x.LSet.Id == setId);
 
                     if (existingWishListItem != null)
                     {
-                        existingWishListItem.Komada -= pieces;
+                        existingWishListItem.Number -= pieces;
                         wishlistRepository.Save(existingWishListItem);
                     }
-                    var existingInventroyItem = inventroyRepository.Query().FirstOrDefault(x => x.Korisnik.Id == userId && x.Set.Id == setId);
+                    var existingInventroyItem = inventroyRepository.Query().FirstOrDefault(x => x.User.Id == userId && x.LSet.Id == setId);
 
                     if (existingInventroyItem == null)
                     {
-                        var inventoryForSave = new UserSet()
+                        var inventoryForSave = new UserLSet()
                         {
-                            Korisnik = user,
-                            Set = dbSet,
-                            Slozeno = 0,
-                            Komada = pieces
+                            User = user,
+                            LSet = dbSet,
+                            Built = 0,
+                            Owned = pieces
                         };
                         inventroyRepository.Save(inventoryForSave);
 
@@ -92,7 +92,7 @@ namespace Business.Services
                     }
                     else
                     {
-                        existingInventroyItem.Komada += pieces;
+                        existingInventroyItem.Owned += pieces;
                         inventroyRepository.Save(existingInventroyItem);
 
                         return existingInventroyItem;
@@ -107,7 +107,7 @@ namespace Business.Services
             throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.NotFound));
         }
 
-        public UserSet RemoveFromInventory(int userId, int setId, int pieces)
+        public UserLSet RemoveFromInventory(int userId, int setId, int pieces)
         {
             var user = korisnikRepository.GetById(userId);
             if (user != null)
@@ -115,7 +115,7 @@ namespace Business.Services
                 var dbSet = setRepository.GetById(setId);
                 if (dbSet != null)
                 {
-                    var existingInventroyItem = inventroyRepository.Query().FirstOrDefault(x => x.Korisnik.Id == userId && x.Set.Id == setId);
+                    var existingInventroyItem = inventroyRepository.Query().FirstOrDefault(x => x.User.Id == userId && x.LSet.Id == setId);
 
                     if (existingInventroyItem == null)
                     {
@@ -123,12 +123,12 @@ namespace Business.Services
                     }
                     else
                     {
-                        if (existingInventroyItem.Komada > pieces)
+                        if (existingInventroyItem.Owned > pieces)
                         {
-                            existingInventroyItem.Komada -= pieces;
-                            if(existingInventroyItem.Komada < existingInventroyItem.Slozeno)
+                            existingInventroyItem.Owned -= pieces;
+                            if(existingInventroyItem.Owned < existingInventroyItem.Built)
                             {
-                                existingInventroyItem.Slozeno = existingInventroyItem.Komada;
+                                existingInventroyItem.Built = existingInventroyItem.Owned;
                             }
                             inventroyRepository.Save(existingInventroyItem);
                         }
@@ -149,7 +149,7 @@ namespace Business.Services
             throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.NotFound));
         }
 
-        public UserSet MarkSetAsCompleted(int userId, int setId, int multiplier)
+        public UserLSet MarkSetAsCompleted(int userId, int setId, int multiplier)
         {
             var user = korisnikRepository.GetById(userId);
             if (user != null)
@@ -157,7 +157,7 @@ namespace Business.Services
                 var dbSet = setRepository.GetById(setId);
                 if (dbSet != null)
                 {
-                    var existingInventroyItem = inventroyRepository.Query().FirstOrDefault(x => x.Korisnik.Id == userId && x.Set.Id == setId);
+                    var existingInventroyItem = inventroyRepository.Query().FirstOrDefault(x => x.User.Id == userId && x.LSet.Id == setId);
 
                     if (existingInventroyItem == null)
                     {
@@ -165,9 +165,9 @@ namespace Business.Services
                     }
                     else
                     {
-                        if (existingInventroyItem.Komada >= (existingInventroyItem.Slozeno + multiplier) && existingInventroyItem.Slozeno + multiplier >= 0)
+                        if (existingInventroyItem.Owned >= (existingInventroyItem.Built + multiplier) && existingInventroyItem.Built + multiplier >= 0)
                         {
-                            existingInventroyItem.Slozeno += multiplier;
+                            existingInventroyItem.Built += multiplier;
                             inventroyRepository.Save(existingInventroyItem);
 
                             return existingInventroyItem;
@@ -185,9 +185,9 @@ namespace Business.Services
             throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.NotFound));
         }
 
-        public IQueryable<UserSet> Search(int userId, string searchParameters, int take = -1, int offset = 0)
+        public IQueryable<UserLSet> Search(int userId, string searchParameters, int take = -1, int offset = 0)
         {
-            var query = inventroyRepository.Query().Where(s => s.Korisnik.Id == userId);
+            var query = inventroyRepository.Query().Where(s => s.User.Id == userId);
             var searchFields = ParseSearchParameters(searchParameters);
             foreach (var field in searchFields)
             {
@@ -198,22 +198,22 @@ namespace Business.Services
                     case SearchEnum.Name:
                         query = FilterByName(field.Value, query);
                         break;
-                    case SearchEnum.Opis:
+                    case SearchEnum.Description:
                         query = FilterByDescription(field.Value, query);
                         break;
-                    case SearchEnum.BrojKockica:
+                    case SearchEnum.NumberOfParts:
                         query = FilterByBrojKockica(field.Value, query);
                         break;
-                    case SearchEnum.GodinaProizvodnje:
+                    case SearchEnum.ProductionYear:
                         query = FilterByYear(field.Value, query);
                         break;
-                    case SearchEnum.Tema:
+                    case SearchEnum.Theme:
                         query = FilterByTema(field.Value, query);
                         break;
-                    case SearchEnum.NadTema:
+                    case SearchEnum.BaseTheme:
                         query = FilterByNadTema(field.Value, query);
                         break;
-                    case SearchEnum.Komada:
+                    case SearchEnum.Owned:
                         query = FilterByBrojKomada(field.Value, query);
                         break;
                     case SearchEnum.Error:
@@ -245,36 +245,36 @@ namespace Business.Services
             return searchDictionary;
         }
 
-        private IQueryable<UserSet> FilterByName(string searchPattern, IQueryable<UserSet> query)
+        private IQueryable<UserLSet> FilterByName(string searchPattern, IQueryable<UserLSet> query)
         {
-            return query.Where(x => x.Set.Ime.Contains(searchPattern));
+            return query.Where(x => x.LSet.Name.Contains(searchPattern));
         }
 
-        private IQueryable<UserSet> FilterByDescription(string searchPattern, IQueryable<UserSet> query)
+        private IQueryable<UserLSet> FilterByDescription(string searchPattern, IQueryable<UserLSet> query)
         {
-            return query.Where(x => x.Set.Opis.Contains(searchPattern));
+            return query.Where(x => x.LSet.Description.Contains(searchPattern));
         }
 
-        private IQueryable<UserSet> FilterByYear(string yearString, IQueryable<UserSet> query)
+        private IQueryable<UserLSet> FilterByYear(string yearString, IQueryable<UserLSet> query)
         {
             int year;
             var parseYear = Int32.TryParse(yearString, out year);
 
-            return parseYear ? query.Where(x => x.Set.GodinaProizvodnje == year) : query;
+            return parseYear ? query.Where(x => x.LSet.ProductionYear == year) : query;
         }
 
-        private IQueryable<UserSet> FilterByTema(string tema, IQueryable<UserSet> query)
+        private IQueryable<UserLSet> FilterByTema(string tema, IQueryable<UserLSet> query)
         {
             //return query.Where(x => x.Set.Tema.ImeTema == tema || (x.Set.Tema.NadTema != null && x.Set.Tema.NadTema.ImeTema == tema));
-            return query.Where(x => x.Set.Tema.ImeTema == tema);
+            return query.Where(x => x.LSet.Theme.Name == tema);
         }
 
-        private IQueryable<UserSet> FilterByNadTema(string tema, IQueryable<UserSet> query)
+        private IQueryable<UserLSet> FilterByNadTema(string tema, IQueryable<UserLSet> query)
         {
-            return query.Where(x => x.Set.Tema.NadTema != null && x.Set.Tema.NadTema.ImeTema == tema);
+            return query.Where(x => x.LSet.Theme.BaseTheme != null && x.LSet.Theme.BaseTheme.Name == tema);
         }
 
-        private IQueryable<UserSet> FilterByBrojKockica(string searchPattern, IQueryable<UserSet> query)
+        private IQueryable<UserLSet> FilterByBrojKockica(string searchPattern, IQueryable<UserLSet> query)
         {
             var range = searchPattern.Split('-');
             if (range.Length > 1)
@@ -286,13 +286,13 @@ namespace Business.Services
 
                 if (parseLowerBound && parseUpperBound)
                 {
-                    return query.Where(x => x.Set.DijeloviBroj >= lowerBound && x.Set.DijeloviBroj <= upperBound);
+                    return query.Where(x => x.LSet.NumberOfParts >= lowerBound && x.LSet.NumberOfParts <= upperBound);
                 }
             }
             return query;
         }
 
-        private IQueryable<UserSet> FilterByBrojKomada(string searchPattern, IQueryable<UserSet> query)
+        private IQueryable<UserLSet> FilterByBrojKomada(string searchPattern, IQueryable<UserLSet> query)
         {
             var range = searchPattern.Split('-');
             if (range.Length > 1)
@@ -304,7 +304,7 @@ namespace Business.Services
 
                 if (parseLowerBound && parseUpperBound)
                 {
-                    return query.Where(x => x.Komada >= lowerBound && x.Komada <= upperBound);
+                    return query.Where(x => x.Owned >= lowerBound && x.Owned <= upperBound);
                 }
             }
             return query;

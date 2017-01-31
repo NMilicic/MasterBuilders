@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces
 {
-    public interface IKockiceService: IService<Kockica>
+    public interface IKockiceService: IService<Part>
     {
-        IQueryable<Kockica> GetAllForUser(int userId, int take = -1, int offset = 0);
-        IQueryable<Kockica> Search(string searchParameters, int take = -1, int offset = 0);
+        IQueryable<Part> GetAllForUser(int userId, int take = -1, int offset = 0);
+        IQueryable<Part> Search(string searchParameters, int take = -1, int offset = 0);
     }
 }

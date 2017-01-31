@@ -13,20 +13,20 @@ namespace Desktop.Controllers
     class InventorySetsController
     {
         private IInventorySetsView _view;
-        private Korisnik _user;
+        private User _user;
 
         private IUserSetService _userSetService;
 
-        private Repository<Tema> _themeRepository;
-        private IQueryable<UserSet> _currQuery;
+        private Repository<Theme> _themeRepository;
+        private IQueryable<UserLSet> _currQuery;
 
-        public InventorySetsController(IInventorySetsView view, Korisnik user)
+        public InventorySetsController(IInventorySetsView view, User user)
         {
             _view = view;
             _user = user;
 
             _userSetService = new UserSetService();
-            _themeRepository = new Repository<Tema>();
+            _themeRepository = new Repository<Theme>();
 
             _currQuery = _userSetService.GetAllForUser(user.Id);
         }
@@ -54,14 +54,14 @@ namespace Desktop.Controllers
         public void UpdateSubthemeComboBox()
         {
             var themeName = (string)_view.Theme.SelectedItem;
-            IQueryable<Tema> subthemes;
+            IQueryable<Theme> subthemes;
             if (themeName.Equals("")) {
-                subthemes = _themeRepository.Query().Where(x => x.NadTema == null);
+                subthemes = _themeRepository.Query().Where(x => x.BaseTheme == null);
             } else {
-                subthemes = _themeRepository.Query().Where(x => x.NadTema.ImeTema == themeName);
+                subthemes = _themeRepository.Query().Where(x => x.BaseTheme.Name == themeName);
             }
 
-            var subthemeNames = from t in subthemes select t.ImeTema;
+            var subthemeNames = from t in subthemes select t.Name;
             var data = subthemeNames.ToList();
             data.Insert(0, "");
             _view.Subtheme.DataSource = data;
@@ -81,15 +81,15 @@ namespace Desktop.Controllers
                 return;
             }
 
-            var setId = userSet.Set.Id;
+            var setId = userSet.LSet.Id;
             var qty = _view.RemoveQty;
             
             if (qty > 0)
             {
                 _userSetService.RemoveFromInventory(_user.Id, setId, qty);
-                if (userSet.Komada < userSet.Slozeno)
+                if (userSet.Owned < userSet.Built)
                 {
-                    var disassemble = userSet.Slozeno - userSet.Komada;
+                    var disassemble = userSet.Built - userSet.Owned;
                     _userSetService.MarkSetAsCompleted(_user.Id, setId, -disassemble);
                 }
                 UpdateControls();
@@ -105,7 +105,7 @@ namespace Desktop.Controllers
                 return;
             }
 
-            var setId = userSet.Set.Id;
+            var setId = userSet.LSet.Id;
             var qty = _view.AssembleQty;
             
             if (qty > 0)
@@ -124,7 +124,7 @@ namespace Desktop.Controllers
                 return;
             }
 
-            var setId = userSet.Set.Id;
+            var setId = userSet.LSet.Id;
             var qty = _view.DisassembleQty;
             
             if (qty > 0)
@@ -139,7 +139,7 @@ namespace Desktop.Controllers
         private void InitThemeComboBox()
         {
             var themes = _themeRepository.Query();
-            var themeNames = from t in themes select t.ImeTema;
+            var themeNames = from t in themes select t.Name;
             var data = themeNames.ToList();
             data.Insert(0, "");
             _view.Theme.DataSource = data;
@@ -152,12 +152,12 @@ namespace Desktop.Controllers
                        select new
                        {
                            Id = s.Id,
-                           Name = s.Set.Ime,
-                           Theme = s.Set.Tema.NadTema.ImeTema,
-                           Subtheme = s.Set.Tema.ImeTema,
+                           Name = s.LSet.Name,
+                           Theme = s.LSet.Theme.BaseTheme.Name,
+                           Subtheme = s.LSet.Theme.Name,
                            //Description = s.Set.Opis,
-                           Owned = s.Komada,
-                           Assembled = s.Slozeno,
+                           Owned = s.Owned,
+                           Assembled = s.Built,
                        };
                        
             _view.DataGridView.DataSource = data.ToList();
@@ -181,8 +181,8 @@ namespace Desktop.Controllers
         private void UpdateControls()
         {
             var set = _userSetService.GetById(GetSelectedUserSetId());
-            var noOwned = (set != null) ? set.Komada : 0;
-            var noAssembled = (set != null) ? set.Slozeno : 0;
+            var noOwned = (set != null) ? set.Owned : 0;
+            var noAssembled = (set != null) ? set.Built : 0;
 
             _view.MaxRemoveQty = noOwned; ;
             _view.MaxAssembleQty = noOwned - noAssembled;

@@ -15,50 +15,50 @@ namespace WebApi.Controllers.Api
         UserSetService userSetServices = new UserSetService();
 
         [HttpGet]
-        public List<UserSetApi> GetAllForUser(int userId, int take = -1, int offset = 0)
+        public List<UserLSetApi> GetAllForUser(int userId, int take = -1, int offset = 0)
         {
             var allSets = userSetServices.GetAllForUser(userId, take, offset).ToList();
-            return Mapper.Map<List<UserSetApi>>(allSets);
+            return Mapper.Map<List<UserLSetApi>>(allSets);
         }
 
         [HttpPost]
-        public HttpResponseMessage AddSetsToInventory(List<UserSetApi> userSets)
+        public HttpResponseMessage AddSetsToInventory(List<UserLSetApi> userSets)
         {
             foreach (var userSet in userSets)
             {
-                userSetServices.AddToInventory(userSet.IdUser, userSet.IdSet, userSet.Komada);
+                userSetServices.AddToInventory(userSet.UserId, userSet.SetId, userSet.Owned);
             }
 
             return Request.CreateResponse(HttpStatusCode.Created, "Sets added to inventory");
         }
 
         [HttpPost]
-        public HttpResponseMessage RemoveSetsFromInventory(List<UserSetApi> userSets)
+        public HttpResponseMessage RemoveSetsFromInventory(List<UserLSetApi> userSets)
         {
             foreach (var userSet in userSets)
             {
-                userSetServices.RemoveFromInventory(userSet.IdUser, userSet.IdSet, userSet.Komada);
+                userSetServices.RemoveFromInventory(userSet.UserId, userSet.SetId, userSet.Owned);
             }
 
             return Request.CreateResponse(HttpStatusCode.Created, "Sets removed from inventory");
         }
 
         [HttpPost]
-        public HttpResponseMessage MarkSetsAsCompleted(List<UserSetApi> userSets)
+        public HttpResponseMessage MarkSetsAsCompleted(List<UserLSetApi> userSets)
         {
             foreach (var userSet in userSets)
             {
-                userSetServices.MarkSetAsCompleted(userSet.IdUser, userSet.IdSet, userSet.Slozeno);
+                userSetServices.MarkSetAsCompleted(userSet.UserId, userSet.SetId, userSet.Built);
             }
 
             return Request.CreateResponse(HttpStatusCode.Created, "Sets removed from inventory");
         }
 
         [HttpGet]
-        public List<UserSetApi> Search(int userId, string searchParameters, int take = -1, int offset = 0)
+        public List<UserLSetApi> Search(int userId, string searchParameters, int take = -1, int offset = 0)
         {
             var filteredSets = userSetServices.Search(userId, searchParameters, take, offset).ToList();
-            return Mapper.Map<List<UserSetApi>>(filteredSets);
+            return Mapper.Map<List<UserLSetApi>>(filteredSets);
         }
     }
 }

@@ -23,12 +23,12 @@ namespace Desktop.Controllers
 
         public void Register()
         {
-            Korisnik korisnik = new Korisnik()
+            User korisnik = new User()
             {
                 Email = _view.Email,
-                Zaporka = _view.Password,
-                Ime = _view.FirstName,
-                Prezime = _view.LastName
+                Password = _view.Password,
+                FirstName = _view.FirstName,
+                LastName = _view.LastName
             };
 
             try

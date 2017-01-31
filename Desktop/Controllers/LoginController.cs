@@ -24,7 +24,7 @@ namespace Desktop.Controllers
             var email = _view.Email;
             var password = _view.Password;
 
-            Korisnik user;
+            User user;
 
             try
             {

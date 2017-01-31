@@ -11,10 +11,10 @@ namespace Business.Services
 {
     public class KockiceService : IKockiceService
     {
-        IRepository<Kockica> kockicaRepository = new Repository<Kockica>();
+        IRepository<Part> kockicaRepository = new Repository<Part>();
 
         #region Default actions
-        public IQueryable<Kockica> GetAll(int take = -1, int offset = 0)
+        public IQueryable<Part> GetAll(int take = -1, int offset = 0)
         {
             var query = kockicaRepository.Query().Skip(offset);
             if (take > 0)
@@ -22,12 +22,12 @@ namespace Business.Services
             return query;
         }
 
-        public Kockica GetById(int id)
+        public Part GetById(int id)
         {
             return kockicaRepository.GetById(id);
         }
 
-        public void SaveOrUpdate(Kockica set)
+        public void SaveOrUpdate(Part set)
         {
             kockicaRepository.Save(set);
         }
@@ -47,15 +47,15 @@ namespace Business.Services
 
         #endregion
 
-        public IQueryable<Kockica> GetAllForUser(int userId, int take = -1, int offset = 0)
+        public IQueryable<Part> GetAllForUser(int userId, int take = -1, int offset = 0)
         {
-            var query = kockicaRepository.Query().Where(x => x.Korisnik.Any(u => u.Id == userId)).Skip(offset);
+            var query = kockicaRepository.Query().Where(x => x.Users.Any(u => u.Id == userId)).Skip(offset);
             if (take > 0)
                 query = query.Take(take);
             return query;
         }
 
-        public IQueryable<Kockica> Search(string searchParameters, int take = -1, int offset = 0)
+        public IQueryable<Part> Search(string searchParameters, int take = -1, int offset = 0)
         {
             var query = kockicaRepository.Query();
             var searchFields = ParseSearchParameters(searchParameters);
@@ -68,7 +68,7 @@ namespace Business.Services
                     case SearchEnum.Name:
                         query = FilterByName(field.Value, query);
                         break;
-                    case SearchEnum.Kategorija:
+                    case SearchEnum.Category:
                         query = FilterByCategory(field.Value, query);
                         break;
                     case SearchEnum.Error:
@@ -101,14 +101,14 @@ namespace Business.Services
             return searchDictionary;
         }
 
-        private IQueryable<Kockica> FilterByName(string searchPattern, IQueryable<Kockica> query)
+        private IQueryable<Part> FilterByName(string searchPattern, IQueryable<Part> query)
         {
-            return query.Where(x => x.Ime.Contains(searchPattern));
+            return query.Where(x => x.Name.Contains(searchPattern));
         }
 
-        private IQueryable<Kockica> FilterByCategory(string searchPattern, IQueryable<Kockica> query)
+        private IQueryable<Part> FilterByCategory(string searchPattern, IQueryable<Part> query)
         {
-            return query.Where(x => x.Kategorija.Ime.Contains(searchPattern));
+            return query.Where(x => x.Category.Name.Contains(searchPattern));
         }
 
 

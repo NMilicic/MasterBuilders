@@ -12,29 +12,29 @@ namespace Business.Services
 {
     public class KorisnikServices : IKorisnikService
     {
-        IRepository<Korisnik> korisnikRepository;
+        IRepository<User> korisnikRepository;
 
         public KorisnikServices()
         {
-            this.korisnikRepository = new Repository<Korisnik>();
+            this.korisnikRepository = new Repository<User>();
         }
 
-        public KorisnikServices(IRepository<Korisnik> korisnikRepository)
+        public KorisnikServices(IRepository<User> korisnikRepository)
         {
             this.korisnikRepository = korisnikRepository;
         }
 
-        public IQueryable<Korisnik> GetAll(int take = -1, int offset = 0)
+        public IQueryable<User> GetAll(int take = -1, int offset = 0)
         {
             return korisnikRepository.Query();
         }
 
-        public Korisnik GetById(int id)
+        public User GetById(int id)
         {
             return korisnikRepository.GetById(id);
         }
 
-        public void SaveOrUpdate(Korisnik korisnik)
+        public void SaveOrUpdate(User korisnik)
         {
             korisnikRepository.Save(korisnik);
         }
@@ -52,9 +52,9 @@ namespace Business.Services
             }
         }
 
-        public Korisnik Login(string email, string zaporka)
+        public User Login(string email, string zaporka)
         {
-            var user = korisnikRepository.Query().FirstOrDefault(u => u.Email == email && u.Zaporka == zaporka);
+            var user = korisnikRepository.Query().FirstOrDefault(u => u.Email == email && u.Password == zaporka);
             if (user != null)
             {
                 return user;
@@ -63,7 +63,7 @@ namespace Business.Services
 
         }
 
-        public Korisnik Register(Korisnik newUser)
+        public User Register(User newUser)
         {
             var existingUserName = korisnikRepository.Query().FirstOrDefault(u => u.Email == newUser.Email);
             if (existingUserName == null)

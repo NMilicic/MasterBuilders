@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace Data.Mappings
 {
-    public class KategorijaMap : ClassMap<Kategorija>
+    public class CategoryMap : ClassMap<Category>
     {
-        public KategorijaMap()
+        public CategoryMap()
         {
-            Table("kategorija");
+            Table("category");
 
             Id(x => x.Id).Column("id");
-            Map(x => x.Ime).Column("ime");
+            Map(x => x.Name).Column("name");
 
-            HasMany(x => x.Kockice)
+            HasMany(x => x.Parts)
                 .Cascade.All()
                 .Inverse()
-                .Table("Kockica")
-                .KeyColumn("kategorija");
+                .Table("part")
+                .KeyColumn("category");
         }
     }
 }

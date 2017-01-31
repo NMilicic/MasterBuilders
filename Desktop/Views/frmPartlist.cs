@@ -9,12 +9,12 @@ namespace Desktop.Views
 {
     public partial class frmPartlist : Form, IPartlistView
     {
-        private IEnumerable<SetoviDijelovi> _parts;
+        private IEnumerable<LSetPart> _parts;
         private PartlistController _controller;
 
         public DataGridView DataGridView { get { return dataGridView; } }
 
-        public frmPartlist(IEnumerable<SetoviDijelovi> parts)
+        public frmPartlist(IEnumerable<LSetPart> parts)
         {
             _parts = parts;
             _controller = new PartlistController(this);

@@ -15,20 +15,20 @@ namespace Desktop.Controllers
     class WishlistController
     {
         private IWishlistView _view;
-        private Korisnik _user;
+        private User _user;
 
         private IWishlistService _wishlistService;
 
-        private Repository<Tema> _themeRepository;
+        private Repository<Theme> _themeRepository;
         private IQueryable<Wishlist> _currQuery;
 
-        public WishlistController(IWishlistView view, Korisnik user)
+        public WishlistController(IWishlistView view, User user)
         {
             _view = view;
             _user = user;
 
             _wishlistService = new WishlistService();
-            _themeRepository = new Repository<Tema>();
+            _themeRepository = new Repository<Theme>();
 
             _currQuery = _wishlistService.GetAllSetsFromWishlistForUser(user.Id);
         }
@@ -56,17 +56,17 @@ namespace Desktop.Controllers
         public void UpdateSubthemeComboBox()
         {
             var themeName = (string)_view.Theme.SelectedItem;
-            IQueryable<Tema> subthemes;
+            IQueryable<Theme> subthemes;
             if (themeName.Equals(""))
             {
-                subthemes = _themeRepository.Query().Where(x => x.NadTema == null);
+                subthemes = _themeRepository.Query().Where(x => x.BaseTheme == null);
             }
             else
             {
-                subthemes = _themeRepository.Query().Where(x => x.NadTema.ImeTema == themeName);
+                subthemes = _themeRepository.Query().Where(x => x.BaseTheme.Name == themeName);
             }
 
-            var subthemeNames = from t in subthemes select t.ImeTema;
+            var subthemeNames = from t in subthemes select t.Name;
             var data = subthemeNames.ToList();
             data.Insert(0, "");
             _view.Subtheme.DataSource = data;
@@ -86,7 +86,7 @@ namespace Desktop.Controllers
                 return;
             }
 
-            var setId = wishlistSet.Set.Id;
+            var setId = wishlistSet.LSet.Id;
             var qty = _view.RemoveQty;
 
             if (qty > 0)
@@ -101,7 +101,7 @@ namespace Desktop.Controllers
         private void InitThemeComboBox()
         {
             var themes = _themeRepository.Query();
-            var themeNames = from t in themes select t.ImeTema;
+            var themeNames = from t in themes select t.Name;
             var data = themeNames.ToList();
             data.Insert(0, "");
             _view.Theme.DataSource = data;
@@ -114,11 +114,11 @@ namespace Desktop.Controllers
                        select new
                        {
                            Id = s.Id,
-                           Name = s.Set.Ime,
-                           Theme = s.Set.Tema.NadTema.ImeTema,
-                           Subtheme = s.Set.Tema.ImeTema,
-                           Description = s.Set.Opis,
-                           Quantity = s.Komada
+                           Name = s.LSet.Name,
+                           Theme = s.LSet.Theme.BaseTheme.Name,
+                           Subtheme = s.LSet.Theme.Name,
+                           Description = s.LSet.Description,
+                           Quantity = s.Number
                        };
 
             _view.DataGridView.DataSource = data.ToList();
@@ -142,7 +142,7 @@ namespace Desktop.Controllers
         private void UpdateControls()
         {
             var set = _wishlistService.GetById(GetSelectedWishlistSetId());
-            var noWished = (set != null) ? set.Komada : 0;
+            var noWished = (set != null) ? set.Number : 0;
             _view.MaxRemoveQty = noWished;
             _view.RemoveQty = 0;
         }

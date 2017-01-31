@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Data.Mappings
 {
-    public class MocDijeloviMap : ClassMap<MocDijelovi>
+    public class MocPartMap : ClassMap<MocPart>
     {
-        public MocDijeloviMap()
+        public MocPartMap()
         {
-            Table("MOC_dijelovi");
+            Table("MOC_parts");
             Id(x => x.Id).Column("id");
-            Map(x => x.Broj).Column("broj");
+            Map(x => x.Number).Column("num");
 
-            References(x => x.Boja).Column("id_boja");
+            References(x => x.Color).Column("id_color");
             References(x => x.Moc).Column("id_set");
-            References(x => x.Kockica).Column("id_koc");
+            References(x => x.Part).Column("id_part");
         }
     }
 }

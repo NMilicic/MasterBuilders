@@ -24,7 +24,7 @@ namespace Data
                     MsSqlConfiguration.MsSql2012.ConnectionString(c => c.FromConnectionStringWithKey("ConnectionString"))
                   )
                   .Mappings(m =>
-                    m.FluentMappings.AddFromAssemblyOf<Korisnik>())
+                    m.FluentMappings.AddFromAssemblyOf<User>())
                   // .ExposeConfiguration(BuildSchema)
                   .BuildSessionFactory();
             }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces
 {
-    public interface IKorisnikService : IService<Korisnik>
+    public interface IKorisnikService : IService<User>
     {
-        Korisnik Login(string email, string zaporka);
-        Korisnik Register(Korisnik newUser);
+        User Login(string email, string zaporka);
+        User Register(User newUser);
     }
 }

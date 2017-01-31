@@ -162,28 +162,28 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\Api\InventoryApiController.cs" />
-    <Compile Include="Controllers\Api\KockicaApiController.cs" />
-    <Compile Include="Controllers\Api\KorisnikApiController.cs" />
+    <Compile Include="Controllers\Api\PartApiController.cs" />
+    <Compile Include="Controllers\Api\UserApiController.cs" />
     <Compile Include="Controllers\Api\MocApiController.cs" />
-    <Compile Include="Controllers\Api\SetApiController.cs" />
+    <Compile Include="Controllers\Api\LSetApiController.cs" />
     <Compile Include="Controllers\Api\WishlistAPiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\KategorijaApi.cs" />
-    <Compile Include="Models\BojaApi.cs" />
-    <Compile Include="Models\KockicaApi.cs" />
-    <Compile Include="Models\KorisnikApi.cs" />
+    <Compile Include="Models\CategoryApi.cs" />
+    <Compile Include="Models\ColorApi.cs" />
+    <Compile Include="Models\PartApi.cs" />
+    <Compile Include="Models\UserApi.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MocApi.cs" />
-    <Compile Include="Models\MocDijeloviApi.cs" />
-    <Compile Include="Models\SetApi.cs" />
+    <Compile Include="Models\MocPartApi.cs" />
+    <Compile Include="Models\LSetApi.cs" />
     <Compile Include="Models\SetDetailedApi.cs" />
-    <Compile Include="Models\SetDijeloviApi.cs" />
-    <Compile Include="Models\TemaApi.cs" />
-    <Compile Include="Models\UserSetApi.cs" />
+    <Compile Include="Models\LSetPartApi.cs" />
+    <Compile Include="Models\ThemeApi.cs" />
+    <Compile Include="Models\UserLSetApi.cs" />
     <Compile Include="Models\WishlistApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

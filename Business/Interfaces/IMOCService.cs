@@ -12,7 +12,7 @@ namespace Business.Interfaces
         IQueryable<Moc> GetAllByAuthor(int authorId, int take = -1, int offset = 0);
         IQueryable<Moc> Search(string searchParameters, int take = -1, int offset = 0);
         Moc AddMoc(Moc newMoc);
-        Moc AddDijeloviMoc(int mocId, List<MocDijelovi> dijelovi);
+        Moc AddDijeloviMoc(int mocId, List<MocPart> dijelovi);
 
     }
 }

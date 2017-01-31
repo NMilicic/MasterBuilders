@@ -29,16 +29,16 @@ namespace WebApi.Controllers.Api
         }
 
         [HttpPost]
-        public MocApi AddDijeloviToMoc(MocApi mocToUpdate)
+        public MocApi AddPartToMoc(MocApi mocToUpdate)
         {
-            var moc = mocService.AddDijeloviMoc(mocToUpdate.Id, Mapper.Map<List<MocDijelovi>>(mocToUpdate.Dijelovi));
+            var moc = mocService.AddDijeloviMoc(mocToUpdate.Id, Mapper.Map<List<MocPart>>(mocToUpdate.MocParts));
             return Mapper.Map<MocApi>(moc);
         }
         [HttpGet]
-        public List<SetApi> Search(string searchParameters, int take = -1, int offset = 0)
+        public List<LSetApi> Search(string searchParameters, int take = -1, int offset = 0)
         {
             var filteredSets = mocService.Search(searchParameters, take, offset).ToList();
-            return Mapper.Map<List<SetApi>>(filteredSets);
+            return Mapper.Map<List<LSetApi>>(filteredSets);
         }
     }
 }

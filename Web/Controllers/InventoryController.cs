@@ -16,12 +16,12 @@ namespace Web.Controllers
     public class InventoryController : Controller
     {
         UserSetService userSetService = new UserSetService();
-        Repository<Tema> themeRepository = new Repository<Tema>();
+        Repository<Theme> themeRepository = new Repository<Theme>();
 
         [HttpGet]
         public ActionResult MySets()
         {
-            IEnumerable<Tema> themes = themeRepository.Query();
+            IEnumerable<Theme> themes = themeRepository.Query();
             SearchSetModel model = new SearchSetModel();
             model.AllThemes = themes;
             model.Action = "MySets";
@@ -43,7 +43,7 @@ namespace Web.Controllers
                 return Redirect("Inventory/MySets");
             }
             
-            IEnumerable<Tema> themes = themeRepository.Query();
+            IEnumerable<Theme> themes = themeRepository.Query();
 
             
             model.AllThemes = themes;

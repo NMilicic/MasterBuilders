@@ -5,12 +5,9 @@ using System.Web;
 
 namespace WebApi.Models
 {
-    public class SetDijeloviApi
+    public class ColorApi
     {
         public int Id { get; set; }
-        public int Broj { get; set; }
-
-        public BojaApi Boja { get; set; }
-        public KockicaApi Kockica { get; set; }
+        public string Name { get; set; }
     }
 }

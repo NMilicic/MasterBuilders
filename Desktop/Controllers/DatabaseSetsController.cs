@@ -14,16 +14,16 @@ namespace Desktop.Controllers
     class DatabaseSetsController
     {
         private IDatabaseSetsView _view;
-        private Korisnik _user;
+        private User _user;
 
         private ILSetService _lSetService;
         private IWishlistService _wishlistService;
         private IUserSetService _userSetService;
 
-        private Repository<Tema> _themeRepository;
+        private Repository<Theme> _themeRepository;
         private IQueryable<LSet> _currQuery;
 
-        public DatabaseSetsController(IDatabaseSetsView view, Korisnik user)
+        public DatabaseSetsController(IDatabaseSetsView view, User user)
         {
             _view = view;
             _user = user;
@@ -32,7 +32,7 @@ namespace Desktop.Controllers
             _wishlistService = new WishlistService();
             _userSetService = new UserSetService();
 
-            _themeRepository = new Repository<Tema>();
+            _themeRepository = new Repository<Theme>();
             _currQuery = _lSetService.GetAll();
         }
 
@@ -60,17 +60,17 @@ namespace Desktop.Controllers
         public void UpdateSubthemeComboBox()
         {
             var themeName = (string)_view.Theme.SelectedItem;
-            IQueryable<Tema> subthemes;
+            IQueryable<Theme> subthemes;
             if (themeName.Equals(""))
             {
-                subthemes = _themeRepository.Query().Where(x => x.NadTema == null);
+                subthemes = _themeRepository.Query().Where(x => x.BaseTheme == null);
             }
             else
             {
-                subthemes = _themeRepository.Query().Where(x => x.NadTema.ImeTema == themeName);
+                subthemes = _themeRepository.Query().Where(x => x.BaseTheme.Name == themeName);
             }
 
-            var subthemeNames = from t in subthemes select t.ImeTema;
+            var subthemeNames = from t in subthemes select t.Name;
             var data = subthemeNames.ToList();
             data.Insert(0, "");
             _view.Subtheme.DataSource = data;
@@ -95,7 +95,7 @@ namespace Desktop.Controllers
             if (qty > 0)
             {
                 _wishlistService.AddSetToWishlistForUser(_user.Id, setId, qty);
-                MessageBox.Show("Added " + qty + " '" + _lSetService.GetById(setId).Ime + "' sets to Wishlist.");
+                MessageBox.Show("Added " + qty + " '" + _lSetService.GetById(setId).Name + "' sets to Wishlist.");
                 ClearControls();
             }
         }
@@ -111,7 +111,7 @@ namespace Desktop.Controllers
             
             if (qty > 0) {
                 _userSetService.AddToInventory(_user.Id, setId, qty);
-                MessageBox.Show("Added " + qty + " '" + _lSetService.GetById(setId).Ime + "' sets to Inventory.");
+                MessageBox.Show("Added " + qty + " '" + _lSetService.GetById(setId).Name + "' sets to Inventory.");
                 ClearControls();
             }
         }
@@ -124,7 +124,7 @@ namespace Desktop.Controllers
                 return;
             }
 
-            var parts = _lSetService.GetById(setId).Dijelovi;
+            var parts = _lSetService.GetById(setId).LSetParts;
 
             if (parts.Count() == 0)
             {
@@ -152,7 +152,7 @@ namespace Desktop.Controllers
         private void InitThemeComboBox()
         {
             var themes = _themeRepository.Query();
-            var themeNames = from t in themes select t.ImeTema;
+            var themeNames = from t in themes select t.Name;
             var data = themeNames.ToList();
             data.Insert(0, "");
             _view.Theme.DataSource = data;
@@ -165,12 +165,12 @@ namespace Desktop.Controllers
                        select new
                        {
                            Id = s.Id,
-                           Name = s.Ime,
-                           Theme = s.Tema.NadTema.ImeTema,
-                           Subtheme = s.Tema.ImeTema,
+                           Name = s.Name,
+                           Theme = s.Theme.BaseTheme.Name,
+                           Subtheme = s.Theme.Name,
                            //Description = s.Opis,
-                           Year = s.GodinaProizvodnje,
-                           Parts = s.DijeloviBroj
+                           Year = s.ProductionYear,
+                           Parts = s.NumberOfParts
                        };
 
             _view.DataGridView.DataSource = data.ToList();

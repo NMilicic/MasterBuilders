@@ -18,14 +18,14 @@ namespace Desktop.Controllers
         
         private IKockiceService _partsService;
 
-        private IRepository<Kategorija> _categoryRepository;
-        private IQueryable<Kockica> _currQuery;
+        private IRepository<Category> _categoryRepository;
+        private IQueryable<Part> _currQuery;
 
         public DatabasePartsController(IDatabasePartsView view)
         {
             _view = view;
             _partsService = new KockiceService();
-            _categoryRepository = new Repository<Kategorija>();
+            _categoryRepository = new Repository<Category>();
             _currQuery = _partsService.GetAll();
         }
 
@@ -50,7 +50,7 @@ namespace Desktop.Controllers
         private void InitCategoryComboBox()
         {
             var categories = _categoryRepository.Query();
-            var categoryNames = from c in categories select c.Ime;
+            var categoryNames = from c in categories select c.Name;
             var data = categoryNames.ToList();
             data.Insert(0, "");
             _view.Category.DataSource = data;
@@ -62,8 +62,8 @@ namespace Desktop.Controllers
                        select new
                        {
                            Id = s.Id,
-                           Name = s.Ime,
-                           Category = s.Kategorija.Ime,
+                           Name = s.Name,
+                           Category = s.Category.Name,
                        };
 
             _view.DataGridView.DataSource = data.ToList();

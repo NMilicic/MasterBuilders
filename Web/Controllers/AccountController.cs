@@ -155,11 +155,11 @@ namespace Web.Controllers
                 {
                     UserManager.Delete(testUser);
 
-                    Data.Domain.Korisnik korisnik = new Data.Domain.Korisnik();
+                    Data.Domain.User korisnik = new Data.Domain.User();
                     korisnik.Email = model.Email;
-                    korisnik.Ime = model.Ime;
-                    korisnik.Prezime = model.Prezime;
-                    korisnik.Zaporka = model.Zaporka;
+                    korisnik.FirstName = model.Ime;
+                    korisnik.LastName = model.Prezime;
+                    korisnik.Password = model.Zaporka;
                     KorisnikServices korisnikServices = new KorisnikServices();
                     korisnikServices.SaveOrUpdate(korisnik);
 

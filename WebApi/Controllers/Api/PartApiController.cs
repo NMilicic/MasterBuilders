@@ -7,29 +7,29 @@ using WebApi.Models;
 
 namespace WebApi.Controllers.Api
 {
-    public class KockicaApiController : ApiController
+    public class PartApiController : ApiController
     {
         KockiceService kockicaService = new KockiceService();
 
         [HttpGet]
-        public List<KockicaApi> GetAll(int take = -1, int offset = 0)
+        public List<PartApi> GetAll(int take = -1, int offset = 0)
         {
             var kockice = kockicaService.GetAll(take, offset).ToList();
-            return Mapper.Map<List<KockicaApi>>(kockice);
+            return Mapper.Map<List<PartApi>>(kockice);
         }
 
         [HttpGet]
-        public List<KockicaApi> GetAllForUser(int userId, int take = -1, int offset = 0)
+        public List<PartApi> GetAllForUser(int userId, int take = -1, int offset = 0)
         {
             var kockice = kockicaService.GetAllForUser(userId, take, offset).ToList();
-            return Mapper.Map<List<KockicaApi>>(kockice);
+            return Mapper.Map<List<PartApi>>(kockice);
         }
 
         [HttpGet]
-        public List<KockicaApi> Search(string searchParameters, int take = -1, int offset = 0)
+        public List<PartApi> Search(string searchParameters, int take = -1, int offset = 0)
         {
             var filteredSets = kockicaService.Search(searchParameters, take, offset).ToList();
-            return Mapper.Map<List<KockicaApi>>(filteredSets);
+            return Mapper.Map<List<PartApi>>(filteredSets);
         }
     }
 }

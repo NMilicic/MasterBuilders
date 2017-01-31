@@ -8,11 +8,11 @@ namespace Desktop.Views
 {
     public partial class frmMain : Form, IView
     {
-        private Korisnik _user;
+        private User _user;
         private IView _parent;
         private MainController _controller;
 
-        public frmMain(Korisnik user, IView parent)
+        public frmMain(User user, IView parent)
         {
             _user = user;
             _parent = parent;

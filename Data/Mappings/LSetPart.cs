@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Data.Mappings
 {
-    public class WishlistMap : ClassMap<Wishlist>
+    public class LSetPart : ClassMap<Domain.LSetPart>
     {
-        public WishlistMap()
+        public LSetPart()
         {
-            Table("wishlist");
+            Table("Lsets_parts");
             Id(x => x.Id).Column("id");
-
             Map(x => x.Number).Column("num");
 
-            References(x => x.User).Column("id_user");
-            References(x => x.LSet).Column("id_LSet");
+            References(x => x.Color).Column("id_color");
+            References(x => x.LSet).Column("id_Lset");
+            References(x => x.Part).Column("id_part");
         }
     }
 }

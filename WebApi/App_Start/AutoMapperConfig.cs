@@ -14,54 +14,54 @@ namespace WebApi.App_Start
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Korisnik, KorisnikApi>();
+                cfg.CreateMap<User, UserApi>();
 
-                cfg.CreateMap<KorisnikApi, Korisnik>()
-                .ForMember(dest => dest.Kockice, opt => opt.Ignore())
-                .ForMember(dest => dest.Moc, opt => opt.Ignore())
-                .ForMember(dest => dest.Setovi, opt => opt.Ignore());
+                cfg.CreateMap<UserApi, User>()
+                .ForMember(dest => dest.Parts, opt => opt.Ignore())
+                .ForMember(dest => dest.Mocs, opt => opt.Ignore())
+                .ForMember(dest => dest.LSets, opt => opt.Ignore());
 
-                cfg.CreateMap<Tema, TemaApi>();
+                cfg.CreateMap<Theme, ThemeApi>();
 
-                cfg.CreateMap<UserSet, UserSetApi>();
+                cfg.CreateMap<UserLSet, UserLSetApi>();
 
-                cfg.CreateMap<LSet, SetApi>()
-                  .ForMember(dest => dest.NadTema, opt => opt.MapFrom(src => src.Tema.NadTema));
+                cfg.CreateMap<LSet, LSetApi>()
+                  .ForMember(dest => dest.BaseTheme, opt => opt.MapFrom(src => src.Theme.BaseTheme));
 
                 cfg.CreateMap<LSet, SetDetailedApi>()
-                .ForMember(dest => dest.NadTema, opt => opt.MapFrom(src => src.Tema.NadTema))
-                .ForMember(dest => dest.Dijelovi, opt => opt.MapFrom(src => src.Dijelovi));
+                .ForMember(dest => dest.BaseTheme, opt => opt.MapFrom(src => src.Theme.BaseTheme))
+                .ForMember(dest => dest.LSetParts, opt => opt.MapFrom(src => src.LSetParts));
 
                 cfg.CreateMap<Wishlist, WishlistApi>()
-                .ForMember(dest => dest.KorisnikId, opt => opt.MapFrom(src => src.Korisnik.Id))
-                .ForMember(dest => dest.SetId, opt => opt.MapFrom(src => src.Set.Id));
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.User.Id))
+                .ForMember(dest => dest.LSetId, opt => opt.MapFrom(src => src.LSet.Id));
 
-                cfg.CreateMap<Boja, BojaApi>();
+                cfg.CreateMap<Color, ColorApi>();
 
-                cfg.CreateMap<BojaApi, Boja>()
-                .ForMember(dest => dest.MocDijelovi, opt => opt.Ignore())
-                .ForMember(dest => dest.SetoviDijelovi, opt => opt.Ignore());
+                cfg.CreateMap<ColorApi, Color>()
+                .ForMember(dest => dest.MocParts, opt => opt.Ignore())
+                .ForMember(dest => dest.LSetParts, opt => opt.Ignore());
 
-                cfg.CreateMap<Kockica, KockicaApi>();
-                cfg.CreateMap<KockicaApi, Kockica>()
-                .ForMember(dest => dest.Korisnik, opt => opt.Ignore())
-                .ForMember(dest => dest.SetoviDijelovi, opt => opt.Ignore());
+                cfg.CreateMap<Part, PartApi>();
+                cfg.CreateMap<PartApi, Part>()
+                .ForMember(dest => dest.Users, opt => opt.Ignore())
+                .ForMember(dest => dest.LSetParts, opt => opt.Ignore());
 
-                cfg.CreateMap<SetoviDijelovi, SetDijeloviApi>();
+                cfg.CreateMap<LSetPart, LSetPartApi>();
 
                 cfg.CreateMap<Moc, MocApi>();
 
                 cfg.CreateMap<MocApi, Moc>()
                 .ForMember(dest => dest.UserMoc, opt => opt.Ignore());
 
-                cfg.CreateMap<MocDijelovi, MocDijeloviApi>();
+                cfg.CreateMap<MocPart, MocPartApi>();
 
-                cfg.CreateMap<MocDijeloviApi, MocDijelovi>()
+                cfg.CreateMap<MocPartApi, MocPart>()
                 .ForMember(dest => dest.Moc, opt => opt.Ignore());
 
-                cfg.CreateMap<Kategorija, KategorijaApi>();
-                cfg.CreateMap<KategorijaApi, Kategorija>()
-                .ForMember(dest => dest.Kockice, opt => opt.Ignore()); ;
+                cfg.CreateMap<Category, CategoryApi>();
+                cfg.CreateMap<CategoryApi, Category>()
+                .ForMember(dest => dest.Parts, opt => opt.Ignore()); ;
             });
 
         }

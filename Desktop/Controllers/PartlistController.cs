@@ -15,15 +15,15 @@ namespace Desktop.Controllers
             _view = view;
         }
 
-        public void Load(IEnumerable<SetoviDijelovi> parts) 
+        public void Load(IEnumerable<LSetPart> parts) 
         {
             var data = from p in parts
                        select new
                        {
-                           Color = p.Boja.Ime,
-                           Quantity = p.Broj,
-                           Name = p.Kockica.Ime,
-                           Category = p.Kockica.Kategorija.Ime
+                           Color = p.Color.Name,
+                           Quantity = p.Number,
+                           Name = p.Part.Name,
+                           Category = p.Part.Category.Name
                        };
 
             _view.DataGridView.DataSource = data.ToList();

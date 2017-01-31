@@ -7,7 +7,7 @@ namespace Web.Models
 {
     public class SearchSetModel
     {
-        public IEnumerable<Data.Domain.Tema> AllThemes { get; set; }
+        public IEnumerable<Data.Domain.Theme> AllThemes { get; set; }
 
         public string Action { get; set; }
         public string Controller { get; set; }
@@ -21,8 +21,8 @@ namespace Web.Models
             {
                 List<SelectListItem> selectThemes = AllThemes.Select(f => new SelectListItem
                 {
-                    Value = f.IdTema.ToString(),
-                    Text = f.ImeTema
+                    Value = f.Id.ToString(),
+                    Text = f.Name
                 }).ToList();
                 selectThemes.Add(new SelectListItem
                 {

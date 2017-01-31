@@ -10,7 +10,7 @@ namespace Desktop.Views
 {
     public partial class frmDatabaseParts : Form, IDatabasePartsView
     {
-        private Korisnik _user;
+        private User _user;
         private DatabasePartsController _controller;
 
         public ComboBox Category
@@ -36,7 +36,7 @@ namespace Desktop.Views
             }
         }
 
-        public frmDatabaseParts(Korisnik user)
+        public frmDatabaseParts(User user)
         {
             _user = user;
             _controller = new DatabasePartsController(this);

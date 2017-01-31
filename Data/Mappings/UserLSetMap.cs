@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 
 namespace Data.Mappings
 {
-    public class UserMocMap : ClassMap<UserMoc>
+    public class UserLSetMap : ClassMap<UserLSet>
     {
-        public UserMocMap()
+        public UserLSetMap()
         {
-            Table("user_MOC");
+            Table("user_Lset");
             Id(x => x.Id).Column("id");
 
             Map(x => x.Built).Column("built");
+            Map(x => x.Owned).Column("owned");
 
             References(x => x.User).Column("id_user");
-            References(x => x.Moc).Column("id_moc");
+            References(x => x.LSet).Column("id_Lset");
         }
     }
 }

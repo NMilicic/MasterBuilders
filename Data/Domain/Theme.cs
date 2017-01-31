@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Data.Domain
 {
-    public class Wishlist
+    public class Theme
     {
         public virtual int Id { get; set; }
-        public virtual int Number { get; set; }
+        public virtual int BaseThemeId { get; set; }
+        public virtual string Name { get; set; }
 
-        public virtual User User { get; set; }
-        public virtual LSet LSet { get; set; }
+        public virtual Theme BaseTheme { get; set; }
     }
 }

@@ -9,22 +9,23 @@ namespace Data.Domain
     public class LSet
     {
         public virtual int Id { get; set; }
-        public virtual string Ime { get; set; }
-        public virtual int GodinaProizvodnje { get; set; }
-        public virtual int DijeloviBroj { get; set; }
-        public virtual string Opis { get; set; }
-        public virtual int IdTema { get; set; }
-        public virtual string Upute { get; set; }
-        public virtual string Slike { get; set; }
+        public virtual string Name { get; set; }
+        public virtual int ProductionYear { get; set; }
+        public virtual int NumberOfParts { get; set; }
+        public virtual string Description { get; set; }
+        public virtual int ThemeId { get; set; }
+        public virtual string SetCode { get; set; }
+        public virtual string InstructionsUrl { get; set; }
+        public virtual string PictureUrl { get; set; }
 
-        public virtual Tema Tema { get; set; }
-        public virtual IEnumerable<UserSet> KorisnikSet { get; set; }
-        public virtual IEnumerable<SetoviDijelovi> Dijelovi { get; set; }
+        public virtual Theme Theme { get; set; }
+        public virtual IEnumerable<UserLSet> UserLSets { get; set; }
+        public virtual IEnumerable<LSetPart> LSetParts { get; set; }
 
         public LSet()
         {
-           KorisnikSet = new List<UserSet>();
-           Dijelovi = new List<SetoviDijelovi>();
+            UserLSets = new List<UserLSet>();
+            LSetParts = new List<LSetPart>();
         }
     }
 }

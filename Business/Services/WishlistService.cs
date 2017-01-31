@@ -14,7 +14,7 @@ namespace Business.Services
     public class WishlistService : IWishlistService
     {
         IRepository<Wishlist> wishlistRepository = new Repository<Wishlist>();
-        IRepository<Korisnik> korisnikRepository = new Repository<Korisnik>();
+        IRepository<User> korisnikRepository = new Repository<User>();
         IRepository<LSet> setRepository = new Repository<LSet>();
 
         public IQueryable<Wishlist> GetAll(int take = -1, int offset = 0)
@@ -50,7 +50,7 @@ namespace Business.Services
 
         public IQueryable<Wishlist> GetAllSetsFromWishlistForUser(int userId, int take = -1, int offset = 0)
         {
-            var query = wishlistRepository.Query().Where(w => w.Korisnik.Id == userId).Skip(offset);
+            var query = wishlistRepository.Query().Where(w => w.User.Id == userId).Skip(offset);
             if (take > 0)
                 query = query.Take(take);
             return query;
@@ -65,14 +65,14 @@ namespace Business.Services
                 var dbSet = setRepository.GetById(setId);
                 if (dbSet != null)
                 {
-                    var existingWishListItem = wishlistRepository.Query().FirstOrDefault(x => x.Korisnik.Id == userId && x.Set.Id == setId);
+                    var existingWishListItem = wishlistRepository.Query().FirstOrDefault(x => x.User.Id == userId && x.LSet.Id == setId);
                     if (existingWishListItem == null)
                     {
                         var wishListForSave = new Wishlist()
                         {
-                            Korisnik = user,
-                            Set = dbSet,
-                            Komada = pieces
+                            User = user,
+                            LSet = dbSet,
+                            Number = pieces
                         };
                         wishlistRepository.Save(wishListForSave);
 
@@ -80,7 +80,7 @@ namespace Business.Services
                     }
                     else
                     {
-                        existingWishListItem.Komada += pieces;
+                        existingWishListItem.Number += pieces;
                         wishlistRepository.Save(existingWishListItem);
 
                         return existingWishListItem;
@@ -105,7 +105,7 @@ namespace Business.Services
                 var dbSet = setRepository.GetById(setId);
                 if (dbSet != null)
                 {
-                    var existingWishlistItem = wishlistRepository.Query().FirstOrDefault(x => x.Korisnik.Id == userId && x.Set.Id == setId);
+                    var existingWishlistItem = wishlistRepository.Query().FirstOrDefault(x => x.User.Id == userId && x.LSet.Id == setId);
 
                     if (existingWishlistItem == null)
                     {
@@ -113,9 +113,9 @@ namespace Business.Services
                     }
                     else
                     {
-                        if (existingWishlistItem.Komada > pieces)
+                        if (existingWishlistItem.Number > pieces)
                         {
-                            existingWishlistItem.Komada -= pieces;
+                            existingWishlistItem.Number -= pieces;
                             wishlistRepository.Save(existingWishlistItem);
                         }
                         else
@@ -137,7 +137,7 @@ namespace Business.Services
 
         public IQueryable<Wishlist> Search(int userId ,string searchParameters, int take = -1, int offset = 0)
         {
-            var query = wishlistRepository.Query().Where(w => w.Korisnik.Id == userId);
+            var query = wishlistRepository.Query().Where(w => w.User.Id == userId);
             var searchFields = ParseSearchParameters(searchParameters);
             foreach (var field in searchFields)
             {
@@ -148,22 +148,22 @@ namespace Business.Services
                     case SearchEnum.Name:
                         query = FilterByName(field.Value, query);
                         break;
-                    case SearchEnum.Opis:
+                    case SearchEnum.Description:
                         query = FilterByDescription(field.Value, query);
                         break;
-                    case SearchEnum.BrojKockica:
+                    case SearchEnum.NumberOfParts:
                         query = FilterByBrojKockica(field.Value, query);
                         break;
-                    case SearchEnum.GodinaProizvodnje:
+                    case SearchEnum.ProductionYear:
                         query = FilterByYear(field.Value, query);
                         break;
-                    case SearchEnum.Tema:
+                    case SearchEnum.Theme:
                         query = FilterByTema(field.Value, query);
                         break;
-                    case SearchEnum.NadTema:
+                    case SearchEnum.BaseTheme:
                         query = FilterByNadTema(field.Value, query);
                         break;
-                    case SearchEnum.Komada:
+                    case SearchEnum.Owned:
                         query = FilterByBrojKomada(field.Value, query);
                         break;
                     case SearchEnum.Error:
@@ -197,12 +197,12 @@ namespace Business.Services
 
         private IQueryable<Wishlist> FilterByName(string searchPattern, IQueryable<Wishlist> query)
         {
-            return query.Where(x => x.Set.Ime.Contains(searchPattern));
+            return query.Where(x => x.LSet.Name.Contains(searchPattern));
         }
 
         private IQueryable<Wishlist> FilterByDescription(string searchPattern, IQueryable<Wishlist> query)
         {
-            return query.Where(x => x.Set.Opis.Contains(searchPattern));
+            return query.Where(x => x.LSet.Description.Contains(searchPattern));
         }
 
         private IQueryable<Wishlist> FilterByYear(string yearString, IQueryable<Wishlist> query)
@@ -210,18 +210,18 @@ namespace Business.Services
             int year;
             var parseYear = Int32.TryParse(yearString, out year);
 
-            return parseYear ? query.Where(x => x.Set.GodinaProizvodnje == year) : query;
+            return parseYear ? query.Where(x => x.LSet.ProductionYear == year) : query;
         }
 
         private IQueryable<Wishlist> FilterByTema(string tema, IQueryable<Wishlist> query)
         {
             //return query.Where(x => x.Set.Tema.ImeTema == tema || (x.Set.Tema.NadTema != null && x.Set.Tema.NadTema.ImeTema == tema));
-            return query.Where(x => x.Set.Tema.ImeTema == tema);
+            return query.Where(x => x.LSet.Theme.Name == tema);
         }
 
         private IQueryable<Wishlist> FilterByNadTema(string tema, IQueryable<Wishlist> query)
         {
-            return query.Where(x => x.Set.Tema.NadTema != null && x.Set.Tema.NadTema.ImeTema == tema);
+            return query.Where(x => x.LSet.Theme.BaseTheme != null && x.LSet.Theme.BaseTheme.Name == tema);
         }
 
         private IQueryable<Wishlist> FilterByBrojKockica(string searchPattern, IQueryable<Wishlist> query)
@@ -236,7 +236,7 @@ namespace Business.Services
 
                 if (parseLowerBound && parseUpperBound)
                 {
-                    return query.Where(x => x.Set.DijeloviBroj >= lowerBound && x.Set.DijeloviBroj <= upperBound);
+                    return query.Where(x => x.LSet.NumberOfParts >= lowerBound && x.LSet.NumberOfParts <= upperBound);
                 }
             }
             return query;
@@ -254,7 +254,7 @@ namespace Business.Services
 
                 if (parseLowerBound && parseUpperBound)
                 {
-                    return query.Where(x => x.Komada >= lowerBound && x.Komada <= upperBound);
+                    return query.Where(x => x.Number >= lowerBound && x.Number <= upperBound);
                 }
             }
             return query;

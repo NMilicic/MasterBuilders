@@ -23,7 +23,7 @@ namespace WebApi.Controllers.Api
         [HttpPost]
         public HttpResponseMessage AddSetsToWishlistForUser(WishlistApi newWishlistItems)
         {
-            wishlistService.AddSetToWishlistForUser(newWishlistItems.KorisnikId, newWishlistItems.SetId, newWishlistItems.Komada);
+            wishlistService.AddSetToWishlistForUser(newWishlistItems.UserId, newWishlistItems.LSetId, newWishlistItems.Number);
 
             return Request.CreateResponse(HttpStatusCode.Created, "Items added to wishlist");
         }

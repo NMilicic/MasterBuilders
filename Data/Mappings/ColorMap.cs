@@ -8,24 +8,24 @@ using System.Threading.Tasks;
 
 namespace Data.Mappings
 {
-    public class BojaMap : ClassMap<Boja>
+    public class ColorMap : ClassMap<Color>
     {
-        public BojaMap()
+        public ColorMap()
         {
-            Table("boja");
+            Table("color");
 
             Id(x => x.Id).Column("id");
-            Map(x => x.Ime).Column("ime");
+            Map(x => x.Name).Column("name");
 
-            HasMany(x => x.SetoviDijelovi)
+            HasMany(x => x.LSetParts)
              .Cascade.All()
              .Inverse()
-             .Table("setovi_dijelovi");
+             .Table("lset_parts");
 
-            HasMany(x => x.MocDijelovi)
+            HasMany(x => x.MocParts)
                  .Cascade.All()
                  .Inverse()
-                 .Table("MOC_dijelovi");
+                 .Table("MOC_parts");
         }
     }
 }

@@ -15,12 +15,12 @@ namespace Web.Controllers
     public class WishlistController : Controller
     {
         WishlistService wishlistService = new WishlistService();
-        Repository<Tema> themeRepository = new Repository<Tema>();
+        Repository<Theme> themeRepository = new Repository<Theme>();
 
         [HttpGet]
         public ActionResult MySets()
         {
-            IEnumerable<Tema> themes = themeRepository.Query();
+            IEnumerable<Theme> themes = themeRepository.Query();
             SearchSetModel model = new SearchSetModel();
             model.AllThemes = themes;
             model.Action = "MySets";
@@ -42,7 +42,7 @@ namespace Web.Controllers
                 return Redirect("Wishlist/MySets");
             }
 
-            IEnumerable<Tema> themes = themeRepository.Query();
+            IEnumerable<Theme> themes = themeRepository.Query();
             model.AllThemes = themes;
 
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());

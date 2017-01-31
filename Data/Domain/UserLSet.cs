@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Data.Domain
 {
-    public class Wishlist
+    public class UserLSet
     {
         public virtual int Id { get; set; }
-        public virtual int Number { get; set; }
+        public virtual int Built { get; set; }
+        public virtual int Owned { get; set; }
 
         public virtual User User { get; set; }
         public virtual LSet LSet { get; set; }

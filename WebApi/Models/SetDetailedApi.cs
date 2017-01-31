@@ -6,8 +6,8 @@ using System.Web;
 
 namespace WebApi.Models
 {
-    public class SetDetailedApi : SetApi
+    public class SetDetailedApi : LSetApi
     {
-        public List<SetDijeloviApi> Dijelovi { get; set; }
+        public List<LSetPartApi> LSetParts { get; set; }
     }
 }

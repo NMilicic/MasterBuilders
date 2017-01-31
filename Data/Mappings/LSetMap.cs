@@ -15,22 +15,22 @@ namespace Data.Mappings
             Table("Lset");
 
             Id(x => x.Id).Column("id");
-            Map(x => x.Ime).Column("ime");
-            Map(x => x.GodinaProizvodnje).Column("god_pro");
-            Map(x => x.DijeloviBroj).Column("dijelovi_broj");
-            Map(x => x.Opis).Column("opis");
-            Map(x => x.IdTema).Column("id_tema");
-            Map(x => x.Upute).Column("upute");
-            Map(x => x.Slike).Column("slika");
+            Map(x => x.Name).Column("name");
+            Map(x => x.ProductionYear).Column("production_year");
+            Map(x => x.NumberOfParts).Column("num_parts");
+            Map(x => x.Description).Column("description");
+            Map(x => x.ThemeId).Column("id_theme");
+            Map(x => x.InstructionsUrl).Column("instructions_url");
+            Map(x => x.PictureUrl).Column("picture_url");
 
-            References(x => x.Tema).Column("id_tema").ForeignKey("id");
+            References(x => x.Theme).Column("id_theme").ForeignKey("id");
 
-            HasMany(x => x.KorisnikSet)
-              .Table("user_set");
+            HasMany(x => x.UserLSets)
+              .Table("user_Lset");
 
-            HasMany(x => x.Dijelovi)
+            HasMany(x => x.LSetParts)
               .Cascade.All()
-              .Table("setovi_dijelovi");
+              .Table("Lset_parts");
         }
     }
 }

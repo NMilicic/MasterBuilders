@@ -17,7 +17,7 @@ namespace Desktop.Views
 {
     public partial class frmWishlist : Form, IWishlistView
     {
-        private Korisnik _user;
+        private User _user;
         private WishlistController _controller;
 
         public ComboBox Theme
@@ -69,7 +69,7 @@ namespace Desktop.Views
             }
         }
         
-        public frmWishlist(Korisnik user)
+        public frmWishlist(User user)
         {
             _user = user;
             _controller = new WishlistController(this, user);

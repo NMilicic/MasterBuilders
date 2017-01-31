@@ -17,7 +17,7 @@ namespace Desktop.Views
 {
     public partial class frmInventorySets : Form, IInventorySetsView
     {
-        private Korisnik _user;
+        private User _user;
         private InventorySetsController _controller;
 
         public ComboBox Theme
@@ -105,7 +105,7 @@ namespace Desktop.Views
             }
         }
         
-        public frmInventorySets(Korisnik user)
+        public frmInventorySets(User user)
         {
             _user = user;
             _controller = new InventorySetsController(this, user);

@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace WebApi.Models
 {
-    public class KorisnikApi
+    public class UserApi
     {
         public  virtual int Id { get; set; }
         [Required]
         public virtual string Email { get; set; }
         [Required]
-        public virtual string Zaporka { get; set; }
+        public virtual string Password { get; set; }
         [Required]
-        public virtual string Ime { get; set;}
+        public virtual string FirstName { get; set;}
         [Required]
-        public virtual string Prezime { get; set; }
+        public virtual string LastName { get; set; }
     }
 }

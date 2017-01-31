@@ -5,9 +5,11 @@ using System.Web;
 
 namespace WebApi.Models
 {
-    public class BojaApi
+    public class ThemeApi
     {
         public int Id { get; set; }
-        public string Ime { get; set; }
+        public string Name { get; set; }
+
+        public ThemeApi BaseTheme { get; set; }
     }
 }

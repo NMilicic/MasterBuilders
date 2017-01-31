@@ -11,15 +11,15 @@ using WebApi.Models;
 
 namespace WebApi.Controllers.Api
 {
-    public class SetApiController : ApiController
+    public class LSetApiController : ApiController
     {
         LSetService setServices = new LSetService();
 
         [HttpGet]
-        public List<SetApi> GetAll(int take = -1, int offset = 0)
+        public List<LSetApi> GetAll(int take = -1, int offset = 0)
         {
             var allSets = setServices.GetAll(take, offset).ToList();
-            return Mapper.Map<List<SetApi>>(allSets);
+            return Mapper.Map<List<LSetApi>>(allSets);
         }
 
         [HttpGet]
@@ -30,24 +30,24 @@ namespace WebApi.Controllers.Api
         }
 
         [HttpGet]
-        public List<SetApi> GetSetsWithBricks([FromUri] int[] ids, int take = -1, int offset = 0)
+        public List<LSetApi> GetSetsWithBricks([FromUri] int[] ids, int take = -1, int offset = 0)
         {
             var sets = setServices.GetAllSetsWithBricks(ids.ToList(), take, offset).ToList();
 
-            return Mapper.Map<List<SetApi>>(sets);
+            return Mapper.Map<List<LSetApi>>(sets);
         }
         [HttpGet]
-        public List<SetApi> Search(string searchParameters, int take = -1, int offset = 0)
+        public List<LSetApi> Search(string searchParameters, int take = -1, int offset = 0)
         {
             var filteredSets = setServices.Search(searchParameters, take, offset).ToList();
-            return Mapper.Map<List<SetApi>>(filteredSets);
+            return Mapper.Map<List<LSetApi>>(filteredSets);
         }
 
         [HttpGet]
-        public List<SetApi> BuilderAssistend(int userId)
+        public List<LSetApi> BuilderAssistend(int userId)
         {
             var possibleSets = setServices.BuilderAssistent(userId);
-            return Mapper.Map<List<SetApi>>(possibleSets);
+            return Mapper.Map<List<LSetApi>>(possibleSets);
         }
     }
 }

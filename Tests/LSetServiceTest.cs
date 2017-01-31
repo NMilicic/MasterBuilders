@@ -18,133 +18,133 @@ namespace Tests
 
         Mock<IRepository<LSet>> setRepository = new Mock<IRepository<LSet>>();
         Mock<IRepository<Wishlist>> wishlistRepository = new Mock<IRepository<Wishlist>>();
-        Mock<IRepository<Korisnik>> korisnikRepository = new Mock<IRepository<Korisnik>>();
-        Mock<IRepository<UserSet>> inventroyRepository = new Mock<IRepository<UserSet>>();
-        Mock<IRepository<SetoviDijelovi>> dijeloviRepository = new Mock<IRepository<SetoviDijelovi>>();
+        Mock<IRepository<User>> korisnikRepository = new Mock<IRepository<User>>();
+        Mock<IRepository<UserLSet>> inventroyRepository = new Mock<IRepository<UserLSet>>();
+        Mock<IRepository<LSetPart>> dijeloviRepository = new Mock<IRepository<LSetPart>>();
 
         private void IniData()
         {
-            var kategorija1 = new Kategorija()
+            var kategorija1 = new Category()
             {
                 Id = 1,
-                Ime = "kat 1"
+                Name = "kat 1"
             };
 
-            var kockica1 = new Kockica()
+            var kockica1 = new Part()
             {
-                Ime = "Kockica 1",
-                Kategorija = kategorija1
+                Name = "Kockica 1",
+                Category = kategorija1
             };
-            var kockica2 = new Kockica()
+            var kockica2 = new Part()
             {
-                Ime = "Kockica 2",
-                Kategorija = kategorija1
+                Name = "Kockica 2",
+                Category = kategorija1
             };
-            var kockica3 = new Kockica()
+            var kockica3 = new Part()
             {
-                Ime = "Kockica 3",
-                Kategorija = kategorija1
+                Name = "Kockica 3",
+                Category = kategorija1
             };
-            var kockica4 = new Kockica()
+            var kockica4 = new Part()
             {
-                Ime = "Kockica 4",
-                Kategorija = kategorija1
+                Name = "Kockica 4",
+                Category = kategorija1
             };
 
-            var boja1 = new Boja()
+            var boja1 = new Color()
             {
                 Id = 1,
-                Ime = "Plava"
+                Name = "Plava"
             };
 
-            var boja2 = new Boja()
+            var boja2 = new Color()
             {
                 Id = 2,
-                Ime = "Zelena"
+                Name = "Zelena"
             };
 
-            var tema1 = new Tema()
+            var tema1 = new Theme()
             {
-                ImeTema = "Tema 1"
+                Name = "Tema 1"
             };
-            var tema2 = new Tema()
+            var tema2 = new Theme()
             {
-                ImeTema = "Tema 2"
+                Name = "Tema 2"
             };
-            var tema3 = new Tema()
+            var tema3 = new Theme()
             {
-                ImeTema = "Tema 3",
-                NadTema = tema1
+                Name = "Tema 3",
+                BaseTheme = tema1
             };
 
             var set1 = new LSet()
             {
                 Id = 1,
-                Ime = "Set 1",
-                DijeloviBroj = 5,
-                Tema = tema3
+                Name = "Set 1",
+                NumberOfParts = 5,
+                Theme = tema3
             };
 
 
-            var dijelovi1 = new List<SetoviDijelovi>() {  new SetoviDijelovi()
+            var dijelovi1 = new List<LSetPart>() {  new LSetPart()
             {
-                Boja = boja1,
-                Kockica = kockica1,
-                Broj = 1,
-                Set = set1
+                Color = boja1,
+                Part = kockica1,
+                Number = 1,
+                LSet = set1
             },
-             new SetoviDijelovi()
+             new LSetPart()
             {
-                Boja = boja1,
-                Kockica = kockica2,
-                Broj = 1,
-                Set = set1
+                Color = boja1,
+                Part = kockica2,
+                Number = 1,
+                LSet = set1
             }};
 
-            set1.Dijelovi = dijelovi1;
+            set1.LSetParts = dijelovi1;
 
             var set2 = new LSet()
             {
                 Id = 2,
-                Ime = "Set 2",
-                Dijelovi = new List<SetoviDijelovi>(),
-                DijeloviBroj = 35,
-                Tema = tema2
+                Name = "Set 2",
+                LSetParts = new List<LSetPart>(),
+                NumberOfParts = 35,
+                Theme = tema2
             };
 
-            set2.Dijelovi = new List<SetoviDijelovi>() {
-                new SetoviDijelovi()
+            set2.LSetParts = new List<LSetPart>() {
+                new LSetPart()
             {
-                Boja = boja1,
-                Kockica = kockica2,
-                Broj = 1,
-                Set = set2
+                Color = boja1,
+                Part = kockica2,
+                Number = 1,
+                LSet = set2
             }};
 
             var set3 = new LSet()
             {
                 Id = 3,
-                Ime = "Set 3",
-                DijeloviBroj = 100,
-                Tema = tema2
+                Name = "Set 3",
+                NumberOfParts = 100,
+                Theme = tema2
             };
 
-            var dijelovi3 = new List<SetoviDijelovi>() {  new SetoviDijelovi()
+            var dijelovi3 = new List<LSetPart>() {  new LSetPart()
             {
-                Boja = boja2,
-                Kockica = kockica1,
-                Broj = 1,
-                Set = set3
+                Color = boja2,
+                Part = kockica1,
+                Number = 1,
+                LSet = set3
             },
-             new SetoviDijelovi()
+             new LSetPart()
             {
-                Boja = boja2,
-                Kockica = kockica2,
-                Broj = 1,
-                Set = set3
+                Color = boja2,
+                Part = kockica2,
+                Number = 1,
+                LSet = set3
             }};
 
-            set3.Dijelovi = dijelovi3;
+            set3.LSetParts = dijelovi3;
 
             setovi = new List<LSet>() { set1, set2, set3 };
         }
@@ -168,16 +168,16 @@ namespace Tests
         [TestMethod]
         public void BuilderAssistentTestCount1()
         {
-            korisnikRepository.Setup(s => s.GetById(1)).Returns(new Korisnik()
+            korisnikRepository.Setup(s => s.GetById(1)).Returns(new User()
             {
                 Id = 1,
-                Setovi = new List<UserSet>()
+                LSets = new List<UserLSet>()
                 {
-                    new UserSet()
+                    new UserLSet()
                     {
-                        Set = setovi.First(),
-                        Komada = 1,
-                        Slozeno = 0
+                        LSet = setovi.First(),
+                        Owned = 1,
+                        Built = 0
                     }
                 }
             });
@@ -188,7 +188,7 @@ namespace Tests
         [TestMethod]
         public void BuilderAssistentTestCount0()
         {
-            korisnikRepository.Setup(s => s.GetById(1)).Returns(new Korisnik()
+            korisnikRepository.Setup(s => s.GetById(1)).Returns(new User()
             {
                 Id = 1
             });
@@ -199,19 +199,19 @@ namespace Tests
         [TestMethod]
         public void BuilderAssistentTestBricksNumber()
         {
-            korisnikRepository.Setup(s => s.GetById(1)).Returns(new Korisnik()
+            korisnikRepository.Setup(s => s.GetById(1)).Returns(new User()
             {
-                Setovi = new List<UserSet>()
+                LSets = new List<UserLSet>()
                 {
-                    new UserSet()
+                    new UserLSet()
                     {
-                        Set = setovi.First(),
-                        Komada = 1,
-                        Slozeno = 0
+                        LSet = setovi.First(),
+                        Owned = 1,
+                        Built = 0
                     }
                 }
             });
-            setovi.First(s => s.Id == 2).Dijelovi.First().Broj = 2;
+            setovi.First(s => s.Id == 2).LSetParts.First().Number = 2;
             var sets = setService.BuilderAssistent(1);
             Assert.AreEqual(1, sets.Count);
         }
@@ -219,15 +219,15 @@ namespace Tests
         [TestMethod]
         public void BuilderAssistentTestBuilded()
         {
-            korisnikRepository.Setup(s => s.GetById(1)).Returns(new Korisnik()
+            korisnikRepository.Setup(s => s.GetById(1)).Returns(new User()
             {
-                Setovi = new List<UserSet>()
+                LSets = new List<UserLSet>()
                 {
-                    new UserSet()
+                    new UserLSet()
                     {
-                        Set = setovi.First(),
-                        Komada = 1,
-                        Slozeno = 1
+                        LSet = setovi.First(),
+                        Owned = 1,
+                        Built = 1
                     }
                 }
             });
@@ -239,16 +239,16 @@ namespace Tests
         [TestMethod]
         public void BuilderAssistentColor()
         {
-            korisnikRepository.Setup(s => s.GetById(1)).Returns(new Korisnik()
+            korisnikRepository.Setup(s => s.GetById(1)).Returns(new User()
             {
                 Id = 1,
-                Setovi = new List<UserSet>()
+                LSets = new List<UserLSet>()
                 {
-                    new UserSet()
+                    new UserLSet()
                     {
-                        Set = setovi.First(x => x.Id == 3),
-                        Komada = 1,
-                        Slozeno = 0
+                        LSet = setovi.First(x => x.Id == 3),
+                        Owned = 1,
+                        Built = 0
                     }
                 }
             });

@@ -69,6 +69,7 @@ BEGIN
     id_user INT NOT NULL,
     id_Lset INT NOT NULL,
     built INT,
+	owned INT,
     PRIMARY KEY(id)
   )
 END;
@@ -220,3 +221,16 @@ ALTER TABLE MasterBuilders.dbo.part
     ADD    FOREIGN KEY (category)
     REFERENCES category(id)
 ;
+
+BEGIN
+  CREATE TABLE MasterBuilders.dbo.wishlist
+  (
+	id INT IDENTITY(1,1) NOT NULL,
+    id_user INT NOT NULL,
+    id_LSet INT NOT NULL,
+    num INT,
+    PRIMARY KEY(id),
+	FOREIGN KEY (id_user) REFERENCES users(id),
+	FOREIGN KEY (id_LSet) REFERENCES Lset(id),
+  )
+END;

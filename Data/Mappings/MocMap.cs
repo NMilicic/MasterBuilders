@@ -15,17 +15,17 @@ namespace Data.Mappings
             Table("MOC");
 
             Id(x => x.Id).Column("id");
-            Map(x => x.Ime).Column("ime");
-            Map(x => x.DijeloviBroj).Column("dijelovi_broj");
-            Map(x => x.Tema1).Column("tema1");
-            Map(x => x.Tema2).Column("tema2");
-            Map(x => x.Tema3).Column("tema3");
-            Map(x => x.Opis).Column("opis");
-            Map(x => x.IdAutor).Column("id_autor");
-            Map(x => x.GodinaProizvodnje).Column("god_pro");
+            Map(x => x.Name).Column("name");
+            Map(x => x.NumberOfParts).Column("num_parts");
+            Map(x => x.Theme1).Column("theme1");
+            Map(x => x.Theme2).Column("theme2");
+            Map(x => x.Theme3).Column("theme3");
+            Map(x => x.Description).Column("description");
+            Map(x => x.AuthorId).Column("id_author");
+            Map(x => x.ProductionYear).Column("production_year");
 
-            References(x => x.UserMoc).Column("id_autor").ReadOnly();
-            HasMany(x => x.Dijelovi).Cascade.All().Table("MOC_dijelovi");
+            References(x => x.UserMoc).Column("id_author").ReadOnly();
+            HasMany(x => x.MocParts).Cascade.All().Table("MOC_parts");
         }
     }
 }

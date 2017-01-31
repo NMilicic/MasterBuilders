@@ -14,23 +14,23 @@ namespace Tests
     public class KorisnikServiceTest
     {
         private KorisnikServices korisnikService;
-        Mock<IRepository<Korisnik>> korisnikRepository = new Mock<IRepository<Korisnik>>();
+        Mock<IRepository<User>> korisnikRepository = new Mock<IRepository<User>>();
 
         [TestInitialize]
         public void CreateInstances()
         {
-            var user1 = new Korisnik()
+            var user1 = new User()
             {
                 Email = "prvi@prvi.com",
-                Zaporka = "test"
+                Password = "test"
             };
-            var user2 = new Korisnik()
+            var user2 = new User()
             {
                 Email = "drugi@prvi.com",
-                Zaporka = "test"
+                Password = "test"
             };
 
-            var userList = new List<Korisnik>() { user1, user2 };
+            var userList = new List<User>() { user1, user2 };
             korisnikRepository.Setup(s => s.Query()).Returns(userList.AsQueryable);
             korisnikService = new KorisnikServices(korisnikRepository.Object);
         }
@@ -38,10 +38,10 @@ namespace Tests
         [TestMethod]
         public void Register()
         {
-            var newUser = new Korisnik()
+            var newUser = new User()
             {
                 Email = "novi@emai.com",
-                Zaporka = "test"
+                Password = "test"
             };
            var response =  korisnikService.Register(newUser);
             Assert.AreEqual(newUser.Email, response.Email);
@@ -51,10 +51,10 @@ namespace Tests
         [ExpectedException(typeof(KorisnikException))]
         public void RegisterExistingEmail()
         {
-            var newUser = new Korisnik()
+            var newUser = new User()
             {
                 Email = "prvi@prvi.com",
-                Zaporka = "test"
+                Password = "test"
             };
             var response = korisnikService.Register(newUser);
         }
@@ -62,12 +62,12 @@ namespace Tests
         [TestMethod]
         public void Login()
         {
-            var newUser = new Korisnik()
+            var newUser = new User()
             {
                 Email = "prvi@prvi.com",
-                Zaporka = "test"
+                Password = "test"
             };
-            var response = korisnikService.Login(newUser.Email,newUser.Zaporka);
+            var response = korisnikService.Login(newUser.Email,newUser.Password);
             Assert.AreEqual(newUser.Email, response.Email);
         }
 
@@ -75,10 +75,10 @@ namespace Tests
         [ExpectedException(typeof(KorisnikException))]
         public void LoginFail()
         {
-            var newUser = new Korisnik()
+            var newUser = new User()
             {
                 Email = "prvi@prvi.com",
-                Zaporka = "test"
+                Password = "test"
             };
             var response = korisnikService.Register(newUser);
         }

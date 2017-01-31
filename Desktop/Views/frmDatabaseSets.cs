@@ -10,7 +10,7 @@ namespace Desktop.Views
 {
     public partial class frmDatabaseSets : Form, IDatabaseSetsView
     {
-        private Korisnik _user;
+        private User _user;
         private DatabaseSetsController _controller;
 
         public ComboBox Theme
@@ -94,7 +94,7 @@ namespace Desktop.Views
             }
         }
         
-        public frmDatabaseSets(Korisnik user)
+        public frmDatabaseSets(User user)
         {
             _user = user;
             _controller = new DatabaseSetsController(this, user);
