@@ -25,7 +25,7 @@ namespace Desktop.Controllers
         public AddPartsController(IAddPartsView view)
         {
             _view = view;
-            _partsService = new KockiceService();
+            _partsService = new PartService();
             _categoryRepository = new Repository<Category>();
             _colorRepository = new Repository<Color>();
             _currQuery = _partsService.GetAll();
