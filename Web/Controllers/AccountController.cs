@@ -7,6 +7,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Web.Models;
 using Business.Services;
+using System.Web.Security;
+using System.Web.Script.Serialization;
+using System;
+using Business.Exceptions;
 
 namespace Web.Controllers
 {
@@ -20,7 +24,7 @@ namespace Web.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -32,9 +36,9 @@ namespace Web.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -71,23 +75,38 @@ namespace Web.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            try {
+                UserServices service = new UserServices();
+                var user = service.Login(model.Email, model.Password);
+
+                CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();
+                serializeModel.Id = user.Id;
+                serializeModel.Email = user.Email;
+
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+                string userData = serializer.Serialize(serializeModel);
+
+                FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+                         1,
+                         model.Email,
+                         DateTime.Now,
+                         DateTime.Now.AddMinutes(15),
+                         false,
+                         userData);
+
+                string encTicket = FormsAuthentication.Encrypt(authTicket);
+                HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+                Response.Cookies.Add(faCookie);
+
+                return RedirectToAction("Index", "Home");
+            } catch (UserException e)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
             }
         }
+
 
         //
         // GET: /Account/VerifyCode
@@ -118,7 +137,7 @@ namespace Web.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -149,36 +168,15 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var testUser = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(testUser, model.Zaporka);
-                if (result.Succeeded)
-                {
-                    UserManager.Delete(testUser);
+                Data.Domain.User korisnik = new Data.Domain.User();
+                korisnik.Email = model.Email;
+                korisnik.FirstName = model.Ime;
+                korisnik.LastName = model.Prezime;
+                korisnik.Password = model.Zaporka;
+                UserServices korisnikServices = new UserServices();
+                korisnikServices.SaveOrUpdate(korisnik);
 
-                    Data.Domain.User korisnik = new Data.Domain.User();
-                    korisnik.Email = model.Email;
-                    korisnik.FirstName = model.Ime;
-                    korisnik.LastName = model.Prezime;
-                    korisnik.Password = model.Zaporka;
-                    UserServices korisnikServices = new UserServices();
-                    korisnikServices.SaveOrUpdate(korisnik);
-
-                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Id = korisnik.Id.ToString() };
-                    var saveResult = await UserManager.CreateAsync(user, model.Zaporka);
-                    if (saveResult.Succeeded)
-                    {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                        // Send an email with this link
-                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-                AddErrors(result);
+                return RedirectToAction("Login", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -404,7 +402,9 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            HttpCookie userCookie = new HttpCookie(".ASPXAUTH");
+            userCookie.Expires = DateTime.Now.AddDays(-1d);
+            Response.Cookies.Add(userCookie);
             return RedirectToAction("Index", "Home");
         }
 

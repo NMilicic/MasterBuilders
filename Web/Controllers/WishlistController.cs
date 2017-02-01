@@ -3,6 +3,7 @@ using Data;
 using Data.Domain;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
@@ -25,8 +26,8 @@ namespace Web.Controllers
             model.Action = "MySets";
             model.Controller = "Wishlist";
 
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var sets = wishlistService.GetAllSetsFromWishlistForUser(int.Parse(user.Id));
+            var user = HttpContext.User as CustomPrincipal;
+            var sets = wishlistService.GetAllSetsFromWishlistForUser(user.Id);
             ViewBag.sets = sets;
 
             return View(model);
@@ -44,30 +45,49 @@ namespace Web.Controllers
             IEnumerable<Theme> themes = themeRepository.Query();
             model.AllThemes = themes;
 
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            string searchParameters = SearchHelper.ConstructSearchParameters(model);
-            var sets = wishlistService.Search(int.Parse(user.Id), searchParameters);
+            var user = HttpContext.User as CustomPrincipal; string searchParameters = SearchHelper.ConstructSearchParameters(model);
+            var sets = wishlistService.Search(user.Id, searchParameters);
             ViewBag.sets = sets;
 
             return View(model);
         }
 
+        #region AJAX methods
         public JsonResult AddAjax(string setId)
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var user = HttpContext.User as CustomPrincipal;
             WishlistService wishlistService = new WishlistService();
-            wishlistService.AddSetToWishlistForUser(int.Parse(user.Id), int.Parse(setId), 1);
+            try
+            {
+                wishlistService.AddSetToWishlistForUser(user.Id, int.Parse(setId), 1);
 
-            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    error = true,
+                    message = e.Message
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public JsonResult RemoveAjax(string setId)
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var user = HttpContext.User as CustomPrincipal;
             WishlistService wishlistService = new WishlistService();
-            wishlistService.RemoveSetFromWishlistForUser(int.Parse(user.Id), int.Parse(setId), 1);
+            try
+            {
+                wishlistService.RemoveSetFromWishlistForUser(user.Id, int.Parse(setId), 1);
 
-            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { error = true, message = e.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
+        #endregion
     }
 }
