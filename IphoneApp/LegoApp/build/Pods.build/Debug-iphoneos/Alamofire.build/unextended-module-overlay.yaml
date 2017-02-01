@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/helsa238/Desktop/legoapp/LegoApp/build/Debug-iphoneos/Alamofire/Alamofire.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/helsa238/Desktop/legoapp/LegoApp/build/Pods.build/Debug-iphoneos/Alamofire.build/unextended-module.modulemap',
+    }]
+  }]
+}

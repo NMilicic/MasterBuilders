@@ -1,0 +1,1480 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0968524ED4DE8DF7834055C5B6089D72 /* MBProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE7F883DBA44CF5988255DDEC27C551 /* MBProgressHUD-dummy.m */; };
+		10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38553822C572F5944B0307BF2B791AC /* Timeline.swift */; };
+		1215629D558162CE728B27386DA02D1D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82D40E632FA2A47E7DBA77D3D46FDFE8 /* Foundation.framework */; };
+		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D491DAE93CB3FB8F76B8BECE0642F53F /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E2BABF5137C588E669366D24D0F8370 /* Unbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BE3BC96059515AA298D05753D6484A /* Unbox-dummy.m */; };
+		28A794912ED1E06B05D96DF5ED0AED19 /* MBProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3147CD03F471B1ECC591A7EA38074995 /* MBProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F424CBDAC4D77E7296B74A7865A8826 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B476C7C3BDD4218E3B0B852CE57093 /* CoreGraphics.framework */; };
+		3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAAE21311FB5C3641CE176DB1673F90 /* TaskDelegate.swift */; };
+		3BB7E6A755AFEAC9708342ED41F54067 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E054739AD8EE5381E7FBABB3ACA80805 /* QuartzCore.framework */; };
+		410A13B7DD1EC860CC0971BB8C371AE3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DA5A2D03D38CDEBE23785379C7565F /* SVProgressHUD.m */; };
+		45DF3A424A79FCB004443E51E5BE5005 /* Pods-LegoApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1B67FA428CB1407C2D51C6B8C253CA /* Pods-LegoApp-dummy.m */; };
+		5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB7A740267E044458B3993B72AD793C /* Request.swift */; };
+		57A69D8ED906FE829E37591D13E38AD9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 43D8B7C5E567A62F898E7D48B7C240B9 /* SVProgressHUD.bundle */; };
+		5DF8878EE6213279618CECA077402D59 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3D3ECAF13FBFF7771A711F2891F66D /* SVRadialGradientLayer.m */; };
+		5F9FAD878BEAB3C36CC3DDD59FD789B2 /* SVProgressAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3D8668DFE8ADC98AD7658DA7C9BB56 /* SVProgressAnimatedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61200D01A1855D7920CEF835C8BE00B0 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF363D299F80E150E1AC243E7C04A81 /* DispatchQueue+Alamofire.swift */; };
+		622558BAF226E1DA7D2E5EE3B8EC6085 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D0EE18096ED38E9986E8EF8F082EA6 /* SVProgressAnimatedView.m */; };
+		62F65AD8DC4F0F9610F4B8B4738EC094 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17135D78900B02C15D1048EDA5A6C6C6 /* ServerTrustPolicy.swift */; };
+		67726873E34DADD8A3FD5AE5A3943504 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82D40E632FA2A47E7DBA77D3D46FDFE8 /* Foundation.framework */; };
+		78029108205A5D82BEA5FC070AA5D08E /* SVProgressHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC7F18023E95814D736B074B8C3F076 /* SVProgressHUD-dummy.m */; };
+		7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE63C9B588E605E7AE5C6D704726164 /* SessionDelegate.swift */; };
+		7D8CC01E8C9EFFF9F4D65406CDE0AB66 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5627FC0C5BC2D1026A748FF60A14FD4E /* Result.swift */; };
+		897C38C8E3C31950E2E93A4D6937CCC4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAA06D4E3A4C2C7545548BC1072DCD2 /* MBProgressHUD.m */; };
+		9013B7D0FAE511C2BC1E954EE285A7B2 /* Pods-LegoAppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 303275E6E5AB0F0951193B67AF9CAE1E /* Pods-LegoAppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98DF470CA8F6DD132AFAC1398FCD579C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B476C7C3BDD4218E3B0B852CE57093 /* CoreGraphics.framework */; };
+		9BB62278D0CC67678E7EF20DCC668E10 /* Pods-LegoAppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A34916501417138E07131F04FFE3AFC /* Pods-LegoAppTests-dummy.m */; };
+		9CE46FEAB6302BEBFE8D2F028C88F860 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB6F9687AEDB3553A5FE356E53CD8E2 /* SVIndefiniteAnimatedView.m */; };
+		9ED2BB2981896E0A39EFA365503F58CE /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4870CC59E3CD6B8D6F33DE086412 /* AFError.swift */; };
+		9EE56DED099F6F9394F653FD63AA0F4D /* Unbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9473E05BB041EB5D6D1FD35FF326520 /* Unbox.swift */; };
+		9FFAE0E2795395720C78C7E1574B6309 /* Pods-LegoAppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4B90A9EA3CC9F2947C244C3D24CCCE /* Pods-LegoAppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A04BFC558D69E7DBB68023C80A9CFE4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82D40E632FA2A47E7DBA77D3D46FDFE8 /* Foundation.framework */; };
+		A2A6F71B727312BD45CC7A4AAD7B0AB7 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6173527436BAD69501EFE0044CA582CE /* NetworkReachabilityManager.swift */; };
+		A5BF8DBDD8660DBCFE712657F3D82BDA /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = FD866488CDFB697EEB0B3193A1DC6539 /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A87BF0B790C18BF0C63D999428165A16 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82D40E632FA2A47E7DBA77D3D46FDFE8 /* Foundation.framework */; };
+		A9EEEA7477981DEEBC72432DE9990A4B /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21934C31B415DC8B517114EBCB4DF4A4 /* Alamofire-dummy.m */; };
+		AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75301B79828C9EE83E096D326D28523C /* SessionManager.swift */; };
+		AF20280E842AD5AF3B046A11030ECC6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82D40E632FA2A47E7DBA77D3D46FDFE8 /* Foundation.framework */; };
+		B65FCF589DA398C3EFE0128064E510EC /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F95E706A550C4B0E6027BF5A066A6D /* MultipartFormData.swift */; };
+		BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5666E50FE5C2D19A4989FF0C2852753C /* Validation.swift */; };
+		BDA1BA24A8134872231DEF4E79412153 /* Unbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D13B8BA7CC51A6B68BC7A10BCEEF0054 /* Unbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE5C67A07E289FE1F9BE27335B159997 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98D9B6213216327108ECDD5126241A2 /* ParameterEncoding.swift */; };
+		CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B2287220BC019FF01D5F6F4EDC170 /* Response.swift */; };
+		CD3E3AF8B861ACCFE14CA2A7C1C98CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82D40E632FA2A47E7DBA77D3D46FDFE8 /* Foundation.framework */; };
+		CEE5D11ADE507BDE3E7FE371312877C1 /* SVProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 09C19FD79F502836D0B7C26752C5CA5E /* SVProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA3FBCF3B21EB18151C3BC2645107E0D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E054739AD8EE5381E7FBABB3ACA80805 /* QuartzCore.framework */; };
+		DF9703E91778A127C159429E1B54FEB6 /* SVIndefiniteAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCF426985891F5F2EC19901DCDFEA40 /* SVIndefiniteAnimatedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EB4837A89C18EE8C86DDBD4196C525EA /* Pods-LegoAppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 069895904704E2D35F47AE8188ACC873 /* Pods-LegoAppUITests-dummy.m */; };
+		EF9EC36AAA541D968291BDA2470AE442 /* Pods-LegoApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2386D2C304327B53B4916E8B969471C7 /* Pods-LegoApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFD264FC408EBF3BA2528E70B08DDD94 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B41F872EFE700220C8C25B7517A9A6 /* Notifications.swift */; };
+		F5B657FCC91E253A80344DC2A69D9523 /* SVProgressHUD-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EA22B6241CEB81D6A3D844CCA815DDC /* SVProgressHUD-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47397466850F35AD2B2774FB35D9A836 /* ResponseSerialization.swift */; };
+		F8B3D3092ED0417E8CDF32033F6122F5 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472EEA79281A290BEB111989A9269734 /* Alamofire.swift */; };
+		FA9DE0319AFA27DF10F8BDF6D6A58049 /* SVRadialGradientLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = B23D46726D06C7F7183B6230826B184F /* SVRadialGradientLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFFFF164A8B4FE976BCE42DC107D4C81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82D40E632FA2A47E7DBA77D3D46FDFE8 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64CAC0979F9330C85E1DB510053DA7C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88E9EC28B8B46C3631E6B242B50F4442;
+			remoteInfo = Alamofire;
+		};
+		712573D04A3D5736B54EBF5944BCEFED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 85A452B2062A4E53507DAA02A301A934;
+			remoteInfo = Unbox;
+		};
+		AC082FD7A6A55D37EFD2EEBCA78FB6A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4BDA932B6C5B609E01033845ADEA7DE2;
+			remoteInfo = SVProgressHUD;
+		};
+		EFDF9B8FE06CCCF7921CC07E8DE47E2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41FA54D12162DAD51D02FC58A2CD5034;
+			remoteInfo = MBProgressHUD;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		069895904704E2D35F47AE8188ACC873 /* Pods-LegoAppUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LegoAppUITests-dummy.m"; sourceTree = "<group>"; };
+		09C19FD79F502836D0B7C26752C5CA5E /* SVProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
+		0D0170A93209468BB9033A6EAC0B9141 /* Unbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Unbox.framework; path = Unbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A4CA6842531D6EE6DD848CEE1DA60C /* Pods-LegoAppTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LegoAppTests-resources.sh"; sourceTree = "<group>"; };
+		16F95E706A550C4B0E6027BF5A066A6D /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		17135D78900B02C15D1048EDA5A6C6C6 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		1C1B67FA428CB1407C2D51C6B8C253CA /* Pods-LegoApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LegoApp-dummy.m"; sourceTree = "<group>"; };
+		1EEE078C4CF844AA5B36810257B19221 /* Pods-LegoAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LegoAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		21934C31B415DC8B517114EBCB4DF4A4 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
+		22F5AE3C0AF561614C48E1EA9A9AC9D0 /* Unbox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Unbox-prefix.pch"; sourceTree = "<group>"; };
+		2386D2C304327B53B4916E8B969471C7 /* Pods-LegoApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LegoApp-umbrella.h"; sourceTree = "<group>"; };
+		25B3BD411D2E9E7EF2DEA0327D338C37 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B8A6D5340E345568CDBF12B98B82686 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		2C7C0A43EF1CF56111356E1ECF751671 /* Pods-LegoApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LegoApp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2CDC6640CA994BEFA9DF9DFD6320C00E /* Pods-LegoAppTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LegoAppTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2D5CED86E6576CE74303530ECEA00585 /* Pods_LegoAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LegoAppUITests.framework; path = "Pods-LegoAppUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		303275E6E5AB0F0951193B67AF9CAE1E /* Pods-LegoAppTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LegoAppTests-umbrella.h"; sourceTree = "<group>"; };
+		3147CD03F471B1ECC591A7EA38074995 /* MBProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		31CC11E110786BE457F1CD28F3D4C61F /* Pods-LegoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LegoAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		34FC5BAA70A32135D09541E4790FFBE4 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBProgressHUD.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A6BEB101ED0E77226D9F1BAC71FE296 /* Pods-LegoApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LegoApp-frameworks.sh"; sourceTree = "<group>"; };
+		3F05661E0CC6CD9F98668A6BFAEB2D46 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40B41F872EFE700220C8C25B7517A9A6 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		43D8B7C5E567A62F898E7D48B7C240B9 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		44F2B915F6FE6EC06D43F782C4126611 /* Pods-LegoAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LegoAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		472EEA79281A290BEB111989A9269734 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		47397466850F35AD2B2774FB35D9A836 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		482B2287220BC019FF01D5F6F4EDC170 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
+		4EA22B6241CEB81D6A3D844CCA815DDC /* SVProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-umbrella.h"; sourceTree = "<group>"; };
+		51412769D3C214CDE4795889E6BF2EAA /* Pods_LegoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LegoApp.framework; path = "Pods-LegoApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		53CAC1B982F3BE5201BC1B0DF9BDCC7F /* SVProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SVProgressHUD.xcconfig; sourceTree = "<group>"; };
+		5627FC0C5BC2D1026A748FF60A14FD4E /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
+		5666E50FE5C2D19A4989FF0C2852753C /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		5A34D6823680E273CF17C774226B0577 /* Pods-LegoAppTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LegoAppTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		60B86EE1231E89FF05A3D582EFB5EE07 /* Pods-LegoAppUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LegoAppUITests-frameworks.sh"; sourceTree = "<group>"; };
+		6173527436BAD69501EFE0044CA582CE /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		63C6314BCA516A443DDE8CDF567AFE6A /* Pods_LegoAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LegoAppTests.framework; path = "Pods-LegoAppTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64729B2AD996C65B34A1D9E5D727245F /* Pods-LegoAppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-LegoAppUITests.modulemap"; sourceTree = "<group>"; };
+		657F1CD9CF08AD3659D32DEEDE9B6F06 /* Pods-LegoAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LegoAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		69DA5A2D03D38CDEBE23785379C7565F /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
+		6BCF426985891F5F2EC19901DCDFEA40 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		6C1CE38D76D230BA56F05D3E41F22843 /* Pods-LegoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LegoApp.debug.xcconfig"; sourceTree = "<group>"; };
+		6DC627C4CD44435E77C30A54C67C48B3 /* Pods-LegoAppTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LegoAppTests-frameworks.sh"; sourceTree = "<group>"; };
+		707244C79B217FD86610935E582775B9 /* Pods-LegoAppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LegoAppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		75301B79828C9EE83E096D326D28523C /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
+		77994592E33C4DB991CDB036EDA0655D /* Pods-LegoApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LegoApp-acknowledgements.plist"; sourceTree = "<group>"; };
+		7F28C8FE1886A39A60E2C5ECACC00DF2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82D40E632FA2A47E7DBA77D3D46FDFE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		8A34916501417138E07131F04FFE3AFC /* Pods-LegoAppTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LegoAppTests-dummy.m"; sourceTree = "<group>"; };
+		91000239579BA9A001AE9B41C47DD067 /* Pods-LegoApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LegoApp-resources.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9C9A6F3613609DAFEDE65E46D1145A72 /* Pods-LegoAppUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LegoAppUITests-resources.sh"; sourceTree = "<group>"; };
+		A0871A041A262129ED1B078234EDDE96 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		A4D0EE18096ED38E9986E8EF8F082EA6 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressAnimatedView.m; path = SVProgressHUD/SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		A9473E05BB041EB5D6D1FD35FF326520 /* Unbox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Unbox.swift; path = Sources/Unbox.swift; sourceTree = "<group>"; };
+		A9AADAA71E403F1B4D3FC045C3F0831C /* Unbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Unbox.xcconfig; sourceTree = "<group>"; };
+		ABB6F9687AEDB3553A5FE356E53CD8E2 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		ADF363D299F80E150E1AC243E7C04A81 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		AF7C20634FB6C90562485E0EB882902F /* Pods-LegoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LegoApp.release.xcconfig"; sourceTree = "<group>"; };
+		AFE63C9B588E605E7AE5C6D704726164 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
+		B23D46726D06C7F7183B6230826B184F /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		B4F8FAD74F27235DE3BC2B8D59D894CC /* SVProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		B5D3B8B0A3462495479E1D46F7031696 /* Unbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Unbox.modulemap; sourceTree = "<group>"; };
+		BA7BF72C1943C4F84EF43FCE2BE29CA9 /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVProgressHUD.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCC138A1833E3FDB020D633EA59B348B /* Pods-LegoAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-LegoAppTests.modulemap"; sourceTree = "<group>"; };
+		BDAA06D4E3A4C2C7545548BC1072DCD2 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C0B3FECE78C0E7D912375B738A06EA86 /* SVProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SVProgressHUD.modulemap; sourceTree = "<group>"; };
+		C17C162B9EC77D1A3BDAF581F27E84AD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C54E93692E30BF9B6C79AA8EEC508836 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7777E7EC35B1713D75DDDB4EDEC036A /* MBProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD-prefix.pch"; sourceTree = "<group>"; };
+		C8FCAAF3DDB2C073A32642995108B54A /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C98D9B6213216327108ECDD5126241A2 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		CBE7F883DBA44CF5988255DDEC27C551 /* MBProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		CCB7A740267E044458B3993B72AD793C /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
+		CD3D8668DFE8ADC98AD7658DA7C9BB56 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressAnimatedView.h; path = SVProgressHUD/SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		CDC7F18023E95814D736B074B8C3F076 /* SVProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD-dummy.m"; sourceTree = "<group>"; };
+		CF4B90A9EA3CC9F2947C244C3D24CCCE /* Pods-LegoAppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LegoAppUITests-umbrella.h"; sourceTree = "<group>"; };
+		D13B8BA7CC51A6B68BC7A10BCEEF0054 /* Unbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Unbox-umbrella.h"; sourceTree = "<group>"; };
+		D38553822C572F5944B0307BF2B791AC /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		D491DAE93CB3FB8F76B8BECE0642F53F /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		E054739AD8EE5381E7FBABB3ACA80805 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		E2F5A0C7526786076D85B1175CBEED1C /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		E3F62AA30554E384DCD17114CDEEF03F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5B476C7C3BDD4218E3B0B852CE57093 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		E80AAEB733B462B1AE4A0B17721B8AED /* Pods-LegoApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-LegoApp.modulemap"; sourceTree = "<group>"; };
+		E8BE3BC96059515AA298D05753D6484A /* Unbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Unbox-dummy.m"; sourceTree = "<group>"; };
+		EA3E32C60BE59601FB9BF880F9C92C17 /* MBProgressHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBProgressHUD.xcconfig; sourceTree = "<group>"; };
+		EC3FBC7D817551DA3AF45AEB79126741 /* Pods-LegoAppUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LegoAppUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EE1C797584242188AD5BA131CDD0D691 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAAAE21311FB5C3641CE176DB1673F90 /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
+		FD3D3ECAF13FBFF7771A711F2891F66D /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVRadialGradientLayer.m; path = SVProgressHUD/SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		FD866488CDFB697EEB0B3193A1DC6539 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		FE1BDFC4D5EADFBCE8E1B9B91CE84D6A /* MBProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MBProgressHUD.modulemap; sourceTree = "<group>"; };
+		FEAA4870CC59E3CD6B8D6F33DE086412 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10178740E9547C604A2038BF8AEA3D6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3E3AF8B861ACCFE14CA2A7C1C98CB6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		599AE99EB5D3B94BD620CB5E9B6266EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF20280E842AD5AF3B046A11030ECC6F /* Foundation.framework in Frameworks */,
+				3BB7E6A755AFEAC9708342ED41F54067 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7867005BA1281A29108932DE49D33452 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFFFF164A8B4FE976BCE42DC107D4C81 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BFB05498C73173C15CE9CBA90D055F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F424CBDAC4D77E7296B74A7865A8826 /* CoreGraphics.framework in Frameworks */,
+				A87BF0B790C18BF0C63D999428165A16 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		99195E4207764744AEC07ECCBCD550EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A04BFC558D69E7DBB68023C80A9CFE4E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2D36CDEFF7BB3BCEB81229B82BBAAE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67726873E34DADD8A3FD5AE5A3943504 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B57774E30FD88AE26F9037E1360E947B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98DF470CA8F6DD132AFAC1398FCD579C /* CoreGraphics.framework in Frameworks */,
+				1215629D558162CE728B27386DA02D1D /* Foundation.framework in Frameworks */,
+				DA3FBCF3B21EB18151C3BC2645107E0D /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		014819E6660766046A63C9F120951855 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				FEAA4870CC59E3CD6B8D6F33DE086412 /* AFError.swift */,
+				472EEA79281A290BEB111989A9269734 /* Alamofire.swift */,
+				ADF363D299F80E150E1AC243E7C04A81 /* DispatchQueue+Alamofire.swift */,
+				16F95E706A550C4B0E6027BF5A066A6D /* MultipartFormData.swift */,
+				6173527436BAD69501EFE0044CA582CE /* NetworkReachabilityManager.swift */,
+				40B41F872EFE700220C8C25B7517A9A6 /* Notifications.swift */,
+				C98D9B6213216327108ECDD5126241A2 /* ParameterEncoding.swift */,
+				CCB7A740267E044458B3993B72AD793C /* Request.swift */,
+				482B2287220BC019FF01D5F6F4EDC170 /* Response.swift */,
+				47397466850F35AD2B2774FB35D9A836 /* ResponseSerialization.swift */,
+				5627FC0C5BC2D1026A748FF60A14FD4E /* Result.swift */,
+				17135D78900B02C15D1048EDA5A6C6C6 /* ServerTrustPolicy.swift */,
+				AFE63C9B588E605E7AE5C6D704726164 /* SessionDelegate.swift */,
+				75301B79828C9EE83E096D326D28523C /* SessionManager.swift */,
+				FAAAE21311FB5C3641CE176DB1673F90 /* TaskDelegate.swift */,
+				D38553822C572F5944B0307BF2B791AC /* Timeline.swift */,
+				5666E50FE5C2D19A4989FF0C2852753C /* Validation.swift */,
+				16A1A191D7291885A436137C7CC2558B /* Support Files */,
+			);
+			name = Alamofire;
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		0B3AEE046D0E70A3EDAC02AB95275BE6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				43D8B7C5E567A62F898E7D48B7C240B9 /* SVProgressHUD.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E029D9AAED7679617632303F2A4C409B /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		16A1A191D7291885A436137C7CC2558B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A0871A041A262129ED1B078234EDDE96 /* Alamofire.modulemap */,
+				2B8A6D5340E345568CDBF12B98B82686 /* Alamofire.xcconfig */,
+				21934C31B415DC8B517114EBCB4DF4A4 /* Alamofire-dummy.m */,
+				E2F5A0C7526786076D85B1175CBEED1C /* Alamofire-prefix.pch */,
+				D491DAE93CB3FB8F76B8BECE0642F53F /* Alamofire-umbrella.h */,
+				7F28C8FE1886A39A60E2C5ECACC00DF2 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Alamofire";
+			sourceTree = "<group>";
+		};
+		50547096A51DE1803177F862A5939CEB /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B0DC5AAF27C127D1CD6E31891D10E6F4 /* Pods-LegoApp */,
+				6AD060415E600C0CF50A8CC16A33F982 /* Pods-LegoAppTests */,
+				BE176CF541DB033C370E89CB6556401C /* Pods-LegoAppUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		55B0D5EDABE52F4C92E718BB4625EFD4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				014819E6660766046A63C9F120951855 /* Alamofire */,
+				8DCE821DA6A5D6788D5DF0EDA7DE5D5F /* MBProgressHUD */,
+				654AEDF343BBEF307CE7E38FDC06B52B /* SVProgressHUD */,
+				BC4F6410E09B578A0DF6B87F262D00B8 /* Unbox */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		654AEDF343BBEF307CE7E38FDC06B52B /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				6BCF426985891F5F2EC19901DCDFEA40 /* SVIndefiniteAnimatedView.h */,
+				ABB6F9687AEDB3553A5FE356E53CD8E2 /* SVIndefiniteAnimatedView.m */,
+				CD3D8668DFE8ADC98AD7658DA7C9BB56 /* SVProgressAnimatedView.h */,
+				A4D0EE18096ED38E9986E8EF8F082EA6 /* SVProgressAnimatedView.m */,
+				09C19FD79F502836D0B7C26752C5CA5E /* SVProgressHUD.h */,
+				69DA5A2D03D38CDEBE23785379C7565F /* SVProgressHUD.m */,
+				B23D46726D06C7F7183B6230826B184F /* SVRadialGradientLayer.h */,
+				FD3D3ECAF13FBFF7771A711F2891F66D /* SVRadialGradientLayer.m */,
+				0B3AEE046D0E70A3EDAC02AB95275BE6 /* Resources */,
+				F88D7434ACDA040F7F21EF8B6DB5297F /* Support Files */,
+			);
+			name = SVProgressHUD;
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		6AD060415E600C0CF50A8CC16A33F982 /* Pods-LegoAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				E3F62AA30554E384DCD17114CDEEF03F /* Info.plist */,
+				BCC138A1833E3FDB020D633EA59B348B /* Pods-LegoAppTests.modulemap */,
+				2CDC6640CA994BEFA9DF9DFD6320C00E /* Pods-LegoAppTests-acknowledgements.markdown */,
+				5A34D6823680E273CF17C774226B0577 /* Pods-LegoAppTests-acknowledgements.plist */,
+				8A34916501417138E07131F04FFE3AFC /* Pods-LegoAppTests-dummy.m */,
+				6DC627C4CD44435E77C30A54C67C48B3 /* Pods-LegoAppTests-frameworks.sh */,
+				14A4CA6842531D6EE6DD848CEE1DA60C /* Pods-LegoAppTests-resources.sh */,
+				303275E6E5AB0F0951193B67AF9CAE1E /* Pods-LegoAppTests-umbrella.h */,
+				1EEE078C4CF844AA5B36810257B19221 /* Pods-LegoAppTests.debug.xcconfig */,
+				31CC11E110786BE457F1CD28F3D4C61F /* Pods-LegoAppTests.release.xcconfig */,
+			);
+			name = "Pods-LegoAppTests";
+			path = "Target Support Files/Pods-LegoAppTests";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				55B0D5EDABE52F4C92E718BB4625EFD4 /* Pods */,
+				F4E12BCDC985BCCA777720E5AEDDFCC1 /* Products */,
+				50547096A51DE1803177F862A5939CEB /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8DCE821DA6A5D6788D5DF0EDA7DE5D5F /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				FD866488CDFB697EEB0B3193A1DC6539 /* MBProgressHUD.h */,
+				BDAA06D4E3A4C2C7545548BC1072DCD2 /* MBProgressHUD.m */,
+				F6F249A7394F0AC987BACD632C7115D0 /* Support Files */,
+			);
+			name = MBProgressHUD;
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		B0DC5AAF27C127D1CD6E31891D10E6F4 /* Pods-LegoApp */ = {
+			isa = PBXGroup;
+			children = (
+				3F05661E0CC6CD9F98668A6BFAEB2D46 /* Info.plist */,
+				E80AAEB733B462B1AE4A0B17721B8AED /* Pods-LegoApp.modulemap */,
+				2C7C0A43EF1CF56111356E1ECF751671 /* Pods-LegoApp-acknowledgements.markdown */,
+				77994592E33C4DB991CDB036EDA0655D /* Pods-LegoApp-acknowledgements.plist */,
+				1C1B67FA428CB1407C2D51C6B8C253CA /* Pods-LegoApp-dummy.m */,
+				3A6BEB101ED0E77226D9F1BAC71FE296 /* Pods-LegoApp-frameworks.sh */,
+				91000239579BA9A001AE9B41C47DD067 /* Pods-LegoApp-resources.sh */,
+				2386D2C304327B53B4916E8B969471C7 /* Pods-LegoApp-umbrella.h */,
+				6C1CE38D76D230BA56F05D3E41F22843 /* Pods-LegoApp.debug.xcconfig */,
+				AF7C20634FB6C90562485E0EB882902F /* Pods-LegoApp.release.xcconfig */,
+			);
+			name = "Pods-LegoApp";
+			path = "Target Support Files/Pods-LegoApp";
+			sourceTree = "<group>";
+		};
+		BBFB3D0B11C94A597760B0895D2592ED /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C54E93692E30BF9B6C79AA8EEC508836 /* Info.plist */,
+				B5D3B8B0A3462495479E1D46F7031696 /* Unbox.modulemap */,
+				A9AADAA71E403F1B4D3FC045C3F0831C /* Unbox.xcconfig */,
+				E8BE3BC96059515AA298D05753D6484A /* Unbox-dummy.m */,
+				22F5AE3C0AF561614C48E1EA9A9AC9D0 /* Unbox-prefix.pch */,
+				D13B8BA7CC51A6B68BC7A10BCEEF0054 /* Unbox-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Unbox";
+			sourceTree = "<group>";
+		};
+		BC4F6410E09B578A0DF6B87F262D00B8 /* Unbox */ = {
+			isa = PBXGroup;
+			children = (
+				A9473E05BB041EB5D6D1FD35FF326520 /* Unbox.swift */,
+				BBFB3D0B11C94A597760B0895D2592ED /* Support Files */,
+			);
+			name = Unbox;
+			path = Unbox;
+			sourceTree = "<group>";
+		};
+		BE176CF541DB033C370E89CB6556401C /* Pods-LegoAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C17C162B9EC77D1A3BDAF581F27E84AD /* Info.plist */,
+				64729B2AD996C65B34A1D9E5D727245F /* Pods-LegoAppUITests.modulemap */,
+				EC3FBC7D817551DA3AF45AEB79126741 /* Pods-LegoAppUITests-acknowledgements.markdown */,
+				707244C79B217FD86610935E582775B9 /* Pods-LegoAppUITests-acknowledgements.plist */,
+				069895904704E2D35F47AE8188ACC873 /* Pods-LegoAppUITests-dummy.m */,
+				60B86EE1231E89FF05A3D582EFB5EE07 /* Pods-LegoAppUITests-frameworks.sh */,
+				9C9A6F3613609DAFEDE65E46D1145A72 /* Pods-LegoAppUITests-resources.sh */,
+				CF4B90A9EA3CC9F2947C244C3D24CCCE /* Pods-LegoAppUITests-umbrella.h */,
+				44F2B915F6FE6EC06D43F782C4126611 /* Pods-LegoAppUITests.debug.xcconfig */,
+				657F1CD9CF08AD3659D32DEEDE9B6F06 /* Pods-LegoAppUITests.release.xcconfig */,
+			);
+			name = "Pods-LegoAppUITests";
+			path = "Target Support Files/Pods-LegoAppUITests";
+			sourceTree = "<group>";
+		};
+		E029D9AAED7679617632303F2A4C409B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E5B476C7C3BDD4218E3B0B852CE57093 /* CoreGraphics.framework */,
+				82D40E632FA2A47E7DBA77D3D46FDFE8 /* Foundation.framework */,
+				E054739AD8EE5381E7FBABB3ACA80805 /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		F4E12BCDC985BCCA777720E5AEDDFCC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C8FCAAF3DDB2C073A32642995108B54A /* Alamofire.framework */,
+				34FC5BAA70A32135D09541E4790FFBE4 /* MBProgressHUD.framework */,
+				51412769D3C214CDE4795889E6BF2EAA /* Pods_LegoApp.framework */,
+				63C6314BCA516A443DDE8CDF567AFE6A /* Pods_LegoAppTests.framework */,
+				2D5CED86E6576CE74303530ECEA00585 /* Pods_LegoAppUITests.framework */,
+				BA7BF72C1943C4F84EF43FCE2BE29CA9 /* SVProgressHUD.framework */,
+				0D0170A93209468BB9033A6EAC0B9141 /* Unbox.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F6F249A7394F0AC987BACD632C7115D0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				25B3BD411D2E9E7EF2DEA0327D338C37 /* Info.plist */,
+				FE1BDFC4D5EADFBCE8E1B9B91CE84D6A /* MBProgressHUD.modulemap */,
+				EA3E32C60BE59601FB9BF880F9C92C17 /* MBProgressHUD.xcconfig */,
+				CBE7F883DBA44CF5988255DDEC27C551 /* MBProgressHUD-dummy.m */,
+				C7777E7EC35B1713D75DDDB4EDEC036A /* MBProgressHUD-prefix.pch */,
+				3147CD03F471B1ECC591A7EA38074995 /* MBProgressHUD-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MBProgressHUD";
+			sourceTree = "<group>";
+		};
+		F88D7434ACDA040F7F21EF8B6DB5297F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE1C797584242188AD5BA131CDD0D691 /* Info.plist */,
+				C0B3FECE78C0E7D912375B738A06EA86 /* SVProgressHUD.modulemap */,
+				53CAC1B982F3BE5201BC1B0DF9BDCC7F /* SVProgressHUD.xcconfig */,
+				CDC7F18023E95814D736B074B8C3F076 /* SVProgressHUD-dummy.m */,
+				B4F8FAD74F27235DE3BC2B8D59D894CC /* SVProgressHUD-prefix.pch */,
+				4EA22B6241CEB81D6A3D844CCA815DDC /* SVProgressHUD-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SVProgressHUD";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		197B7877D5D346F405BDD059EF96DBDC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28A794912ED1E06B05D96DF5ED0AED19 /* MBProgressHUD-umbrella.h in Headers */,
+				A5BF8DBDD8660DBCFE712657F3D82BDA /* MBProgressHUD.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DB1674E78F0DF0AA2B42D7D20B9B5D1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDA1BA24A8134872231DEF4E79412153 /* Unbox-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F840161DB2243E7F0943CB483FFA9C3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF9EC36AAA541D968291BDA2470AE442 /* Pods-LegoApp-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57D4E59F50E34987FB5AEBB65F00EE1E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9013B7D0FAE511C2BC1E954EE285A7B2 /* Pods-LegoAppTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91690A177C2BA44240F6CE5FE31F5447 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF9703E91778A127C159429E1B54FEB6 /* SVIndefiniteAnimatedView.h in Headers */,
+				5F9FAD878BEAB3C36CC3DDD59FD789B2 /* SVProgressAnimatedView.h in Headers */,
+				F5B657FCC91E253A80344DC2A69D9523 /* SVProgressHUD-umbrella.h in Headers */,
+				CEE5D11ADE507BDE3E7FE371312877C1 /* SVProgressHUD.h in Headers */,
+				FA9DE0319AFA27DF10F8BDF6D6A58049 /* SVRadialGradientLayer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4002B6E97835FDCCAA5963EFE09A3E0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4F8716161BA39F09C1804B0BDF773CE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FFAE0E2795395720C78C7E1574B6309 /* Pods-LegoAppUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2998ED4FE73B5EA06377B98C1EF292FA /* Pods-LegoAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40BA619C5BE1D052A8FC02CF1A7CC12E /* Build configuration list for PBXNativeTarget "Pods-LegoAppTests" */;
+			buildPhases = (
+				318D503FEB556EEFB20C80E7B6861987 /* Sources */,
+				B2D36CDEFF7BB3BCEB81229B82BBAAE3 /* Frameworks */,
+				57D4E59F50E34987FB5AEBB65F00EE1E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-LegoAppTests";
+			productName = "Pods-LegoAppTests";
+			productReference = 63C6314BCA516A443DDE8CDF567AFE6A /* Pods_LegoAppTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		41FA54D12162DAD51D02FC58A2CD5034 /* MBProgressHUD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC1874913BA1F82C4953C3C7F551AB22 /* Build configuration list for PBXNativeTarget "MBProgressHUD" */;
+			buildPhases = (
+				FE8E0446C3B3B52779E8DE373E495A61 /* Sources */,
+				B57774E30FD88AE26F9037E1360E947B /* Frameworks */,
+				197B7877D5D346F405BDD059EF96DBDC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MBProgressHUD;
+			productName = MBProgressHUD;
+			productReference = 34FC5BAA70A32135D09541E4790FFBE4 /* MBProgressHUD.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4719F698AA9C4835F5D8310AF2405722 /* Pods-LegoAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DBE4A0615642F7BBF440B2F72FE8C43 /* Build configuration list for PBXNativeTarget "Pods-LegoAppUITests" */;
+			buildPhases = (
+				13AA7BDEBC6F97785A790B3B39396027 /* Sources */,
+				7867005BA1281A29108932DE49D33452 /* Frameworks */,
+				B4F8716161BA39F09C1804B0BDF773CE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-LegoAppUITests";
+			productName = "Pods-LegoAppUITests";
+			productReference = 2D5CED86E6576CE74303530ECEA00585 /* Pods_LegoAppUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4BDA932B6C5B609E01033845ADEA7DE2 /* SVProgressHUD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D0DB5705BD7C163B5796C1D41EA245B /* Build configuration list for PBXNativeTarget "SVProgressHUD" */;
+			buildPhases = (
+				01B14808DCEBC0EDFB4A56E6DF0192BA /* Sources */,
+				599AE99EB5D3B94BD620CB5E9B6266EC /* Frameworks */,
+				91690A177C2BA44240F6CE5FE31F5447 /* Headers */,
+				58FADFBE629CFD0C0DDC310C2002ACEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SVProgressHUD;
+			productName = SVProgressHUD;
+			productReference = BA7BF72C1943C4F84EF43FCE2BE29CA9 /* SVProgressHUD.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		85A452B2062A4E53507DAA02A301A934 /* Unbox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 321514D197BD7FA7DA8EB333925835CB /* Build configuration list for PBXNativeTarget "Unbox" */;
+			buildPhases = (
+				E84D6E5A0580BA011D075CC1AB90EBC4 /* Sources */,
+				7BFB05498C73173C15CE9CBA90D055F3 /* Frameworks */,
+				3DB1674E78F0DF0AA2B42D7D20B9B5D1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Unbox;
+			productName = Unbox;
+			productReference = 0D0170A93209468BB9033A6EAC0B9141 /* Unbox.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 419E5D95491847CD79841B971A8A3277 /* Build configuration list for PBXNativeTarget "Alamofire" */;
+			buildPhases = (
+				32B9974868188C4803318E36329C87FE /* Sources */,
+				99195E4207764744AEC07ECCBCD550EB /* Frameworks */,
+				B4002B6E97835FDCCAA5963EFE09A3E0 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Alamofire;
+			productName = Alamofire;
+			productReference = C8FCAAF3DDB2C073A32642995108B54A /* Alamofire.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BB001F09724FDE891B8FF05D4637E613 /* Pods-LegoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DC327D8366AC4F09F6C2886BD192BC8 /* Build configuration list for PBXNativeTarget "Pods-LegoApp" */;
+			buildPhases = (
+				099516AD809640409F91509A09B613F9 /* Sources */,
+				10178740E9547C604A2038BF8AEA3D6A /* Frameworks */,
+				4F840161DB2243E7F0943CB483FFA9C3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A2275EA08B217EBFDC0B642A0FA25B4 /* PBXTargetDependency */,
+				8D0E69C9A20F1E6B08F4A9A15C9C7961 /* PBXTargetDependency */,
+				B179CF17ADACDEE033DD36A5BFA4C3F8 /* PBXTargetDependency */,
+				43A2C7F85E8851A6CCD61403384C3DD6 /* PBXTargetDependency */,
+			);
+			name = "Pods-LegoApp";
+			productName = "Pods-LegoApp";
+			productReference = 51412769D3C214CDE4795889E6BF2EAA /* Pods_LegoApp.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = F4E12BCDC985BCCA777720E5AEDDFCC1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */,
+				41FA54D12162DAD51D02FC58A2CD5034 /* MBProgressHUD */,
+				BB001F09724FDE891B8FF05D4637E613 /* Pods-LegoApp */,
+				2998ED4FE73B5EA06377B98C1EF292FA /* Pods-LegoAppTests */,
+				4719F698AA9C4835F5D8310AF2405722 /* Pods-LegoAppUITests */,
+				4BDA932B6C5B609E01033845ADEA7DE2 /* SVProgressHUD */,
+				85A452B2062A4E53507DAA02A301A934 /* Unbox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		58FADFBE629CFD0C0DDC310C2002ACEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57A69D8ED906FE829E37591D13E38AD9 /* SVProgressHUD.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01B14808DCEBC0EDFB4A56E6DF0192BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CE46FEAB6302BEBFE8D2F028C88F860 /* SVIndefiniteAnimatedView.m in Sources */,
+				622558BAF226E1DA7D2E5EE3B8EC6085 /* SVProgressAnimatedView.m in Sources */,
+				78029108205A5D82BEA5FC070AA5D08E /* SVProgressHUD-dummy.m in Sources */,
+				410A13B7DD1EC860CC0971BB8C371AE3 /* SVProgressHUD.m in Sources */,
+				5DF8878EE6213279618CECA077402D59 /* SVRadialGradientLayer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		099516AD809640409F91509A09B613F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45DF3A424A79FCB004443E51E5BE5005 /* Pods-LegoApp-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13AA7BDEBC6F97785A790B3B39396027 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4837A89C18EE8C86DDBD4196C525EA /* Pods-LegoAppUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		318D503FEB556EEFB20C80E7B6861987 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BB62278D0CC67678E7EF20DCC668E10 /* Pods-LegoAppTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32B9974868188C4803318E36329C87FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ED2BB2981896E0A39EFA365503F58CE /* AFError.swift in Sources */,
+				A9EEEA7477981DEEBC72432DE9990A4B /* Alamofire-dummy.m in Sources */,
+				F8B3D3092ED0417E8CDF32033F6122F5 /* Alamofire.swift in Sources */,
+				61200D01A1855D7920CEF835C8BE00B0 /* DispatchQueue+Alamofire.swift in Sources */,
+				B65FCF589DA398C3EFE0128064E510EC /* MultipartFormData.swift in Sources */,
+				A2A6F71B727312BD45CC7A4AAD7B0AB7 /* NetworkReachabilityManager.swift in Sources */,
+				EFD264FC408EBF3BA2528E70B08DDD94 /* Notifications.swift in Sources */,
+				BE5C67A07E289FE1F9BE27335B159997 /* ParameterEncoding.swift in Sources */,
+				5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */,
+				CB6D60925223897FFA2662667DF83E8A /* Response.swift in Sources */,
+				F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */,
+				7D8CC01E8C9EFFF9F4D65406CDE0AB66 /* Result.swift in Sources */,
+				62F65AD8DC4F0F9610F4B8B4738EC094 /* ServerTrustPolicy.swift in Sources */,
+				7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */,
+				AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */,
+				3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */,
+				10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */,
+				BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E84D6E5A0580BA011D075CC1AB90EBC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E2BABF5137C588E669366D24D0F8370 /* Unbox-dummy.m in Sources */,
+				9EE56DED099F6F9394F653FD63AA0F4D /* Unbox.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE8E0446C3B3B52779E8DE373E495A61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0968524ED4DE8DF7834055C5B6089D72 /* MBProgressHUD-dummy.m in Sources */,
+				897C38C8E3C31950E2E93A4D6937CCC4 /* MBProgressHUD.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2A2275EA08B217EBFDC0B642A0FA25B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
+			targetProxy = 64CAC0979F9330C85E1DB510053DA7C3 /* PBXContainerItemProxy */;
+		};
+		43A2C7F85E8851A6CCD61403384C3DD6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Unbox;
+			target = 85A452B2062A4E53507DAA02A301A934 /* Unbox */;
+			targetProxy = 712573D04A3D5736B54EBF5944BCEFED /* PBXContainerItemProxy */;
+		};
+		8D0E69C9A20F1E6B08F4A9A15C9C7961 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MBProgressHUD;
+			target = 41FA54D12162DAD51D02FC58A2CD5034 /* MBProgressHUD */;
+			targetProxy = EFDF9B8FE06CCCF7921CC07E8DE47E2D /* PBXContainerItemProxy */;
+		};
+		B179CF17ADACDEE033DD36A5BFA4C3F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SVProgressHUD;
+			target = 4BDA932B6C5B609E01033845ADEA7DE2 /* SVProgressHUD */;
+			targetProxy = AC082FD7A6A55D37EFD2EEBCA78FB6A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A29B6F510198AF64EFD762EF6FA97A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B8A6D5340E345568CDBF12B98B82686 /* Alamofire.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0CE7AE0DA7AFCD9A38AF0C3E83B5080D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 657F1CD9CF08AD3659D32DEEDE9B6F06 /* Pods-LegoAppUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-LegoAppUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LegoAppUITests/Pods-LegoAppUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_LegoAppUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		12BAF2CEB3FB2E04DD7A821A52312B2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53CAC1B982F3BE5201BC1B0DF9BDCC7F /* SVProgressHUD.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SVProgressHUD/SVProgressHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SVProgressHUD/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SVProgressHUD/SVProgressHUD.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SVProgressHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2A8DD11CC3E8C3785E9E76FA9FF47A76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF7C20634FB6C90562485E0EB882902F /* Pods-LegoApp.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-LegoApp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LegoApp/Pods-LegoApp.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_LegoApp;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		32C7D3BFD9ED0F86F9843CFFB24F0BD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9AADAA71E403F1B4D3FC045C3F0831C /* Unbox.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Unbox/Unbox-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Unbox/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Unbox/Unbox.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Unbox;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3E8AF226AA372365AEB5443A2FE79BB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53CAC1B982F3BE5201BC1B0DF9BDCC7F /* SVProgressHUD.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SVProgressHUD/SVProgressHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SVProgressHUD/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SVProgressHUD/SVProgressHUD.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SVProgressHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5A7D61BFAF476FFEAAC1C3C5B50DD91C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA3E32C60BE59601FB9BF880F9C92C17 /* MBProgressHUD.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MBProgressHUD/MBProgressHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MBProgressHUD/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = MBProgressHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		673254EEAF0B5BF4596080C749645884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8ECC54F3ABC09F85175E258135BA934A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31CC11E110786BE457F1CD28F3D4C61F /* Pods-LegoAppTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-LegoAppTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LegoAppTests/Pods-LegoAppTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_LegoAppTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		96D69F2D32C77A1201F3C491C5D579F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EEE078C4CF844AA5B36810257B19221 /* Pods-LegoAppTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-LegoAppTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LegoAppTests/Pods-LegoAppTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_LegoAppTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A65D842C5C6473D1FD39F9BDDC7A3F7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C1CE38D76D230BA56F05D3E41F22843 /* Pods-LegoApp.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-LegoApp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LegoApp/Pods-LegoApp.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_LegoApp;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B041B827EF13244F5FBEF1FFEDC715C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44F2B915F6FE6EC06D43F782C4126611 /* Pods-LegoAppUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-LegoAppUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LegoAppUITests/Pods-LegoAppUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_LegoAppUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D75065D84EBB32D4AF0CA10C29B62DBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA3E32C60BE59601FB9BF880F9C92C17 /* MBProgressHUD.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MBProgressHUD/MBProgressHUD-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MBProgressHUD/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MBProgressHUD/MBProgressHUD.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = MBProgressHUD;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		E841C9266817E11F79DD878F0D051C14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9AADAA71E403F1B4D3FC045C3F0831C /* Unbox.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Unbox/Unbox-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Unbox/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Unbox/Unbox.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Unbox;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F383079BFBF927813EA3613CFB679FDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B8A6D5340E345568CDBF12B98B82686 /* Alamofire.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */,
+				673254EEAF0B5BF4596080C749645884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		321514D197BD7FA7DA8EB333925835CB /* Build configuration list for PBXNativeTarget "Unbox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32C7D3BFD9ED0F86F9843CFFB24F0BD3 /* Debug */,
+				E841C9266817E11F79DD878F0D051C14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40BA619C5BE1D052A8FC02CF1A7CC12E /* Build configuration list for PBXNativeTarget "Pods-LegoAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96D69F2D32C77A1201F3C491C5D579F8 /* Debug */,
+				8ECC54F3ABC09F85175E258135BA934A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		419E5D95491847CD79841B971A8A3277 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F383079BFBF927813EA3613CFB679FDE /* Debug */,
+				0A29B6F510198AF64EFD762EF6FA97A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D0DB5705BD7C163B5796C1D41EA245B /* Build configuration list for PBXNativeTarget "SVProgressHUD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12BAF2CEB3FB2E04DD7A821A52312B2D /* Debug */,
+				3E8AF226AA372365AEB5443A2FE79BB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DBE4A0615642F7BBF440B2F72FE8C43 /* Build configuration list for PBXNativeTarget "Pods-LegoAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B041B827EF13244F5FBEF1FFEDC715C5 /* Debug */,
+				0CE7AE0DA7AFCD9A38AF0C3E83B5080D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DC327D8366AC4F09F6C2886BD192BC8 /* Build configuration list for PBXNativeTarget "Pods-LegoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A65D842C5C6473D1FD39F9BDDC7A3F7C /* Debug */,
+				2A8DD11CC3E8C3785E9E76FA9FF47A76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC1874913BA1F82C4953C3C7F551AB22 /* Build configuration list for PBXNativeTarget "MBProgressHUD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D75065D84EBB32D4AF0CA10C29B62DBB /* Debug */,
+				5A7D61BFAF476FFEAAC1C3C5B50DD91C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

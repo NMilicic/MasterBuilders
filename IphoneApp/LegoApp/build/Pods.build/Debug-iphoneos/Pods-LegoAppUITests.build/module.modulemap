@@ -1,0 +1,6 @@
+framework module Pods_LegoAppUITests {
+  umbrella header "Pods-LegoAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

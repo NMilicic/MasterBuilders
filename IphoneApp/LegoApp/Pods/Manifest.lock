@@ -1,0 +1,21 @@
+PODS:
+  - Alamofire (4.3.0)
+  - MBProgressHUD (1.0.0)
+  - SVProgressHUD (2.1.2)
+  - Unbox (2.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.3)
+  - MBProgressHUD (~> 1.0.0)
+  - SVProgressHUD
+  - Unbox
+
+SPEC CHECKSUMS:
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  Unbox: 5ba1966ebe99b5d568d432626323331eedd33458
+
+PODFILE CHECKSUM: a5f525e6b154f502554f525757f05d3badbbd09a
+
+COCOAPODS: 1.1.1
