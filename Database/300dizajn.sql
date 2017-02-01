@@ -11,7 +11,7 @@ BEGIN
     name VARCHAR(100) NOT NULL,
     production_year INT,
     num_parts INT,
-    description VARCHAR(1000),
+    description NVARCHAR(1000),
     id_theme INT,
     set_code VARCHAR(50),
     picture_url VARCHAR(500),
