@@ -14,7 +14,7 @@ namespace Data.Mappings
         {
             Table("Lset");
 
-            Id(x => x.Id).Column("id");
+            Id(x => x.Id).Column("id").GeneratedBy.Native();
             Map(x => x.Name).Column("name");
             Map(x => x.ProductionYear).Column("production_year");
             Map(x => x.NumberOfParts).Column("num_parts");

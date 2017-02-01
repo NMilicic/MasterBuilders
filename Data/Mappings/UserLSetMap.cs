@@ -13,7 +13,7 @@ namespace Data.Mappings
         public UserLSetMap()
         {
             Table("user_Lset");
-            Id(x => x.Id).Column("id");
+            Id(x => x.Id).Column("id").GeneratedBy.Native();
 
             Map(x => x.Built).Column("built");
             Map(x => x.Owned).Column("owned");

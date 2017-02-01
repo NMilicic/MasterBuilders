@@ -13,7 +13,7 @@ namespace Data.Mappings
         public MocPartMap()
         {
             Table("MOC_parts");
-            Id(x => x.Id).Column("id");
+            Id(x => x.Id).Column("id").GeneratedBy.Native();
             Map(x => x.Number).Column("num");
 
             References(x => x.Color).Column("id_color");

@@ -14,7 +14,7 @@ namespace Data.Mappings
         {
             Table("users");
 
-            Id(x => x.Id).Column("id");
+            Id(x => x.Id).Column("id").GeneratedBy.Native();
             Map(x => x.Email).Column("email");
             Map(x => x.Password).Column("password");
             Map(x => x.FirstName).Column("first_name");

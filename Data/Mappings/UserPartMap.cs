@@ -13,7 +13,7 @@ namespace Data.Mappings
         public UserPartMap()
         {
             Table("user_part");
-            Id(x => x.Id).Column("id");
+            Id(x => x.Id).Column("id").GeneratedBy.Native();
 
             References(x => x.User).Column("id_user");
             References(x => x.Part).Column("id_part");
