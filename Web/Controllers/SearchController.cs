@@ -12,7 +12,7 @@ namespace Web.Controllers
 {
     public class SearchController : Controller
     {
-        KockiceService blockService = new KockiceService();
+        PartService blockService = new PartService();
         LSetService lSetService = new LSetService();
         Repository<Theme> themeRepository = new Repository<Theme>();
         Repository<Category> categoryRepository = new Repository<Category>();

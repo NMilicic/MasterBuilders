@@ -14,11 +14,11 @@ namespace Business.Services
     public class MOCService : IMOCService
     {
         IRepository<Moc> mocRepository = new Repository<Moc>();
-        IRepository<User> korisnikRepository = new Repository<User>();
+        IRepository<User> userRepository = new Repository<User>();
         IRepository<UserMoc> userMocRepository = new Repository<UserMoc>();
-        IRepository<Part> kockicaRepository = new Repository<Part>();
-        IRepository<Color> bojaRepository = new Repository<Color>();
-        IRepository<MocPart> mocDijeloviRepository = new Repository<MocPart>();
+        IRepository<Part> partRepository = new Repository<Part>();
+        IRepository<Color> colorRepository = new Repository<Color>();
+        IRepository<MocPart> mocPartRepository = new Repository<MocPart>();
 
         #region Default actions
         public IQueryable<Moc> GetAll(int take = -1, int offset = 0)
@@ -48,7 +48,7 @@ namespace Business.Services
             }
             else
             {
-                throw new DataException("Moc nije pronađen!");
+                throw new DataException("Moc not found!");
             }
         }
 
@@ -65,13 +65,13 @@ namespace Business.Services
 
         public Moc AddMoc(Moc newMoc)
         {
-            var dijelovi = new List<MocPart>();
+            var parts = new List<MocPart>();
             if (newMoc.MocParts != null && newMoc.MocParts.Count() > 0)
             {
-                dijelovi.AddRange(newMoc.MocParts);
+                parts.AddRange(newMoc.MocParts);
                 newMoc.MocParts = null;
             }
-            var user = korisnikRepository.GetById(newMoc.AuthorId);
+            var user = userRepository.GetById(newMoc.AuthorId);
             if (user != null)
             {
                 var dbMoc = mocRepository.GetById(newMoc.Id);
@@ -87,30 +87,30 @@ namespace Business.Services
                     };
                     userMocRepository.Save(newUserMoc);
 
-                    if (dijelovi.Count > 0)
+                    if (parts.Count > 0)
                     {
-                        var newDijelovi = new List<MocPart>();
-                        foreach (var dio in dijelovi)
+                        var newMocPart = new List<MocPart>();
+                        foreach (var p in parts)
                         {
-                            var kockica = kockicaRepository.GetById(dio.Part.Id);
-                            if (kockica != null)
+                            var part = partRepository.GetById(p.Part.Id);
+                            if (part != null)
                             {
-                                var boja = bojaRepository.GetById(dio.Color.Id);
-                                if (boja != null)
+                                var color = colorRepository.GetById(p.Color.Id);
+                                if (color != null)
                                 {
                                     var newMocDio = new MocPart()
                                     {
-                                        Color = boja,
-                                        Part = kockica,
-                                        Number = dio.Number,
+                                        Color = color,
+                                        Part = part,
+                                        Number = p.Number,
                                         Moc = newMoc
                                     };
-                                    mocDijeloviRepository.Save(newMocDio);
-                                    newDijelovi.Add(newMocDio);
+                                    mocPartRepository.Save(newMocDio);
+                                    newMocPart.Add(newMocDio);
                                 }
                             }
                         }
-                        newMoc.MocParts = newDijelovi;
+                        newMoc.MocParts = newMocPart;
                     }
 
                     return newMoc;
@@ -129,11 +129,11 @@ namespace Business.Services
                 }
             }
 
-            throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.NotFound));
+            throw new UserException(UserException.UserExceptionsText(UserExceptionEnum.NotFound));
 
         }
 
-        public Moc AddDijeloviMoc(int mocId, List<MocPart> dijelovi)
+        public Moc AddMocPartToMoc(int mocId, List<MocPart> mocParts)
         {
 
             var dbMoc = mocRepository.GetById(mocId);
@@ -143,38 +143,38 @@ namespace Business.Services
             }
             else
             {
-                var newDijelovi = new List<MocPart>();
-                foreach (var dio in dijelovi)
+                var newMocPart = new List<MocPart>();
+                foreach (var p in mocParts)
                 {
-                    var kockica = kockicaRepository.GetById(dio.Part.Id);
-                    if (kockica != null)
+                    var part = partRepository.GetById(p.Part.Id);
+                    if (part != null)
                     {
-                        var boja = bojaRepository.GetById(dio.Color.Id);
+                        var boja = colorRepository.GetById(p.Color.Id);
                         if (boja != null)
                         {
-                            var existingMocDijelovi = mocDijeloviRepository.Query()
-                                    .FirstOrDefault(m => m.Color.Id == boja.Id && m.Part.Id == kockica.Id && m.Moc.Id == dbMoc.Id);
+                            var existingMocDijelovi = mocPartRepository.Query()
+                                    .FirstOrDefault(m => m.Color.Id == boja.Id && m.Part.Id == part.Id && m.Moc.Id == dbMoc.Id);
                             if (existingMocDijelovi == null)
                             {
                                 var newMocDio = new MocPart()
                                 {
                                     Color = boja,
-                                    Part = kockica,
-                                    Number = dio.Number,
+                                    Part = part,
+                                    Number = p.Number,
                                     Moc = dbMoc
                                 };
-                                mocDijeloviRepository.Save(newMocDio);
-                                newDijelovi.Add(newMocDio);
+                                mocPartRepository.Save(newMocDio);
+                                newMocPart.Add(newMocDio);
                             }
                             else
                             {
-                                existingMocDijelovi.Number = dio.Number;
-                                mocDijeloviRepository.Save(existingMocDijelovi);
+                                existingMocDijelovi.Number = p.Number;
+                                mocPartRepository.Save(existingMocDijelovi);
                             }
                         }
                     }
                 }
-                dbMoc.MocParts.ToList().AddRange(newDijelovi);
+                dbMoc.MocParts.ToList().AddRange(newMocPart);
 
                 return dbMoc;
             }
@@ -198,13 +198,13 @@ namespace Business.Services
                         query = FilterByDescription(field.Value, query);
                         break;
                     case SearchEnum.NumberOfParts:
-                        query = FilterByBrojKockica(field.Value, query);
+                        query = FilterByNumberOfParts(field.Value, query);
                         break;
                     case SearchEnum.ProductionYear:
                         query = FilterByYear(field.Value, query);
                         break;
                     case SearchEnum.Theme:
-                        query = FilterByTema(field.Value, query);
+                        query = FilterByTheme(field.Value, query);
                         break;
                     case SearchEnum.Author:
                         query = FilterByAuthor(field.Value, query);
@@ -267,12 +267,12 @@ namespace Business.Services
             return query;
         }
 
-        private IQueryable<Moc> FilterByTema(string tema, IQueryable<Moc> query)
+        private IQueryable<Moc> FilterByTheme(string theme, IQueryable<Moc> query)
         {
-            return query.Where(x => x.Theme1.Contains(tema) || x.Theme2.Contains(tema) || x.Theme3.Contains(tema));
+            return query.Where(x => x.Theme1.Contains(theme) || x.Theme2.Contains(theme) || x.Theme3.Contains(theme));
         }
 
-        private IQueryable<Moc> FilterByBrojKockica(string searchPattern, IQueryable<Moc> query)
+        private IQueryable<Moc> FilterByNumberOfParts(string searchPattern, IQueryable<Moc> query)
         {
             var range = searchPattern.Split('-');
             if (range.Length > 1)

@@ -13,7 +13,7 @@ namespace WebApi.Controllers.Api
 {
     public class UserApiController : ApiController
     {
-        KorisnikServices korisnikServices = new KorisnikServices();
+        UserServices korisnikServices = new UserServices();
 
 
         public List<UserApi> GetAll(int take= -1, int offset = 0)
@@ -25,7 +25,7 @@ namespace WebApi.Controllers.Api
         public UserApi Login(LoginModel data)
         {
             if (string.IsNullOrEmpty(data.Email) || string.IsNullOrEmpty(data.Password))
-                throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.InvalidData));
+                throw new UserException(UserException.UserExceptionsText(UserExceptionEnum.InvalidData));
 
             var user = Mapper.Map<UserApi>(korisnikServices.Login(data.Email, data.Password));
 
@@ -37,7 +37,7 @@ namespace WebApi.Controllers.Api
         public UserApi Register(UserApi newUser)
         {
             if (!ModelState.IsValid)
-                throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.InvalidData));
+                throw new UserException(UserException.UserExceptionsText(UserExceptionEnum.InvalidData));
 
             var newUserSaved = Mapper.Map<UserApi>(korisnikServices.Register(Mapper.Map<User>(newUser)));
             return newUserSaved;

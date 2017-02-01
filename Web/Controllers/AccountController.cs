@@ -160,7 +160,7 @@ namespace Web.Controllers
                     korisnik.FirstName = model.Ime;
                     korisnik.LastName = model.Prezime;
                     korisnik.Password = model.Zaporka;
-                    KorisnikServices korisnikServices = new KorisnikServices();
+                    UserServices korisnikServices = new UserServices();
                     korisnikServices.SaveOrUpdate(korisnik);
 
                     var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Id = korisnik.Id.ToString() };

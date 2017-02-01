@@ -14,67 +14,67 @@ namespace Tests
     public class LSetServiceTest
     {
         private LSetService setService;
-        private List<LSet> setovi;
+        private List<LSet> lSets;
 
-        Mock<IRepository<LSet>> setRepository = new Mock<IRepository<LSet>>();
+        Mock<IRepository<LSet>> lSetRepository = new Mock<IRepository<LSet>>();
         Mock<IRepository<Wishlist>> wishlistRepository = new Mock<IRepository<Wishlist>>();
-        Mock<IRepository<User>> korisnikRepository = new Mock<IRepository<User>>();
-        Mock<IRepository<UserLSet>> inventroyRepository = new Mock<IRepository<UserLSet>>();
-        Mock<IRepository<LSetPart>> dijeloviRepository = new Mock<IRepository<LSetPart>>();
+        Mock<IRepository<User>> userRepository = new Mock<IRepository<User>>();
+        Mock<IRepository<UserLSet>> inventoryRepository = new Mock<IRepository<UserLSet>>();
+        Mock<IRepository<LSetPart>> lSetPartRepository = new Mock<IRepository<LSetPart>>();
 
         private void IniData()
         {
-            var kategorija1 = new Category()
+            var category1 = new Category()
             {
                 Id = 1,
                 Name = "kat 1"
             };
 
-            var kockica1 = new Part()
+            var part1 = new Part()
             {
-                Name = "Kockica 1",
-                Category = kategorija1
+                Name = "part 1",
+                Category = category1
             };
-            var kockica2 = new Part()
+            var part2 = new Part()
             {
-                Name = "Kockica 2",
-                Category = kategorija1
+                Name = "part 2",
+                Category = category1
             };
-            var kockica3 = new Part()
+            var part3 = new Part()
             {
-                Name = "Kockica 3",
-                Category = kategorija1
+                Name = "part 3",
+                Category = category1
             };
-            var kockica4 = new Part()
+            var part4 = new Part()
             {
-                Name = "Kockica 4",
-                Category = kategorija1
+                Name = "part 4",
+                Category = category1
             };
 
-            var boja1 = new Color()
+            var color1 = new Color()
             {
                 Id = 1,
                 Name = "Plava"
             };
 
-            var boja2 = new Color()
+            var color2 = new Color()
             {
                 Id = 2,
                 Name = "Zelena"
             };
 
-            var tema1 = new Theme()
+            var theme1 = new Theme()
             {
-                Name = "Tema 1"
+                Name = "theme 1"
             };
-            var tema2 = new Theme()
+            var theme2 = new Theme()
             {
-                Name = "Tema 2"
+                Name = "theme 2"
             };
-            var tema3 = new Theme()
+            var theme3 = new Theme()
             {
-                Name = "Tema 3",
-                BaseTheme = tema1
+                Name = "theme 3",
+                BaseTheme = theme1
             };
 
             var set1 = new LSet()
@@ -82,26 +82,26 @@ namespace Tests
                 Id = 1,
                 Name = "Set 1",
                 NumberOfParts = 5,
-                Theme = tema3
+                Theme = theme3
             };
 
 
-            var dijelovi1 = new List<LSetPart>() {  new LSetPart()
+            var lSetParts1 = new List<LSetPart>() {  new LSetPart()
             {
-                Color = boja1,
-                Part = kockica1,
+                Color = color1,
+                Part = part1,
                 Number = 1,
                 LSet = set1
             },
              new LSetPart()
             {
-                Color = boja1,
-                Part = kockica2,
+                Color = color1,
+                Part = part2,
                 Number = 1,
                 LSet = set1
             }};
 
-            set1.LSetParts = dijelovi1;
+            set1.LSetParts = lSetParts1;
 
             var set2 = new LSet()
             {
@@ -109,14 +109,14 @@ namespace Tests
                 Name = "Set 2",
                 LSetParts = new List<LSetPart>(),
                 NumberOfParts = 35,
-                Theme = tema2
+                Theme = theme2
             };
 
             set2.LSetParts = new List<LSetPart>() {
                 new LSetPart()
             {
-                Color = boja1,
-                Part = kockica2,
+                Color = color1,
+                Part = part2,
                 Number = 1,
                 LSet = set2
             }};
@@ -126,27 +126,27 @@ namespace Tests
                 Id = 3,
                 Name = "Set 3",
                 NumberOfParts = 100,
-                Theme = tema2
+                Theme = theme2
             };
 
-            var dijelovi3 = new List<LSetPart>() {  new LSetPart()
+            var lSetParts3 = new List<LSetPart>() {  new LSetPart()
             {
-                Color = boja2,
-                Part = kockica1,
+                Color = color2,
+                Part = part1,
                 Number = 1,
                 LSet = set3
             },
              new LSetPart()
             {
-                Color = boja2,
-                Part = kockica2,
+                Color = color2,
+                Part = part2,
                 Number = 1,
                 LSet = set3
             }};
 
-            set3.LSetParts = dijelovi3;
+            set3.LSetParts = lSetParts3;
 
-            setovi = new List<LSet>() { set1, set2, set3 };
+            lSets = new List<LSet>() { set1, set2, set3 };
         }
 
         [TestInitialize]
@@ -154,28 +154,28 @@ namespace Tests
         {
             IniData();
 
-            setRepository.Setup(s => s.Query()).Returns(setovi.AsQueryable);
+            lSetRepository.Setup(s => s.Query()).Returns(lSets.AsQueryable);
 
             setService = new LSetService(
-                setRepository.Object,
+                lSetRepository.Object,
                 wishlistRepository.Object,
-                korisnikRepository.Object,
-                inventroyRepository.Object,
-                dijeloviRepository.Object
+                userRepository.Object,
+                inventoryRepository.Object,
+                lSetPartRepository.Object
                 );
         }
 
         [TestMethod]
         public void BuilderAssistentTestCount1()
         {
-            korisnikRepository.Setup(s => s.GetById(1)).Returns(new User()
+            userRepository.Setup(s => s.GetById(1)).Returns(new User()
             {
                 Id = 1,
                 LSets = new List<UserLSet>()
                 {
                     new UserLSet()
                     {
-                        LSet = setovi.First(),
+                        LSet = lSets.First(),
                         Owned = 1,
                         Built = 0
                     }
@@ -188,7 +188,7 @@ namespace Tests
         [TestMethod]
         public void BuilderAssistentTestCount0()
         {
-            korisnikRepository.Setup(s => s.GetById(1)).Returns(new User()
+            userRepository.Setup(s => s.GetById(1)).Returns(new User()
             {
                 Id = 1
             });
@@ -199,19 +199,19 @@ namespace Tests
         [TestMethod]
         public void BuilderAssistentTestBricksNumber()
         {
-            korisnikRepository.Setup(s => s.GetById(1)).Returns(new User()
+            userRepository.Setup(s => s.GetById(1)).Returns(new User()
             {
                 LSets = new List<UserLSet>()
                 {
                     new UserLSet()
                     {
-                        LSet = setovi.First(),
+                        LSet = lSets.First(),
                         Owned = 1,
                         Built = 0
                     }
                 }
             });
-            setovi.First(s => s.Id == 2).LSetParts.First().Number = 2;
+            lSets.First(s => s.Id == 2).LSetParts.First().Number = 2;
             var sets = setService.BuilderAssistent(1);
             Assert.AreEqual(1, sets.Count);
         }
@@ -219,13 +219,13 @@ namespace Tests
         [TestMethod]
         public void BuilderAssistentTestBuilded()
         {
-            korisnikRepository.Setup(s => s.GetById(1)).Returns(new User()
+            userRepository.Setup(s => s.GetById(1)).Returns(new User()
             {
                 LSets = new List<UserLSet>()
                 {
                     new UserLSet()
                     {
-                        LSet = setovi.First(),
+                        LSet = lSets.First(),
                         Owned = 1,
                         Built = 1
                     }
@@ -239,14 +239,14 @@ namespace Tests
         [TestMethod]
         public void BuilderAssistentColor()
         {
-            korisnikRepository.Setup(s => s.GetById(1)).Returns(new User()
+            userRepository.Setup(s => s.GetById(1)).Returns(new User()
             {
                 Id = 1,
                 LSets = new List<UserLSet>()
                 {
                     new UserLSet()
                     {
-                        LSet = setovi.First(x => x.Id == 3),
+                        LSet = lSets.First(x => x.Id == 3),
                         Owned = 1,
                         Built = 0
                     }
@@ -258,24 +258,24 @@ namespace Tests
 
 
         [TestMethod]
-        [ExpectedException(typeof(KorisnikException))]
+        [ExpectedException(typeof(UserException))]
         public void BuilderAssistentTestExceptionUserNotFound()
         {
             var sets = setService.BuilderAssistent(5);
         }
 
         [TestMethod]
-        public void SearchBrojKockicaFound()
+        public void SearchNumberOfPartsFound()
         {
-            var searchPattern = "BrojKockica:0-30";
+            var searchPattern = "NumberOfParts:0-30";
             var sets = setService.Search(searchPattern).ToList();
             Assert.AreEqual(1, sets.Count);
         }
 
         [TestMethod]
-        public void SearchBrojKockicaNotFound()
+        public void SearchNumberOfPartsNotFound()
         {
-            var searchPattern = "BrojKockica:200-400";
+            var searchPattern = "NumberOfParts:200-400";
             var sets = setService.Search(searchPattern).ToList();
             Assert.AreEqual(0, sets.Count);
         }
@@ -297,17 +297,17 @@ namespace Tests
         }
 
         [TestMethod]
-        public void SearchTemaFound()
+        public void SearchthemeFound()
         {
-            var searchPattern = "Tema:Tema 3;";
+            var searchPattern = "Theme:theme 3;";
             var sets = setService.Search(searchPattern).ToList();
             Assert.AreEqual(1, sets.Count);
         }
 
         [TestMethod]
-        public void SearchTemaNotFound()
+        public void SearchthemeNotFound()
         {
-            var searchPattern = "Tema:Star Wars";
+            var searchPattern = "BaseTheme:Star Wars";
             var sets = setService.Search(searchPattern).ToList();
             Assert.AreEqual(0, sets.Count);
         }
@@ -315,7 +315,7 @@ namespace Tests
         [TestMethod]
         public void SearcMultipleParams()
         {
-            var searchPattern = "Name:Set 1;Tema:Tema 3;BrojKockica:0-50";
+            var searchPattern = "Name:Set 1;theme:theme 3;NumberOfParts:0-50";
             var sets = setService.Search(searchPattern).ToList();
             Assert.AreEqual(1, sets.Count);
         }

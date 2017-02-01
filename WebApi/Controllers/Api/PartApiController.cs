@@ -9,7 +9,7 @@ namespace WebApi.Controllers.Api
 {
     public class PartApiController : ApiController
     {
-        KockiceService kockicaService = new KockiceService();
+        PartService kockicaService = new PartService();
 
         [HttpGet]
         public List<PartApi> GetAll(int take = -1, int offset = 0)
