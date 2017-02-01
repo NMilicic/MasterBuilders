@@ -222,6 +222,11 @@ ALTER TABLE MasterBuilders.dbo.part
     REFERENCES category(id)
 ;
 
+ALTER TABLE MasterBuilders.dbo.MOC
+    ADD    FOREIGN KEY (id_author)
+    REFERENCES users(id)
+;
+
 BEGIN
   CREATE TABLE MasterBuilders.dbo.wishlist
   (
