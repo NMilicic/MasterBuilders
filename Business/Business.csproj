@@ -44,6 +44,8 @@
     <Compile Include="Enums\SearchEnum.cs" />
     <Compile Include="Exceptions\DataException.cs" />
     <Compile Include="Exceptions\UserException.cs" />
+    <Compile Include="Interfaces\ICategoryService.cs" />
+    <Compile Include="Interfaces\IThemeService.cs" />
     <Compile Include="Interfaces\IKockiceService.cs" />
     <Compile Include="Interfaces\IKorisnikService.cs" />
     <Compile Include="Interfaces\ILSetService.cs" />
@@ -52,6 +54,8 @@
     <Compile Include="Interfaces\IUserSetService.cs" />
     <Compile Include="Interfaces\IWishlistService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\ThemeService.cs" />
     <Compile Include="Services\PartService.cs" />
     <Compile Include="Services\UserServices.cs" />
     <Compile Include="Services\LSetService.cs" />
