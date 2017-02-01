@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseLib\IAddPartsView.cs" />
+    <Compile Include="BaseLib\IBuilderAssistantView.cs" />
     <Compile Include="BaseLib\IMOCView.cs" />
     <Compile Include="BaseLib\IDatabasePartsView.cs" />
     <Compile Include="BaseLib\IInventorySetsView.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="BaseLib\IWishlistView.cs" />
     <Compile Include="Controllers\AddPartsController.cs" />
     <Compile Include="Controllers\DatabasePartsController.cs" />
+    <Compile Include="Controllers\BuilderAssistantController.cs" />
     <Compile Include="Controllers\MOCController.cs" />
     <Compile Include="Controllers\InventorySetsController.cs" />
     <Compile Include="Controllers\DatabaseSetsController.cs" />
@@ -82,6 +84,12 @@
     </Compile>
     <Compile Include="Views\frmDatabaseParts.Designer.cs">
       <DependentUpon>frmDatabaseParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmBuilderAssistant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmBuilderAssistant.Designer.cs">
+      <DependentUpon>frmBuilderAssistant.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmMOC.cs">
       <SubType>Form</SubType>
@@ -163,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmDatabaseParts.resx">
       <DependentUpon>frmDatabaseParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmBuilderAssistant.resx">
+      <DependentUpon>frmBuilderAssistant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmMOC.resx">
       <DependentUpon>frmMOC.cs</DependentUpon>
