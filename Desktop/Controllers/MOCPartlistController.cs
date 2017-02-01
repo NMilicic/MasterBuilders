@@ -6,16 +6,16 @@ using System.Windows.Forms;
 
 namespace Desktop.Controllers
 {
-    class PartlistController
+    class MOCPartlistController
     {
-        private IPartlistView _view;
+        private IListView _view;
         
-        public PartlistController(IPartlistView view)
+        public MOCPartlistController(IListView view)
         {
             _view = view;
         }
 
-        public void Load(IEnumerable<LSetPart> parts) 
+        public void Load(IEnumerable<MocPart> parts) 
         {
             var data = from p in parts
                        select new

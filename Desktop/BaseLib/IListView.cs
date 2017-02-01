@@ -2,7 +2,7 @@
 
 namespace Desktop.BaseLib
 {
-    public interface IPartlistView : IView
+    public interface IListView : IView
     {
         DataGridView DataGridView { get; }
     }

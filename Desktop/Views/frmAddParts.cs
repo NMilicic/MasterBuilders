@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace Desktop.Views
 {
-    public partial class frmDatabaseParts : Form, IDatabasePartsView
+    public partial class frmAddParts : Form, IAddPartsView
     {
         private User _user;
-        private DatabasePartsController _controller;
+        private AddPartsController _controller;
 
         public ComboBox Category
         {
@@ -36,14 +36,33 @@ namespace Desktop.Views
             }
         }
 
-        public frmDatabaseParts(User user)
+        public ComboBox Color
+        {
+            get
+            {
+                return cmbColor;
+            }
+        }
+        public int AddQty
+        {
+            get
+            {
+                return (int)nudAdd.Value;
+            }
+            set
+            {
+                nudAdd.Value = value;
+            }
+        }
+
+        public frmAddParts(User user)
         {
             _user = user;
-            _controller = new DatabasePartsController(this);
+            _controller = new AddPartsController(this);
             InitializeComponent();
         }
 
-        private void frmDatabaseParts_Load(object sender, EventArgs e)
+        private void frmAddMOC_Load(object sender, EventArgs e)
         {
             _controller.Load();
         }
@@ -53,9 +72,14 @@ namespace Desktop.Views
             _controller.Search();
         }
 
-        private void btnRecommendSets_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            _controller.RecommendSets();
+            _controller.Add();
+        }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _controller.PartSelected();
         }
     }
 }

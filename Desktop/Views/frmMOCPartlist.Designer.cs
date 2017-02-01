@@ -1,6 +1,6 @@
 ﻿namespace Desktop.Views
 {
-    partial class frmPartlist
+    partial class frmMOCPartlist
     {
         /// <summary>
         /// Required designer variable.
@@ -61,7 +61,7 @@
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Partlist";
-            this.Load += new System.EventHandler(this.frmPartlist_Load);
+            this.Load += new System.EventHandler(this.frmMOCPartlist_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 

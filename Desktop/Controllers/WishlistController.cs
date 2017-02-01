@@ -36,7 +36,6 @@ namespace Desktop.Controllers
         public void Load()
         {
             UpdateDataGirdView();
-            SetSelected();
             InitThemeComboBox();
         }
 
@@ -46,8 +45,8 @@ namespace Desktop.Controllers
             var sb = new StringBuilder();
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
-            sb.Append("NadTema:").Append(_view.Theme.SelectedItem).Append(";");
-            sb.Append("Tema:").Append(_view.Subtheme.SelectedItem).Append(";");
+            sb.Append("BaseTheme:").Append(_view.Theme.SelectedItem).Append(";");
+            sb.Append("Theme:").Append(_view.Subtheme.SelectedItem).Append(";");
 
             _currQuery = _wishlistService.Search(_user.Id, sb.ToString());
             UpdateDataGirdView();
@@ -55,8 +54,9 @@ namespace Desktop.Controllers
 
         public void UpdateSubthemeComboBox()
         {
-            var themeName = (string)_view.Theme.SelectedItem;
             IQueryable<Theme> subthemes;
+            var themeName = (string)_view.Theme.SelectedItem;
+            
             if (themeName.Equals(""))
             {
                 subthemes = _themeRepository.Query().Where(x => x.BaseTheme == null);
@@ -92,7 +92,6 @@ namespace Desktop.Controllers
             if (qty > 0)
             {
                 _wishlistService.RemoveSetFromWishlistForUser(_user.Id, setId, qty);
-                UpdateControls();
                 UpdateDataGirdView();
             }
         }
@@ -125,6 +124,8 @@ namespace Desktop.Controllers
 
             _view.DataGridView.Columns["Id"].Visible = false;
             _view.DataGridView.Columns["Quantity"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            UpdateControls();
         }
 
         private int GetSelectedWishlistSetId()
@@ -136,6 +137,7 @@ namespace Desktop.Controllers
 
             var idString = _view.DataGridView.SelectedRows[0].Cells["Id"].Value.ToString();
             var setId = int.Parse(idString);
+
             return setId;
         }
 
@@ -143,6 +145,7 @@ namespace Desktop.Controllers
         {
             var set = _wishlistService.GetById(GetSelectedWishlistSetId());
             var noWished = (set != null) ? set.Number : 0;
+
             _view.MaxRemoveQty = noWished;
             _view.RemoveQty = 0;
         }

@@ -1,34 +1,33 @@
-﻿using Business.Interfaces;
-using Business.Services;
-using Data;
-using Data.Domain;
-using Desktop.BaseLib;
-using Desktop.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using Desktop.Views;
+using Desktop.BaseLib;
+using Business.Interfaces;
+using Data.Domain;
+using Data;
+using Business.Services;
 
 namespace Desktop.Controllers
 {
-    class DatabasePartsController
+    class AddPartsController
     {
-        private IDatabasePartsView _view;
-        
-        private IKockiceService _partsService;
-        private ILSetService _lSetService;
+        private IAddPartsView _view;
 
+        private IKockiceService _partsService;
+        
         private IRepository<Category> _categoryRepository;
+        private IRepository<Color> _colorRepository;
         private IQueryable<Part> _currQuery;
 
-        public DatabasePartsController(IDatabasePartsView view)
+        public AddPartsController(IAddPartsView view)
         {
             _view = view;
             _partsService = new KockiceService();
-            _lSetService = new LSetService();
             _categoryRepository = new Repository<Category>();
+            _colorRepository = new Repository<Color>();
             _currQuery = _partsService.GetAll();
         }
 
@@ -36,6 +35,7 @@ namespace Desktop.Controllers
         {
             UpdateDataGirdView();
             InitCategoryComboBox();
+            InitColorComboBox();
         }
 
         public void Search()
@@ -49,29 +49,15 @@ namespace Desktop.Controllers
             UpdateDataGirdView();
         }
 
-        public void RecommendSets()
+        public void PartSelected()
         {
-            var parts = new List<int>();
+            ClearControls();
+        }
 
-            for (int i = 0; i <_view.DataGridView.SelectedRows.Count; i++)
-            {
-                
-                var idString = _view.DataGridView.SelectedRows[i].Cells["Id"].Value.ToString();
-                parts.Add(int.Parse(idString));
-
-            }
-            
-            var sets = _lSetService.GetAllSetsWithBricks(parts);
-
-            if (sets.Count() == 0)
-            {
-                MessageBox.Show("Part not found in any sets.");
-            }
-            else
-            {
-                var newForm = new frmSetlist(sets);
-                newForm.ShowDialog();
-            }
+        public void Add()
+        {
+            //TODO implement btnAdd
+            ClearControls();
         }
 
         #region Helper Methods
@@ -82,6 +68,15 @@ namespace Desktop.Controllers
             var data = categoryNames.ToList();
             data.Insert(0, "");
             _view.Category.DataSource = data;
+        }
+
+        private void InitColorComboBox()
+        {
+            var colors = _colorRepository.Query();
+            var colorNames = from c in colors select c.Name;
+            var data = colorNames.ToList();
+            data.Insert(0, "");
+            _view.Color.DataSource = data;
         }
 
         private void UpdateDataGirdView()
@@ -97,7 +92,12 @@ namespace Desktop.Controllers
             _view.DataGridView.DataSource = data.ToList();
             _view.DataGridView.Columns["Id"].Visible = false;
         }
-        
+
+        private void ClearControls()
+        {
+            _view.Color.SelectedIndex = 0;
+            _view.AddQty = 0;
+        }
         #endregion
     }
 }

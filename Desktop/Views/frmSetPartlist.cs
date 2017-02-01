@@ -7,24 +7,23 @@ using System.Windows.Forms;
 
 namespace Desktop.Views
 {
-    public partial class frmPartlist : Form, IPartlistView
+    public partial class frmSetPartlist : Form, IListView
     {
         private IEnumerable<LSetPart> _parts;
-        private PartlistController _controller;
+        private SetPartlistController _controller;
 
         public DataGridView DataGridView { get { return dataGridView; } }
 
-        public frmPartlist(IEnumerable<LSetPart> parts)
+        public frmSetPartlist(IEnumerable<LSetPart> parts)
         {
             _parts = parts;
-            _controller = new PartlistController(this);
+            _controller = new SetPartlistController(this);
             InitializeComponent();
         }
 
         private void frmPartlist_Load(object sender, EventArgs e)
         {
             _controller.Load(_parts);
-            //dataGridView.DataSource = _data.ToList();
         }
     }
 }

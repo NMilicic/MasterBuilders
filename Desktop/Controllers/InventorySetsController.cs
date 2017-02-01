@@ -4,6 +4,7 @@ using Data;
 using Data.Domain;
 using Desktop.BaseLib;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -16,6 +17,7 @@ namespace Desktop.Controllers
         private User _user;
 
         private IUserSetService _userSetService;
+        private ILSetService _lSetService;
 
         private Repository<Theme> _themeRepository;
         private IQueryable<UserLSet> _currQuery;
@@ -26,6 +28,7 @@ namespace Desktop.Controllers
             _user = user;
 
             _userSetService = new UserSetService();
+            _lSetService = new LSetService();
             _themeRepository = new Repository<Theme>();
 
             _currQuery = _userSetService.GetAllForUser(user.Id);
@@ -34,7 +37,6 @@ namespace Desktop.Controllers
         public void Load()
         {
             UpdateDataGirdView();
-            SetSelected();
             InitThemeComboBox();
         }
 
@@ -44,8 +46,8 @@ namespace Desktop.Controllers
             var sb = new StringBuilder();
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
-            sb.Append("NadTema:").Append(_view.Theme.SelectedItem).Append(";");
-            sb.Append("Tema:").Append(_view.Subtheme.SelectedItem).Append(";");
+            sb.Append("BaseTheme:").Append(_view.Theme.SelectedItem).Append(";");
+            sb.Append("Theme:").Append(_view.Subtheme.SelectedItem).Append(";");
 
             _currQuery = _userSetService.Search(_user.Id, sb.ToString());
             UpdateDataGirdView();
@@ -53,11 +55,15 @@ namespace Desktop.Controllers
 
         public void UpdateSubthemeComboBox()
         {
-            var themeName = (string)_view.Theme.SelectedItem;
             IQueryable<Theme> subthemes;
-            if (themeName.Equals("")) {
+            var themeName = (string)_view.Theme.SelectedItem;
+            
+            if (themeName.Equals(""))
+            {
                 subthemes = _themeRepository.Query().Where(x => x.BaseTheme == null);
-            } else {
+            }
+            else
+            {
                 subthemes = _themeRepository.Query().Where(x => x.BaseTheme.Name == themeName);
             }
 
@@ -87,12 +93,13 @@ namespace Desktop.Controllers
             if (qty > 0)
             {
                 _userSetService.RemoveFromInventory(_user.Id, setId, qty);
+
                 if (userSet.Owned < userSet.Built)
                 {
                     var disassemble = userSet.Built - userSet.Owned;
                     _userSetService.MarkSetAsCompleted(_user.Id, setId, -disassemble);
                 }
-                UpdateControls();
+
                 UpdateDataGirdView();
             }
         }
@@ -111,7 +118,6 @@ namespace Desktop.Controllers
             if (qty > 0)
             {
                 _userSetService.MarkSetAsCompleted(_user.Id, setId, qty);
-                UpdateControls();
                 UpdateDataGirdView();
             }
         }
@@ -130,9 +136,21 @@ namespace Desktop.Controllers
             if (qty > 0)
             {
                 _userSetService.MarkSetAsCompleted(_user.Id, setId, -qty);
-                UpdateControls();
                 UpdateDataGirdView();
             }
+        }
+
+        public void DownloadInstructions()
+        {
+            var userSetId = GetSelectedUserSetId();
+            if (userSetId < 0)
+            {
+                return;
+            }
+
+            var setId = _userSetService.GetById(userSetId).LSet.Id;
+            var url = _lSetService.GetById(setId).InstructionsUrl;
+            Process.Start(url);
         }
 
         #region Helper Methods
@@ -155,7 +173,6 @@ namespace Desktop.Controllers
                            Name = s.LSet.Name,
                            Theme = s.LSet.Theme.BaseTheme.Name,
                            Subtheme = s.LSet.Theme.Name,
-                           //Description = s.Set.Opis,
                            Owned = s.Owned,
                            Assembled = s.Built,
                        };
@@ -165,6 +182,8 @@ namespace Desktop.Controllers
             _view.DataGridView.Columns["Id"].Visible = false;
             _view.DataGridView.Columns["Owned"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             _view.DataGridView.Columns["Assembled"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            UpdateControls();
         }
 
         private int GetSelectedUserSetId()
@@ -173,8 +192,10 @@ namespace Desktop.Controllers
             {
                 return -1;
             } 
+
             var idString = _view.DataGridView.SelectedRows[0].Cells["Id"].Value.ToString();
             var setId = int.Parse(idString);
+
             return setId;
         }
 
@@ -184,7 +205,7 @@ namespace Desktop.Controllers
             var noOwned = (set != null) ? set.Owned : 0;
             var noAssembled = (set != null) ? set.Built : 0;
 
-            _view.MaxRemoveQty = noOwned; ;
+            _view.MaxRemoveQty = noOwned;
             _view.MaxAssembleQty = noOwned - noAssembled;
             _view.MaxDisassembleQty = noAssembled;
 

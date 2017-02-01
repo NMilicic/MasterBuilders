@@ -5,6 +5,7 @@ using Data.Domain;
 using Desktop.BaseLib;
 using Desktop.Views;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -48,10 +49,10 @@ namespace Desktop.Controllers
             var sb = new StringBuilder();
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
-            sb.Append("NadTema:").Append(_view.Theme.SelectedItem).Append(";");
-            sb.Append("Tema:").Append(_view.Subtheme.SelectedItem).Append(";");
-            sb.Append("GodinaProizvodnje:").Append(_view.SearchYearFrom).Append("-").Append(_view.SearchYearTo).Append(";");
-            sb.Append("BrojKockica:").Append(_view.SearchPartsFrom).Append("-").Append(_view.SearchPartsTo).Append(";");
+            sb.Append("BaseTheme:").Append(_view.Theme.SelectedItem).Append(";");
+            sb.Append("Theme:").Append(_view.Subtheme.SelectedItem).Append(";");
+            sb.Append("ProductionYear:").Append(_view.SearchYearFrom).Append("-").Append(_view.SearchYearTo).Append(";");
+            sb.Append("NumberOfParts:").Append(_view.SearchPartsFrom).Append("-").Append(_view.SearchPartsTo).Append(";");
 
             _currQuery = _lSetService.Search(sb.ToString());
             UpdateDataGirdView();
@@ -59,8 +60,9 @@ namespace Desktop.Controllers
 
         public void UpdateSubthemeComboBox()
         {
-            var themeName = (string)_view.Theme.SelectedItem;
             IQueryable<Theme> subthemes;
+            var themeName = (string)_view.Theme.SelectedItem;
+
             if (themeName.Equals(""))
             {
                 subthemes = _themeRepository.Query().Where(x => x.BaseTheme == null);
@@ -131,21 +133,34 @@ namespace Desktop.Controllers
                 MessageBox.Show("Partlist not available.");
             } else
             {
-                var newForm = new frmPartlist(parts);
+                var newForm = new frmSetPartlist(parts);
                 newForm.ShowDialog();
             }
         }
 
         public void ShowPicture()
         {
-            //TODO show picture
-            MessageBox.Show("Picture not available.");
+            var setId = GetSelectedSetId();
+            if (setId < 0)
+            {
+                return;
+            }
+
+            var url = _lSetService.GetById(setId).PictureUrl;
+            var newForm = new frmPicture(url);
+            newForm.Show();
         }
 
         public void DownloadInstructions()
         {
-            //TODO download instructions
-            MessageBox.Show("Instructions not available.");
+            var setId = GetSelectedSetId();
+            if (setId < 0)
+            {
+                return;
+            }
+
+            var url = _lSetService.GetById(setId).InstructionsUrl;
+            Process.Start(url);
         }
 
         #region Helper Methods
@@ -168,7 +183,6 @@ namespace Desktop.Controllers
                            Name = s.Name,
                            Theme = s.Theme.BaseTheme.Name,
                            Subtheme = s.Theme.Name,
-                           //Description = s.Opis,
                            Year = s.ProductionYear,
                            Parts = s.NumberOfParts
                        };
@@ -189,6 +203,7 @@ namespace Desktop.Controllers
 
             var idString = _view.DataGridView.SelectedRows[0].Cells["Id"].Value.ToString();
             var setId = int.Parse(idString);
+
             return setId;
         }
 

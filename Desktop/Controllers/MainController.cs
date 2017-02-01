@@ -42,10 +42,46 @@ namespace Desktop.Controllers
             ShowView(newForm);
         }
 
+        public void ShowMOCEdit()
+        {
+            //TODO MOCedit form
+            /*
+            var newForm = new frmEditMOC();
+            ShowView(newForm);
+            */
+        }
+
+        public void ShowMOCView()
+        {
+            var newForm = new frmMOC();
+            ShowView(newForm);
+        }
+
         public void ShowBA()
         {
-            /*var newForm = new frmBA();
-            ShowView(newForm);*/
+            //TODO BA form
+            /*
+            var newForm = new frmBA();
+            ShowView(newForm);
+            */
+        }
+
+        public void ShowCommunity()
+        {
+            //TODO community form
+            /*
+            var newForm = new frmCommunity();
+            ShowView(newForm);
+            */
+        }
+
+        public void ShowProfile()
+        {
+            //TODO profile form
+            /*
+            var newForm = new frmProfile();
+            ShowView(newForm);
+            */
         }
 
         public void Logout()

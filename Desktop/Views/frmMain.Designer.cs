@@ -37,11 +37,10 @@
             this.menuBA = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMOC = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMOCView = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMOCAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMOCEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProfile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuProfileView = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuProfileEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLogout = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCommunity = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,8 +50,9 @@
             this.menuDatabase,
             this.menuInventory,
             this.menuWishlist,
-            this.menuBA,
             this.menuMOC,
+            this.menuBA,
+            this.menuCommunity,
             this.menuProfile,
             this.menuLogout});
             this.menu.Location = new System.Drawing.Point(0, 0);
@@ -108,7 +108,7 @@
             // 
             this.menuMOC.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuMOCView,
-            this.menuMOCAdd});
+            this.menuMOCEdit});
             this.menuMOC.Name = "menuMOC";
             this.menuMOC.Size = new System.Drawing.Size(47, 20);
             this.menuMOC.Text = "MOC";
@@ -116,35 +116,23 @@
             // menuMOCView
             // 
             this.menuMOCView.Name = "menuMOCView";
-            this.menuMOCView.Size = new System.Drawing.Size(99, 22);
+            this.menuMOCView.Size = new System.Drawing.Size(152, 22);
             this.menuMOCView.Text = "View";
+            this.menuMOCView.Click += new System.EventHandler(this.menuMOCView_Click);
             // 
-            // menuMOCAdd
+            // menuMOCEdit
             // 
-            this.menuMOCAdd.Name = "menuMOCAdd";
-            this.menuMOCAdd.Size = new System.Drawing.Size(99, 22);
-            this.menuMOCAdd.Text = "Add";
+            this.menuMOCEdit.Name = "menuMOCEdit";
+            this.menuMOCEdit.Size = new System.Drawing.Size(152, 22);
+            this.menuMOCEdit.Text = "Edit";
+            this.menuMOCEdit.Click += new System.EventHandler(this.menuMOCEdit_Click);
             // 
             // menuProfile
             // 
-            this.menuProfile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuProfileView,
-            this.menuProfileEdit});
             this.menuProfile.Name = "menuProfile";
-            this.menuProfile.Size = new System.Drawing.Size(53, 20);
-            this.menuProfile.Text = "Profile";
-            // 
-            // menuProfileView
-            // 
-            this.menuProfileView.Name = "menuProfileView";
-            this.menuProfileView.Size = new System.Drawing.Size(99, 22);
-            this.menuProfileView.Text = "View";
-            // 
-            // menuProfileEdit
-            // 
-            this.menuProfileEdit.Name = "menuProfileEdit";
-            this.menuProfileEdit.Size = new System.Drawing.Size(99, 22);
-            this.menuProfileEdit.Text = "Edit";
+            this.menuProfile.Size = new System.Drawing.Size(73, 20);
+            this.menuProfile.Text = "My Profile";
+            this.menuProfile.Click += new System.EventHandler(this.menuProfile_Click);
             // 
             // menuLogout
             // 
@@ -152,6 +140,13 @@
             this.menuLogout.Size = new System.Drawing.Size(57, 20);
             this.menuLogout.Text = "Logout";
             this.menuLogout.Click += new System.EventHandler(this.menuLogout_Click);
+            // 
+            // menuCommunity
+            // 
+            this.menuCommunity.Name = "menuCommunity";
+            this.menuCommunity.Size = new System.Drawing.Size(83, 20);
+            this.menuCommunity.Text = "Community";
+            this.menuCommunity.Click += new System.EventHandler(this.menuCommunity_Click);
             // 
             // frmMain
             // 
@@ -187,8 +182,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuProfile;
         private System.Windows.Forms.ToolStripMenuItem menuLogout;
         private System.Windows.Forms.ToolStripMenuItem menuMOCView;
-        private System.Windows.Forms.ToolStripMenuItem menuMOCAdd;
-        private System.Windows.Forms.ToolStripMenuItem menuProfileView;
-        private System.Windows.Forms.ToolStripMenuItem menuProfileEdit;
+        private System.Windows.Forms.ToolStripMenuItem menuMOCEdit;
+        private System.Windows.Forms.ToolStripMenuItem menuCommunity;
     }
 }

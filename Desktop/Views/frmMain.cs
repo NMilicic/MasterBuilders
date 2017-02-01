@@ -39,6 +39,31 @@ namespace Desktop.Views
             _controller.ShowWishlist();
         }
 
+        private void menuBA_Click(object sender, EventArgs e)
+        {
+            _controller.ShowBA();
+        }
+
+        private void menuMOCView_Click(object sender, EventArgs e)
+        {
+            _controller.ShowMOCView();
+        }
+
+        private void menuMOCEdit_Click(object sender, EventArgs e)
+        {
+            _controller.ShowMOCEdit();
+        }
+
+        private void menuCommunity_Click(object sender, EventArgs e)
+        {
+            _controller.ShowCommunity();
+        }
+
+        private void menuProfile_Click(object sender, EventArgs e)
+        {
+            _controller.ShowProfile();
+        }
+
         private void menuLogout_Click(object sender, EventArgs e)
         {
             _controller.Logout();
@@ -47,11 +72,6 @@ namespace Desktop.Views
         private void frmMain_FormClosed(object sender, EventArgs e)
         {
             _controller.Close();
-        }
-
-        private void menuBA_Click(object sender, EventArgs e)
-        {
-            _controller.ShowBA();
         }
     }
 }

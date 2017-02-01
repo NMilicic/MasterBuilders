@@ -146,5 +146,10 @@ namespace Desktop.Views
         {
             _controller.SetSelected();
         }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            _controller.DownloadInstructions();
+        }
     }
 }

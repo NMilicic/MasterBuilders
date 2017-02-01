@@ -44,6 +44,7 @@
             this.btnDisassemble = new System.Windows.Forms.Button();
             this.nudDisassemble = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnDownload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAssemble)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRemove)).BeginInit();
@@ -68,7 +69,7 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(600, 325);
+            this.dataGridView.Size = new System.Drawing.Size(650, 325);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -127,7 +128,7 @@
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSearch.Location = new System.Drawing.Point(540, 12);
+            this.btnSearch.Location = new System.Drawing.Point(590, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 25);
             this.btnSearch.TabIndex = 11;
@@ -210,11 +211,23 @@
             this.label1.Size = new System.Drawing.Size(2, 25);
             this.label1.TabIndex = 23;
             // 
+            // btnDownload
+            // 
+            this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDownload.Location = new System.Drawing.Point(540, 376);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(125, 25);
+            this.btnDownload.TabIndex = 24;
+            this.btnDownload.Text = "Download Instructions";
+            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            // 
             // frmInventorySets
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(634, 411);
+            this.ClientSize = new System.Drawing.Size(684, 411);
             this.ControlBox = false;
+            this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nudDisassemble);
             this.Controls.Add(this.btnDisassemble);
@@ -266,5 +279,6 @@
         private System.Windows.Forms.Button btnDisassemble;
         private System.Windows.Forms.NumericUpDown nudDisassemble;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnDownload;
     }
 }
