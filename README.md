@@ -15,14 +15,8 @@ Postavljanje projekta:
   
 2. Folder Database
   U ovom folderu se nalaze sve skripte vezane za bazu. Označeni su brojevima zbog redosljeda izvršavanja pa ako dodajete nešto upišite broj veći od prethodnog :)
-  1. 001_InitalScript - Kreira sve tablice
-  2. 002_TestData - ne pokretati imamo novi test data
-  3. 003_Added_Whishlist - dodaje tablice za popis želja
-  4. 004_dodatni_atributi
-  5. 005_lego_podaci - novi testini podatci
-  6. 006_upute - dodane upute
-  7. 007_slike_automatski
-  8. 008_upute_automatski
+1. 300
+2. 303
   
 3. Otvorite Solution:
 1. Namjestite connection string -> Trenutno u WebApi Projektu -> Web.config -> Search "ConnectionString" (Ja sam commitao s svojim tako da si lokalno postavite svoj i nakon toga će vam javljati da to commitate, nemojte :) Nego svaki puta kada povučete nešto novo opet ga promijeniti. Najjednostavnije bi bilo da svatko svoj doda kao komentar ispod mog i onda si nakog svakog pulla to odkomentirate.)
