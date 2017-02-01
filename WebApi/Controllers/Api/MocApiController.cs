@@ -31,7 +31,7 @@ namespace WebApi.Controllers.Api
         [HttpPost]
         public MocApi AddPartToMoc(MocApi mocToUpdate)
         {
-            var moc = mocService.AddDijeloviMoc(mocToUpdate.Id, Mapper.Map<List<MocPart>>(mocToUpdate.MocParts));
+            var moc = mocService.AddMocPartToMoc(mocToUpdate.Id, Mapper.Map<List<MocPart>>(mocToUpdate.MocParts));
             return Mapper.Map<MocApi>(moc);
         }
         [HttpGet]

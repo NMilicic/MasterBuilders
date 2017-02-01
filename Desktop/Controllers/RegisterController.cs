@@ -18,7 +18,7 @@ namespace Desktop.Controllers
         {
             _view = view;
             _parent = parent;
-            _userService = new KorisnikServices();
+            _userService = new UserServices();
         }
 
         public void Register()
@@ -35,7 +35,7 @@ namespace Desktop.Controllers
             {
                 _userService.Register(korisnik);
             }
-            catch (KorisnikException)
+            catch (UserException)
             {
                 MessageBox.Show("Username taken.");
                 _view.Email = "";

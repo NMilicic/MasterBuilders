@@ -7,28 +7,27 @@ using System.Threading.Tasks;
 
 namespace Business.Exceptions
 {
-    public class WishlistException : Exception, ISerializable
+    public class UserException: Exception, ISerializable
     {
-        public WishlistException(string message)
-            : base(message)
-        { }
+        public UserException(string message)
+            : base(message) { }
 
-        public static string WishlistExceptionsText(WishlistExceptionEnum exception)
+        public static string UserExceptionsText(UserExceptionEnum exception)
         {
             switch (exception)
             {
-                case WishlistExceptionEnum.InvalidData:
+                case UserExceptionEnum.InvalidData:
                     return "Missing user data!";
-                case WishlistExceptionEnum.Taken:
+                case UserExceptionEnum.Taken:
                     return "User with that email is already register!";
-                case WishlistExceptionEnum.NotFound:
+                case UserExceptionEnum.NotFound:
                     return "User not found!";
             }
             return "";
         }
     }
 
-    public enum WishlistExceptionEnum
+    public enum UserExceptionEnum
     {
         InvalidData,
         Taken,

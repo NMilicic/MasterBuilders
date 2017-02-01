@@ -9,14 +9,14 @@ using System.Linq;
 
 namespace Business.Services
 {
-    public class KockiceService : IKockiceService
+    public class PartService : IKockiceService
     {
-        IRepository<Part> kockicaRepository = new Repository<Part>();
+        IRepository<Part> partRepository = new Repository<Part>();
 
         #region Default actions
         public IQueryable<Part> GetAll(int take = -1, int offset = 0)
         {
-            var query = kockicaRepository.Query().Skip(offset);
+            var query = partRepository.Query().Skip(offset);
             if (take > 0)
                 query = query.Take(take);
             return query;
@@ -24,20 +24,20 @@ namespace Business.Services
 
         public Part GetById(int id)
         {
-            return kockicaRepository.GetById(id);
+            return partRepository.GetById(id);
         }
 
         public void SaveOrUpdate(Part set)
         {
-            kockicaRepository.Save(set);
+            partRepository.Save(set);
         }
 
         public void Delete(int id)
         {
-            var set = kockicaRepository.GetById(id);
+            var set = partRepository.GetById(id);
             if (set != null)
             {
-                kockicaRepository.Delete(set);
+                partRepository.Delete(set);
             }
             else
             {
@@ -49,7 +49,7 @@ namespace Business.Services
 
         public IQueryable<Part> GetAllForUser(int userId, int take = -1, int offset = 0)
         {
-            var query = kockicaRepository.Query().Where(x => x.Users.Any(u => u.Id == userId)).Skip(offset);
+            var query = partRepository.Query().Where(x => x.Users.Any(u => u.Id == userId)).Skip(offset);
             if (take > 0)
                 query = query.Take(take);
             return query;
@@ -57,7 +57,7 @@ namespace Business.Services
 
         public IQueryable<Part> Search(string searchParameters, int take = -1, int offset = 0)
         {
-            var query = kockicaRepository.Query();
+            var query = partRepository.Query();
             var searchFields = ParseSearchParameters(searchParameters);
             foreach (var field in searchFields)
             {

@@ -14,8 +14,8 @@ namespace Business.Services
     public class WishlistService : IWishlistService
     {
         IRepository<Wishlist> wishlistRepository = new Repository<Wishlist>();
-        IRepository<User> korisnikRepository = new Repository<User>();
-        IRepository<LSet> setRepository = new Repository<LSet>();
+        IRepository<User> userRepository = new Repository<User>();
+        IRepository<LSet> lSetRepository = new Repository<LSet>();
 
         public IQueryable<Wishlist> GetAll(int take = -1, int offset = 0)
         {
@@ -44,7 +44,7 @@ namespace Business.Services
             }
             else
             {
-                throw new DataException("Lista želja nije pronađena!");
+                throw new DataException("Wishlist not found!");
             }
         }
 
@@ -59,10 +59,10 @@ namespace Business.Services
         public Wishlist AddSetToWishlistForUser(int userId, int setId, int pieces)
         {
 
-            var user = korisnikRepository.GetById(userId);
+            var user = userRepository.GetById(userId);
             if (user != null)
             {
-                var dbSet = setRepository.GetById(setId);
+                var dbSet = lSetRepository.GetById(setId);
                 if (dbSet != null)
                 {
                     var existingWishListItem = wishlistRepository.Query().FirstOrDefault(x => x.User.Id == userId && x.LSet.Id == setId);
@@ -92,24 +92,24 @@ namespace Business.Services
                 }
             }
 
-            throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.NotFound));
+            throw new UserException(UserException.UserExceptionsText(UserExceptionEnum.NotFound));
 
 
         }
 
         public Wishlist RemoveSetFromWishlistForUser(int userId, int setId, int pieces)
         {
-            var user = korisnikRepository.GetById(userId);
+            var user = userRepository.GetById(userId);
             if (user != null)
             {
-                var dbSet = setRepository.GetById(setId);
+                var dbSet = lSetRepository.GetById(setId);
                 if (dbSet != null)
                 {
                     var existingWishlistItem = wishlistRepository.Query().FirstOrDefault(x => x.User.Id == userId && x.LSet.Id == setId);
 
                     if (existingWishlistItem == null)
                     {
-                        throw new DataException("Set ne postoji u inventaru!");
+                        throw new DataException("Set is not in wishlist!");
                     }
                     else
                     {
@@ -132,7 +132,7 @@ namespace Business.Services
                 }
             }
 
-            throw new WishlistException(WishlistException.WishlistExceptionsText(WishlistExceptionEnum.NotFound));
+            throw new UserException(UserException.UserExceptionsText(UserExceptionEnum.NotFound));
         }
 
         public IQueryable<Wishlist> Search(int userId ,string searchParameters, int take = -1, int offset = 0)
@@ -152,19 +152,19 @@ namespace Business.Services
                         query = FilterByDescription(field.Value, query);
                         break;
                     case SearchEnum.NumberOfParts:
-                        query = FilterByBrojKockica(field.Value, query);
+                        query = FilterByNumberOfParts(field.Value, query);
                         break;
                     case SearchEnum.ProductionYear:
                         query = FilterByYear(field.Value, query);
                         break;
                     case SearchEnum.Theme:
-                        query = FilterByTema(field.Value, query);
+                        query = FilterByTheme(field.Value, query);
                         break;
                     case SearchEnum.BaseTheme:
-                        query = FilterByNadTema(field.Value, query);
+                        query = FilterByBaseTheme(field.Value, query);
                         break;
                     case SearchEnum.Owned:
-                        query = FilterByBrojKomada(field.Value, query);
+                        query = FilterByOwned(field.Value, query);
                         break;
                     case SearchEnum.Error:
                         continue;
@@ -213,18 +213,17 @@ namespace Business.Services
             return parseYear ? query.Where(x => x.LSet.ProductionYear == year) : query;
         }
 
-        private IQueryable<Wishlist> FilterByTema(string tema, IQueryable<Wishlist> query)
+        private IQueryable<Wishlist> FilterByTheme(string theme, IQueryable<Wishlist> query)
         {
-            //return query.Where(x => x.Set.Tema.ImeTema == tema || (x.Set.Tema.NadTema != null && x.Set.Tema.NadTema.ImeTema == tema));
-            return query.Where(x => x.LSet.Theme.Name == tema);
+            return query.Where(x => x.LSet.Theme.Name == theme);
         }
 
-        private IQueryable<Wishlist> FilterByNadTema(string tema, IQueryable<Wishlist> query)
+        private IQueryable<Wishlist> FilterByBaseTheme(string theme, IQueryable<Wishlist> query)
         {
-            return query.Where(x => x.LSet.Theme.BaseTheme != null && x.LSet.Theme.BaseTheme.Name == tema);
+            return query.Where(x => x.LSet.Theme.BaseTheme != null && x.LSet.Theme.BaseTheme.Name == theme);
         }
 
-        private IQueryable<Wishlist> FilterByBrojKockica(string searchPattern, IQueryable<Wishlist> query)
+        private IQueryable<Wishlist> FilterByNumberOfParts(string searchPattern, IQueryable<Wishlist> query)
         {
             var range = searchPattern.Split('-');
             if (range.Length > 1)
@@ -242,7 +241,7 @@ namespace Business.Services
             return query;
         }
 
-        private IQueryable<Wishlist> FilterByBrojKomada(string searchPattern, IQueryable<Wishlist> query)
+        private IQueryable<Wishlist> FilterByOwned(string searchPattern, IQueryable<Wishlist> query)
         {
             var range = searchPattern.Split('-');
             if (range.Length > 1)

@@ -13,7 +13,7 @@ namespace Tests
     [TestClass]
     public class KorisnikServiceTest
     {
-        private KorisnikServices korisnikService;
+        private UserServices korisnikService;
         Mock<IRepository<User>> korisnikRepository = new Mock<IRepository<User>>();
 
         [TestInitialize]
@@ -32,7 +32,7 @@ namespace Tests
 
             var userList = new List<User>() { user1, user2 };
             korisnikRepository.Setup(s => s.Query()).Returns(userList.AsQueryable);
-            korisnikService = new KorisnikServices(korisnikRepository.Object);
+            korisnikService = new UserServices(korisnikRepository.Object);
         }
 
         [TestMethod]
@@ -48,7 +48,7 @@ namespace Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(KorisnikException))]
+        [ExpectedException(typeof(UserException))]
         public void RegisterExistingEmail()
         {
             var newUser = new User()
@@ -72,7 +72,7 @@ namespace Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(KorisnikException))]
+        [ExpectedException(typeof(UserException))]
         public void LoginFail()
         {
             var newUser = new User()

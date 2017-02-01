@@ -17,7 +17,7 @@ namespace Web.Controllers
 
         public ActionResult Details(int blockId)
         {
-            KockiceService service = new KockiceService();
+            PartService service = new PartService();
             Part set = service.GetById(blockId);
             return View(set);
         }

@@ -13,40 +13,40 @@ namespace Business.Services
 {
     public class LSetService : ILSetService
     {
-        IRepository<LSet> setRepository;
+        IRepository<LSet> lSetRepository;
         IRepository<Wishlist> wishlistRepository;
-        IRepository<User> korisnikRepository;
-        IRepository<UserLSet> inventroyRepository;
-        IRepository<LSetPart> dijeloviRepository;
+        IRepository<User> userRepository;
+        IRepository<UserLSet> inventoryRepository;
+        IRepository<LSetPart> lSetPartRepository;
 
         public LSetService()
         {
-            this.setRepository = new Repository<LSet>();
+            this.lSetRepository = new Repository<LSet>();
             this.wishlistRepository = new Repository<Wishlist>();
-            this.korisnikRepository = new Repository<User>();
-            this.inventroyRepository = new Repository<UserLSet>();
-            this.dijeloviRepository = new Repository<LSetPart>();
+            this.userRepository = new Repository<User>();
+            this.inventoryRepository = new Repository<UserLSet>();
+            this.lSetPartRepository = new Repository<LSetPart>();
         }
 
         public LSetService(
-            IRepository<LSet> setRepository,
+            IRepository<LSet> lSetRepository,
             IRepository<Wishlist> wishlistRepository,
-            IRepository<User> korisnikRepository,
-            IRepository<UserLSet> inventroyRepository,
-            IRepository<LSetPart> dijeloviRepository
+            IRepository<User> userRepository,
+            IRepository<UserLSet> inventoryRepository,
+            IRepository<LSetPart> lSetPartRepository
             )
         {
-            this.setRepository = setRepository;
+            this.lSetRepository = lSetRepository;
             this.wishlistRepository = wishlistRepository;
-            this.korisnikRepository = korisnikRepository;
-            this.inventroyRepository = inventroyRepository;
-            this.dijeloviRepository = dijeloviRepository;
+            this.userRepository = userRepository;
+            this.inventoryRepository = inventoryRepository;
+            this.lSetPartRepository = lSetPartRepository;
         }
 
         #region Default actions
         public IQueryable<LSet> GetAll(int take = -1, int offset = 0)
         {
-            var query = setRepository.Query().Skip(offset);
+            var query = lSetRepository.Query().Skip(offset);
             if (take > 0)
                 query = query.Take(take);
             return query;
@@ -54,24 +54,24 @@ namespace Business.Services
 
         public LSet GetById(int id)
         {
-            return setRepository.GetById(id);
+            return lSetRepository.GetById(id);
         }
 
         public void SaveOrUpdate(LSet set)
         {
-            setRepository.Save(set);
+            lSetRepository.Save(set);
         }
 
         public void Delete(int id)
         {
-            var set = setRepository.GetById(id);
+            var set = lSetRepository.GetById(id);
             if (set != null)
             {
-                setRepository.Delete(set);
+                lSetRepository.Delete(set);
             }
             else
             {
-                throw new DataException("Set nije pronađen!");
+                throw new DataException("Set not found!");
             }
         }
 
@@ -81,7 +81,7 @@ namespace Business.Services
 
         public IQueryable<LSet> Search(string searchParameters, int take = -1, int offset = 0)
         {
-            var query = setRepository.Query();
+            var query = lSetRepository.Query();
             var searchFields = ParseSearchParameters(searchParameters);
             foreach (var field in searchFields)
             {
@@ -96,16 +96,16 @@ namespace Business.Services
                         query = FilterByDescription(field.Value, query);
                         break;
                     case SearchEnum.NumberOfParts:
-                        query = FilterByBrojKockica(field.Value, query);
+                        query = FilterByNumberOfParts(field.Value, query);
                         break;
                     case SearchEnum.ProductionYear:
                         query = FilterByYear(field.Value, query);
                         break;
                     case SearchEnum.Theme:
-                        query = FilterByTema(field.Value, query);
+                        query = FilterByTheme(field.Value, query);
                         break;
                     case SearchEnum.BaseTheme:
-                        query = FilterByNadTema(field.Value, query);
+                        query = FilterByBaseTheme(field.Value, query);
                         break;
                     case SearchEnum.Error:
                         continue;
@@ -121,7 +121,7 @@ namespace Business.Services
 
         public IQueryable<LSet> GetAllSetsWithBricks(List<int> bricksIds, int take = -1, int offset = 0)
         {
-            var setoviDijelovi = dijeloviRepository.Query().Where(s => bricksIds.Contains(s.Part.Id));
+            var setoviDijelovi = lSetPartRepository.Query().Where(s => bricksIds.Contains(s.Part.Id));
             var sets = setoviDijelovi.Select(t => t.LSet).Distinct();
 
             sets = sets.Skip(offset);
@@ -133,7 +133,7 @@ namespace Business.Services
 
         public List<LSet> BuilderAssistent(int userId)
         {
-            var user = korisnikRepository.GetById(userId);
+            var user = userRepository.GetById(userId);
             if (user != null)
             {
                 var avaliableParts = user.LSets.Where(s => (s.Owned > s.Built)).SelectMany(x => x.LSet.LSetParts).ToList();
@@ -143,7 +143,7 @@ namespace Business.Services
                     part.Number = (set.Owned - set.Built) * part.Number;
                 }
 
-                var possibleSets = setRepository.Query().Where(s => s.LSetParts.Count() > 0).ToList().Where(
+                var possibleSets = lSetRepository.Query().Where(s => s.LSetParts.Count() > 0).ToList().Where(
                     s => s.LSetParts.All(
                         part => avaliableParts.Any(b => b.Color.Id == part.Color.Id) &&
                          avaliableParts.Any(b => b.Part.Id == part.Part.Id) &&
@@ -154,7 +154,7 @@ namespace Business.Services
             }
             else
             {
-                throw new KorisnikException(KorisnikException.KorisnikExceptionsText(KorisnikExceptionEnum.NotFound));
+                throw new UserException(UserException.UserExceptionsText(UserExceptionEnum.NotFound));
             }
 
         }
@@ -192,18 +192,6 @@ namespace Business.Services
             var range = yearString.Split('-');
             if (range.Length > 1)
             {
-                /*
-                int lowerBound;
-                var parseLowerBound = Int32.TryParse(range[0], out lowerBound);
-                int upperBound;
-                var parseUpperBound = Int32.TryParse(range[1], out upperBound);
-
-                if (parseLowerBound && parseUpperBound)
-                {
-                    return query.Where(x => x.GodinaProizvodnje >= lowerBound && x.GodinaProizvodnje <= upperBound);
-                }
-                */
-
                 int lowerBound;
                 Int32.TryParse(range[0], out lowerBound);
 
@@ -219,34 +207,21 @@ namespace Business.Services
             return query;
         }
 
-        private IQueryable<LSet> FilterByTema(string tema, IQueryable<LSet> query)
+        private IQueryable<LSet> FilterByTheme(string theme, IQueryable<LSet> query)
         {
-            //return query.Where(x => x.Tema.ImeTema == tema || (x.Tema.NadTema != null && x.Tema.NadTema.ImeTema == tema));
-            return query.Where(x => x.Theme.Name == tema);
+            return query.Where(x => x.Theme.Name == theme);
         }
 
-        private IQueryable<LSet> FilterByNadTema(string tema, IQueryable<LSet> query)
+        private IQueryable<LSet> FilterByBaseTheme(string theme, IQueryable<LSet> query)
         {
-            return query.Where(x => x.Theme.BaseTheme != null && x.Theme.BaseTheme.Name == tema);
+            return query.Where(x => x.Theme.BaseTheme != null && x.Theme.BaseTheme.Name == theme);
         }
 
-        private IQueryable<LSet> FilterByBrojKockica(string searchPattern, IQueryable<LSet> query)
+        private IQueryable<LSet> FilterByNumberOfParts(string searchPattern, IQueryable<LSet> query)
         {
             var range = searchPattern.Split('-');
             if (range.Length > 1)
             {
-                /*
-                int lowerBound;
-                var parseLowerBound = Int32.TryParse(range[0], out lowerBound);
-                int upperBound;
-                var parseUpperBound = Int32.TryParse(range[1], out upperBound);
-
-                if (parseLowerBound && parseUpperBound)
-                {
-                    return query.Where(x => x.DijeloviBroj >= lowerBound && x.DijeloviBroj <= upperBound);
-                }
-                */
-
                 int lowerBound;
                 Int32.TryParse(range[0], out lowerBound);
 

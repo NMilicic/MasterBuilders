@@ -1,81 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="Business.Services.KockiceService" BaseTypeListCollapsed="true">
+  <Class Name="Business.Services.PartService" BaseTypeListCollapsed="true">
     <Position X="1.5" Y="3.75" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAABAAgAAQAAAQAAAAAAAEAAAAAAgAAgAAgAIA=</HashCode>
-      <FileName>Services\KockiceService.cs</FileName>
+      <HashCode>AAAEAAAABAAgAAAAAAQAAAAAAAEAAAAAAgAAgABgAIA=</HashCode>
+      <FileName>Services\PartService.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="kockicaRepository" />
+      <Field Name="partRepository" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Business.Services.KorisnikServices" BaseTypeListCollapsed="true">
+  <Class Name="Business.Services.UserServices" BaseTypeListCollapsed="true">
     <Position X="11" Y="13" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAABAAAAAAAAAAAAAAAAAEBAAAAAgAQAAAAAIA=</HashCode>
-      <FileName>Services\KorisnikServices.cs</FileName>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAEBAAAAAgAQAIAAAIA=</HashCode>
+      <FileName>Services\UserServices.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="korisnikRepository" />
+      <Field Name="userRepository" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Business.Services.LSetService" BaseTypeListCollapsed="true">
     <Position X="1.5" Y="12.25" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>ABAgAAAABAAqAAAAAARACgAAIAEAAAAAggAAAAAgQKA=</HashCode>
+      <HashCode>ECAggAAABAAgAAAAACQACgAAAAEAEAAAggAAAIAgQIA=</HashCode>
       <FileName>Services\LSetService.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="dijeloviRepository" />
-      <Field Name="inventroyRepository" />
-      <Field Name="korisnikRepository" />
-      <Field Name="setRepository" />
+      <Field Name="lSetRepository" />
       <Field Name="wishlistRepository" />
+      <Field Name="userRepository" />
+      <Field Name="inventoryRepository" />
+      <Field Name="lSetPartRepository" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Business.Services.MOCService" BaseTypeListCollapsed="true">
     <Position X="6.5" Y="10.25" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>gBAAQAAABAAqAAQAAAQACkACAAEAAAAgAgACgAAgAIA=</HashCode>
+      <HashCode>AAAAgAAABAAwAAAAAAQACkACAAEAAAAgAkACgIDgAIA=</HashCode>
       <FileName>Services\MOCService.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="userMocRepository" />
       <Field Name="mocRepository" />
-      <Field Name="mocDijeloviRepository" />
-      <Field Name="korisnikRepository" />
-      <Field Name="kockicaRepository" />
-      <Field Name="bojaRepository" />
+      <Field Name="userRepository" />
+      <Field Name="userMocRepository" />
+      <Field Name="partRepository" />
+      <Field Name="colorRepository" />
+      <Field Name="mocPartRepository" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Business.Services.UserSetService" BaseTypeListCollapsed="true">
     <Position X="11.5" Y="7" Width="3.5" />
     <TypeIdentifier>
-      <HashCode>ARAkAAAABAAqAAAAAAxACgAAIAEAgAAAAgAAAAAgAKA=</HashCode>
+      <HashCode>ESAkgAAABAAgAAAAAAwACgAAIAEAEAAQAgAAAIAgAIA=</HashCode>
       <FileName>Services\UserSetService.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="setRepository" />
-      <Field Name="korisnikRepository" />
-      <Field Name="inventroyRepository" />
+      <Field Name="inventoryRepository" />
+      <Field Name="lSetRepository" />
+      <Field Name="userRepository" />
     </ShowAsAssociation>
     <Lollipop Position="0.1" />
   </Class>
   <Class Name="Business.Services.WishlistService" BaseTypeListCollapsed="true">
     <Position X="1.25" Y="7.25" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>ABAgAIAABAAqAAAAAAQACgAAAAEAgCEAAgAAAAAgAKA=</HashCode>
+      <HashCode>ACAggIAABAAgAAAAAAQACgAAAAEAECEQAgAAAIAgAIA=</HashCode>
       <FileName>Services\WishlistService.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="wishlistRepository" />
-      <Field Name="setRepository" />
-      <Field Name="korisnikRepository" />
+      <Field Name="userRepository" />
+      <Field Name="lSetRepository" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
@@ -103,7 +103,7 @@
   <Interface Name="Business.Interfaces.IMOCService">
     <Position X="24.25" Y="3" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAACAAAgAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAAAAACAAAgAAA=</HashCode>
       <FileName>Interfaces\IMOCService.cs</FileName>
     </TypeIdentifier>
   </Interface>

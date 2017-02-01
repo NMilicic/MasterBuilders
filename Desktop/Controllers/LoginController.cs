@@ -16,7 +16,7 @@ namespace Desktop.Controllers
         public LoginController(ILoginView view)
         {
             _view = view;
-            _userService = new KorisnikServices();
+            _userService = new UserServices();
         }
 
         public void Login()
@@ -29,7 +29,7 @@ namespace Desktop.Controllers
             try
             {
                 user = _userService.Login(email, password);
-            } catch(KorisnikException)
+            } catch(UserException)
             {
                 _view.Password = "";
                 MessageBox.Show("Check E-mail and password.");

@@ -24,7 +24,7 @@ namespace Desktop.Controllers
         public DatabasePartsController(IDatabasePartsView view)
         {
             _view = view;
-            _partsService = new KockiceService();
+            _partsService = new PartService();
             _categoryRepository = new Repository<Category>();
             _currQuery = _partsService.GetAll();
         }

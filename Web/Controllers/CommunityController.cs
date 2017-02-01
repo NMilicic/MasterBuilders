@@ -6,7 +6,7 @@ namespace Web.Controllers
 {
     public class CommunityController : Controller
     {
-        KorisnikServices userService = new KorisnikServices();
+        UserServices userService = new UserServices();
         UserSetService userSetService = new UserSetService();
         // GET: Community
         public ActionResult Index()
