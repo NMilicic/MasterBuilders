@@ -25,7 +25,15 @@ namespace WebApi.Controllers.Api
         {
             wishlistService.AddSetToWishlistForUser(newWishlistItems.UserId, newWishlistItems.LSetId, newWishlistItems.Number);
 
-            return Request.CreateResponse(HttpStatusCode.Created, "Items added to wishlist");
+            return Request.CreateResponse(HttpStatusCode.Created, "Item added to wishlist");
+        }
+
+        [HttpPost]
+        public HttpResponseMessage RemoveSetFromWishlistForUser(WishlistApi newWishlistItems)
+        {
+            wishlistService.RemoveSetFromWishlistForUser(newWishlistItems.UserId, newWishlistItems.LSetId, newWishlistItems.Number);
+
+            return Request.CreateResponse(HttpStatusCode.Created, "Item removed from wishlist");
         }
 
         [HttpGet]
