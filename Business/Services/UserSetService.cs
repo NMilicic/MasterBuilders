@@ -173,7 +173,7 @@ namespace Business.Services
                             return existingInventroyItem;
                         }
 
-                        throw new DataException("You don't have that much sets");
+                        throw new DataException("Invalid number of sets!");
                     }
                 }
                 else

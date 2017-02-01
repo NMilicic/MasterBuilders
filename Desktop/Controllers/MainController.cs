@@ -59,11 +59,8 @@ namespace Desktop.Controllers
 
         public void ShowBA()
         {
-            //TODO BA form
-            /*
-            var newForm = new frmBA();
+            var newForm = new frmBuilderAssistant(_user);
             ShowView(newForm);
-            */
         }
 
         public void ShowCommunity()

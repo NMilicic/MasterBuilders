@@ -9,6 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 using Web.Models;
 using Web.Helpers;
+using System;
+using Business.Exceptions;
 
 namespace Web.Controllers
 {
@@ -27,8 +29,8 @@ namespace Web.Controllers
             model.Action = "MySets";
             model.Controller = "Inventory";
 
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            var sets = userSetService.GetAllForUser(int.Parse(user.Id));
+            var user = HttpContext.User as CustomPrincipal;
+            var sets = userSetService.GetAllForUser(user.Id);
             ViewBag.sets = sets;
 
             return View(model);
@@ -42,15 +44,15 @@ namespace Web.Controllers
             {
                 return Redirect("Inventory/MySets");
             }
-            
+
             IEnumerable<Theme> themes = themeRepository.Query();
 
-            
+
             model.AllThemes = themes;
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            
+            var user = HttpContext.User as CustomPrincipal;
+
             string searchParameters = SearchHelper.ConstructSearchParameters(model);
-            var sets = userSetService.Search(int.Parse(user.Id), searchParameters);
+            var sets = userSetService.Search(user.Id, searchParameters);
             ViewBag.sets = sets.ToList();
 
             return View(model);
@@ -58,44 +60,74 @@ namespace Web.Controllers
 
         public ActionResult BuilderAssistant()
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var user = HttpContext.User as CustomPrincipal;
 
-            var sets = setService.BuilderAssistent(int.Parse(user.Id));
+            var sets = setService.BuilderAssistent(user.Id);
             ViewBag.sets = sets;
 
             return View();
         }
 
+        #region AJAX methods
         public JsonResult AddAjax(string setId)
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId()); 
-            userSetService.AddToInventory(int.Parse(user.Id), int.Parse(setId), 1);
+            var user = HttpContext.User as CustomPrincipal;
+            try
+            {
+                userSetService.AddToInventory(user.Id, int.Parse(setId), 1);
 
-            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { error = true, message = e.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public JsonResult RemoveAjax(string setId)
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            userSetService.RemoveFromInventory(int.Parse(user.Id), int.Parse(setId), 1);
+            var user = HttpContext.User as CustomPrincipal;
+            try
+            {
+                userSetService.RemoveFromInventory(user.Id, int.Parse(setId), 1);
 
-            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { error = true, message = e.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public JsonResult BuiltAddAjax(string setId)
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            userSetService.MarkSetAsCompleted(int.Parse(user.Id), int.Parse(setId), 1);
+            var user = HttpContext.User as CustomPrincipal;
+            try
+            {
+                userSetService.MarkSetAsCompleted(user.Id, int.Parse(setId), 1);
 
-            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { error = true, message = e.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public JsonResult BuiltRemoveAjax(string setId)
         {
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            userSetService.MarkSetAsCompleted(int.Parse(user.Id), int.Parse(setId), -1);
+            var user = HttpContext.User as CustomPrincipal;
+            try
+            {
+                userSetService.MarkSetAsCompleted(user.Id, int.Parse(setId), -1);
 
-            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { error = true, message = e.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
+        #endregion
     }
 }
