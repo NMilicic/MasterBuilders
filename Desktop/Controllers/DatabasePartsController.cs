@@ -55,10 +55,13 @@ namespace Desktop.Controllers
 
             for (int i = 0; i <_view.DataGridView.SelectedRows.Count; i++)
             {
-                
                 var idString = _view.DataGridView.SelectedRows[i].Cells["Id"].Value.ToString();
                 parts.Add(int.Parse(idString));
+            }
 
+            if(parts.Count == 0)
+            {
+                return;
             }
             
             var sets = _lSetService.GetAllSetsWithBricks(parts);

@@ -21,10 +21,9 @@ namespace Data.Mappings
             Map(x => x.Theme2).Column("theme2");
             Map(x => x.Theme3).Column("theme3");
             Map(x => x.Description).Column("description");
-            Map(x => x.AuthorId).Column("id_author");
             Map(x => x.ProductionYear).Column("production_year");
 
-            References(x => x.UserMoc).Column("id_author").ReadOnly();
+            References(x => x.User).Column("id_author");
             HasMany(x => x.MocParts).Cascade.All().Table("MOC_parts");
         }
     }

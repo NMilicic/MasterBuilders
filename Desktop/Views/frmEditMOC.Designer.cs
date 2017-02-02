@@ -59,7 +59,7 @@
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSearch.Location = new System.Drawing.Point(540, 12);
+            this.btnSearch.Location = new System.Drawing.Point(690, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 25);
             this.btnSearch.TabIndex = 27;
@@ -118,7 +118,7 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(600, 300);
+            this.dataGridView.Size = new System.Drawing.Size(750, 425);
             this.dataGridView.TabIndex = 20;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -126,7 +126,7 @@
             // 
             this.cmbColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cmbColor.FormattingEnabled = true;
-            this.cmbColor.Location = new System.Drawing.Point(56, 351);
+            this.cmbColor.Location = new System.Drawing.Point(56, 476);
             this.cmbColor.Name = "cmbColor";
             this.cmbColor.Size = new System.Drawing.Size(121, 21);
             this.cmbColor.TabIndex = 28;
@@ -134,7 +134,7 @@
             // lblColor
             // 
             this.lblColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblColor.Location = new System.Drawing.Point(15, 354);
+            this.lblColor.Location = new System.Drawing.Point(15, 479);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(35, 13);
             this.lblColor.TabIndex = 0;
@@ -143,7 +143,7 @@
             // nudAdd
             // 
             this.nudAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nudAdd.Location = new System.Drawing.Point(183, 352);
+            this.nudAdd.Location = new System.Drawing.Point(183, 477);
             this.nudAdd.Name = "nudAdd";
             this.nudAdd.Size = new System.Drawing.Size(50, 20);
             this.nudAdd.TabIndex = 29;
@@ -151,7 +151,7 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdd.Location = new System.Drawing.Point(239, 351);
+            this.btnAdd.Location = new System.Drawing.Point(239, 476);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 30;
@@ -162,7 +162,7 @@
             // btnPartlist
             // 
             this.btnPartlist.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPartlist.Location = new System.Drawing.Point(540, 352);
+            this.btnPartlist.Location = new System.Drawing.Point(690, 477);
             this.btnPartlist.Name = "btnPartlist";
             this.btnPartlist.Size = new System.Drawing.Size(75, 25);
             this.btnPartlist.TabIndex = 31;
@@ -172,18 +172,19 @@
             // 
             // lblDivider
             // 
-            this.lblDivider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblDivider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDivider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblDivider.Location = new System.Drawing.Point(15, 380);
+            this.lblDivider.Location = new System.Drawing.Point(15, 505);
             this.lblDivider.Name = "lblDivider";
-            this.lblDivider.Size = new System.Drawing.Size(600, 2);
+            this.lblDivider.Size = new System.Drawing.Size(750, 2);
             this.lblDivider.TabIndex = 32;
             // 
             // lblAddName
             // 
             this.lblAddName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblAddName.AutoSize = true;
-            this.lblAddName.Location = new System.Drawing.Point(18, 388);
+            this.lblAddName.Location = new System.Drawing.Point(18, 513);
             this.lblAddName.Name = "lblAddName";
             this.lblAddName.Size = new System.Drawing.Size(38, 13);
             this.lblAddName.TabIndex = 33;
@@ -193,7 +194,7 @@
             // 
             this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(168, 388);
+            this.lblDescription.Location = new System.Drawing.Point(168, 513);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(63, 13);
             this.lblDescription.TabIndex = 34;
@@ -203,7 +204,7 @@
             // 
             this.lblTheme2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTheme2.AutoSize = true;
-            this.lblTheme2.Location = new System.Drawing.Point(179, 414);
+            this.lblTheme2.Location = new System.Drawing.Point(179, 539);
             this.lblTheme2.Name = "lblTheme2";
             this.lblTheme2.Size = new System.Drawing.Size(46, 13);
             this.lblTheme2.TabIndex = 35;
@@ -213,7 +214,7 @@
             // 
             this.lblTheme1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTheme1.AutoSize = true;
-            this.lblTheme1.Location = new System.Drawing.Point(18, 414);
+            this.lblTheme1.Location = new System.Drawing.Point(18, 539);
             this.lblTheme1.Name = "lblTheme1";
             this.lblTheme1.Size = new System.Drawing.Size(49, 13);
             this.lblTheme1.TabIndex = 36;
@@ -223,7 +224,7 @@
             // 
             this.lblTheme3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTheme3.AutoSize = true;
-            this.lblTheme3.Location = new System.Drawing.Point(337, 414);
+            this.lblTheme3.Location = new System.Drawing.Point(337, 539);
             this.lblTheme3.Name = "lblTheme3";
             this.lblTheme3.Size = new System.Drawing.Size(49, 13);
             this.lblTheme3.TabIndex = 37;
@@ -232,7 +233,7 @@
             // txtAddName
             // 
             this.txtAddName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtAddName.Location = new System.Drawing.Point(62, 385);
+            this.txtAddName.Location = new System.Drawing.Point(62, 510);
             this.txtAddName.Name = "txtAddName";
             this.txtAddName.Size = new System.Drawing.Size(100, 20);
             this.txtAddName.TabIndex = 38;
@@ -240,7 +241,7 @@
             // txtDescription
             // 
             this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtDescription.Location = new System.Drawing.Point(237, 385);
+            this.txtDescription.Location = new System.Drawing.Point(237, 510);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(255, 20);
             this.txtDescription.TabIndex = 39;
@@ -248,7 +249,7 @@
             // txtTheme1
             // 
             this.txtTheme1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTheme1.Location = new System.Drawing.Point(73, 411);
+            this.txtTheme1.Location = new System.Drawing.Point(73, 536);
             this.txtTheme1.Name = "txtTheme1";
             this.txtTheme1.Size = new System.Drawing.Size(100, 20);
             this.txtTheme1.TabIndex = 40;
@@ -256,7 +257,7 @@
             // txtTheme2
             // 
             this.txtTheme2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTheme2.Location = new System.Drawing.Point(231, 411);
+            this.txtTheme2.Location = new System.Drawing.Point(231, 536);
             this.txtTheme2.Name = "txtTheme2";
             this.txtTheme2.Size = new System.Drawing.Size(100, 20);
             this.txtTheme2.TabIndex = 41;
@@ -264,7 +265,7 @@
             // txtTheme3
             // 
             this.txtTheme3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTheme3.Location = new System.Drawing.Point(392, 411);
+            this.txtTheme3.Location = new System.Drawing.Point(392, 536);
             this.txtTheme3.Name = "txtTheme3";
             this.txtTheme3.Size = new System.Drawing.Size(100, 20);
             this.txtTheme3.TabIndex = 42;
@@ -272,7 +273,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(540, 385);
+            this.btnSave.Location = new System.Drawing.Point(690, 510);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 45);
             this.btnSave.TabIndex = 43;
@@ -283,8 +284,7 @@
             // frmEditMOC
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(634, 436);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtTheme3);
             this.Controls.Add(this.txtTheme2);
@@ -310,10 +310,10 @@
             this.Controls.Add(this.dataGridView);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "frmEditMOC";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Edit MOC";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmAddMOC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdd)).EndInit();

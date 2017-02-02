@@ -43,7 +43,7 @@ namespace Desktop.Controllers
 
             sb.Append("Name:").Append(_view.SearchName).Append(";");
 
-            _currQuery = _MOCService.Search(sb.ToString()).Where(x=> x.AuthorId == _user.Id);
+            _currQuery = _MOCService.Search(sb.ToString()).Where(x=> x.User.Id == _user.Id);
             UpdateDataGirdView();
         }
 

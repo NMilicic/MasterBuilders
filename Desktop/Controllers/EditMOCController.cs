@@ -18,7 +18,7 @@ namespace Desktop.Controllers
         private IEditMOCView _view;
         private User _user;
         private Moc _moc;
-        private IEnumerable<MocPart> _parts;
+        private List<MocPart> _parts;
 
         private IKockiceService _partsService;
         private IMOCService _mocService;
@@ -35,11 +35,11 @@ namespace Desktop.Controllers
             if (moc != null)
             {
                 _moc = moc;
-                _view.AddName = moc.Name;
-                _view.Description = moc.Description;
-                _view.Theme1 = moc.Theme1;
-                _view.Theme2 = moc.Theme2;
-                _view.Theme3 = moc.Theme3;
+                _parts = moc.MocParts.ToList();
+            } else
+            {
+                _moc = new Moc();
+                _parts = new List<MocPart>();
             }
 
             _partsService = new PartService();
@@ -56,6 +56,11 @@ namespace Desktop.Controllers
             UpdateDataGirdView();
             InitCategoryComboBox();
             InitColorComboBox();
+            _view.AddName = _moc.Name;
+            _view.Description = _moc.Description;
+            _view.Theme1 = _moc.Theme1;
+            _view.Theme2 = _moc.Theme2;
+            _view.Theme3 = _moc.Theme3;
         }
 
         public void Search()
@@ -83,15 +88,17 @@ namespace Desktop.Controllers
             }
 
             var qty = _view.AddQty;
-            if (qty > 0)
+            var colorName = _view.Color.SelectedItem.ToString();
+            if (qty > 0 && colorName != "")
             {
-                _moc.MocParts.ToList().Add(new MocPart()
+                _parts.Add(new MocPart()
                 {
-                    Color = (Color)_view.Color.SelectedItem,
+                    Color = _colorRepository.Query().Where(x=> x.Name.Equals(_view.Color.SelectedItem.ToString())).FirstOrDefault(),
                     Part = _partsService.GetById(partId),
                     Number = _view.AddQty,
                     Moc = _moc
                 });
+
                 _moc.NumberOfParts += _view.AddQty;
 
                 MessageBox.Show("Added " + qty + " " + _view.Color.SelectedItem + " '"
@@ -102,13 +109,13 @@ namespace Desktop.Controllers
 
         public void ShowPartlist()
         {
-            var newForm = new frmMOCPartlist(_moc.MocParts);
+            var newForm = new frmMOCPartlist(_parts);
             newForm.ShowDialog();
         }
 
         public void SaveChanges()
         {
-            if (_moc.MocParts.Count() == 0)
+            if (_parts.Count() == 0)
             {
                 MessageBox.Show("Please add parts.");
                 return;
@@ -126,11 +133,13 @@ namespace Desktop.Controllers
             _moc.Theme2 = _view.Theme2;
             _moc.Theme3 = _view.Theme3;
             _moc.Description = _view.Description;
-            _moc.AuthorId = _user.Id;
+            _moc.User = _user;
             _moc.ProductionYear = DateTime.Now.Year;
 
             
             _mocService.AddMoc(_moc);
+            _mocService.AddMocPartToMoc(_moc.Id, _parts);
+
             MessageBox.Show("MOC Saved!");
             _view.Close();
         }

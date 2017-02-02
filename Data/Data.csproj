@@ -94,7 +94,6 @@
     <Compile Include="Domain\Theme.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\UserPart.cs" />
-    <Compile Include="Domain\UserMoc.cs" />
     <Compile Include="Domain\UserLSet.cs" />
     <Compile Include="Domain\Wishlist.cs" />
     <Compile Include="IRepository.cs" />
@@ -102,7 +101,6 @@
     <Compile Include="Mappings\UserPartMap.cs" />
     <Compile Include="Mappings\WishlistMap.cs" />
     <Compile Include="Mappings\UserLSetMap.cs" />
-    <Compile Include="Mappings\UserMocMap.cs" />
     <Compile Include="Mappings\ThemeMap.cs" />
     <Compile Include="Mappings\LSetPart.cs" />
     <Compile Include="Mappings\LSetMap.cs" />

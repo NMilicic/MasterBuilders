@@ -15,7 +15,6 @@ namespace Business.Services
     {
         IRepository<Moc> mocRepository = new Repository<Moc>();
         IRepository<User> userRepository = new Repository<User>();
-        IRepository<UserMoc> userMocRepository = new Repository<UserMoc>();
         IRepository<Part> partRepository = new Repository<Part>();
         IRepository<Color> colorRepository = new Repository<Color>();
         IRepository<MocPart> mocPartRepository = new Repository<MocPart>();
@@ -56,7 +55,7 @@ namespace Business.Services
 
         public IQueryable<Moc> GetAllByAuthor(int authorId, int take = -1, int offset = 0)
         {
-            var query = mocRepository.Query().Where(m => m.UserMoc.User.Id == authorId).Skip(offset);
+            var query = mocRepository.Query().Where(m => m.User.Id == authorId).Skip(offset);
             if (take > 0)
                 query = query.Take(take);
 
@@ -71,21 +70,14 @@ namespace Business.Services
                 parts.AddRange(newMoc.MocParts);
                 newMoc.MocParts = null;
             }
-            var user = userRepository.GetById(newMoc.AuthorId);
+
+            var user = userRepository.GetById(newMoc.User.Id);
             if (user != null)
             {
                 var dbMoc = mocRepository.GetById(newMoc.Id);
                 if (dbMoc == null)
                 {
                     mocRepository.Save(newMoc);
-
-                    var newUserMoc = new UserMoc()
-                    {
-                        User = user,
-                        Moc = newMoc,
-                        Built = 0
-                    };
-                    userMocRepository.Save(newUserMoc);
 
                     if (parts.Count > 0)
                     {
@@ -141,14 +133,17 @@ namespace Business.Services
                 var dbMOC = mocRepository.GetById(mocId);
                 if (dbMOC != null)
                 {
-                    var userMoc = userMocRepository.Query().FirstOrDefault(x => x.User.Id == userId && x.Id == mocId);
-
-                    if (userMoc == null)
+                    if(dbMOC.User.Id != userId)
                     {
                         throw new DataException("MOC is not yours!");
                     }
                     else
                     {
+                        var query = mocPartRepository.Query().Where(x => x.Moc.Id == dbMOC.Id).ToList();
+                        foreach (var q in query)
+                        {
+                            mocPartRepository.Delete(q);
+                        }
                         mocRepository.Delete(dbMOC);
                         return dbMOC;
                     }
@@ -284,14 +279,15 @@ namespace Business.Services
             if (range.Length > 1)
             {
                 int lowerBound;
-                var parseLowerBound = Int32.TryParse(range[0], out lowerBound);
-                int upperBound;
-                var parseUpperBound = Int32.TryParse(range[1], out upperBound);
+                Int32.TryParse(range[0], out lowerBound);
 
-                if (parseLowerBound && parseUpperBound)
+                int upperBound;
+                if (!Int32.TryParse(range[1], out upperBound))
                 {
-                    return query.Where(x => x.ProductionYear >= lowerBound && x.ProductionYear <= upperBound);
+                    upperBound = Int32.MaxValue;
                 }
+
+                return query.Where(x => x.ProductionYear >= lowerBound && x.ProductionYear <= upperBound);
             }
             return query;
         }
@@ -307,25 +303,22 @@ namespace Business.Services
             if (range.Length > 1)
             {
                 int lowerBound;
-                var parseLowerBound = Int32.TryParse(range[0], out lowerBound);
-                int upperBound;
-                var parseUpperBound = Int32.TryParse(range[1], out upperBound);
+                Int32.TryParse(range[0], out lowerBound);
 
-                if (parseLowerBound && parseUpperBound)
+                int upperBound;
+                if (!Int32.TryParse(range[1], out upperBound))
                 {
-                    return query.Where(x => x.NumberOfParts >= lowerBound && x.NumberOfParts <= upperBound);
+                    upperBound = Int32.MaxValue;
                 }
+
+                return query.Where(x => x.NumberOfParts >= lowerBound && x.NumberOfParts <= upperBound);
             }
             return query;
         }
 
         private IQueryable<Moc> FilterByAuthor(string searchPattern, IQueryable<Moc> query)
         {
-            return query.Where(x =>
-                x.UserMoc != null &&
-                x.UserMoc.User != null &&
-                (x.UserMoc.User.FirstName.Contains(searchPattern) ||
-                x.UserMoc.User.LastName.Contains(searchPattern)));
+            return query.Where(x => x.User.FirstName.Contains(searchPattern) || x.User.LastName.Contains(searchPattern));
         }
 
         #endregion

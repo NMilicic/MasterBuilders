@@ -183,6 +183,7 @@ namespace Desktop.Controllers
                            Name = s.Name,
                            Theme = s.Theme.BaseTheme.Name,
                            Subtheme = s.Theme.Name,
+                           Description = s.Description,
                            Year = s.ProductionYear,
                            Parts = s.NumberOfParts
                        };

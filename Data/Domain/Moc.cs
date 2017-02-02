@@ -15,10 +15,9 @@ namespace Data.Domain
         public virtual string Theme2 { get; set; }
         public virtual string Theme3 { get; set; }
         public virtual string Description { get; set; }
-        public virtual int AuthorId { get; set; }
         public virtual int ProductionYear { get; set; }
 
-        public virtual UserMoc UserMoc { get; set; }
+        public virtual User User { get; set; }
         public virtual IEnumerable<MocPart> MocParts { get; set; }
 
         public Moc()
