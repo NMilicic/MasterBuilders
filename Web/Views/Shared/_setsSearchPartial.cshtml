@@ -13,22 +13,22 @@
         <div class="form-group">
             @Html.Label("Theme", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.ThemeId, Model.Themes)
+                @Html.DropDownListFor(m => m.ThemeId, Model.Themes, new { @class = "select nice-select" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.Label("Year", new { @class = "col-md-2 control-label" })
+        <div class="form-group range">
+            @Html.Label("Years range", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.MinYear, new { @class = "form-control" })
-                -
+                
                 @Html.TextBoxFor(m => m.MaxYear, new { @class = "form-control" })
             </div>
         </div>
-        <div class="form-group">
-            @Html.Label("Number of pieces", new { @class = "col-md-2 control-label" })
+        <div class="form-group range">
+            @Html.Label("Number of pieces range", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.MinPieces, new { @class = "form-control" }) 
-                -
+                
                 @Html.TextBoxFor(m => m.MaxPieces, new { @class = "form-control" })
             </div>
         </div>

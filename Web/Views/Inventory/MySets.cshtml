@@ -87,7 +87,7 @@
 </div>
 @Html.Partial("_setsSearchPartial");
 
-<table class="table" id="setsTable">
+<table class="table table_data" id="setsTable">
     <tr>
         <th>
             Name
@@ -102,28 +102,27 @@
             Built
         </th>
     </tr>
-
-    @foreach (var item in ViewBag.sets)
-    {
-        <tr>
-            <td>
-                @item.LSet.Name
-            </td>
-            <td>
-                @item.LSet.Theme.Name
-            </td>
-            <td>
-                @item.Owned
-                <i class="fa fa-plus-circle fa-lg active inventory-add" value="@item.LSet.Id" title="Add one"></i>
-                <i class="fa fa-minus-circle fa-lg active inventory-remove" value="@item.LSet.Id" title="Remove one"></i>
-            </td>
-            <td>
-                @item.Built
-                <i class="fa fa-plus-circle fa-lg active built-add" value="@item.LSet.Id" title="Add one"></i>
-                <i class="fa fa-minus-circle fa-lg active built-remove" value="@item.LSet.Id" title="Remove one"></i>
-            </td>
-        </tr>
-    }
-
+    <tbody>
+        @foreach (var item in ViewBag.listItems)
+        {
+            <tr>
+                <td>
+                    @item.LSet.Name
+                </td>
+                <td>
+                    @item.LSet.Theme.Name
+                </td>
+                <td>
+                    @item.Owned
+                    <i class="fa fa-plus-circle fa-lg active inventory-add" value="@item.LSet.Id" title="Add one"></i>
+                    <i class="fa fa-minus-circle fa-lg active inventory-remove" value="@item.LSet.Id" title="Remove one"></i>
+                </td>
+                <td>
+                    @item.Built
+                    <i class="fa fa-plus-circle fa-lg active built-add" value="@item.LSet.Id" title="Add one"></i>
+                    <i class="fa fa-minus-circle fa-lg active built-remove" value="@item.LSet.Id" title="Remove one"></i>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
-

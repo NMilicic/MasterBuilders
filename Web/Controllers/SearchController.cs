@@ -26,8 +26,8 @@ namespace Web.Controllers
             model.AllThemes = themes;
             model.Action = "Sets";
             model.Controller = "Search";
-            var sets = lSetService.Search("");
-            ViewBag.sets = sets.ToList();
+            var sets = lSetService.Search("", 20);
+            ViewBag.listItems = sets.ToList();
 
             return View(model);
         }
@@ -47,8 +47,8 @@ namespace Web.Controllers
 
             model.AllThemes = themes;
 
-            var sets = lSetService.Search(searchParameters);
-            ViewBag.sets = sets.ToList();
+            var sets = lSetService.Search(searchParameters, 20);
+            ViewBag.listItems = sets.ToList();
 
             return View(model);
         }
@@ -64,7 +64,7 @@ namespace Web.Controllers
             model.Controller = "Search";
 
             var blocks = blockService.GetAll(20);
-            ViewBag.blocks = blocks.ToList();
+            ViewBag.listItems = blocks.ToList();
 
             return View(model);
         }
@@ -85,7 +85,7 @@ namespace Web.Controllers
             Debug.WriteLine(searchParameters);
 
             var blocks = blockService.Search(searchParameters, 20);
-            ViewBag.blocks = blocks.ToList();
+            ViewBag.listItems = blocks.ToList();
 
             return View(model);
         }

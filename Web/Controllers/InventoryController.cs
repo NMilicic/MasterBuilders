@@ -30,8 +30,8 @@ namespace Web.Controllers
             model.Controller = "Inventory";
 
             var user = HttpContext.User as CustomPrincipal;
-            var sets = userSetService.GetAllForUser(user.Id);
-            ViewBag.sets = sets;
+            var sets = userSetService.GetAllForUser(user.Id, 20);
+            ViewBag.listItems = sets.ToList();
 
             return View(model);
         }
@@ -52,8 +52,8 @@ namespace Web.Controllers
             var user = HttpContext.User as CustomPrincipal;
 
             string searchParameters = SearchHelper.ConstructSearchParameters(model);
-            var sets = userSetService.Search(user.Id, searchParameters);
-            ViewBag.sets = sets.ToList();
+            var sets = userSetService.Search(user.Id, searchParameters, 20);
+            ViewBag.listItems = sets.ToList();
 
             return View(model);
         }
@@ -63,7 +63,7 @@ namespace Web.Controllers
             var user = HttpContext.User as CustomPrincipal;
 
             var sets = setService.BuilderAssistent(user.Id);
-            ViewBag.sets = sets;
+            ViewBag.listItems = sets;
 
             return View();
         }

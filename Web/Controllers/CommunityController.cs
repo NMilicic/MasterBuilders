@@ -12,7 +12,7 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             var users = userService.GetAll();
-            ViewBag.users = users;
+            ViewBag.listItems = users;
 
             return View();
         }

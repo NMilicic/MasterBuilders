@@ -2,12 +2,12 @@
 @{
     ViewBag.Title = "Search Blocks";
 }
-<head runat="server">
+@*<head runat="server">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $(".inventory").click(function (e) {
+            $(".inventory-block-add").click(function (e) {
                 e.preventDefault();
                 $.ajax({
                     type: 'POST',
@@ -26,11 +26,11 @@
         });
     </script>
 </head>
-<body>
+<body>*@
 
     @Html.Partial("_blocksSearchPartial");
 
-    <table class="table" id="blocksTable">
+    <table class="table table_data" id="blocksTable">
         <tr>
             <th>
                 Name
@@ -40,21 +40,22 @@
             </th>
             <th></th>
         </tr>
-
-        @foreach (var item in ViewBag.blocks)
-        {
-            <tr>
-                <td>
-                    @item.Name
-                </td>
-                <td>
-                    @item.Category.Name
-                </td>
-                <td>
-                    @*<i class="fa fa-plus-circle fa-lg active inventory" value="@item.Id" title="Add to my inventory"></i>*@
-                    <a href="/Block/Details?blockId=@item.Id" title="Details"><i class="fa fa-arrow-right fa-lg"></i></a>
-                </td>
-            </tr>
-        }
+        <tbody>
+            @foreach (var item in ViewBag.listItems)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Category.Name
+                    </td>
+                    <td>
+                        @*<i class="fa fa-plus-circle fa-lg active inventory-block-add" value="@item.Id" title="Add to my inventory"></i>*@
+                        <a href="/Block/Details?blockId=@item.Id" title="Details"><i class="fa fa-arrow-right fa-lg"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 </body>

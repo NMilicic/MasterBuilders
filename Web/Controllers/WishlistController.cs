@@ -27,8 +27,8 @@ namespace Web.Controllers
             model.Controller = "Wishlist";
 
             var user = HttpContext.User as CustomPrincipal;
-            var sets = wishlistService.GetAllSetsFromWishlistForUser(user.Id);
-            ViewBag.sets = sets;
+            var sets = wishlistService.GetAllSetsFromWishlistForUser(user.Id, 20);
+            ViewBag.listItems = sets;
 
             return View(model);
         }
@@ -46,8 +46,8 @@ namespace Web.Controllers
             model.AllThemes = themes;
 
             var user = HttpContext.User as CustomPrincipal; string searchParameters = SearchHelper.ConstructSearchParameters(model);
-            var sets = wishlistService.Search(user.Id, searchParameters);
-            ViewBag.sets = sets;
+            var sets = wishlistService.Search(user.Id, searchParameters, 20);
+            ViewBag.listItems = sets;
 
             return View(model);
         }

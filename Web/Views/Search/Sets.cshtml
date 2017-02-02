@@ -4,9 +4,14 @@
 <head runat="server">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery.nice-select.js"></script>
     <script type="text/javascript">
+        //$(document).ready(function () {
+        //    $('.select').niceSelect();
+        //});
         $(function () {
-            $(".wishlist").click(function (e) {
+            $(".wishlist-add").click(function (e) {
                 e.preventDefault();
                 $.ajax({
                     type: 'POST',
@@ -23,7 +28,7 @@
                     }
                 });
             });
-            $(".inventory").click(function (e) {
+            $(".inventory-add").click(function (e) {
                 e.preventDefault();
                 $.ajax({
                     type: 'POST',
@@ -63,7 +68,7 @@
         <th></th>
     </tr>
 
-    @foreach (var item in ViewBag.sets)
+    @foreach (var item in ViewBag.listItems)
     {
         <tr>
             <td>
@@ -79,8 +84,8 @@
                 @item.NumberOfParts
             </td>
             <td>
-                <i class="fa fa-star fa-lg active wishlist" value="@item.Id" title="Add to wishlist"></i>
-                <i class="fa fa-plus-circle fa-lg active inventory" value="@item.Id" title="Add to my inventory"></i>
+                <i class="fa fa-star fa-lg active wishlist-add" value="@item.Id" title="Add to wishlist"></i>
+                <i class="fa fa-plus-circle fa-lg active inventory-add" value="@item.Id" title="Add to my inventory"></i>
                 <a href="/Set/Details?setId=@item.Id" title="Details"><i class="fa fa-arrow-right fa-lg"></i></a>
             </td>
         </tr>
