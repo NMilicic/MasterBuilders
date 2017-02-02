@@ -4,42 +4,41 @@
 }
 
 <h2>@Model.Name</h2>
-
-<table class="table" id="partsTable">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Category
-        </th>
-        <th>
-            Color
-        </th>
-        <th>
-            Count
-        </th>
-    </tr>
-
-    @foreach (var item in Model.LSetParts)
-    {
+<div style="text-align:center">
+    <img src="@Model.PictureUrl" alt="@Model.PictureUrl" onerror="this.style.display='none'" style="margin-bottom:10px"/>
+    <table class="table" id="partsTable">
         <tr>
-            <td>
-                @item.Part.Name
-            </td>
-            <td>
-                @item.Part.Category.Name
-            </td>
-            <td>
-                @item.Color.Name
-            </td>
-            <td>
-                @item.Number
-            </td>
+            <th>
+                Name
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Color
+            </th>
+            <th>
+                Count
+            </th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model.LSetParts)
+        {
+            <tr>
+                <td>
+                    @item.Part.Name
+                </td>
+                <td>
+                    @item.Part.Category.Name
+                </td>
+                <td>
+                    @item.Color.Name
+                </td>
+                <td>
+                    @item.Number
+                </td>
+            </tr>
+        }
 
-
-
+    </table>
+</div>
