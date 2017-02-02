@@ -51,8 +51,7 @@ namespace WebApi.App_Start
 
                 cfg.CreateMap<Moc, MocApi>();
 
-                cfg.CreateMap<MocApi, Moc>()
-                .ForMember(dest => dest.UserMoc, opt => opt.Ignore());
+                cfg.CreateMap<MocApi, Moc>();
 
                 cfg.CreateMap<MocPart, MocPartApi>();
 

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="Data.Domain.Color">
-    <Position X="0.5" Y="8" Width="1.5" />
+    <Position X="0.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAABAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\Color.cs</FileName>
@@ -12,7 +12,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Data.Domain.Part">
-    <Position X="7.5" Y="7.75" Width="1.75" />
+    <Position X="7.5" Y="6.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAACACAAAAAQAAAAAAAAAAQAAAAAAIAAAAAAAAAACAA=</HashCode>
       <FileName>Domain\Part.cs</FileName>
@@ -23,7 +23,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Data.Domain.User">
-    <Position X="10.5" Y="4.75" Width="1.5" />
+    <Position X="10.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACACAEAAQCAAIAAAABAAAAAAAAAAAAACAAAAAAAAAAg=</HashCode>
       <FileName>Domain\User.cs</FileName>
@@ -36,7 +36,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Data.Domain.LSet">
-    <Position X="4.5" Y="3" Width="2" />
+    <Position X="4.5" Y="2.75" Width="2" />
     <TypeIdentifier>
       <HashCode>ACACAAAAQAAxAEAQAAAAAAQAAAAAAIACAAAAAAAAAAg=</HashCode>
       <FileName>Domain\LSet.cs</FileName>
@@ -50,20 +50,20 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Data.Domain.Moc">
-    <Position X="7.25" Y="0.5" Width="2" />
+    <Position X="7.25" Y="2.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAECAAAAQAAgAAAQAAAAAAQAABAAAAACABAAAAAAAAA=</HashCode>
+      <HashCode>AAADAAAAQAAgAAAQAAAAAAQAABAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Domain\Moc.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="UserMoc" />
+      <Property Name="User" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="MocParts" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Data.Domain.MocPart">
-    <Position X="1.75" Y="1.25" Width="1.5" />
+    <Position X="4.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAIAAAAAAAAEAAAAAAAAQAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Domain\MocPart.cs</FileName>
@@ -75,7 +75,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Data.Domain.LSetPart">
-    <Position X="4.5" Y="8" Width="1.5" />
+    <Position X="4.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAIAAAAAAAAEAAAAAIAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Domain\LSetPart.cs</FileName>
@@ -87,7 +87,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Data.Domain.Theme">
-    <Position X="2.25" Y="4" Width="1.5" />
+    <Position X="2.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAQAIAAA=</HashCode>
       <FileName>Domain\Theme.cs</FileName>
@@ -97,7 +97,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Data.Domain.UserPart">
-    <Position X="10.5" Y="8.75" Width="1.5" />
+    <Position X="10.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAADAAAAIAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\UserPart.cs</FileName>
@@ -107,19 +107,8 @@
       <Property Name="Part" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Data.Domain.UserMoc">
-    <Position X="10.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAADAAAAAAAAAAAAAAAAAAAAAAQCAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Domain\UserMoc.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="User" />
-      <Property Name="Moc" />
-    </ShowAsAssociation>
-  </Class>
   <Class Name="Data.Domain.UserLSet">
-    <Position X="13.5" Y="4.75" Width="1.5" />
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAADAAAAAAAAAAAAAAAAAAAIAAACAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Domain\UserLSet.cs</FileName>
@@ -130,7 +119,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Data.Domain.Wishlist">
-    <Position X="7.5" Y="4.75" Width="1.5" />
+    <Position X="13.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAADAAAAAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\Wishlist.cs</FileName>
