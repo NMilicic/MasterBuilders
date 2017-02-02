@@ -1,11 +1,8 @@
 ﻿using Business.Services;
 using Data;
 using Data.Domain;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
-using System.Web;
 using System.Web.Mvc;
 using Web.Helpers;
 using Web.Models;
@@ -56,7 +53,6 @@ namespace Web.Controllers
         public JsonResult AddAjax(string setId)
         {
             var user = HttpContext.User as CustomPrincipal;
-            WishlistService wishlistService = new WishlistService();
             try
             {
                 wishlistService.AddSetToWishlistForUser(user.Id, int.Parse(setId), 1);
@@ -76,7 +72,6 @@ namespace Web.Controllers
         public JsonResult RemoveAjax(string setId)
         {
             var user = HttpContext.User as CustomPrincipal;
-            WishlistService wishlistService = new WishlistService();
             try
             {
                 wishlistService.RemoveSetFromWishlistForUser(user.Id, int.Parse(setId), 1);

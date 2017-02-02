@@ -1,16 +1,12 @@
 ﻿using Business.Services;
 using Data;
 using Data.Domain;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Web.Models;
 using Web.Helpers;
 using System;
-using Business.Exceptions;
 
 namespace Web.Controllers
 {
@@ -52,6 +48,7 @@ namespace Web.Controllers
             var user = HttpContext.User as CustomPrincipal;
 
             string searchParameters = SearchHelper.ConstructSearchParameters(model);
+            //System.Diagnostics.Debug.WriteLine(searchParameters);
             var sets = userSetService.Search(user.Id, searchParameters, 20);
             ViewBag.listItems = sets.ToList();
 
