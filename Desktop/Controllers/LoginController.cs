@@ -12,9 +12,11 @@ namespace Desktop.Controllers
     {
         private ILoginView _view;
         private IKorisnikService _userService;
+        private IFormsFactory _factory;
 
-        public LoginController(ILoginView view)
+        public LoginController(IFormsFactory factory, ILoginView view)
         {
+            _factory = factory;
             _view = view;
             _userService = new UserServices();
         }
@@ -36,7 +38,7 @@ namespace Desktop.Controllers
                 return;
             }
 
-            var newForm = new frmMain(user, _view);
+            var newForm = _factory.createMainView(user, _view);
             _view.Email = "";
             _view.Password = "";
             _view.Hide();
@@ -45,7 +47,7 @@ namespace Desktop.Controllers
 
         public void Register()
         {
-            var newForm = new frmRegister(_view);
+            var newForm = _factory.createRegisterView(_view);
             _view.Email = "";
             _view.Password = "";
             _view.Hide();

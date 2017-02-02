@@ -15,6 +15,7 @@ namespace Desktop.Controllers
 {
     class EditMOCController
     {
+        private IFormsFactory _factory;
         private IEditMOCView _view;
         private User _user;
         private Moc _moc;
@@ -27,8 +28,9 @@ namespace Desktop.Controllers
         private IRepository<Color> _colorRepository;
         private IQueryable<Part> _currQuery;
 
-        public EditMOCController(IEditMOCView view, Moc moc, User user)
+        public EditMOCController(IFormsFactory factory, IEditMOCView view, Moc moc, User user)
         {
+            _factory = factory;
             _view = view;
             _user = user;
             
@@ -109,7 +111,7 @@ namespace Desktop.Controllers
 
         public void ShowPartlist()
         {
-            var newForm = new frmMOCPartlist(_parts);
+            var newForm = (Form)_factory.createEditMOCPartlistView(_parts);
             newForm.ShowDialog();
         }
 

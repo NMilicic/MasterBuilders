@@ -14,6 +14,7 @@ namespace Desktop.Controllers
 {
     class UserMOCController
     {
+        private IFormsFactory _factory;
         private IUserMOCView _view;
         private User _user;
 
@@ -21,8 +22,9 @@ namespace Desktop.Controllers
         
         private IQueryable<Moc> _currQuery;
 
-        public UserMOCController(IUserMOCView view, User user)
+        public UserMOCController(IFormsFactory factory, IUserMOCView view, User user)
         {
+            _factory = factory;
             _view = view;
             _user = user;
 
@@ -59,7 +61,7 @@ namespace Desktop.Controllers
 
             var moc = _MOCService.GetById(mocID);
 
-            var newForm = new frmEditMOC(_user, moc);
+            var newForm = (Form)_factory.createEditMOCView(_user, moc);
             newForm.ShowDialog();
 
             UpdateDataGirdView();
@@ -67,7 +69,7 @@ namespace Desktop.Controllers
 
         public void AddMOC()
         {
-            var newForm = new frmEditMOC(_user, null);
+            var newForm = (Form)_factory.createEditMOCView(_user, null);
             newForm.ShowDialog();
 
             UpdateDataGirdView();

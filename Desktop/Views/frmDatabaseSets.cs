@@ -1,6 +1,4 @@
-﻿using Business.Interfaces;
-using Business.Services;
-using Data.Domain;
+﻿using Data.Domain;
 using Desktop.BaseLib;
 using Desktop.Controllers;
 using System;
@@ -10,7 +8,6 @@ namespace Desktop.Views
 {
     public partial class frmDatabaseSets : Form, IDatabaseSetsView
     {
-        private User _user;
         private DatabaseSetsController _controller;
 
         public ComboBox Theme
@@ -94,10 +91,9 @@ namespace Desktop.Views
             }
         }
         
-        public frmDatabaseSets(User user)
+        public frmDatabaseSets(IFormsFactory factory, User user)
         {
-            _user = user;
-            _controller = new DatabaseSetsController(this, user);
+            _controller = new DatabaseSetsController(factory, this, user);
             InitializeComponent();
         }
 
@@ -148,14 +144,14 @@ namespace Desktop.Views
 
         private void frmDatabaseSets_Resize(object sender, EventArgs e)
         {
-            if (this.Width < 1200)
+            if (Width < 1200)
             {
-                this.btnSearch.Height = 50;
-                this.searchPanel.SetFlowBreak(this.cmbSubtheme, true);
+                btnSearch.Height = 50;
+                searchPanel.SetFlowBreak(cmbSubtheme, true);
             } else
             {
-                this.btnSearch.Height = 25;
-                this.searchPanel.SetFlowBreak(this.cmbSubtheme, false);
+                btnSearch.Height = 25;
+                searchPanel.SetFlowBreak(cmbSubtheme, false);
             }
         }
     }

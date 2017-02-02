@@ -1,23 +1,13 @@
-﻿using Business.Interfaces;
-using Business.Services;
-using Data.Domain;
+﻿using Data.Domain;
 using Desktop.BaseLib;
 using Desktop.Controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desktop.Views
 {
     public partial class frmInventorySets : Form, IInventorySetsView
     {
-        private User _user;
         private InventorySetsController _controller;
 
         public ComboBox Theme
@@ -107,7 +97,6 @@ namespace Desktop.Views
         
         public frmInventorySets(User user)
         {
-            _user = user;
             _controller = new InventorySetsController(this, user);
             InitializeComponent();
         }

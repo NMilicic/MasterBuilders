@@ -29,9 +29,9 @@ namespace Desktop.Views
             { txtPassword.Text = value; }
         }
 
-        public frmLogin()
+        public frmLogin(IFormsFactory factory)
         {
-            _controller = new LoginController(this);
+            _controller = new LoginController(factory, this);
             InitializeComponent();
         }
 

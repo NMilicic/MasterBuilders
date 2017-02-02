@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseLib\IFormsFactory.cs" />
     <Compile Include="BaseLib\IEditMOCView.cs" />
     <Compile Include="BaseLib\IBuilderAssistantView.cs" />
     <Compile Include="BaseLib\IUserMOCView.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\FormsFactory.cs" />
     <Compile Include="Views\frmEditMOC.cs">
       <SubType>Form</SubType>
     </Compile>

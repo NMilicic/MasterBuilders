@@ -14,6 +14,7 @@ namespace Desktop.Controllers
 {
     class MOCController
     {
+        private IFormsFactory _factory;
         private IMOCView _view;
         
         private IMOCService _MOCService;
@@ -23,8 +24,9 @@ namespace Desktop.Controllers
         private Repository<Theme> _themeRepository;
         private IQueryable<Moc> _currQuery;
 
-        public MOCController(IMOCView view)
+        public MOCController(IFormsFactory factory, IMOCView view)
         {
+            _factory = factory;
             _view = view;
             
             _MOCService = new MOCService();
@@ -72,7 +74,7 @@ namespace Desktop.Controllers
                 MessageBox.Show("Partlist not available.");
             } else
             {
-                var newForm = new frmMOCPartlist(parts);
+                var newForm = (Form)_factory.createMOCPartlistView(parts);
                 newForm.ShowDialog();
             }
         }

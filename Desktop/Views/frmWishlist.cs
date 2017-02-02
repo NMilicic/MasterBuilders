@@ -1,23 +1,13 @@
-﻿using Business.Interfaces;
-using Business.Services;
-using Data.Domain;
+﻿using Data.Domain;
 using Desktop.BaseLib;
 using Desktop.Controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desktop.Views
 {
     public partial class frmWishlist : Form, IWishlistView
     {
-        private User _user;
         private WishlistController _controller;
 
         public ComboBox Theme
@@ -71,7 +61,6 @@ namespace Desktop.Views
         
         public frmWishlist(User user)
         {
-            _user = user;
             _controller = new WishlistController(this, user);
             InitializeComponent();
         }
