@@ -3,18 +3,16 @@ using Business.Services;
 using Data;
 using Data.Domain;
 using Desktop.BaseLib;
-using Desktop.Views;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Desktop.Controllers
 {
     class DatabasePartsController
     {
+        private IFormsFactory _factory;
         private IDatabasePartsView _view;
         
         private IKockiceService _partsService;
@@ -23,8 +21,9 @@ namespace Desktop.Controllers
         private IRepository<Category> _categoryRepository;
         private IQueryable<Part> _currQuery;
 
-        public DatabasePartsController(IDatabasePartsView view)
+        public DatabasePartsController(IFormsFactory factory, IDatabasePartsView view)
         {
+            _factory = factory;
             _view = view;
             _partsService = new PartService();
             _lSetService = new LSetService();
@@ -72,7 +71,7 @@ namespace Desktop.Controllers
             }
             else
             {
-                var newForm = new frmSetlist(sets);
+                var newForm = (Form)_factory.createSetlistView(sets);
                 newForm.ShowDialog();
             }
         }

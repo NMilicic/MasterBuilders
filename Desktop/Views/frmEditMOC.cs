@@ -1,6 +1,4 @@
-﻿using Business.Interfaces;
-using Business.Services;
-using Data.Domain;
+﻿using Data.Domain;
 using Desktop.BaseLib;
 using Desktop.Controllers;
 using System;
@@ -10,7 +8,6 @@ namespace Desktop.Views
 {
     public partial class frmEditMOC : Form, IEditMOCView
     {
-        private User _user;
         private EditMOCController _controller;
 
         public ComboBox Category
@@ -111,10 +108,9 @@ namespace Desktop.Views
             }
         }
 
-        public frmEditMOC(User user, Moc moc)
+        public frmEditMOC(IFormsFactory factory, User user, Moc moc)
         {
-            _user = user;
-            _controller = new EditMOCController(this, moc, user);
+            _controller = new EditMOCController(factory, this, moc, user);
             InitializeComponent();
         }
 

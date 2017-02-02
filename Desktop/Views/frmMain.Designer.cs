@@ -34,13 +34,13 @@
             this.menuDatabaseParts = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInventory = new System.Windows.Forms.ToolStripMenuItem();
             this.menuWishlist = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuBA = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMOC = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMOCView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMOCEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuBA = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCommunity = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLogout = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCommunity = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,13 +97,6 @@
             this.menuWishlist.Text = "Wishlist";
             this.menuWishlist.Click += new System.EventHandler(this.wishlistToolStripMenuItem_Click);
             // 
-            // menuBA
-            // 
-            this.menuBA.Name = "menuBA";
-            this.menuBA.Size = new System.Drawing.Size(106, 20);
-            this.menuBA.Text = "Builder Assistant";
-            this.menuBA.Click += new System.EventHandler(this.menuBA_Click);
-            // 
             // menuMOC
             // 
             this.menuMOC.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -116,22 +109,38 @@
             // menuMOCView
             // 
             this.menuMOCView.Name = "menuMOCView";
-            this.menuMOCView.Size = new System.Drawing.Size(152, 22);
+            this.menuMOCView.Size = new System.Drawing.Size(99, 22);
             this.menuMOCView.Text = "View";
             this.menuMOCView.Click += new System.EventHandler(this.menuMOCView_Click);
             // 
             // menuMOCEdit
             // 
             this.menuMOCEdit.Name = "menuMOCEdit";
-            this.menuMOCEdit.Size = new System.Drawing.Size(152, 22);
+            this.menuMOCEdit.Size = new System.Drawing.Size(99, 22);
             this.menuMOCEdit.Text = "Edit";
             this.menuMOCEdit.Click += new System.EventHandler(this.menuMOCEdit_Click);
+            // 
+            // menuBA
+            // 
+            this.menuBA.Name = "menuBA";
+            this.menuBA.Size = new System.Drawing.Size(106, 20);
+            this.menuBA.Text = "Builder Assistant";
+            this.menuBA.Click += new System.EventHandler(this.menuBA_Click);
+            // 
+            // menuCommunity
+            // 
+            this.menuCommunity.Name = "menuCommunity";
+            this.menuCommunity.Size = new System.Drawing.Size(83, 20);
+            this.menuCommunity.Text = "Community";
+            this.menuCommunity.Visible = false;
+            this.menuCommunity.Click += new System.EventHandler(this.menuCommunity_Click);
             // 
             // menuProfile
             // 
             this.menuProfile.Name = "menuProfile";
             this.menuProfile.Size = new System.Drawing.Size(73, 20);
             this.menuProfile.Text = "My Profile";
+            this.menuProfile.Visible = false;
             this.menuProfile.Click += new System.EventHandler(this.menuProfile_Click);
             // 
             // menuLogout
@@ -140,13 +149,6 @@
             this.menuLogout.Size = new System.Drawing.Size(57, 20);
             this.menuLogout.Text = "Logout";
             this.menuLogout.Click += new System.EventHandler(this.menuLogout_Click);
-            // 
-            // menuCommunity
-            // 
-            this.menuCommunity.Name = "menuCommunity";
-            this.menuCommunity.Size = new System.Drawing.Size(83, 20);
-            this.menuCommunity.Text = "Community";
-            this.menuCommunity.Click += new System.EventHandler(this.menuCommunity_Click);
             // 
             // frmMain
             // 

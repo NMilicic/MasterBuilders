@@ -1,6 +1,6 @@
 ﻿namespace Desktop.BaseLib
 {
-    interface IRegisterView : IView
+    public interface IRegisterView : IView
     {
         string Email { get; set; }
         string Password { get; set; }

@@ -8,15 +8,11 @@ namespace Desktop.Views
 {
     public partial class frmMain : Form, IView
     {
-        private User _user;
-        private IView _parent;
         private MainController _controller;
 
-        public frmMain(User user, IView parent)
+        public frmMain(IFormsFactory factory, User user, IView parent)
         {
-            _user = user;
-            _parent = parent;
-            _controller = new MainController(this, user, parent);
+            _controller = new MainController(factory, this, user, parent);
             InitializeComponent();
         }
 

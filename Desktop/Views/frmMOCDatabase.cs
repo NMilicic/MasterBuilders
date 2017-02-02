@@ -1,7 +1,4 @@
-﻿using Business.Interfaces;
-using Business.Services;
-using Data.Domain;
-using Desktop.BaseLib;
+﻿using Desktop.BaseLib;
 using Desktop.Controllers;
 using System;
 using System.Windows.Forms;
@@ -70,9 +67,9 @@ namespace Desktop.Views
             }
         }
 
-        public frmMOCDatabase()
+        public frmMOCDatabase(IFormsFactory factory)
         {
-            _controller = new MOCController(this);
+            _controller = new MOCController(factory, this);
             InitializeComponent();
         }
 
@@ -93,14 +90,15 @@ namespace Desktop.Views
 
         private void frmMOC_Resize(object sender, EventArgs e)
         {
-            if (this.Width < 1200)
+            if (Width < 1200)
             {
-                this.btnSearch.Height = 50;
-                this.searchPanel.SetFlowBreak(this.txtAuthor, true);
-            } else
+                btnSearch.Height = 50;
+                searchPanel.SetFlowBreak(txtAuthor, true);
+            }
+            else
             {
-                this.btnSearch.Height = 25;
-                this.searchPanel.SetFlowBreak(this.txtAuthor, false);
+                btnSearch.Height = 25;
+                searchPanel.SetFlowBreak(txtAuthor, false);
             }
         }
     }

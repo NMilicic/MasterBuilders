@@ -8,7 +8,6 @@ namespace Desktop.Views
     public partial class frmRegister : Form, IRegisterView
     {
         private RegisterController _controller;
-        private IView _parent;
         
         public string Email { get { return txtEmail.Text; } set { txtEmail.Text = value; } }
         public string Password { get { return txtPassword.Text; } set { txtPassword.Text = value; } }
@@ -17,7 +16,6 @@ namespace Desktop.Views
         
         public frmRegister(IView parent)
         {
-            _parent = parent;
             _controller = new RegisterController(this, parent);
             InitializeComponent();
         }

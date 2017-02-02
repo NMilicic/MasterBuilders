@@ -1,4 +1,5 @@
-﻿using Desktop.Views;
+﻿using Desktop.BaseLib;
+using Desktop.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,10 @@ namespace Desktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+
+            IFormsFactory factory = new FormsFactory();
+
+            Application.Run(new frmLogin(factory));
         }
     }
 }

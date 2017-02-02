@@ -57,7 +57,7 @@
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(650, 325);
-            this.dataGridView.TabIndex = 0;
+            this.dataGridView.TabIndex = 5;
             // 
             // lblTheme
             // 
@@ -65,7 +65,7 @@
             this.lblTheme.Location = new System.Drawing.Point(15, 18);
             this.lblTheme.Name = "lblTheme";
             this.lblTheme.Size = new System.Drawing.Size(43, 13);
-            this.lblTheme.TabIndex = 3;
+            this.lblTheme.TabIndex = 0;
             this.lblTheme.Text = "Theme:";
             // 
             // cmbTheme
@@ -74,7 +74,7 @@
             this.cmbTheme.Location = new System.Drawing.Point(64, 15);
             this.cmbTheme.Name = "cmbTheme";
             this.cmbTheme.Size = new System.Drawing.Size(121, 21);
-            this.cmbTheme.TabIndex = 4;
+            this.cmbTheme.TabIndex = 1;
             this.cmbTheme.SelectedIndexChanged += new System.EventHandler(this.cmbTheme_SelectedIndexChanged);
             // 
             // lblSubtheme
@@ -83,7 +83,7 @@
             this.lblSubtheme.Location = new System.Drawing.Point(191, 18);
             this.lblSubtheme.Name = "lblSubtheme";
             this.lblSubtheme.Size = new System.Drawing.Size(58, 13);
-            this.lblSubtheme.TabIndex = 5;
+            this.lblSubtheme.TabIndex = 2;
             this.lblSubtheme.Text = "Subtheme:";
             // 
             // cmbSubtheme
@@ -92,7 +92,7 @@
             this.cmbSubtheme.Location = new System.Drawing.Point(255, 15);
             this.cmbSubtheme.Name = "cmbSubtheme";
             this.cmbSubtheme.Size = new System.Drawing.Size(121, 21);
-            this.cmbSubtheme.TabIndex = 6;
+            this.cmbSubtheme.TabIndex = 3;
             // 
             // btnSearch
             // 
@@ -101,7 +101,7 @@
             this.btnSearch.Location = new System.Drawing.Point(590, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 25);
-            this.btnSearch.TabIndex = 11;
+            this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -112,7 +112,7 @@
             this.btnDownload.Location = new System.Drawing.Point(540, 376);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(125, 25);
-            this.btnDownload.TabIndex = 24;
+            this.btnDownload.TabIndex = 6;
             this.btnDownload.Text = "Download Instructions";
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);

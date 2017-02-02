@@ -62,7 +62,7 @@
             this.btnSearch.Location = new System.Drawing.Point(690, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 25);
-            this.btnSearch.TabIndex = 27;
+            this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -73,7 +73,7 @@
             this.cmbCategory.Location = new System.Drawing.Point(228, 15);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(121, 21);
-            this.cmbCategory.TabIndex = 24;
+            this.cmbCategory.TabIndex = 3;
             // 
             // lblcategory
             // 
@@ -81,7 +81,7 @@
             this.lblcategory.Location = new System.Drawing.Point(170, 18);
             this.lblcategory.Name = "lblcategory";
             this.lblcategory.Size = new System.Drawing.Size(52, 13);
-            this.lblcategory.TabIndex = 23;
+            this.lblcategory.TabIndex = 2;
             this.lblcategory.Text = "Category:";
             // 
             // txtName
@@ -89,7 +89,7 @@
             this.txtName.Location = new System.Drawing.Point(58, 15);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 22;
+            this.txtName.TabIndex = 1;
             // 
             // lblName
             // 
@@ -97,7 +97,7 @@
             this.lblName.Location = new System.Drawing.Point(15, 18);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 21;
+            this.lblName.TabIndex = 0;
             this.lblName.Text = "Name:";
             // 
             // dataGridView
@@ -119,7 +119,7 @@
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(750, 425);
-            this.dataGridView.TabIndex = 20;
+            this.dataGridView.TabIndex = 5;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
             // cmbColor
@@ -129,7 +129,7 @@
             this.cmbColor.Location = new System.Drawing.Point(56, 476);
             this.cmbColor.Name = "cmbColor";
             this.cmbColor.Size = new System.Drawing.Size(121, 21);
-            this.cmbColor.TabIndex = 28;
+            this.cmbColor.TabIndex = 7;
             // 
             // lblColor
             // 
@@ -137,7 +137,7 @@
             this.lblColor.Location = new System.Drawing.Point(15, 479);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(35, 13);
-            this.lblColor.TabIndex = 0;
+            this.lblColor.TabIndex = 6;
             this.lblColor.Text = "Color:";
             // 
             // nudAdd
@@ -146,7 +146,7 @@
             this.nudAdd.Location = new System.Drawing.Point(183, 477);
             this.nudAdd.Name = "nudAdd";
             this.nudAdd.Size = new System.Drawing.Size(50, 20);
-            this.nudAdd.TabIndex = 29;
+            this.nudAdd.TabIndex = 8;
             // 
             // btnAdd
             // 
@@ -154,7 +154,7 @@
             this.btnAdd.Location = new System.Drawing.Point(239, 476);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 30;
+            this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -165,7 +165,7 @@
             this.btnPartlist.Location = new System.Drawing.Point(690, 477);
             this.btnPartlist.Name = "btnPartlist";
             this.btnPartlist.Size = new System.Drawing.Size(75, 25);
-            this.btnPartlist.TabIndex = 31;
+            this.btnPartlist.TabIndex = 10;
             this.btnPartlist.Text = "View Partlist";
             this.btnPartlist.UseVisualStyleBackColor = true;
             this.btnPartlist.Click += new System.EventHandler(this.btnPartlist_Click);
@@ -178,7 +178,7 @@
             this.lblDivider.Location = new System.Drawing.Point(15, 505);
             this.lblDivider.Name = "lblDivider";
             this.lblDivider.Size = new System.Drawing.Size(750, 2);
-            this.lblDivider.TabIndex = 32;
+            this.lblDivider.TabIndex = 22;
             // 
             // lblAddName
             // 
@@ -187,7 +187,7 @@
             this.lblAddName.Location = new System.Drawing.Point(18, 513);
             this.lblAddName.Name = "lblAddName";
             this.lblAddName.Size = new System.Drawing.Size(38, 13);
-            this.lblAddName.TabIndex = 33;
+            this.lblAddName.TabIndex = 11;
             this.lblAddName.Text = "Name:";
             // 
             // lblDescription
@@ -197,7 +197,7 @@
             this.lblDescription.Location = new System.Drawing.Point(168, 513);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(63, 13);
-            this.lblDescription.TabIndex = 34;
+            this.lblDescription.TabIndex = 13;
             this.lblDescription.Text = "Description:";
             // 
             // lblTheme2
@@ -207,7 +207,7 @@
             this.lblTheme2.Location = new System.Drawing.Point(179, 539);
             this.lblTheme2.Name = "lblTheme2";
             this.lblTheme2.Size = new System.Drawing.Size(46, 13);
-            this.lblTheme2.TabIndex = 35;
+            this.lblTheme2.TabIndex = 17;
             this.lblTheme2.Text = "Theme2";
             // 
             // lblTheme1
@@ -217,7 +217,7 @@
             this.lblTheme1.Location = new System.Drawing.Point(18, 539);
             this.lblTheme1.Name = "lblTheme1";
             this.lblTheme1.Size = new System.Drawing.Size(49, 13);
-            this.lblTheme1.TabIndex = 36;
+            this.lblTheme1.TabIndex = 15;
             this.lblTheme1.Text = "Theme1:";
             // 
             // lblTheme3
@@ -227,7 +227,7 @@
             this.lblTheme3.Location = new System.Drawing.Point(337, 539);
             this.lblTheme3.Name = "lblTheme3";
             this.lblTheme3.Size = new System.Drawing.Size(49, 13);
-            this.lblTheme3.TabIndex = 37;
+            this.lblTheme3.TabIndex = 19;
             this.lblTheme3.Text = "Theme3:";
             // 
             // txtAddName
@@ -236,7 +236,7 @@
             this.txtAddName.Location = new System.Drawing.Point(62, 510);
             this.txtAddName.Name = "txtAddName";
             this.txtAddName.Size = new System.Drawing.Size(100, 20);
-            this.txtAddName.TabIndex = 38;
+            this.txtAddName.TabIndex = 12;
             // 
             // txtDescription
             // 
@@ -244,7 +244,7 @@
             this.txtDescription.Location = new System.Drawing.Point(237, 510);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(255, 20);
-            this.txtDescription.TabIndex = 39;
+            this.txtDescription.TabIndex = 14;
             // 
             // txtTheme1
             // 
@@ -252,7 +252,7 @@
             this.txtTheme1.Location = new System.Drawing.Point(73, 536);
             this.txtTheme1.Name = "txtTheme1";
             this.txtTheme1.Size = new System.Drawing.Size(100, 20);
-            this.txtTheme1.TabIndex = 40;
+            this.txtTheme1.TabIndex = 16;
             // 
             // txtTheme2
             // 
@@ -260,7 +260,7 @@
             this.txtTheme2.Location = new System.Drawing.Point(231, 536);
             this.txtTheme2.Name = "txtTheme2";
             this.txtTheme2.Size = new System.Drawing.Size(100, 20);
-            this.txtTheme2.TabIndex = 41;
+            this.txtTheme2.TabIndex = 18;
             // 
             // txtTheme3
             // 
@@ -268,7 +268,7 @@
             this.txtTheme3.Location = new System.Drawing.Point(392, 536);
             this.txtTheme3.Name = "txtTheme3";
             this.txtTheme3.Size = new System.Drawing.Size(100, 20);
-            this.txtTheme3.TabIndex = 42;
+            this.txtTheme3.TabIndex = 20;
             // 
             // btnSave
             // 
@@ -276,7 +276,7 @@
             this.btnSave.Location = new System.Drawing.Point(690, 510);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 45);
-            this.btnSave.TabIndex = 43;
+            this.btnSave.TabIndex = 21;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

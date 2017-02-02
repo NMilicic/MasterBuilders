@@ -3,7 +3,6 @@ using Business.Services;
 using Data;
 using Data.Domain;
 using Desktop.BaseLib;
-using Desktop.Views;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -14,6 +13,7 @@ namespace Desktop.Controllers
 {
     class DatabaseSetsController
     {
+        private IFormsFactory _factory;
         private IDatabaseSetsView _view;
         private User _user;
 
@@ -24,8 +24,9 @@ namespace Desktop.Controllers
         private Repository<Theme> _themeRepository;
         private IQueryable<LSet> _currQuery;
 
-        public DatabaseSetsController(IDatabaseSetsView view, User user)
+        public DatabaseSetsController(IFormsFactory factory, IDatabaseSetsView view, User user)
         {
+            _factory = factory;
             _view = view;
             _user = user;
 
@@ -133,7 +134,7 @@ namespace Desktop.Controllers
                 MessageBox.Show("Partlist not available.");
             } else
             {
-                var newForm = new frmSetPartlist(parts);
+                var newForm = (Form)_factory.createSetPartlistView(parts);
                 newForm.ShowDialog();
             }
         }
@@ -147,8 +148,8 @@ namespace Desktop.Controllers
             }
 
             var url = _lSetService.GetById(setId).PictureUrl;
-            var newForm = new frmPicture(url);
-            newForm.Show();
+            var newForm = (Form)_factory.createPictureView(url);
+            newForm.ShowDialog();
         }
 
         public void DownloadInstructions()

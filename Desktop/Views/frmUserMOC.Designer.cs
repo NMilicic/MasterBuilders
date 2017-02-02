@@ -57,7 +57,7 @@
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(650, 325);
-            this.dataGridView.TabIndex = 0;
+            this.dataGridView.TabIndex = 3;
             // 
             // lblName
             // 
@@ -65,7 +65,7 @@
             this.lblName.Location = new System.Drawing.Point(15, 18);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 1;
+            this.lblName.TabIndex = 0;
             this.lblName.Text = "Name:";
             // 
             // txtName
@@ -73,7 +73,7 @@
             this.txtName.Location = new System.Drawing.Point(55, 15);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(120, 20);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 1;
             // 
             // btnSearch
             // 
@@ -82,7 +82,7 @@
             this.btnSearch.Location = new System.Drawing.Point(590, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 25);
-            this.btnSearch.TabIndex = 11;
+            this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -93,7 +93,7 @@
             this.btnAdd.Location = new System.Drawing.Point(15, 376);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(90, 25);
-            this.btnAdd.TabIndex = 13;
+            this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -104,7 +104,7 @@
             this.btnEdit.Location = new System.Drawing.Point(111, 376);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(95, 25);
-            this.btnEdit.TabIndex = 14;
+            this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -115,7 +115,7 @@
             this.btnRemove.Location = new System.Drawing.Point(212, 376);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(95, 25);
-            this.btnRemove.TabIndex = 21;
+            this.btnRemove.TabIndex = 6;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);

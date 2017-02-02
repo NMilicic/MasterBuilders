@@ -70,7 +70,7 @@
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1160, 300);
-            this.dataGridView.TabIndex = 0;
+            this.dataGridView.TabIndex = 2;
             // 
             // lblName
             // 
@@ -79,7 +79,7 @@
             this.lblName.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 1;
+            this.lblName.TabIndex = 0;
             this.lblName.Text = "Name:";
             // 
             // txtName
@@ -87,7 +87,7 @@
             this.txtName.Location = new System.Drawing.Point(47, 3);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(110, 20);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 1;
             // 
             // lblTheme
             // 
@@ -96,7 +96,7 @@
             this.lblTheme.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblTheme.Name = "lblTheme";
             this.lblTheme.Size = new System.Drawing.Size(43, 13);
-            this.lblTheme.TabIndex = 3;
+            this.lblTheme.TabIndex = 2;
             this.lblTheme.Text = "Theme:";
             // 
             // btnSearch
@@ -106,7 +106,7 @@
             this.btnSearch.Location = new System.Drawing.Point(1100, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 25);
-            this.btnSearch.TabIndex = 11;
+            this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -117,7 +117,7 @@
             this.btnPartlist.Location = new System.Drawing.Point(15, 374);
             this.btnPartlist.Name = "btnPartlist";
             this.btnPartlist.Size = new System.Drawing.Size(75, 25);
-            this.btnPartlist.TabIndex = 16;
+            this.btnPartlist.TabIndex = 3;
             this.btnPartlist.Text = "View Partlist";
             this.btnPartlist.UseVisualStyleBackColor = true;
             this.btnPartlist.Click += new System.EventHandler(this.btnPartlist_Click);
@@ -138,7 +138,7 @@
             this.lblYear.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(32, 13);
-            this.lblYear.TabIndex = 21;
+            this.lblYear.TabIndex = 6;
             this.lblYear.Text = "Year:";
             // 
             // lblParts
@@ -148,7 +148,7 @@
             this.lblParts.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblParts.Name = "lblParts";
             this.lblParts.Size = new System.Drawing.Size(34, 13);
-            this.lblParts.TabIndex = 22;
+            this.lblParts.TabIndex = 10;
             this.lblParts.Text = "Parts:";
             // 
             // lblYearDivider
@@ -158,7 +158,7 @@
             this.lblYearDivider.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblYearDivider.Name = "lblYearDivider";
             this.lblYearDivider.Size = new System.Drawing.Size(16, 13);
-            this.lblYearDivider.TabIndex = 27;
+            this.lblYearDivider.TabIndex = 8;
             this.lblYearDivider.Text = "to";
             // 
             // lblPartsDivider
@@ -168,7 +168,7 @@
             this.lblPartsDivider.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblPartsDivider.Name = "lblPartsDivider";
             this.lblPartsDivider.Size = new System.Drawing.Size(16, 13);
-            this.lblPartsDivider.TabIndex = 28;
+            this.lblPartsDivider.TabIndex = 12;
             this.lblPartsDivider.Text = "to";
             // 
             // txtYearFrom
@@ -180,7 +180,7 @@
             this.txtYearFrom.Name = "txtYearFrom";
             this.txtYearFrom.PromptChar = ' ';
             this.txtYearFrom.Size = new System.Drawing.Size(100, 20);
-            this.txtYearFrom.TabIndex = 29;
+            this.txtYearFrom.TabIndex = 7;
             // 
             // txtYearTo
             // 
@@ -191,7 +191,7 @@
             this.txtYearTo.Name = "txtYearTo";
             this.txtYearTo.PromptChar = ' ';
             this.txtYearTo.Size = new System.Drawing.Size(100, 20);
-            this.txtYearTo.TabIndex = 30;
+            this.txtYearTo.TabIndex = 9;
             // 
             // txtPartsFrom
             // 
@@ -202,7 +202,7 @@
             this.txtPartsFrom.Name = "txtPartsFrom";
             this.txtPartsFrom.PromptChar = ' ';
             this.txtPartsFrom.Size = new System.Drawing.Size(100, 20);
-            this.txtPartsFrom.TabIndex = 31;
+            this.txtPartsFrom.TabIndex = 11;
             // 
             // txtPartsTo
             // 
@@ -213,7 +213,7 @@
             this.txtPartsTo.Name = "txtPartsTo";
             this.txtPartsTo.PromptChar = ' ';
             this.txtPartsTo.Size = new System.Drawing.Size(100, 20);
-            this.txtPartsTo.TabIndex = 32;
+            this.txtPartsTo.TabIndex = 13;
             // 
             // searchPanel
             // 
@@ -236,14 +236,14 @@
             this.searchPanel.Location = new System.Drawing.Point(15, 12);
             this.searchPanel.Name = "searchPanel";
             this.searchPanel.Size = new System.Drawing.Size(1011, 26);
-            this.searchPanel.TabIndex = 33;
+            this.searchPanel.TabIndex = 0;
             // 
             // txtTheme
             // 
             this.txtTheme.Location = new System.Drawing.Point(212, 3);
             this.txtTheme.Name = "txtTheme";
             this.txtTheme.Size = new System.Drawing.Size(100, 20);
-            this.txtTheme.TabIndex = 34;
+            this.txtTheme.TabIndex = 3;
             // 
             // lblAuthor
             // 
@@ -252,7 +252,7 @@
             this.lblAuthor.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblAuthor.Name = "lblAuthor";
             this.lblAuthor.Size = new System.Drawing.Size(38, 13);
-            this.lblAuthor.TabIndex = 5;
+            this.lblAuthor.TabIndex = 4;
             this.lblAuthor.Text = "Author";
             // 
             // txtAuthor
@@ -260,7 +260,7 @@
             this.txtAuthor.Location = new System.Drawing.Point(362, 3);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(100, 20);
-            this.txtAuthor.TabIndex = 34;
+            this.txtAuthor.TabIndex = 5;
             // 
             // frmMOCDatabase
             // 
