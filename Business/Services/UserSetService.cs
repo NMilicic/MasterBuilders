@@ -257,10 +257,22 @@ namespace Business.Services
 
         private IQueryable<UserLSet> FilterByYear(string yearString, IQueryable<UserLSet> query)
         {
-            int year;
-            var parseYear = Int32.TryParse(yearString, out year);
+            var range = yearString.Split('-');
+            if (range.Length > 1)
+            {
+                int lowerBound;
+                Int32.TryParse(range[0], out lowerBound);
 
-            return parseYear ? query.Where(x => x.LSet.ProductionYear == year) : query;
+                int upperBound;
+                if (!Int32.TryParse(range[1], out upperBound))
+                {
+                    upperBound = Int32.MaxValue;
+                }
+
+                return query.Where(x => x.LSet.ProductionYear >= lowerBound && x.LSet.ProductionYear <= upperBound);
+
+            }
+            return query;
         }
 
         private IQueryable<UserLSet> FilterByTheme(string theme, IQueryable<UserLSet> query)

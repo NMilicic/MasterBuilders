@@ -135,7 +135,7 @@ namespace Business.Services
             throw new UserException(UserException.UserExceptionsText(UserExceptionEnum.NotFound));
         }
 
-        public IQueryable<Wishlist> Search(int userId ,string searchParameters, int take = -1, int offset = 0)
+        public IQueryable<Wishlist> Search(int userId, string searchParameters, int take = -1, int offset = 0)
         {
             var query = wishlistRepository.Query().Where(w => w.User.Id == userId);
             var searchFields = ParseSearchParameters(searchParameters);
@@ -207,10 +207,22 @@ namespace Business.Services
 
         private IQueryable<Wishlist> FilterByYear(string yearString, IQueryable<Wishlist> query)
         {
-            int year;
-            var parseYear = Int32.TryParse(yearString, out year);
+            var range = yearString.Split('-');
+            if (range.Length > 1)
+            {
+                int lowerBound;
+                Int32.TryParse(range[0], out lowerBound);
 
-            return parseYear ? query.Where(x => x.LSet.ProductionYear == year) : query;
+                int upperBound;
+                if (!Int32.TryParse(range[1], out upperBound))
+                {
+                    upperBound = Int32.MaxValue;
+                }
+
+                return query.Where(x => x.LSet.ProductionYear >= lowerBound && x.LSet.ProductionYear <= upperBound);
+
+            }
+            return query;
         }
 
         private IQueryable<Wishlist> FilterByTheme(string theme, IQueryable<Wishlist> query)
