@@ -3,7 +3,6 @@ using Business.Services;
 using Data;
 using Data.Domain;
 using Desktop.BaseLib;
-using Desktop.Views;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -149,8 +148,8 @@ namespace Desktop.Controllers
             }
 
             var url = _lSetService.GetById(setId).PictureUrl;
-            var newForm = _factory.createPictureView(url);
-            newForm.Show();
+            var newForm = (Form)_factory.createPictureView(url);
+            newForm.ShowDialog();
         }
 
         public void DownloadInstructions()

@@ -79,7 +79,7 @@
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1160, 300);
-            this.dataGridView.TabIndex = 0;
+            this.dataGridView.TabIndex = 2;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
             // lblName
@@ -89,7 +89,7 @@
             this.lblName.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 1;
+            this.lblName.TabIndex = 0;
             this.lblName.Text = "Name:";
             // 
             // txtName
@@ -97,7 +97,7 @@
             this.txtName.Location = new System.Drawing.Point(47, 3);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(110, 20);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 1;
             // 
             // lblTheme
             // 
@@ -106,7 +106,7 @@
             this.lblTheme.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblTheme.Name = "lblTheme";
             this.lblTheme.Size = new System.Drawing.Size(43, 13);
-            this.lblTheme.TabIndex = 3;
+            this.lblTheme.TabIndex = 2;
             this.lblTheme.Text = "Theme:";
             // 
             // cmbTheme
@@ -115,7 +115,7 @@
             this.cmbTheme.Location = new System.Drawing.Point(212, 3);
             this.cmbTheme.Name = "cmbTheme";
             this.cmbTheme.Size = new System.Drawing.Size(121, 21);
-            this.cmbTheme.TabIndex = 4;
+            this.cmbTheme.TabIndex = 3;
             this.cmbTheme.SelectedIndexChanged += new System.EventHandler(this.cmbTheme_SelectedIndexChanged);
             // 
             // lblSubtheme
@@ -125,7 +125,7 @@
             this.lblSubtheme.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblSubtheme.Name = "lblSubtheme";
             this.lblSubtheme.Size = new System.Drawing.Size(58, 13);
-            this.lblSubtheme.TabIndex = 5;
+            this.lblSubtheme.TabIndex = 4;
             this.lblSubtheme.Text = "Subtheme:";
             // 
             // cmbSubtheme
@@ -134,7 +134,7 @@
             this.cmbSubtheme.Location = new System.Drawing.Point(403, 3);
             this.cmbSubtheme.Name = "cmbSubtheme";
             this.cmbSubtheme.Size = new System.Drawing.Size(121, 21);
-            this.cmbSubtheme.TabIndex = 6;
+            this.cmbSubtheme.TabIndex = 5;
             // 
             // btnSearch
             // 
@@ -143,7 +143,7 @@
             this.btnSearch.Location = new System.Drawing.Point(1100, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 25);
-            this.btnSearch.TabIndex = 11;
+            this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -154,7 +154,7 @@
             this.btnWishlist.Location = new System.Drawing.Point(68, 376);
             this.btnWishlist.Name = "btnWishlist";
             this.btnWishlist.Size = new System.Drawing.Size(90, 25);
-            this.btnWishlist.TabIndex = 13;
+            this.btnWishlist.TabIndex = 4;
             this.btnWishlist.Text = "Add to Wishlist";
             this.btnWishlist.UseVisualStyleBackColor = true;
             this.btnWishlist.Click += new System.EventHandler(this.btnWishlist_Click);
@@ -165,7 +165,7 @@
             this.btnInventory.Location = new System.Drawing.Point(228, 376);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(95, 25);
-            this.btnInventory.TabIndex = 14;
+            this.btnInventory.TabIndex = 7;
             this.btnInventory.Text = "Add to Inventory";
             this.btnInventory.UseVisualStyleBackColor = true;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
@@ -176,7 +176,7 @@
             this.btnDownload.Location = new System.Drawing.Point(1049, 376);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(125, 25);
-            this.btnDownload.TabIndex = 15;
+            this.btnDownload.TabIndex = 10;
             this.btnDownload.Text = "Download Instructions";
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
@@ -187,7 +187,7 @@
             this.btnPartlist.Location = new System.Drawing.Point(968, 376);
             this.btnPartlist.Name = "btnPartlist";
             this.btnPartlist.Size = new System.Drawing.Size(75, 25);
-            this.btnPartlist.TabIndex = 16;
+            this.btnPartlist.TabIndex = 9;
             this.btnPartlist.Text = "View Partlist";
             this.btnPartlist.UseVisualStyleBackColor = true;
             this.btnPartlist.Click += new System.EventHandler(this.btnPartlist_Click);
@@ -198,7 +198,7 @@
             this.nudWishlist.Location = new System.Drawing.Point(12, 378);
             this.nudWishlist.Name = "nudWishlist";
             this.nudWishlist.Size = new System.Drawing.Size(50, 20);
-            this.nudWishlist.TabIndex = 17;
+            this.nudWishlist.TabIndex = 3;
             // 
             // nudInventory
             // 
@@ -206,7 +206,7 @@
             this.nudInventory.Location = new System.Drawing.Point(172, 378);
             this.nudInventory.Name = "nudInventory";
             this.nudInventory.Size = new System.Drawing.Size(50, 20);
-            this.nudInventory.TabIndex = 18;
+            this.nudInventory.TabIndex = 6;
             // 
             // lblDivider
             // 
@@ -215,7 +215,7 @@
             this.lblDivider.Location = new System.Drawing.Point(164, 377);
             this.lblDivider.Name = "lblDivider";
             this.lblDivider.Size = new System.Drawing.Size(2, 25);
-            this.lblDivider.TabIndex = 19;
+            this.lblDivider.TabIndex = 5;
             // 
             // btnPicture
             // 
@@ -223,7 +223,7 @@
             this.btnPicture.Location = new System.Drawing.Point(887, 376);
             this.btnPicture.Name = "btnPicture";
             this.btnPicture.Size = new System.Drawing.Size(75, 25);
-            this.btnPicture.TabIndex = 20;
+            this.btnPicture.TabIndex = 8;
             this.btnPicture.Text = "View Picture";
             this.btnPicture.UseVisualStyleBackColor = true;
             this.btnPicture.Click += new System.EventHandler(this.btnPicture_Click);
@@ -244,7 +244,7 @@
             this.lblYear.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(32, 13);
-            this.lblYear.TabIndex = 21;
+            this.lblYear.TabIndex = 6;
             this.lblYear.Text = "Year:";
             // 
             // lblParts
@@ -254,7 +254,7 @@
             this.lblParts.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblParts.Name = "lblParts";
             this.lblParts.Size = new System.Drawing.Size(34, 13);
-            this.lblParts.TabIndex = 22;
+            this.lblParts.TabIndex = 10;
             this.lblParts.Text = "Parts:";
             // 
             // lblYearDivider
@@ -264,7 +264,7 @@
             this.lblYearDivider.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblYearDivider.Name = "lblYearDivider";
             this.lblYearDivider.Size = new System.Drawing.Size(16, 13);
-            this.lblYearDivider.TabIndex = 27;
+            this.lblYearDivider.TabIndex = 8;
             this.lblYearDivider.Text = "to";
             // 
             // lblPartsDivider
@@ -274,7 +274,7 @@
             this.lblPartsDivider.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.lblPartsDivider.Name = "lblPartsDivider";
             this.lblPartsDivider.Size = new System.Drawing.Size(16, 13);
-            this.lblPartsDivider.TabIndex = 28;
+            this.lblPartsDivider.TabIndex = 12;
             this.lblPartsDivider.Text = "to";
             // 
             // txtYearFrom
@@ -286,7 +286,7 @@
             this.txtYearFrom.Name = "txtYearFrom";
             this.txtYearFrom.PromptChar = ' ';
             this.txtYearFrom.Size = new System.Drawing.Size(100, 20);
-            this.txtYearFrom.TabIndex = 29;
+            this.txtYearFrom.TabIndex = 7;
             // 
             // txtYearTo
             // 
@@ -297,7 +297,7 @@
             this.txtYearTo.Name = "txtYearTo";
             this.txtYearTo.PromptChar = ' ';
             this.txtYearTo.Size = new System.Drawing.Size(100, 20);
-            this.txtYearTo.TabIndex = 30;
+            this.txtYearTo.TabIndex = 9;
             // 
             // txtPartsFrom
             // 
@@ -308,7 +308,7 @@
             this.txtPartsFrom.Name = "txtPartsFrom";
             this.txtPartsFrom.PromptChar = ' ';
             this.txtPartsFrom.Size = new System.Drawing.Size(100, 20);
-            this.txtPartsFrom.TabIndex = 31;
+            this.txtPartsFrom.TabIndex = 11;
             // 
             // txtPartsTo
             // 
@@ -319,7 +319,7 @@
             this.txtPartsTo.Name = "txtPartsTo";
             this.txtPartsTo.PromptChar = ' ';
             this.txtPartsTo.Size = new System.Drawing.Size(100, 20);
-            this.txtPartsTo.TabIndex = 32;
+            this.txtPartsTo.TabIndex = 13;
             // 
             // searchPanel
             // 
@@ -342,7 +342,7 @@
             this.searchPanel.Location = new System.Drawing.Point(15, 12);
             this.searchPanel.Name = "searchPanel";
             this.searchPanel.Size = new System.Drawing.Size(1073, 27);
-            this.searchPanel.TabIndex = 33;
+            this.searchPanel.TabIndex = 0;
             // 
             // frmDatabaseSets
             // 

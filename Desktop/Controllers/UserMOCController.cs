@@ -1,11 +1,8 @@
 ﻿using Business.Interfaces;
 using Business.Services;
-using Data;
 using Data.Domain;
 using Desktop.BaseLib;
-using Desktop.Views;
 using System.Data;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;

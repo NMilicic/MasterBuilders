@@ -70,7 +70,7 @@
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(650, 325);
-            this.dataGridView.TabIndex = 0;
+            this.dataGridView.TabIndex = 7;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
             // lblName
@@ -79,7 +79,7 @@
             this.lblName.Location = new System.Drawing.Point(15, 18);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 1;
+            this.lblName.TabIndex = 0;
             this.lblName.Text = "Name:";
             // 
             // txtName
@@ -87,7 +87,7 @@
             this.txtName.Location = new System.Drawing.Point(55, 15);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 1;
             // 
             // lblTheme
             // 
@@ -95,7 +95,7 @@
             this.lblTheme.Location = new System.Drawing.Point(161, 18);
             this.lblTheme.Name = "lblTheme";
             this.lblTheme.Size = new System.Drawing.Size(43, 13);
-            this.lblTheme.TabIndex = 3;
+            this.lblTheme.TabIndex = 2;
             this.lblTheme.Text = "Theme:";
             // 
             // cmbTheme
@@ -104,7 +104,7 @@
             this.cmbTheme.Location = new System.Drawing.Point(210, 15);
             this.cmbTheme.Name = "cmbTheme";
             this.cmbTheme.Size = new System.Drawing.Size(121, 21);
-            this.cmbTheme.TabIndex = 4;
+            this.cmbTheme.TabIndex = 3;
             this.cmbTheme.SelectedIndexChanged += new System.EventHandler(this.cmbTheme_SelectedIndexChanged);
             // 
             // lblSubtheme
@@ -113,7 +113,7 @@
             this.lblSubtheme.Location = new System.Drawing.Point(336, 18);
             this.lblSubtheme.Name = "lblSubtheme";
             this.lblSubtheme.Size = new System.Drawing.Size(58, 13);
-            this.lblSubtheme.TabIndex = 5;
+            this.lblSubtheme.TabIndex = 4;
             this.lblSubtheme.Text = "Subtheme:";
             // 
             // cmbSubtheme
@@ -122,7 +122,7 @@
             this.cmbSubtheme.Location = new System.Drawing.Point(400, 15);
             this.cmbSubtheme.Name = "cmbSubtheme";
             this.cmbSubtheme.Size = new System.Drawing.Size(121, 21);
-            this.cmbSubtheme.TabIndex = 6;
+            this.cmbSubtheme.TabIndex = 5;
             // 
             // btnSearch
             // 
@@ -131,7 +131,7 @@
             this.btnSearch.Location = new System.Drawing.Point(590, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 25);
-            this.btnSearch.TabIndex = 11;
+            this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -142,7 +142,7 @@
             this.btnRemove.Location = new System.Drawing.Point(71, 376);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(90, 25);
-            this.btnRemove.TabIndex = 13;
+            this.btnRemove.TabIndex = 9;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
@@ -153,7 +153,7 @@
             this.btnAssemble.Location = new System.Drawing.Point(231, 376);
             this.btnAssemble.Name = "btnAssemble";
             this.btnAssemble.Size = new System.Drawing.Size(95, 25);
-            this.btnAssemble.TabIndex = 14;
+            this.btnAssemble.TabIndex = 12;
             this.btnAssemble.Text = "Assemble";
             this.btnAssemble.UseVisualStyleBackColor = true;
             this.btnAssemble.Click += new System.EventHandler(this.btnAssemble_Click);
@@ -164,7 +164,7 @@
             this.nudAssemble.Location = new System.Drawing.Point(175, 378);
             this.nudAssemble.Name = "nudAssemble";
             this.nudAssemble.Size = new System.Drawing.Size(50, 20);
-            this.nudAssemble.TabIndex = 18;
+            this.nudAssemble.TabIndex = 11;
             // 
             // lblDivider2
             // 
@@ -173,7 +173,7 @@
             this.lblDivider2.Location = new System.Drawing.Point(167, 376);
             this.lblDivider2.Name = "lblDivider2";
             this.lblDivider2.Size = new System.Drawing.Size(2, 25);
-            this.lblDivider2.TabIndex = 19;
+            this.lblDivider2.TabIndex = 10;
             // 
             // nudRemove
             // 
@@ -181,7 +181,7 @@
             this.nudRemove.Location = new System.Drawing.Point(15, 378);
             this.nudRemove.Name = "nudRemove";
             this.nudRemove.Size = new System.Drawing.Size(50, 20);
-            this.nudRemove.TabIndex = 20;
+            this.nudRemove.TabIndex = 8;
             // 
             // btnDisassemble
             // 
@@ -189,7 +189,7 @@
             this.btnDisassemble.Location = new System.Drawing.Point(396, 376);
             this.btnDisassemble.Name = "btnDisassemble";
             this.btnDisassemble.Size = new System.Drawing.Size(95, 25);
-            this.btnDisassemble.TabIndex = 21;
+            this.btnDisassemble.TabIndex = 15;
             this.btnDisassemble.Text = "Disassemble";
             this.btnDisassemble.UseVisualStyleBackColor = true;
             this.btnDisassemble.Click += new System.EventHandler(this.btnDisassemble_Click);
@@ -200,7 +200,7 @@
             this.nudDisassemble.Location = new System.Drawing.Point(340, 378);
             this.nudDisassemble.Name = "nudDisassemble";
             this.nudDisassemble.Size = new System.Drawing.Size(50, 20);
-            this.nudDisassemble.TabIndex = 22;
+            this.nudDisassemble.TabIndex = 14;
             // 
             // label1
             // 
@@ -209,7 +209,7 @@
             this.label1.Location = new System.Drawing.Point(332, 377);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(2, 25);
-            this.label1.TabIndex = 23;
+            this.label1.TabIndex = 13;
             // 
             // btnDownload
             // 
@@ -217,7 +217,7 @@
             this.btnDownload.Location = new System.Drawing.Point(540, 376);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(125, 25);
-            this.btnDownload.TabIndex = 24;
+            this.btnDownload.TabIndex = 16;
             this.btnDownload.Text = "Download Instructions";
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);

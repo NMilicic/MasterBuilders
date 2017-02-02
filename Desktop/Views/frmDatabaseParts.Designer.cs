@@ -45,7 +45,7 @@
             this.btnSearch.Location = new System.Drawing.Point(540, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 25);
-            this.btnSearch.TabIndex = 27;
+            this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -56,7 +56,7 @@
             this.cmbCategory.Location = new System.Drawing.Point(228, 15);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(121, 21);
-            this.cmbCategory.TabIndex = 24;
+            this.cmbCategory.TabIndex = 3;
             // 
             // lblcategory
             // 
@@ -64,7 +64,7 @@
             this.lblcategory.Location = new System.Drawing.Point(170, 18);
             this.lblcategory.Name = "lblcategory";
             this.lblcategory.Size = new System.Drawing.Size(52, 13);
-            this.lblcategory.TabIndex = 23;
+            this.lblcategory.TabIndex = 2;
             this.lblcategory.Text = "Category:";
             // 
             // txtName
@@ -72,7 +72,7 @@
             this.txtName.Location = new System.Drawing.Point(58, 15);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 22;
+            this.txtName.TabIndex = 1;
             // 
             // lblName
             // 
@@ -80,7 +80,7 @@
             this.lblName.Location = new System.Drawing.Point(15, 18);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 21;
+            this.lblName.TabIndex = 0;
             this.lblName.Text = "Name:";
             // 
             // dataGridView
@@ -101,7 +101,7 @@
             this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(600, 325);
-            this.dataGridView.TabIndex = 20;
+            this.dataGridView.TabIndex = 5;
             // 
             // btnRecommend
             // 
@@ -110,7 +110,7 @@
             this.btnRecommend.Location = new System.Drawing.Point(15, 376);
             this.btnRecommend.Name = "btnRecommend";
             this.btnRecommend.Size = new System.Drawing.Size(101, 23);
-            this.btnRecommend.TabIndex = 28;
+            this.btnRecommend.TabIndex = 6;
             this.btnRecommend.Text = "Recommend Sets";
             this.btnRecommend.UseVisualStyleBackColor = true;
             this.btnRecommend.Click += new System.EventHandler(this.btnRecommendSets_Click);
