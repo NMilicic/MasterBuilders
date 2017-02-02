@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "My Set Wishlist";
 }
-
 <head runat="server">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -43,50 +42,50 @@
         });
     </script>
 </head>
+<body>
+    <h2>@ViewBag.Title</h2>
 
-<h2>@ViewBag.Title</h2>
+    @Html.Partial("_setsSearchPartial");
 
-@Html.Partial("_setsSearchPartial");
-
-<table class="table" id="setsTable">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Theme
-        </th>
-        <th>
-            Year
-        </th>
-        <th>
-            Parts
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in ViewBag.sets)
-    {
+    <table class="table" id="setsTable">
         <tr>
-            <td>
-                @item.LSet.Name
-            </td>
-            <td>
-                @item.LSet.Theme.Name
-            </td>
-            <td>
-                @item.LSet.ProductionYear
-            </td>
-            <td>
-                @item.LSet.NumberOfParts
-            </td>
-            <td>
-                @item.Number
-                <i class="fa fa-plus-circle fa-lg active wishlist-add" value="@item.LSet.Id" title="Add one"></i>
-                <i class="fa fa-minus-circle fa-lg active wishlist-remove" value="@item.LSet.Id" title="Remove one"></i>
-            </td>
+            <th>
+                Name
+            </th>
+            <th>
+                Theme
+            </th>
+            <th>
+                Year
+            </th>
+            <th>
+                Parts
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in ViewBag.listItems)
+        {
+            <tr>
+                <td>
+                    @item.LSet.Name
+                </td>
+                <td>
+                    @item.LSet.Theme.Name
+                </td>
+                <td>
+                    @item.LSet.ProductionYear
+                </td>
+                <td>
+                    @item.LSet.NumberOfParts
+                </td>
+                <td>
+                    @item.Number
+                    <i class="fa fa-plus-circle fa-lg active wishlist-add" value="@item.LSet.Id" title="Add one"></i>
+                    <i class="fa fa-minus-circle fa-lg active wishlist-remove" value="@item.LSet.Id" title="Remove one"></i>
+                </td>
+            </tr>
+        }
 
+    </table>
+</body>

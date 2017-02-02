@@ -13,7 +13,7 @@ namespace Data.Mappings
         public UserMocMap()
         {
             Table("user_MOC");
-            Id(x => x.Id).Column("id");
+            Id(x => x.Id).Column("id").GeneratedBy.Native();
 
             Map(x => x.Built).Column("built");
 

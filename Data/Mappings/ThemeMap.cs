@@ -14,7 +14,7 @@ namespace Data.Mappings
         {
             Table("theme");
 
-            Id(x => x.Id).Column("id_theme");
+            Id(x => x.Id).Column("id_theme").GeneratedBy.Native();
             Map(x => x.Name).Column("name_theme");
 
             References(x => x.BaseTheme).Column("id_basetheme");

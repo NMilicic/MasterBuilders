@@ -1,16 +1,12 @@
 ﻿using Business.Services;
 using Data;
 using Data.Domain;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Web.Models;
 using Web.Helpers;
 using System;
-using Business.Exceptions;
 
 namespace Web.Controllers
 {
@@ -30,8 +26,8 @@ namespace Web.Controllers
             model.Controller = "Inventory";
 
             var user = HttpContext.User as CustomPrincipal;
-            var sets = userSetService.GetAllForUser(user.Id);
-            ViewBag.sets = sets;
+            var sets = userSetService.GetAllForUser(user.Id, 20);
+            ViewBag.listItems = sets.ToList();
 
             return View(model);
         }
@@ -52,8 +48,9 @@ namespace Web.Controllers
             var user = HttpContext.User as CustomPrincipal;
 
             string searchParameters = SearchHelper.ConstructSearchParameters(model);
-            var sets = userSetService.Search(user.Id, searchParameters);
-            ViewBag.sets = sets.ToList();
+            //System.Diagnostics.Debug.WriteLine(searchParameters);
+            var sets = userSetService.Search(user.Id, searchParameters, 20);
+            ViewBag.listItems = sets.ToList();
 
             return View(model);
         }
@@ -63,7 +60,7 @@ namespace Web.Controllers
             var user = HttpContext.User as CustomPrincipal;
 
             var sets = setService.BuilderAssistent(user.Id);
-            ViewBag.sets = sets;
+            ViewBag.listItems = sets;
 
             return View();
         }

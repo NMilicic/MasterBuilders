@@ -14,7 +14,7 @@
             })
         });
         $(function () {
-            $(".wishlist").click(function (e) {
+            $(".wishlist-add").click(function (e) {
                 e.preventDefault();
                 $.ajax({
                     type: 'POST',
@@ -30,7 +30,7 @@
                     }
                 });
             });
-            $(".inventory").click(function (e) {
+            $(".inventory-add").click(function (e) {
                 e.preventDefault();
                 $.ajax({
                     type: 'POST',
@@ -96,9 +96,15 @@
                     @Html.DisplayFor(model => model.Theme.BaseTheme.Name)
                 </dd>
             }
+            <dt>
+                Instructions:
+            </dt>
             <dd>
-                <i class="fa fa-star fa-lg active wishlist" value="@Model.Id" title="Add to wishlist"></i>
-                <i class="fa fa-plus-circle fa-lg active inventory" value="@Model.Id" title="Add to my inventory"></i>
+                <a href="@Model.InstructionsUrl">@Model.InstructionsUrl</ahref>
+            </dd>
+            <dd>
+                <i class="fa fa-star fa-lg active wishlist-add" value="@Model.Id" title="Add to wishlist"></i>
+                <i class="fa fa-plus-circle fa-lg active inventory-add" value="@Model.Id" title="Add to my inventory"></i>
             </dd>
             <dd>
                 <a href="/Block/SetParts?setId=@Model.Id" style="color:black"><i class="fa fa-cubes fa-lg" aria-hidden="true"></i>View parts</a>

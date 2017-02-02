@@ -12,7 +12,7 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             var users = userService.GetAll();
-            ViewBag.users = users;
+            ViewBag.listItems = users;
 
             return View();
         }
@@ -20,7 +20,7 @@ namespace Web.Controllers
         public ActionResult Profile(string userId)
         {
             var sets = userSetService.GetAllForUser(int.Parse(userId));
-            ViewBag.sets = sets;
+            ViewBag.listItems = sets;
             User korisnik = userService.GetById(int.Parse(userId));
 
             return View(korisnik);

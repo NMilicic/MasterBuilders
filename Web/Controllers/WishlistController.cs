@@ -1,11 +1,8 @@
 ﻿using Business.Services;
 using Data;
 using Data.Domain;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
-using System.Web;
 using System.Web.Mvc;
 using Web.Helpers;
 using Web.Models;
@@ -27,8 +24,8 @@ namespace Web.Controllers
             model.Controller = "Wishlist";
 
             var user = HttpContext.User as CustomPrincipal;
-            var sets = wishlistService.GetAllSetsFromWishlistForUser(user.Id);
-            ViewBag.sets = sets;
+            var sets = wishlistService.GetAllSetsFromWishlistForUser(user.Id, 20);
+            ViewBag.listItems = sets;
 
             return View(model);
         }
@@ -46,8 +43,8 @@ namespace Web.Controllers
             model.AllThemes = themes;
 
             var user = HttpContext.User as CustomPrincipal; string searchParameters = SearchHelper.ConstructSearchParameters(model);
-            var sets = wishlistService.Search(user.Id, searchParameters);
-            ViewBag.sets = sets;
+            var sets = wishlistService.Search(user.Id, searchParameters, 20);
+            ViewBag.listItems = sets;
 
             return View(model);
         }
@@ -56,7 +53,6 @@ namespace Web.Controllers
         public JsonResult AddAjax(string setId)
         {
             var user = HttpContext.User as CustomPrincipal;
-            WishlistService wishlistService = new WishlistService();
             try
             {
                 wishlistService.AddSetToWishlistForUser(user.Id, int.Parse(setId), 1);
@@ -76,7 +72,6 @@ namespace Web.Controllers
         public JsonResult RemoveAjax(string setId)
         {
             var user = HttpContext.User as CustomPrincipal;
-            WishlistService wishlistService = new WishlistService();
             try
             {
                 wishlistService.RemoveSetFromWishlistForUser(user.Id, int.Parse(setId), 1);

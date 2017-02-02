@@ -14,7 +14,7 @@ namespace Data.Mappings
         {
             Table("color");
 
-            Id(x => x.Id).Column("id");
+            Id(x => x.Id).Column("id").GeneratedBy.Native();
             Map(x => x.Name).Column("name");
 
             HasMany(x => x.LSetParts)

@@ -28,6 +28,11 @@ textarea {
 h2 {
     color: lightsteelblue;
 }
+.range input{
+  float:left;
+  margin-right:10px;
+  max-width:135px;
+}
 
 .about {
     // width: 70%;

@@ -13,7 +13,7 @@ namespace Data.Mappings
         public WishlistMap()
         {
             Table("wishlist");
-            Id(x => x.Id).Column("id");
+            Id(x => x.Id).Column("id").GeneratedBy.Native();
 
             Map(x => x.Number).Column("num");
 

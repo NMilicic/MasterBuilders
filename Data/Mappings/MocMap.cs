@@ -14,7 +14,7 @@ namespace Data.Mappings
         {
             Table("MOC");
 
-            Id(x => x.Id).Column("id");
+            Id(x => x.Id).Column("id").GeneratedBy.Native();
             Map(x => x.Name).Column("name");
             Map(x => x.NumberOfParts).Column("num_parts");
             Map(x => x.Theme1).Column("theme1");
