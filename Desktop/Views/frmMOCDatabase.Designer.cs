@@ -1,6 +1,6 @@
 ﻿namespace Desktop.Views
 {
-    partial class frmMOC
+    partial class frmMOCDatabase
     {
         /// <summary>
         /// Required designer variable.
@@ -262,7 +262,7 @@
             this.txtAuthor.Size = new System.Drawing.Size(100, 20);
             this.txtAuthor.TabIndex = 34;
             // 
-            // frmMOC
+            // frmMOCDatabase
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1184, 411);
@@ -273,7 +273,7 @@
             this.Controls.Add(this.dataGridView);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmMOC";
+            this.Name = "frmMOCDatabase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MOC Database";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

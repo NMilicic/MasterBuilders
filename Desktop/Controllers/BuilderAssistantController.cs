@@ -46,7 +46,6 @@ namespace Desktop.Controllers
         #region Search
         public void Search()
         {
-            //TODO radio btn all/unused
             _currQuery = _result;
 
             if (_view.Theme.Text != "")

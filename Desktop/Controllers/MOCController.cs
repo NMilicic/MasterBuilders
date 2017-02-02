@@ -91,7 +91,7 @@ namespace Desktop.Controllers
                            Theme3 = m.Theme3,
                            Year = m.ProductionYear,
                            Parts = m.NumberOfParts,
-                           //TODO author column
+                           Author = m.UserMoc.User.FirstName + m.UserMoc.User.FirstName,
                        };
 
             _view.DataGridView.DataSource = data.ToList();

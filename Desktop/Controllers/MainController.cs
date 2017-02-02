@@ -26,7 +26,7 @@ namespace Desktop.Controllers
 
         public void ShowDatabaseParts()
         {
-            var newForm = new frmDatabaseParts(_user);
+            var newForm = new frmDatabaseParts();
             ShowView(newForm);
         }
 
@@ -42,22 +42,19 @@ namespace Desktop.Controllers
             ShowView(newForm);
         }
 
-        public void ShowMOCEdit()
+        public void ShowUserMOC()
         {
-            //TODO MOCedit form
-            /*
-            var newForm = new frmEditMOC();
-            ShowView(newForm);
-            */
-        }
-
-        public void ShowMOCView()
-        {
-            var newForm = new frmMOC();
+            var newForm = new frmUserMOC(_user);
             ShowView(newForm);
         }
 
-        public void ShowBA()
+        public void ShowMOCDatabase()
+        {
+            var newForm = new frmMOCDatabase();
+            ShowView(newForm);
+        }
+
+        public void ShowBuilderAssistant()
         {
             var newForm = new frmBuilderAssistant(_user);
             ShowView(newForm);
@@ -76,7 +73,7 @@ namespace Desktop.Controllers
         {
             //TODO profile form
             /*
-            var newForm = new frmProfile();
+            var newForm = new frmProfile(_user);
             ShowView(newForm);
             */
         }

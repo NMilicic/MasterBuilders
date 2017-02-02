@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Desktop.Views
 {
-    public partial class frmMOC : Form, IMOCView
+    public partial class frmMOCDatabase : Form, IMOCView
     {
         private MOCController _controller;
 
@@ -70,7 +70,7 @@ namespace Desktop.Views
             }
         }
 
-        public frmMOC()
+        public frmMOCDatabase()
         {
             _controller = new MOCController(this);
             InitializeComponent();

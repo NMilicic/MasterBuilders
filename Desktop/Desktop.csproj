@@ -47,8 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseLib\IAddPartsView.cs" />
+    <Compile Include="BaseLib\IEditMOCView.cs" />
     <Compile Include="BaseLib\IBuilderAssistantView.cs" />
+    <Compile Include="BaseLib\IUserMOCView.cs" />
     <Compile Include="BaseLib\IMOCView.cs" />
     <Compile Include="BaseLib\IDatabasePartsView.cs" />
     <Compile Include="BaseLib\IInventorySetsView.cs" />
@@ -58,9 +59,10 @@
     <Compile Include="BaseLib\IRegisterView.cs" />
     <Compile Include="BaseLib\IView.cs" />
     <Compile Include="BaseLib\IWishlistView.cs" />
-    <Compile Include="Controllers\AddPartsController.cs" />
+    <Compile Include="Controllers\EditMOCController.cs" />
     <Compile Include="Controllers\DatabasePartsController.cs" />
     <Compile Include="Controllers\BuilderAssistantController.cs" />
+    <Compile Include="Controllers\UserMOCController.cs" />
     <Compile Include="Controllers\MOCController.cs" />
     <Compile Include="Controllers\InventorySetsController.cs" />
     <Compile Include="Controllers\DatabaseSetsController.cs" />
@@ -73,11 +75,11 @@
     <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\frmAddParts.cs">
+    <Compile Include="Views\frmEditMOC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmAddParts.Designer.cs">
-      <DependentUpon>frmAddParts.cs</DependentUpon>
+    <Compile Include="Views\frmEditMOC.Designer.cs">
+      <DependentUpon>frmEditMOC.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmDatabaseParts.cs">
       <SubType>Form</SubType>
@@ -91,11 +93,17 @@
     <Compile Include="Views\frmBuilderAssistant.Designer.cs">
       <DependentUpon>frmBuilderAssistant.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmMOC.cs">
+    <Compile Include="Views\frmUserMOC.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmMOC.Designer.cs">
-      <DependentUpon>frmMOC.cs</DependentUpon>
+    <Compile Include="Views\frmUserMOC.Designer.cs">
+      <DependentUpon>frmUserMOC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmMOCDatabase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmMOCDatabase.Designer.cs">
+      <DependentUpon>frmMOCDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmSetlist.cs">
       <SubType>Form</SubType>
@@ -166,8 +174,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\frmAddParts.resx">
-      <DependentUpon>frmAddParts.cs</DependentUpon>
+    <EmbeddedResource Include="Views\frmEditMOC.resx">
+      <DependentUpon>frmEditMOC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmDatabaseParts.resx">
       <DependentUpon>frmDatabaseParts.cs</DependentUpon>
@@ -175,8 +183,11 @@
     <EmbeddedResource Include="Views\frmBuilderAssistant.resx">
       <DependentUpon>frmBuilderAssistant.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmMOC.resx">
-      <DependentUpon>frmMOC.cs</DependentUpon>
+    <EmbeddedResource Include="Views\frmUserMOC.resx">
+      <DependentUpon>frmUserMOC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmMOCDatabase.resx">
+      <DependentUpon>frmMOCDatabase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmSetlist.resx">
       <DependentUpon>frmSetlist.cs</DependentUpon>

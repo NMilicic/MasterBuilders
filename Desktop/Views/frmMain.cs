@@ -41,17 +41,17 @@ namespace Desktop.Views
 
         private void menuBA_Click(object sender, EventArgs e)
         {
-            _controller.ShowBA();
+            _controller.ShowBuilderAssistant();
         }
 
         private void menuMOCView_Click(object sender, EventArgs e)
         {
-            _controller.ShowMOCView();
+            _controller.ShowMOCDatabase();
         }
 
         private void menuMOCEdit_Click(object sender, EventArgs e)
         {
-            _controller.ShowMOCEdit();
+            _controller.ShowUserMOC();
         }
 
         private void menuCommunity_Click(object sender, EventArgs e)

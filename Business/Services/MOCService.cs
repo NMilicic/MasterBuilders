@@ -133,6 +133,35 @@ namespace Business.Services
 
         }
 
+        public Moc RemoveMoc(int userId, int mocId)
+        {
+            var user = userRepository.GetById(userId);
+            if (user != null)
+            {
+                var dbMOC = mocRepository.GetById(mocId);
+                if (dbMOC != null)
+                {
+                    var userMoc = userMocRepository.Query().FirstOrDefault(x => x.User.Id == userId && x.Id == mocId);
+
+                    if (userMoc == null)
+                    {
+                        throw new DataException("MOC is not yours!");
+                    }
+                    else
+                    {
+                        mocRepository.Delete(dbMOC);
+                        return dbMOC;
+                    }
+                }
+                else
+                {
+                    throw new DataException("MOC not found!");
+                }
+            }
+
+            throw new UserException(UserException.UserExceptionsText(UserExceptionEnum.NotFound));
+        }
+
         public Moc AddMocPartToMoc(int mocId, List<MocPart> mocParts)
         {
 
